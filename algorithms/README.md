@@ -1,16 +1,16 @@
 # Algorithms
 
-This folder does **not** contain the weight system.
+This folder does **not** contain memory and does **not** contain weights.
 
-The weight is physical. See `../cell-v1/NOT_SOFTWARE.md`.
+Memory in this system is the lean left in the physical path. Same wire that just carried the signal. No slip. No log that stands in for the event. No table that remembers for the cell.
 
 What lives here:
 
-1. **Zer0 lock (how the algorithm may speak about a lean)**
-   - `LEAN_INTO_ZER0.md` — propose on use, commit only at T6
-   - `lean_weight.py` — sandbox receipt of that law. Run `python3 lean_weight.py`. Not a parameter file. Not copyable style.
-2. **Rabbit Hopping (addressing)**
+1. **Zer0 lock** — when a *description* of a lean may be treated as committed (T6 only). That description is not memory.
+   - `LEAN_INTO_ZER0.md`
+   - `lean_weight.py` — sandbox of the lock rule. Run `python3 lean_weight.py`. Not memory. Not weights.
+2. **Rabbit Hopping** — addressing.
    - `RABBIT.md`
-   - source: https://github.com/One-Wave-Universe/RABBIT-HOPPING
+   - https://github.com/One-Wave-Universe/RABBIT-HOPPING
 
-If a file in this folder is treated as downloadable weights, the repo is being misread.
+If this folder is read as the memory system, the repo is being misread.
