@@ -1,34 +1,17 @@
 # House map
 
-Three public houses plus private bench. Floating repos keep their code for now. Each is seated below. No fourth public house.
+## In this repo now (not floating)
 
-## Public grant face
-`Builds` — this repo.
+- `cell-v1/` cell
+- `algorithms/` Zer0 talk + Rabbit pointer
+- `gcac/` gate.py and friends — copied from old GCAC repo
 
-Seated here (code still in the named repo until a local git merge):
-- `GCAC` — millivolt / ternary gate breadboard
-- `BUCKET-R2` — later body, not Phase I
-- `RABBIT-HOPPING` — addressing source (`algorithms/` points at it)
+## Still in their own repos (delete those repos after you confirm the copy)
 
-## Public thought-experiments
-`One-Wave-Science`
+- RABBIT-HOPPING — next copy into `algorithms/rabbit_hopping.py`
+- BUCKET-R2 — later body
+- HEX-SPLIT, GRAV-LAB, POINT-SPIN, Great-Galactic-Library — Science house
+- Animation_Salvation, Chats-Animatateo — Mythos house
+- hive-pipe, Bench — private
 
-Seated there:
-- `HEX-SPLIT` — hex geometry / 12-tone clock
-- `GRAV-LAB` — octave cascade sims
-- `POINT-SPIN` — rotation object
-- `Great-Galactic-Library` — card catalog
-
-## Stories
-`Mythos-and-Stories`
-
-Seated there:
-- `Animation_Salvation`
-- `Chats-Animatateo`
-
-## Private
-- `Bench` — raw logs, photos, hive notes
-- `hive-pipe` — pipeline code
-
-## Rule
-Do not start a new public repo. Put the file in one of the three houses or in Bench.
+I cannot delete the old repos from here. After a copy is in the house, you delete the floater on GitHub (Settings → Delete).
