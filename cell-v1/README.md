@@ -1,17 +1,17 @@
-# CELL_V1 — grant workstream
+# CELL_V1
 
-This is the Builds cell. Science thought-experiments are not this packet.
+The body. The weight lives here.
 
-## What to solder first
+A weight is a lean off a moving virtual ground. Same path that carries the signal. Not software.
 
-1. `CELL0.md` — one mirror pair, 9 V, 2N7000/BS170, square-loop core. Tests T1–T5.
-2. `LOG.md` — empty log means hardware score is 0%. Write voltages.
-3. `CELL_V1_BUILD_PACKET.md` — hex cell rules and Rev 0 → Rev H gates.
-4. `CELL_V1_BRAIN_CELL_PARTS.md` — BOM. Locked vs TBD is labeled.
-5. `CELL_V1_REAL_HARDWARE_PAMPHLET.md` — hex geometry and scale path.
+## Order
 
-## First decisive build (do not start at the flower)
+1. `NOT_SOFTWARE.md` — boundary
+2. `WEIGHT_LEAN.md` — the law (direction / magnitude / hardness, HOLD, bands)
+3. `CELL0.md` — solder this first (9 V, 2N7000/BS170, square-loop core)
+4. `LOG.md` — write T1–T5. Empty = 0%
+5. `SOURCES.md` — full hex packet links (build text, not Science-as-grant)
 
-One A+ ↔ A- bidirectional axis + stateful path + measured DC recovery + repeated-path test.
+`D = DB − DC` on Cell-0 *is* the lean. Tail / shared source is hardness. HOLD is live current, not off.
 
-Status: proposed / experimental. Not measured hardware until LOG.md has numbers.
+Acceptance: identical probe, different prior lean, different response. Until that is in the log, no learning claim.
