@@ -1,14 +1,11 @@
-# The 8
+# The loop
 
-Figure-8 on CENTER. Upper window views. Lower window actions.
+New views up. Last action down. New state. Repeat.
 
-**FLIP is both at once.**
+That is the whole event.
 
-When FLIP fires, the four views update **and** the four actions go down on the same event. Not views first then actions. The crossing of the 8 *is* that coincidence.
+Views up (upper window): BASELINE DELTA HEADING RESULT  
+Last action down (lower window): FLIP  
+New state: the settled home after that (Br / CENTER / lattice). That *is* the next BASELINE.
 
-Views up: BASELINE · DELTA · HEADING · RESULT  
-Actions down: PULL · PUSH · PASS · FLIP
-
-FLIP is the last action name and the moment all eight meet. Bidirectional pair reverses. Home (CENTER / Br) is the new baseline after that settle. RESULT is what the views read when the loop comes home.
-
-16 couplings = those 4×4 through that one crossing, on that one event.
+Again.
