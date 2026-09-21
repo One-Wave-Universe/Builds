@@ -1,14 +1,16 @@
 # Algorithms
 
-Grant algorithm lives here.
+This folder does **not** contain the weight system.
 
-## Rabbit Hopping
+The weight is physical. See `../cell-v1/NOT_SOFTWARE.md`.
 
-Reversible packet addressing. Source identity stays fixed while the generated center moves.
+What lives here:
 
-- `rabbit_hopping.py` — arithmetic + tests. Run: `python3 rabbit_hopping.py`
-- Canonical source repo (same account, not a hide): https://github.com/One-Wave-Universe/RABBIT-HOPPING
+1. **Zer0 lock (how the algorithm may speak about a lean)**
+   - `LEAN_INTO_ZER0.md` — propose on use, commit only at T6
+   - `lean_weight.py` — sandbox receipt of that law. Run `python3 lean_weight.py`. Not a parameter file. Not copyable style.
+2. **Rabbit Hopping (addressing)**
+   - `RABBIT.md`
+   - source: https://github.com/One-Wave-Universe/RABBIT-HOPPING
 
-Hypothesis tag stays on the physics reading. The code and tests are the grant artifact.
-
-Cell hardware is in `/cell-v1/`, not here.
+If a file in this folder is treated as downloadable weights, the repo is being misread.
