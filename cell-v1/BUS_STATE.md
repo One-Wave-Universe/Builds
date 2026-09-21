@@ -1,47 +1,38 @@
 # V_BUS state
 
-The bus is a reference. It is also the only lattice-wide number that may talk to the pack.
+The bus is a reference. It is the lattice-wide number that talks to the pack and to the operator field.
 
 ---
 
 ## Quiet
 
-V_BUS in its working band. Reinjection loop is feeding cells from C_BUS / rail. Battery is idle or trickle. No strain flag.
+V_BUS in band. Loop feeds from return. Pack idle or trickle.
 
 ---
 
 ## Ask (refill)
 
-When V_BUS sags below the working band, the rail **asks the battery** to push charge into the loop.
-
-Ask is a comparator on the bus, not a processor.
-
-- Below band → close the refill path (supply FET / ideal diode / charger into the rail).
-- Back in band → open it. Loop lives on recovered energy again.
-
-The battery is not the default source. It is the makeup for E_loss. Reinjection is first. Pack is second.
+Rail sags → ask the pack to refill the loop. Comparator. Pack is makeup for loss, not the default source.
 
 ---
 
-## Up (strain)
+## Up / redline (strain)
 
-When ask is already on and the rail still falls, or event rate vs tail says the loop cannot keep up, the bus **sends up**.
+Ask is already on and the rail still falls, or event rate outruns return: **send up**.
 
-Up = strain flag to the next scale (flower → field, field → pack manager). Meaning: stop issuing new PUSH / FLIP, prefer PASS, or shed load. Not a mood. Not speech.
+That flag is what a body calls burn / exhaustion / redline. In this architecture it is not a feeling. It is the rail telling the operator field:
 
-Proposal thresholds (named, not measured):
+- prefer PASS
+- no new PUSH / FLIP
+- shed load
+
+Same role as muscle burn: the tissue is already spending faster than refill. The “brain” here is the flower field that issues actions, not a soul.
 
 | Bus | Meaning |
 | --- | --- |
 | high / rising | ready |
 | in band | quiet |
-| sagging | ask battery |
-| low and still falling while asking | strain → send up |
+| sagging | ask pack |
+| low + falling while asking | redline → send up |
 
----
-
-## What the bus must not do
-
-- Must not be CENTER.
-- Must not write cores by itself. A sag may change Iss (hardness / sensitivity). That is readiness. A write still needs an axis event.
-- Must not clock the lattice. Ask and up are levels, not ticks.
+Levels, not ticks. Not CENTER. Sag may change tail current (sensitivity). A write still needs an axis event.
