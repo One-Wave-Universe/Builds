@@ -1,20 +1,20 @@
 # House map
 
-## Builds (grant)
-- `cell-v1/`
-- `algorithms/`
-- `gcac/` gate.py ladder.py THEORY.md
-- `bucket-r2/` loop.py clock.py senses.py
+Animation apps are out. Delete those two repos on GitHub.
+
+## Builds
+- cell-v1/
+- algorithms/
+- gcac/
+- bucket-r2/
 
 ## Science
-- `point-spin/`
-- `hex-split/` seat
-- `grav-lab/` seat
+- point-spin/
+- hex-split/
+- grav-lab/
 
 ## Mythos
-- `animation/` seat
+- stories only. No animation tools.
 
 ## Private
 - Bench, hive-pipe
-
-Old repos still exist until you delete them. Settings of that repo → bottom → Danger Zone → Delete.
