@@ -1,19 +1,22 @@
 # Square ferrite
 
-**Three figure-8s. One settled hysteresis.**
+**Two squares. One figure-8. Three windings.**
 
-Each axis owns **its own** figure-8: two square windows, shared leg, + seat / − seat. That iron can sit at Br+ or Br− or on the path between (HOLD).
+Not three irons. Not six windows.
 
-Do **not** put A B C on one toroid with six windows. That is the shared puck. Disagreement dies. Two-of-three has nothing to oppose.
+The cell owns **one** figure-8: two square-loop pieces, shared leg, + window and − window. That is the only ferrite.
 
-After drive, gates, and V_BUS come home, you do not have three diaries. You have **one cell state** — the heading the three irons settled into together (two-of-three). The three figure-8s are how that state has a shape. They couple through CENTER (read) and V_BUS (energy), not by sharing one lump of ferrite.
+A, B, C are **copper** on that iron — three windings through the same two windows (or around the two rings). Electrical diffs still exist (three D's vs CENTER). Magnetic remanence is **one** Br for the cell. That is the single diary.
 
 ```
-  [figure-8 A]     [figure-8 B]     [figure-8 C]
-        \                |                /
-         +----------- CENTER -----------+
-         +----------- V_BUS ------------+
-                    one settle
+        (square +)     (square −)
+              \           /
+               shared leg
+         windings A, B, C on the 8
 ```
 
-Cell-0: one figure-8 on one pair.
+Two-of-three stays electrical (current-sum of the three D's). The iron holds the *net* heading after settle — one hysteresis, one λ leftover.
+
+Net ampere-turns write Br. Opposing axes cancel in the iron instead of parking two opposite remanences. HOLD is the honest result of a fight. That matches oppose → HOLD.
+
+Cell-0: the same two-square 8 (or one toroid as a baby version of one window).
