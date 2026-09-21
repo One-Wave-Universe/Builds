@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640">
+  <rect width="900" height="640" fill="#1a1410"/>
+  <text x="24" y="28" fill="#e8dcc8" font-family="Georgia,serif" font-size="20">THE CELL — top ternary / bottom reinjection</text>
+  <polygon points="450,70 560,130 560,230 450,290 340,230 340,130" fill="#2a221c" stroke="#e8dcc8" stroke-width="2"/>
+  <text x="438" y="88" fill="#6af" font-size="14">A+</text>
+  <text x="568" y="175" fill="#6af" font-size="14">B+</text>
+  <text x="568" y="230" fill="#6af" font-size="14">C+</text>
+  <text x="438" y="282" fill="#6af" font-size="14">A-</text>
+  <text x="300" y="230" fill="#6af" font-size="14">B-</text>
+  <text x="300" y="175" fill="#6af" font-size="14">C-</text>
+  <circle cx="450" cy="180" r="18" fill="none" stroke="#8c8"/>
+  <text x="428" y="184" fill="#8c8" font-size="11">V0</text>
+  <text x="24" y="330" fill="#a89070" font-size="13">TOP: three diffs star to CENTER · cores at A+ B+ C+</text>
+  <rect x="80" y="360" width="740" height="90" fill="#241c18" stroke="#da8"/>
+  <text x="100" y="385" fill="#da8" font-size="14">cores A B C between faces</text>
+  <text x="100" y="410" fill="#a89070" font-size="12">RC lives here · D is top seat minus under seat</text>
+  <rect x="80" y="470" width="740" height="140" fill="#181820" stroke="#c44"/>
+  <text x="100" y="498" fill="#c44" font-size="14">BOTTOM V_BUS — fed by all three gates, feeds all three</text>
+  <text x="100" y="524" fill="#a89070" font-size="12">steer A B C → reservoir → tails, half-bridges, neighbors</text>
+  <text x="100" y="548" fill="#a89070" font-size="12">pack ask on sag · send-up on redline · not CENTER</text>
+  <text x="100" y="580" fill="#8c8" font-size="12">PERMIT from current-sum unlocks PUSH/FLIP on heading axes</text>
+</svg>
