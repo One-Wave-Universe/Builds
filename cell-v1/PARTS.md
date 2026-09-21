@@ -1,48 +1,37 @@
-# Parts — worked out
+# PARTS — Phase I (1 V cell)
 
-## Cell-0 (buy this first)
+Architecture volts are **1.00 / 0.50 / 0.45–0.55**. If you only have 2N7000s, you may run 9 V *hardware* and **write every number as 1 V map**. Do not call 9 V the cell.
 
-| Qty | What | Why | Buy-class |
-| --- | --- | --- | --- |
-| 1 | 400-point breadboard | body | any |
-| 1 | 9 V rechargeable + clip | V_TOP | pack |
-| 2 | 2N7000 or BS170 TO-92 | Q1 Q2 pair | jellybean N-FET |
-| 2 | 10 kΩ 1/4 W | drain loads | |
-| 2 | 100 kΩ 1/4 W | gates to PACK- | |
-| 1 | 100 nF ceramic | pack clip | |
-| 1 | DMM | DB, DC, D | |
-| 1–2 | **square-loop / magamp toroid** not EMI bead | figure-8 windows / CENTER | Magnetics magamp, VAC tape, or Proterial MEGAMP. Fair-Rite 61/43 is EMI — last resort only |
-| 1 m | magnet wire 28–32 AWG | through the 8 | |
-| 1 | 1N5819 Schottky | steer to BUS after Br seen | |
-| 1 | 10 nF C0G | C_steer | |
-| 1 | 1 µF film or X7R | C_BUS | |
+## Buy now
 
-Two toroids touching = figure-8. One toroid = Cell-0 baby window.
+| Qty | Item | Notes |
+| --- | --- | --- |
+| 1 | 400-point breadboard | |
+| 1 | Adjustable 1.0 V supply **or** 9 V pack + divider later | Prefer a bench supply set to 1.0 V if FETs allow |
+| 2 | 2N7000 or BS170 TO-92 | Seeing-aid FETs. Confirm S-G-D on the bag |
+| 2 | BSS138 or similar logic-level N-FET | Better at 1 V gates |
+| 2 | 10 kΩ 1% 1/4 W | Drain loads |
+| 2 | 100 kΩ 1% 1/4 W | Gate leak to 0 V |
+| 2 | 10 kΩ trim or 2×10 k | CENTER 0.50 divider if pack ≠ 1 V |
+| 1 | 100 nF C0G | Across pack |
+| 1 | 10 nF C0G | Local steer cap |
+| 1 | 1 µF film or X7R | C_BUS |
+| 1 | 1N5817 or 1N5819 Schottky | Bus steer |
+| 1–2 | Square-loop / magamp toroid | Magnetics magamp, VAC tape, MEGAMP. Not Fair-Rite EMI-61 if you can help it |
+| 1 m | 30 AWG magnet wire | 10–20 turns |
+| 1 | DMM (two if you have them) | Home and bus at once |
+| 1 pack | Dupont jumpers |
+| 1 | Permalloy or mu-metal foil scrap | Under-bus skin experiment |
 
-## Add for PERMIT (same board later)
+## Next (permit / second axis)
 
-| Qty | What |
+| Qty | Item |
 | --- | --- |
-| 1 | LM339 quad comparator | windows + sign + trip |
-| 1 | CD4066 or TS5A analog switch | ±Iss into SUM |
-| 1 handful | 10 k / 100 k for SUM and 1.5 / 1.2 dividers |
-| 2 | more 2N7000 | half-bridge when you drive a winding |
+| 1 | LM339 or LMV339 (1 V–friendly if possible) |
+| 1 | TS5A3166 or CD4066 |
+| 4 | Extra BSS138 / 2N7000 |
+| 1 handful | 10 k / 100 k for sum node |
 
-## Lattice / stack (after D exists)
+## PCB later (not Phase I required)
 
-| What | Role |
-| --- | --- |
-| Copper wire or pour | V_BUS |
-| Permalloy foil or square-ferrite sheet under the pour | hysteresis skin |
-| Copper as the “heavy strip” | Oersted write now |
-| Ta/Pt later | SOT write |
-
-## Pin / hook (2N7000 TO-92, flat toward you)
-
-Left to right: **S G D** (confirm the bag — some clones swap).
-
-Q1 source and Q2 source = CENTER row only.
-
-## Wind
-
-10–20 turns on the toroid for Cell-0. Enough to see flyback on the Schottky. Not a transformer design yet.
+2-layer 1.6 mm, 1 V pour on bottom as V_BUS, top signal, hex outline 40 mm flat-to-flat, pads at **edge midpoints**, CENTER pad island not tied to bus pour, figure-8 footprint in the island.
