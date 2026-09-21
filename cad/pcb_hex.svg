@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" width="640" height="560">
+  <rect width="640" height="560" fill="#f7f4ee"/>
+  <text x="24" y="28" font-size="18" font-family="sans-serif">PCB floorplan — 1 V hex (40 mm F-F)</text>
+  <text x="24" y="48" font-size="12" fill="#444">TOP: signals + pairs + CENTER island. BOTTOM: V_BUS pour. Pads at EDGE MIDPOINTS.</text>
+  <polygon points="320,90 470,175 470,345 320,430 170,345 170,175" fill="#d9cbb0" stroke="#222" stroke-width="2"/>
+  <polygon points="320,150 410,200 410,300 320,350 230,300 230,200" fill="#eee8dc" stroke="#8a2" stroke-width="2"/>
+  <text x="278" y="258" font-size="12" fill="#8a2">CENTER island</text>
+  <text x="286" y="274" font-size="11" fill="#8a2">figure-8 here</text>
+  <text x="300" y="78" font-size="14">A+</text>
+  <text x="478" y="268" font-size="14">B+</text>
+  <text x="400" y="455" font-size="14">C+</text>
+  <text x="300" y="458" font-size="14">A-</text>
+  <text x="128" y="455" font-size="14">B-</text>
+  <text x="128" y="268" font-size="14">C-</text>
+  <circle cx="395" cy="132" r="6" fill="#222"/>
+  <circle cx="470" cy="260" r="6" fill="#222"/>
+  <circle cx="395" cy="388" r="6" fill="#222"/>
+  <circle cx="245" cy="388" r="6" fill="#222"/>
+  <circle cx="170" cy="260" r="6" fill="#222"/>
+  <circle cx="245" cy="132" r="6" fill="#222"/>
+  <text x="24" y="500" font-size="12">Bottom pour = V_BUS. Do not stitch CENTER vias into that pour.</text>
+  <text x="24" y="520" font-size="12">Heavy-strip under 8 can be a fat copper trace on bottom, isolated from CENTER.</text>
+  <text x="24" y="540" font-size="12">KiCad project not generated here — this floorplan is the CAD for a board house to trace.</text>
+</svg>
