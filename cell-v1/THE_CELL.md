@@ -1,15 +1,13 @@
 # The cell
 
-Two faces. Both powered.
+**Top:** three differentials. Ternary. CENTER.
+**Bottom:** reinjection bus. Mirror loop. Pack ask. Send-up.
 
-**Top:** ternary. Six seats, three pairs, CENTER, three cores between the faces.
-**Bottom:** reinjection. Mirror loop + V_BUS + steering + C_BUS + pack ask + send-up.
-
-Bottom is not a ground plane. It is the return of the top trit and the reservoir that drinks the collapse.
+Every leftover from all three top diffs is **gated down to V_BUS**. Not CENTER. Not only the winding flyback. Pair waste and heat-that-can-be-steered too.
 
 ---
 
-## Seats (same outline both faces)
+## Seats
 
 ```
                     A+
@@ -22,44 +20,31 @@ Bottom is not a ground plane. It is the return of the top trit and the reservoir
                     A-
 ```
 
-A+ top ↔ A- bottom = axis A (core A in between). Same for B, C.
+A+ top ↔ A- bottom + core A between. Same B, C.
 
 ---
 
-## Bottom — reinjection
+## Three gates, one bus
 
 ```
- pack --ask-- V_BUS =====================
-                  |         |         |
-               steer A   steer B   steer C
-                  |         |         |
-                C_A       C_B       C_C
-                  |         |         |
-               wind A    wind B    wind C   ↑ through cores to top pairs
-                  |         |         |
-                HB A      HB B      HB C
+ TOP A dump --gate A--\
+ TOP B dump --gate B---+-- V_BUS (bottom) -- C_BUS -- pack ask
+ TOP C dump --gate C--/
 ```
 
-- Collapse of an axis stays on this face → steer → V_BUS.
-- Next axis drinks V_BUS first. That is reinjection.
-- Pack only fills E_loss.
-- Sag → ask. Still falling → send up → PASS.
-- Neighbor hex shares this bottom rail and the shared edge. Not top CENTER.
+Each axis has its own gate (steer diode first, sync later). All three land on the **same** V_BUS.
+
+What gets gated:
+- winding collapse (inductive)
+- pair leftover / tail dump that would otherwise be heat
+- anything that is still current, not already I²R in silicon
+
+What does not get gated: CENTER. Heat that already became temperature (that’s the later thermal redline, not this path).
 
 ---
 
-## Top — ternary
+## Law
 
-Three D's against CENTER. HOLD / two-of-three. DC stand, AC shove, RC in the core (between faces).
-
----
-
-## Side view
-
-```
-  top power -- ternary pairs -- CENTER
-                 |
-               cores
-                 |
-  bottom power -- HB / wind / steer -- V_BUS reinjection lattice -- pack
-```
+If it can still be charge, it goes to the bus.
+If three diffs all dump, the reservoir takes three pulses. Next event drinks the rail first.
+Pack only makes up what the gates could not save.
