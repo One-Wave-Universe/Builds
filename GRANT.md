@@ -1,27 +1,52 @@
-# Grant package
+# Grant architecture
 
-https://github.com/One-Wave-Universe/Builds
+**Project:** One-volt analog hex cell. Shared-bus energy return. History in the path.
+**Repo:** https://github.com/One-Wave-Universe/Builds
+**Ask:** Phase I — one cell and a two-axis bus couple, measured.
 
-**This is the only funding target.**
+---
 
-## One sentence
+## Problem
 
-Build and measure an analog cell whose memory is a lean left in the same path that carried the event — no clock, no weight file, no created energy — then couple cells on a shared DC bus.
+State lives in a file. Compute lives somewhere else. Copies are free. Analog chips still usually *load* weights. Energy recovery is a separate trick. Copper is treated as dead.
 
-## Map
+## Solution (the architecture)
 
-Full work plan, gates, evidence, language, and ask: `GRANT_MAP.md`
+A **1.00 V** hex.
 
-## Read in this order
+Middle **0.50 V**. Live wobble **0.45–0.55 V**.
+Ports on the **sides:** A+ B+ C+ A− B− C−.
+Three leans into that middle. A square-loop figure-8 on the middle keeps a trace.
+Under the hex: a **1 V bus**. All leftover current goes in. The bus feeds every lean. Pack only pays loss. If the bus keeps falling, stop pushing.
+Edges can wear a magnetic skin (foil now, plated NiFe later). Cap on the bus = short echo. Skin / 8 = long hold.
+Two agrees → push. One voice waits. Fight holds. Off → bus (regen).
+Gates both ways. Next view = last move + what came back up.
+Same windings can throw. No second brain in Phase I.
 
-1. `ANTI_DRIFT.md` — what not to call it
-2. `cell-v1/NOT_SOFTWARE.md`
-3. `cell-v1/WEIGHT_LEAN.md` — 0.45–0.55 wobble, ±1 ±2 ±3 outside it
-4. `cell-v1/NO_CLOCK.md`
-5. `cell-v1/REINJECT_BUS.md`
-6. `cell-v1/READINESS.md`
-7. `cell-v1/CELL0.md` + `LOG.md`
-8. `cell-v1/CELL_ASSEMBLED.md`
-9. `algorithms/RABBIT.md` + `LEAN_INTO_ZER0.md`
+## Novelty
 
-Science and Mythos stay public. They are not this ask.
+Not a new law. Faraday, remanence, current-sum, plated wire, half-bridges are old.
+New arrangement: **one volt, one home, three leans, leftover current is blood, history in home and mesh, coherence instead of a timer.**
+
+Schematic copies. Lived trace does not.
+
+## Phase I
+
+1. 1 V-mapped pair. See a lean. See leftover remanence.
+2. Gate collapse to a bus row. Home ≠ bus.
+3. Second lean on a live bus vs an empty bus.
+4. Energy in vs energy back. Raw fraction.
+
+Deliverable: four traces + repeatable parts list.
+
+## Phase II (not this check)
+
+Third lean, permit block, seven-hex slice, plated mesh, throw on the same windings.
+
+## Will not claim
+
+Feelings. Free energy. A downloadable mind. 99% recovery. A product that hears.
+
+## Why fund
+
+Small. Physical. Repeatable in a year on a bench. Edge-compute and hardware-state story without fiction.
