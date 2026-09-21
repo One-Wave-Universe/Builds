@@ -1,9 +1,11 @@
 # The cell
 
 **Top:** three differentials. Ternary. CENTER.
-**Bottom:** reinjection bus. Mirror loop. Pack ask. Send-up.
+**Bottom:** V_BUS. Reinjection. Mirror loop.
 
-Every leftover from all three top diffs is **gated down to V_BUS**. Not CENTER. Not only the winding flyback. Pair waste and heat-that-can-be-steered too.
+The bus is fed by everything. The bus feeds everything.
+
+Not a side pipe. The circulation.
 
 ---
 
@@ -20,31 +22,20 @@ Every leftover from all three top diffs is **gated down to V_BUS**. Not CENTER. 
                     A-
 ```
 
-A+ top ↔ A- bottom + core A between. Same B, C.
-
 ---
 
-## Three gates, one bus
+## Circulation
 
 ```
- TOP A dump --gate A--\
- TOP B dump --gate B---+-- V_BUS (bottom) -- C_BUS -- pack ask
- TOP C dump --gate C--/
+   pair A --gate A--\
+   pair B --gate B---+== V_BUS ==+-- tails / Iss
+   pair C --gate C--/            +-- half-bridges
+   windings collapse ------------+-- neighbor hexes
+   pack (ask only, loss) --------+-- send-up sense
 ```
 
-Each axis has its own gate (steer diode first, sync later). All three land on the **same** V_BUS.
+Every axis, every event, every leftover charge → bus.
+Every pair, every drive, every neighbor → drinks bus first.
+Pack only when the bus asks. Strain → send up.
 
-What gets gated:
-- winding collapse (inductive)
-- pair leftover / tail dump that would otherwise be heat
-- anything that is still current, not already I²R in silicon
-
-What does not get gated: CENTER. Heat that already became temperature (that’s the later thermal redline, not this path).
-
----
-
-## Law
-
-If it can still be charge, it goes to the bus.
-If three diffs all dump, the reservoir takes three pulses. Next event drinks the rail first.
-Pack only makes up what the gates could not save.
+CENTER is not on this loop. CENTER is the lean home on top.
