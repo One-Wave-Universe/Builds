@@ -1,32 +1,29 @@
 # Builds
 
-## Status: PROPOSED BLUEPRINTS, SCHEMATICS & SYSTEM ARCHITECTURE
+The grant and engineering home of One Wave.
 
-This repository is the engineering and implementation home of the One Wave project. It contains proposed designs, schematics, virtual breadboards, bench records, algorithms, and software architecture. Material is design and progress documentation unless explicitly marked as independently built, measured, and verified.
+Proposed designs until a file records a measured result. Empty `cell-v1/LOG.md` means hardware score is 0%.
 
-## Scope
+## Read this first
 
-- Hardware packets and parts references
-- Virtual breadboards and circuit schematics
-- CELL_V1 build documents and design packets
-- Bench and workshop logs
-- Executable algorithms and simulators used as engineering tools
-- System architecture and implementation roadmaps
+The weight system is **physical**. A lean off a moving virtual ground. Voltage, current split, magnetic hold. It lives in the same path that processes the signal.
 
-## Rabbit Hopping
+Not a float in a table. Not backprop. Not a download.
 
-All Rabbit Hopping material belongs directly in `/algorithms/`.
+- Law: `cell-v1/WEIGHT_LEAN.md`
+- Boundary: `cell-v1/NOT_SOFTWARE.md`
+- First solder: `cell-v1/CELL0.md`
+- How Zer0 is allowed to *talk* about a lean: `algorithms/LEAN_INTO_ZER0.md`
 
-## Migration standard
+`algorithms/lean_weight.py` is a receipt so the four-branch lock can be tested in a sandbox. It is not the weight. Do not ship it as parameters.
 
-This repository accepts content-preserving reorganizations from the former mixed source. Documents may be rewritten, split, or consolidated where needed to make the engineering record usable. Unverified or accidental hardware material remains a progress attempt, not validated hardware.
+## Two workstreams
 
-## Structure
+1. **Cell** — `/cell-v1/` — the body. Pair, lean, hardness, log.
+2. **Algorithm** — `/algorithms/` — addressing (Rabbit Hopping) and the Zer0 lock that may only *commit* a lean at T6.
 
-- `algorithms/` — Rabbit Hopping and other executable algorithmic work
-- `Hardware_Packets/` — build packets, parts references, and schematic packets
-- `Virtual_Breadboard/` — virtual circuit and breadboard work
-- `cell-v1/` — CELL_V1 design and build material
-- `bench/` — One Wave Bench and Workshop records
-- `architecture/` — implementation, software, and system architecture
-- `simulations/` — engineering-facing simulations
+Science thought-experiments stay in `One-Wave-Science`. Fiction stays in `Mythos-and-Stories`. Neither is this package.
+
+## Status
+
+See `STATUS.md` and `GRANT.md`.
