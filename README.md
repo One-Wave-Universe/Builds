@@ -1,7 +1,7 @@
 # Builds
 
-**The build (everything in one place):** [THE_BUILD.md](THE_BUILD.md)
+**The cell:** [cell-v1/](cell-v1/) · lock: [cell-v1/CELL.md](cell-v1/CELL.md)
 
-Rules: [RULES.md](RULES.md) · Grant: [GRANT.md](GRANT.md)
+Grant: [GRANT.md](GRANT.md) · Rules: [RULES.md](RULES.md) · The build: [THE_BUILD.md](THE_BUILD.md)
 
 License: [LICENSE](LICENSE) · CLA: [CLA.md](CLA.md) · Notice: [NOTICE](NOTICE)
