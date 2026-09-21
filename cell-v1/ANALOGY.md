@@ -1,7 +1,15 @@
-# Analogy
+# Analogy (not the grant mechanism)
 
-Three differential seats around CENTER = **quark vortices**. Three whirls, one bag.
+Science already named it:
 
-Not the Standard Model. Not color charge. Not gluons. Not a proton you can scatter at CERN.
+- quark → vortex phase
+- gluon → tension-link excitation
+- confinement → knot lock
+- proton → three-vortex knot
+- skin → surface tension σ_T
 
-Just the shape: three vortices bound at one home. The cell is that bag. The 8 is the bind. The bus is the juice that stays in the bag.
+`One-Wave-Science` pack **C-317 Boundary-Tension Weave**. C-321: three equal tensions meet at 120°.
+
+On the **cell**: three diffs = three vortices. Hex 120°. Bus-side lattice + figure-8 = the tension skin that keeps the bag from flying apart. CERN-style catalogs, in your house, are **wave data** to check against that weave — not SM particles to import into Builds.
+
+Grant still buys ferrite and FETs.
