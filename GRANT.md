@@ -4,22 +4,14 @@
 
 https://github.com/One-Wave-Universe/Builds
 
-Account: https://github.com/One-Wave-Universe
-
 ## What this repo is
 Proposed blueprints, schematics, system architecture, algorithms, hardware packets, and implementation work.
 
 Nothing here is a claim of finished, measured hardware unless a file explicitly records that evidence.
 
-## Why other repos exist
-They are labels, not a hide.
+## What this repo is not
+`One-Wave-Science` is personal thought experiments. It is not part of this grant package and is not a deliverable under this repo.
 
-- `One-Wave-Science` — hypotheses and simulations, kept separate so grant claims are not mixed with untested theory.
-- `Mythos-and-Stories` — fiction only, kept separate so stories cannot be read as science or as funded deliverables.
+`Mythos-and-Stories` is fiction. Same rule.
 
-Grant reviewers should evaluate **this repo**. Do not treat the other two as a second application package.
-
-## Start here
-- `README.md`
-- `STATUS.md`
-- `algorithms/`
+Those repos stay public so nothing is hidden. They are not funding targets and they are not mixed into Builds.
