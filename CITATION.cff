@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: "Builds — One-volt analog hex cell"
+message: "If you use this work, cite it."
+type: software
+authors:
+  - family-names: Wright
+    given-names: Mark
+    affiliation: One-Wave-Universe
+repository-code: "https://github.com/One-Wave-Universe/Builds"
+url: "https://github.com/One-Wave-Universe/Builds"
+license:
+  - CERN-OHL-S-2.0
+  - GPL-3.0-or-later
+  - CC-BY-SA-4.0
+keywords:
+  - analog
+  - hex cell
+  - hysteresis
+  - shared bus
+  - CERN-OHL-S
+date-released: "2026-09-21"

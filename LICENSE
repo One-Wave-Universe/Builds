@@ -1,0 +1,39 @@
+# License
+
+Copyright (c) 2026 One-Wave-Universe
+
+This repository is one work under three outbound licenses.
+Inbound contributions require [CLA.md](CLA.md).
+
+## Hardware
+
+CERN Open Hardware Licence Version 2 — Strongly Reciprocal (CERN-OHL-S-2.0)
+
+Applies to: CAD, schematics, netlists, PCB, mechanical, physical cell, ferrite and lattice descriptions intended to be built.
+
+https://ohwr.org/cern_ohl_s_v2.txt
+SPDX-License-Identifier: CERN-OHL-S-2.0
+
+## Firmware and software
+
+GNU General Public License v3.0 or later
+
+Applies to: firmware, simulations, algorithms, scripts, workbench code.
+
+https://www.gnu.org/licenses/gpl-3.0.txt
+SPDX-License-Identifier: GPL-3.0-or-later
+
+## Documentation
+
+Creative Commons Attribution-ShareAlike 4.0 International
+
+Applies to: markdown, drawings, grant text, diagrams.
+
+https://creativecommons.org/licenses/by-sa/4.0/legalcode
+SPDX-License-Identifier: CC-BY-SA-4.0
+
+## Notice
+
+See [NOTICE](NOTICE) for attribution.
+See [CLA.md](CLA.md) before you contribute.
+You keep your copyright. You grant a license. You do not assign.
