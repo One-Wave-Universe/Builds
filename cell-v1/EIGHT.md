@@ -1,19 +1,14 @@
 # The 8
 
-The figure-8 **is** the 4×4. Not a drawing of it. The iron.
+Figure-8 on CENTER. Upper window views. Lower window actions.
 
-Two windows, one shared CENTER.
+**FLIP is both at once.**
 
-**Upper window — views (up, sense)**  
-BASELINE · DELTA · HEADING · RESULT  
-How the three diffs read the home. Remanence of CENTER as seen from the pairs.
+When FLIP fires, the four views update **and** the four actions go down on the same event. Not views first then actions. The crossing of the 8 *is* that coincidence.
 
-**Lower window — actions (down, drive)**  
-PULL · PUSH · FLIP · PASS  
-How PERMIT moves metal toward V_BUS. Write and collapse on the same window.
+Views up: BASELINE · DELTA · HEADING · RESULT  
+Actions down: PULL · PUSH · PASS · FLIP
 
-The crossing of the 8 is CENTER. Views look up from that cross. Actions go down from that cross onto the bus lattice.
+FLIP is the last action name and the moment all eight meet. Bidirectional pair reverses. Home (CENTER / Br) is the new baseline after that settle. RESULT is what the views read when the loop comes home.
 
-Sixteen couplings are those 4×4 on **one** 8, grown by use (leans / Br), not a matrix chip.
-
-Three diffs still star to that same cross. One diary. One 8.
+16 couplings = those 4×4 through that one crossing, on that one event.
