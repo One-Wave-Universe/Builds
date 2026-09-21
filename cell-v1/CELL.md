@@ -1,15 +1,12 @@
 # CELL
 
-**1.00 V.** CENTER **0.50 V.** HOLD **0.45–0.55 V.**
+**1 volt.** Middle **0.50.** Wobble **0.45–0.55.**
 
-Top: hex. Ports on the **sides** A+ B+ C+ A- B- C-. Three diffs → CENTER. Figure-8 on CENTER.
+Top hex. Letters on the sides: A+ B+ C+ A- B- C-.
+Three leans into the middle. The 8 sits on that middle.
 
-Bottom: 1 V bus lattice. All leftover current in. Bus feeds all. Skin holds Br.
+Bottom hex. 1 volt bus. Everything dumps leftover into it. It feeds everything. Edges remember.
 
-Loop: new views up → last action down → new state. Views = last actions + sent-up.
+See what you just did. Do the last move. That plus what came back up *is* the next view. Again.
 
-Same 0.50 home: D1 stand, D2 out-back, D3 rotate.
-
-Bidirectional gates. Two-of-three permits PUSH/FLIP. PASS to bus.
-
-Do 1, then 2, then 3. Flower later.
+Gates both ways. Two agrees, you push. One voice waits. Off dumps to the bus.
