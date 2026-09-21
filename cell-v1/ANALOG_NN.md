@@ -1,38 +1,31 @@
-# Analog nets vs this cell
+# Analog networks vs this cell
 
-Four families out there. Steal physics. Do not steal the table.
+## Field
 
-## 1. Crossbar CIM (memristor / flash / Mythic-class)
+**Crossbar in-memory** — flash, RRAM, memristor. Ohm × Kirchhoff add. Weights are programmed G you can copy.
 
-Kirchhoff does the MAC. G is the weight. Beautiful current-sum — same *idea* as two-of-three Iss add.
-Difference: G is programmed, copied, inferred as a matrix. History is a file in disguise.
-Steal: summing currents on a node. Keep: H in the core, not G in a crossbar.
+**CMOS analog** — subthreshold pairs, OTAs. Weights still a cap or a DAC.
 
-## 2. Analog CMOS / FPAA / OTA / switched-cap
+**Event analog** — no clock. Crossing is the event.
 
-Mead descendants, Hasler-style FPAA, capacitor memory near the compute.
-Steal: subthreshold pair, no ADC in the loop, local C.
-Cap-as-weight fades. Your square-loop is the longer RC.
+**Coupled physics** — the net is the learner. Closest attitude.
 
-## 3. Event-driven mixed analog (DYNAP, Blumind AMPL, BrainScaleS analog core)
+Fully analog chips exist (FANCH and flash-synapse PIM). They still load a net.
 
-No big clock in the neuron. Blumind: one transistor stores a coefficient *and* multiplies. Event-driven. Strong cousin on “no ADC, no master clock.”
-Difference: they still load a network from software (PyTorch → coefficients). You grow leans.
-Steal: event, subthreshold, skip converters.
+## Steal
 
-## 4. Coupled analog learners (CLLN / nonlinear resistor nets)
+Current-sum. No clock. No ADC in the cell. Subthreshold lean.
 
-Physical network that learns with local rules, no processor in the loop. XOR on a bench. That is the closest *philosophy*: the net *is* the learner.
-Difference: they freeze a resistive mesh. You keep a living bus + per-axis cores + coherence vote.
+## Refuse
 
----
+A downloadable weight. Programming pulses. A row-column synapse grid.
 
-## What we already are
+## Us (already locked)
 
-Current-sum coherence (family 1 physics).
-Subthreshold pair + local C (family 2–3).
-No clock, no packet (family 3).
-State in the hardware (family 4).
-Plus what they skip: hex mirror, two references, bus fed-by/feeds-all, three cores so axes can oppose.
+One hex, 1 V, letters on the **edges**.  
+One-cell memory = figure-eight **shape** on the middle.  
+Group memory = skin on the shared edge.  
+Two agrees = Kirchhoff, not a matrix multiply.  
+Next view = last move + sent-up.
 
-Do not “become an ANN.” Do not put a crossbar on CENTER.
+Analog NN papers prove analog-all-the-way works. They do not replace the hex.
