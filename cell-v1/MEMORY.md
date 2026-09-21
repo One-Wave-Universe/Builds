@@ -2,15 +2,10 @@
 
 Two hysteresis stores. Do not mash.
 
-**Figure-8 hysteresis = single cell.**  
-Two square-loop pieces on the middle. That cell's home. That cell's leftover. Private diary of one hex.
+**Figure-eight shape on the middle = single cell.**  
+Two square-loop rings sharing a middle. That hex's home. Private diary.
 
-**Lattice hysteresis = group.**  
-Magnetic skin on the **shared sides**. Those sides are the letters. A neighbor is on the other half of the same side. The trace on that side is both cells'. Flower memory. Group muscle.
+**Lattice on the shared edges = group.**  
+Skin on the letters. Two cells own that side. Flower muscle.
 
-Cap on the bus is not either of those. Cap is the short echo of the last kick.
-
-Reinject is not either of those. Reinject is refresh when the lean sags.
-
-One cell: read the 8.  
-Many cells: read the sides they share.
+Cap = last kick. Reinject = refresh. Not diaries.
