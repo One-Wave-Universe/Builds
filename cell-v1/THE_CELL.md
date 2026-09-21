@@ -1,15 +1,15 @@
 # The cell
 
-Two faces of one hex. Both powered.
+Two faces. Both powered.
 
-**Top:** ternary. Three differentials. Six seats. CENTER.
-**Under:** mirror loop of that ternary. Same six seats, opposite polarity through the lattice. V_BUS lives here too.
+**Top:** ternary. Six seats, three pairs, CENTER, three cores between the faces.
+**Bottom:** reinjection. Mirror loop + V_BUS + steering + C_BUS + pack ask + send-up.
 
-The under lattice is not a dead ground pour. It is the mirror of the top trit.
+Bottom is not a ground plane. It is the return of the top trit and the reservoir that drinks the collapse.
 
 ---
 
-## Seats (same on both faces)
+## Seats (same outline both faces)
 
 ```
                     A+
@@ -22,65 +22,44 @@ The under lattice is not a dead ground pour. It is the mirror of the top trit.
                     A-
 ```
 
-Clockwise both faces: A+ → B+ → C+ → A- → B- → C-
-
-Top A+ is mirrored under to A-. That via / lattice path *is* axis A.
+A+ top ↔ A- bottom = axis A (core A in between). Same for B, C.
 
 ---
 
-## Side view — one axis (all three look like this)
+## Bottom — reinjection
 
 ```
-   TOP power
-        |
-     pair top     A+ trit (DOWN / HOLD / UP)
-        |
-     [ core A ]
-        |
-     pair under   A- trit (mirror)
-        |
-   UNDER power + V_BUS lattice
+ pack --ask-- V_BUS =====================
+                  |         |         |
+               steer A   steer B   steer C
+                  |         |         |
+                C_A       C_B       C_C
+                  |         |         |
+               wind A    wind B    wind C   ↑ through cores to top pairs
+                  |         |         |
+                HB A      HB B      HB C
 ```
 
-Top ternary and under ternary are one loop. Flip on top is the opposite seat under. That is the mirror, not a second brain.
-
-```
-D_A = V(A+ top) - V(A- under)
-D_B = V(B+ top) - V(B- under)
-D_C = V(C+ top) - V(C- under)
-```
-
-CENTER is the top home for those reads. Under home is the lattice mid on V_BUS *class*, not the same node as CENTER.
+- Collapse of an axis stays on this face → steer → V_BUS.
+- Next axis drinks V_BUS first. That is reinjection.
+- Pack only fills E_loss.
+- Sag → ask. Still falling → send up → PASS.
+- Neighbor hex shares this bottom rail and the shared edge. Not top CENTER.
 
 ---
 
-## Power on both sides
+## Top — ternary
 
-Top rail feeds the top pairs.
-Under rail feeds the mirror pairs + half-bridges + steering.
-Pack asks **under** (V_BUS sag → refill). Top rail can be derived from under or a second tap from the pack. Two powered faces. Still only two *references*: CENTER (top home) and V_BUS (under home / energy).
-
-Do not short top rail to V_BUS as CENTER.
+Three D's against CENTER. HOLD / two-of-three. DC stand, AC shove, RC in the core (between faces).
 
 ---
 
-## What the under lattice does
+## Side view
 
-- Closes each axis: + seat on top to - seat under (and the reverse on the next event).
-- Tiles neighbor hexes: shared edge is shared mirror metal.
-- Carries V_BUS so collapse stays under. Reinjection stays under.
-- Sends up (redline) from under when the loop cannot refill.
-
-Top never dumps an event into CENTER. Under takes the collapse.
-
----
-
-## Event
-
-1. Top HOLD. Under HOLD.
-2. AC on the loop (top and under are the two ends).
-3. Two-of-three on the three D's.
-4. Collapse stays under → V_BUS.
-5. RC in the core between the faces.
-
-Flower = seven of these sandwiches. Shared under-edge is the neighbor mirror.
+```
+  top power -- ternary pairs -- CENTER
+                 |
+               cores
+                 |
+  bottom power -- HB / wind / steer -- V_BUS reinjection lattice -- pack
+```
