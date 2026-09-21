@@ -1,11 +1,9 @@
 # The loop
 
-New views up. Last action down. New state. Repeat.
+New views up → last action down → new state → repeat.
 
-That is the whole event.
+The new views **are** the last actions plus the consequence sent up.
 
-Views up (upper window): BASELINE DELTA HEADING RESULT  
-Last action down (lower window): FLIP  
-New state: the settled home after that (Br / CENTER / lattice). That *is* the next BASELINE.
+Not a separate camera. What you just did, and what came back up (settle, bus, send-up), *is* what you see next.
 
-Again.
+RESULT / send-up becomes BASELINE of the next pass.
