@@ -4,13 +4,15 @@ If it were software, the weight would be a number. A float in a table. Updated b
 
 This weight system is physical. A voltage. A current split. A magnetic domain alignment. It lives in the same path that processes the signal. No table. No update function. No separate memory and processor.
 
+Memory is that lean remaining in the path. Not a slip stored next to the event.
+
 ## What not-software means
 
 - **You can't download it.** No parameter file. The weight is the state of the hardware.
 - **You can't copy it.** Two identical circuits with different histories have different leans. You can copy the schematic. You can't copy the lean.
 - **You can't edit it directly.** You change it by using it. Play the pattern, the lean deepens. Don't play it, the lean fades. That is the only interface.
 - **You can measure it.** Scope the offset. That voltage is the weight.
-- **You can lose it.** Power down too long, magnetic state decays, lean fades. Same as muscle memory.
+- **You can lose it.** Power down too long, magnetic state decays, lean fades. Just like muscle memory. A file that still says `q=0.4` is not memory. The body forgot.
 
 ## Where software may still exist
 
@@ -18,7 +20,7 @@ A small processor for symbol / speech / language-layer manipulation is a separat
 
 The lean, the hardness, the memory in the path — that is not that processor. That is the analog substrate. That is the cell. That is the body.
 
-`algorithms/lean_weight.py` is a receipt of the law so Zer0 can talk to T6 in a sandbox. It is not the weight system. Do not ship it as weights.
+`algorithms/lean_weight.py` tests when Zer0 is allowed to *call* a lean committed. It does not remember. Do not ship it as weights or as memory.
 
 ## Why this matters
 
