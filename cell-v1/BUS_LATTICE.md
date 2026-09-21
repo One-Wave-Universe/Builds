@@ -1,22 +1,7 @@
 # Bus-side lattice
 
-The under hex is not bare copper. It is the **hysteresis lattice**.
+Under hex. Circulation. All three axes return through their cores onto **one** V_BUS.
 
-Every edge that returns charge to V_BUS runs through that axis core first.
+Hysteresis is the **settled loop of that whole lattice**, not three separate widgets.
 
-```
-        A+ seat (top)
-            |
-         wind A
-            |
-      [ HYSTERESIS A ]     remanence / write depth / trace
-            |
-         gate A
-            |
-         V_BUS  <--- same node for B and C
-```
-
-Three edges, three cores, one rail.
-Neighbor hex shares V_BUS and a shared edge. That shared edge also hits a core before the rail — no memory-free return.
-
-Hysteresis is not a software flag drawn on the top face. It is the iron on the bus-side lattice.
+Cores still sit on A B C so the loop can hold a shape (a heading). After gates and rail come home, there is one cell state. That is the trace.
