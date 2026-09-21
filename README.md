@@ -6,24 +6,21 @@ Proposed designs until a file records a measured result. Empty `cell-v1/LOG.md` 
 
 ## Read this first
 
-The weight system is **physical**. A lean off a moving virtual ground. Voltage, current split, magnetic hold. It lives in the same path that processes the signal.
-
-Not a float in a table. Not backprop. Not a download.
+The weight is a physical lean off a moving virtual ground.
+Memory is that lean remaining in the same path. Not a receipt. Not a log that remembers for the cell. Not a float in `/algorithms`.
 
 - Law: `cell-v1/WEIGHT_LEAN.md`
 - Boundary: `cell-v1/NOT_SOFTWARE.md`
 - First solder: `cell-v1/CELL0.md`
-- How Zer0 is allowed to *talk* about a lean: `algorithms/LEAN_INTO_ZER0.md`
+- Zer0 lock (talk only): `algorithms/LEAN_INTO_ZER0.md`
 
-`algorithms/lean_weight.py` is a receipt so the four-branch lock can be tested in a sandbox. It is not the weight. Do not ship it as parameters.
+`algorithms/lean_weight.py` tests the *commit rule*. It does not hold memory.
 
 ## Two workstreams
 
-1. **Cell** — `/cell-v1/` — the body. Pair, lean, hardness, log.
-2. **Algorithm** — `/algorithms/` — addressing (Rabbit Hopping) and the Zer0 lock that may only *commit* a lean at T6.
+1. **Cell** — `/cell-v1/` — body, lean, hardness, log.
+2. **Algorithm** — `/algorithms/` — addressing + when a lean may be called committed.
 
-Science thought-experiments stay in `One-Wave-Science`. Fiction stays in `Mythos-and-Stories`. Neither is this package.
-
-## Status
+Science stays in `One-Wave-Science`. Fiction stays in `Mythos-and-Stories`. Neither is this package.
 
 See `STATUS.md` and `GRANT.md`.
