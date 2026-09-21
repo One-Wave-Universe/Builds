@@ -1,12 +1,20 @@
 # Square ferrite
 
-The core is **square-loop ferrite** (square ferrite / magamp / tape-wound square-B family). Not an EMI suppression bead. Not a round-loop power ferrite if we can help it.
+**Geometry: two square ferrites in a figure-8.**
 
-Square loop = remanence stays near the last extreme. That is why the settled loop can keep a trace instead of sliding home to zero.
+One window each, shared center leg. One magnetic loop, two legs. That *is* the differential in iron: + seat on one window, − seat on the other. Drive one way, remanence leans that way. Drive the other window, it leans back.
 
-One material family, three pieces on A B C, **one** hysteresis as the cell after the bus lattice settles.
+Not an EMI bead. Square-loop material (magamp / Orthonol / square ferrite).
 
-Cell-0: one square ferrite on CENTER so you can see leftover sign.
-Full cell: three square ferrites on the bus-side lattice path.
+```
+     + window          - window
+    ┌──────┐        ┌──────┐
+    │  A+  │──leg──│  A-  │
+    └──────┘        └──────┘
+              figure-8
+```
 
-Names in parts lists: square-loop, Orthonol / Permalloy / magamp toroid — pick what you can buy. The word in the spec is **square ferrite**.
+Cell-0 can start as **one** figure-8 on the single pair.
+Full cell: three figure-8s (A, B, C) on the bus-side lattice, still **one** hysteresis when the whole loop settles.
+
+If a single figure-8 is asked to serve all three letters, disagreement dies — same failure as one shared puck. So: figure-8 **per axis**, settled state **per cell**.
