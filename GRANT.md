@@ -1,29 +1,27 @@
-# Grant repository
+# Grant package
 
 https://github.com/One-Wave-Universe/Builds
 
-**This is the only grant package.**
+**This is the only funding target.**
 
-## What you are funding
+## One sentence
 
-A physical cell whose weight *and memory* are the same thing: a measurable lean left in the path that just carried the signal.
+Build and measure an analog cell whose memory is a lean left in the same path that carried the event — no clock, no weight file, no created energy — then couple cells on a shared DC bus.
 
-Not a parameter file. Not a receipt. Not a log that remembers for the hardware.
+## Map
 
-Start here:
+Full work plan, gates, evidence, language, and ask: `GRANT_MAP.md`
 
-1. `cell-v1/NOT_SOFTWARE.md`
-2. `cell-v1/WEIGHT_LEAN.md`
-3. `cell-v1/CELL0.md`
-4. `cell-v1/LOG.md` — empty means no hardware claim
-5. `algorithms/LEAN_INTO_ZER0.md` — Zer0 may name a commit at T6; it does not hold the memory
+## Read in this order
 
-## Two workstreams
+1. `ANTI_DRIFT.md` — what not to call it
+2. `cell-v1/NOT_SOFTWARE.md`
+3. `cell-v1/WEIGHT_LEAN.md` — 0.45–0.55 wobble, ±1 ±2 ±3 outside it
+4. `cell-v1/NO_CLOCK.md`
+5. `cell-v1/REINJECT_BUS.md`
+6. `cell-v1/READINESS.md`
+7. `cell-v1/CELL0.md` + `LOG.md`
+8. `cell-v1/CELL_ASSEMBLED.md`
+9. `algorithms/RABBIT.md` + `LEAN_INTO_ZER0.md`
 
-- **Cell** `/cell-v1/` — analog substrate; this is where memory actually is
-- **Algorithm** `/algorithms/` — addressing + commit rule. No downloadable weights. No stored memory.
-
-## Not this package
-
-`One-Wave-Science` — personal thought experiments.
-`Mythos-and-Stories` — fiction.
+Science and Mythos stay public. They are not this ask.
