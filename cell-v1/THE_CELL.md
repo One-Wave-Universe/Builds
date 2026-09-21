@@ -1,11 +1,9 @@
 # The cell
 
 **Top:** three differentials. Ternary. CENTER.
-**Bottom:** V_BUS. Reinjection. Mirror loop.
+**Bottom:** V_BUS lattice. Reinjection. Mirror loop. **Hysteresis on this path.**
 
 The bus is fed by everything. The bus feeds everything.
-
-Not a side pipe. The circulation.
 
 ---
 
@@ -24,18 +22,17 @@ Not a side pipe. The circulation.
 
 ---
 
-## Circulation
+## Bus-side lattice (hysteresis lives here)
+
+Each axis winding on the bottom lattice runs **through its core** on the way to the steer gate.
 
 ```
-   pair A --gate A--\
-   pair B --gate B---+== V_BUS ==+-- tails / Iss
-   pair C --gate C--/            +-- half-bridges
-   windings collapse ------------+-- neighbor hexes
-   pack (ask only, loss) --------+-- send-up sense
+ pair A -- wind A -- [core A hysteresis] -- gate A --\
+ pair B -- wind B -- [core B hysteresis] -- gate B --+== V_BUS
+ pair C -- wind C -- [core C hysteresis] -- gate C --/
 ```
 
-Every axis, every event, every leftover charge → bus.
-Every pair, every drive, every neighbor → drinks bus first.
-Pack only when the bus asks. Strain → send up.
+Collapse does not skip the memory. Remanence is on the same metal that returns charge.
+Write depth = trace depth. Use deepens. Disuse fades. Not a bit. Known physics, new arrangement.
 
-CENTER is not on this loop. CENTER is the lean home on top.
+CENTER stays off this loop.
