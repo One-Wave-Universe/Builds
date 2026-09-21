@@ -23,8 +23,12 @@ If it was decided, it is here. Do not drop it. Do not make him say it again.
 14. Leftover **current** from all three leans gates onto the bus.
 15. The bus feeds everything.
 16. Pack only pays loss. If the bus is still falling, stop pushing (send-up).
-17. Cap on the bus = short echo. Skin / 8 = long hold. Reinject = refresh. Three jobs.
+17. Cap on the bus = short echo. Reinject = refresh.
 18. Square-loop ferrite / magamp. Not an EMI bead.
+
+## Memory
+31. **Figure-8 hysteresis = single cell** memory (home / one hex diary).
+32. **Lattice hysteresis = group** memory (skin on shared sides / flower muscle).
 
 ## Loop
 19. New views up → last action down → new state → repeat.
