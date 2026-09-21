@@ -1,20 +1,19 @@
 # Square ferrite
 
-**Geometry: two square ferrites in a figure-8.**
+**Three figure-8s. One settled hysteresis.**
 
-One window each, shared center leg. One magnetic loop, two legs. That *is* the differential in iron: + seat on one window, − seat on the other. Drive one way, remanence leans that way. Drive the other window, it leans back.
+Each axis owns **its own** figure-8: two square windows, shared leg, + seat / − seat. That iron can sit at Br+ or Br− or on the path between (HOLD).
 
-Not an EMI bead. Square-loop material (magamp / Orthonol / square ferrite).
+Do **not** put A B C on one toroid with six windows. That is the shared puck. Disagreement dies. Two-of-three has nothing to oppose.
+
+After drive, gates, and V_BUS come home, you do not have three diaries. You have **one cell state** — the heading the three irons settled into together (two-of-three). The three figure-8s are how that state has a shape. They couple through CENTER (read) and V_BUS (energy), not by sharing one lump of ferrite.
 
 ```
-     + window          - window
-    ┌──────┐        ┌──────┐
-    │  A+  │──leg──│  A-  │
-    └──────┘        └──────┘
-              figure-8
+  [figure-8 A]     [figure-8 B]     [figure-8 C]
+        \                |                /
+         +----------- CENTER -----------+
+         +----------- V_BUS ------------+
+                    one settle
 ```
 
-Cell-0 can start as **one** figure-8 on the single pair.
-Full cell: three figure-8s (A, B, C) on the bus-side lattice, still **one** hysteresis when the whole loop settles.
-
-If a single figure-8 is asked to serve all three letters, disagreement dies — same failure as one shared puck. So: figure-8 **per axis**, settled state **per cell**.
+Cell-0: one figure-8 on one pair.
