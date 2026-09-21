@@ -2,112 +2,85 @@
 
 The single cell is the primitive: one differential, one lean, one event.
 The flower is the first operator that can integrate, circulate, and hand a result to a neighbor flower.
-Do not call the primitive a brain cell. Do not call the flower a software neuron.
+
+Law: **agreement → reinforce. opposition → HOLD. one voice alone → wait.**
 
 ---
 
 ## Geometry (locked)
 
-Seven cells. Center + six outers. Point-up hex. Edge-center ports.
-
-Twelve mirrors from the tiling. No extra harness.
-
-Three axes, not six independent voters:
-
-- A+ ↔ A−
-- B+ ↔ B−
-- C+ ↔ C−
-
-Center A+ meets an outer A−. That is one difference, not two ballots.
-
-Nerve compression 6→3→1 is *seats → axes → one nerve*, not “add six floats.”
+Seven cells. Center + six outers. Three axes, not six voters. Twelve mirrors from the tiling.
 
 ---
 
-## 1. Center threshold (proposal)
+## Center commit
 
-Center does **not** linearly sum six scalars.
+Two of three axes leave HOLD the same way, third not opposed. Else HOLD.
 
-It holds three leans: D_A, D_B, D_C. Each is a pair against CENTER.
+Do not commit while the third is still walking toward opposition. Wait until it settles in HOLD or joins. Committing on a moving third is how you get chatter.
 
-**Transfer (best guess):**
+### Magnitude vs hardness (locked)
 
-- Each axis is already ternary: DOWN / HOLD / UP after its own wobble.
-- Center commits as a *unit* when **two of three axes** have left HOLD the same way, and the third is not opposed.
-- Opposed axes (one UP, one DOWN) → center HOLD. That is consensus, same as GCAC admin reject.
-- Magnitude of the commit is the **hardest** of the agreeing axes (deepest write / largest |D|), not the mean. Mean would wash a deep path with two shallow ones.
+Two different numbers. Do not mash.
 
-Winner-take-all is too sharp for a first guess. Two-of-three + no opponent is the HOLD-respecting rule.
+- **This event’s strength** = largest *current* |D| among agreeing axes.
+- **How long that lean stays** = write depth / tail hardness on those axes.
 
-Hysteresis: enter commit outside wobble; leave only after all three axes are back in 0.45–0.55 *and* the bus kick from that event has settled. That is the flower refractory. Not a timer chip.
+A shallow path leaning hard *now* can win the event. It will not win the next quiet minute. A deep path leaning little can lose the event and still be there after.
 
 ---
 
-## 2. Outer ring (proposal)
+## Ring
 
-N1→N2→N3→N4→N5→N6→N1 is a closed axis path that does not have to visit center.
+Lossy. No circulating token. That would be a clock.
 
-It is lossy. Every hop is a lean that can fade. There is no lossless circulating token.
+Two times, both real:
 
-**Decay:** a ring event that is not refreshed by a neighbor crossing or by center coupling dies in a small number of hops (proposal: fewer than one full lap unless hardness is already deep). That duration *is* the flower’s short hold. Deep cores keep a lap. Shallow cores don’t.
+- **Electrical** (fast): resistive / winding loss. Decides whether *this* excursion finishes a hop before it dies. Microseconds–milliseconds class.
+- **Magnetic** (slow): remanence. Decides whether the *next* event still sees a lean. Seconds and up, set by the core.
 
-Center sees the ring only through the six mirrors. It does not own a separate wire around the loop.
-
-Call the ring an under-path, not a subconscious soul.
-
----
-
-## 3. Event on the wire (proposal)
-
-“Flower fired” is not a named packet.
-
-It is: center left HOLD, three half-bridges (or the live axes) drove, windings wrote, collapse steered to V_BUS.
-
-What a neighbor flower gets:
-
-- a current / voltage excursion on the shared *edge* (axis metal)
-- a small kick on V_BUS (readiness, not memory)
-
-Not a phase-coded telegram. Not a spike label. The next flower’s pair either crosses or it doesn’t.
-
-Shape: whatever that pair + winding already produce. No third waveform type.
+Short hold of the flower = magnetic. “Did this pulse make it around?” = electrical + refractory.
 
 ---
 
-## 4. Lateral coupling (proposal)
+## Event on the wire
 
-Adjacent flowers share an edge. That edge is already a mirror (one C+ to the other C−).
+No packet. Excursion on the shared edge. Kick on V_BUS.
 
-So lateral “inhibition” is not a new circuit. If two flowers lean the same axis opposite ways, the shared edge is a fight. Consensus HOLD. If they lean the same way, the edge reinforces.
+### Bus trace (locked)
 
-V_BUS is the other coupling: a firing flower sags or kicks the rail. Neighbors get sluggish or sharp together. That is readiness coupling, not a vote.
+The kick is readiness, not a write.
 
-No extra inhibit wire in the proposal.
+Neighbor sensitivity changes *while V_BUS is off its quiet value*. When the rail recovers, that trace is gone unless some pair actually wrote its core during the sag/peak.
 
----
-
-## 4×4 at flower scale (proposal)
-
-Views (sense the ring / the three D’s): BASELINE, DELTA, HEADING, RESULT  
-Actions (drive the axes): PULL, PUSH, FLIP, PASS
-
-Sixteen couplings are sixteen *leans*, each a magnetic hold on a path that already exists (axis or center–outer mirror). Not a 4×4 SRAM.
-
-Implementation is still open as transistors. Meaning is not: it is those views and actions on the same three differentials.
+So: bus memory lasts as long as the rail is displaced. Core memory lasts as long as remanence. Different stores.
 
 ---
 
-## Blank flower
+## Lateral / fights (locked)
 
-No prior write. All cores near zero remanence. All pairs in HOLD wobble. V_BUS at whatever the supply sits. That is blank. You do not load a file. First events write the first leans.
+Shared edge is the only lateral. Same lean → reinforce. Opposite → HOLD.
+
+After a fight:
+
+- No commit while opposed.
+- When the event ends, both return to wobble (refractory done).
+- They do **not** auto-re-lean. That would oscillate.
+- They do **not** latch HOLD forever. That would deadlock the operator.
+- Next commit needs a *new* event from outside or from a ring hop that is not a replay of the same fight.
+
+If external drive keeps both sides opposed, they stay HOLD until one side’s hardness wins (deeper write harder to shove). Hardness breaks ties. Time alone does not.
 
 ---
 
-## Scale one sentence
+## 4×4
 
-Primitive = one differential.  
-Operator = flower (three differentials + ring + twelve mirrors).  
-Tissue = field of flowers on hex + shared V_BUS.  
-Inverted stack = opposed field (hypothesis).
+Names are fixed: views BASELINE / DELTA / HEADING / RESULT, actions PULL / PUSH / FLIP / PASS.
 
-Missing silicon: exact two-of-three gate, winding count, one core vs three. Not missing the idea.
+The leans on those paths **shape with use**. Fixed lens, grown skill.
+
+---
+
+## Blank
+
+No remanence. All HOLD. Rail at supply. First events write first leans.
