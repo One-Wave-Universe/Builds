@@ -1,36 +1,44 @@
-# Two-of-three
+# Two-of-three — current-sum block
 
-Not a CPU vote. Analog coherence on D_A D_B D_C.
+Identity of the flower. Analog. No MCU.
 
-Each axis already has a trit: DOWN / HOLD / UP (outside wobble or in it).
+One **unit** = Iss from one IN. Threshold = 1.5 units.
+
+| INs | Sum | Result |
+| --- | --- | --- |
+| 0 | 0 | HOLD |
+| 1 | ±1 | HOLD |
+| 2 same | ±2 | permit |
+| 2 opposite | 0 | HOLD |
+| 3 same | ±3 | permit |
+| 3 mixed 2v1 | ±1 | HOLD |
+
+Walking third is **not** inside the sum. Separate inhibit. If any axis is in a gap band (leaving wobble, not yet a commit band), INHIBIT. Sum may already be ±2; we still wait.
 
 ---
 
-## Per axis, two bits of meaning
+## Parts family (Cell-0 headroom, 1 V D)
 
-- IN: |D| left the wobble
-- SIGN: D positive or negative
+Per axis:
 
-HOLD = not IN.
+- Diff already exists (the pair). D is a voltage.
+- Window: two comparators (or one window chip e.g. window detector) vs 0.45 / 0.55 and vs commit edges. Outputs: HOLD, GAP (in the unnamed bands), IN (in ±1/±2/±3).
+- Sign: one comparator on D vs CENTER → S.
 
-## Flower commit
+Shared:
 
-Commit UP when at least two IN and those signs match and the third is not IN with the opposite sign.
-Commit DOWN same with minus.
-Else HOLD.
+- Three gated current sources. When IN and S=+: source +Iss into SUM. When IN and S=−: sink Iss from SUM. HOLD or GAP: source off.
+- Iss from a shared bias (can track tail / V_BUS later so redline softens the vote — optional).
+- SUM node: resistor to CENTER (or a virtual ground at V_TOP mid). Voltage = k × (N_plus − N_minus).
+- Two comparators on SUM vs +1.5 and −1.5 units → PERMIT+ / PERMIT−.
+- INHIBIT = GAP_A OR GAP_B OR GAP_C. Gates both PERMITs off.
 
-If the third is walking (IN rising toward opposite): wait. That is a window on dD/dt or simply “third still in the gap bands.”
+Permit only enables PUSH/FLIP on the heading pair. No permit → PASS.
 
-## Circuit family (proposal)
+Comparators: jellybean op-amp or LM339-class on V_TOP. Current sources: matched PFET/NFET or Howland if you want tidy. First build can be resistors + analog switches from V_TOP / PACK− into SUM (ugly Iss, legal for the proposal).
 
-Three window comparators on |D| vs wobble edge → IN_A IN_B IN_C.
-Three sign comparators on D → S_A S_B S_C.
+---
 
-Coherence:
+## Why inhibit is outside the sum
 
-- majority of IN in the same S, and no IN with ~S → fire that way
-- analog way: current-sum the signed INs (each IN sources +Iss or −Iss). If the sum current exceeds a threshold (~1.5 units) and no opposing IN is present (inhibit from XOR of signs among IN axes), commit.
-
-That current-sum *is* the two-of-three. Threshold ~ one-and-a-half axes. Third opposed shunts the sum back under threshold.
-
-Output of that block only *permits* PUSH/FLIP on the heading pair. It does not replace the pairs. PASS if no permit.
+The sum only sees committed INs. GAP is a fourth state per axis: not HOLD, not IN. Putting dD/dt in the summer is a differentiator on a noisy D. OR of three GAP flags is a level. Cleaner. Same law: wait on a walking third.
