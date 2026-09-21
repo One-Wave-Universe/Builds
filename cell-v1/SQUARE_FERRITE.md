@@ -1,22 +1,17 @@
 # Square ferrite
 
-**Two squares. One figure-8. Three windings.**
+**Two squares, one figure-8, on shared CENTER.**
 
-Not three irons. Not six windows.
+The iron is the common home for all three differentials. Not three irons. Not a core per winding.
 
-The cell owns **one** figure-8: two square-loop pieces, shared leg, + window and − window. That is the only ferrite.
-
-A, B, C are **copper** on that iron — three windings through the same two windows (or around the two rings). Electrical diffs still exist (three D's vs CENTER). Magnetic remanence is **one** Br for the cell. That is the single diary.
+Three pairs star electrically to CENTER. The figure-8 *is* that CENTER in magnetic form: remanence of the shared reference. When the three D's settle, Br is the leftover of that one home — the cell diary.
 
 ```
-        (square +)     (square −)
-              \           /
-               shared leg
-         windings A, B, C on the 8
+ pair A \ 
+ pair B --+-- CENTER -- figure-8 (two squares) -- header (not V_BUS)
+ pair C /
 ```
 
-Two-of-three stays electrical (current-sum of the three D's). The iron holds the *net* heading after settle — one hysteresis, one λ leftover.
+V_BUS still takes leftover *current*. The ferrite does not eat the dump. It holds the home's history so the next D's start from a moved V0, not from a dead zero.
 
-Net ampere-turns write Br. Opposing axes cancel in the iron instead of parking two opposite remanences. HOLD is the honest result of a fight. That matches oppose → HOLD.
-
-Cell-0: the same two-square 8 (or one toroid as a baby version of one window).
+Cell-0 already drew this: one core on CENTER. The 8 is that drawing with two windows so the home can lean + or −.
