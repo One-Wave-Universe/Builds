@@ -1,35 +1,31 @@
 # Hysteresis
 
-Known physics. New arrangement.
+The whole system state after the loop settles. Not three separate memories.
 
-**Hysteresis** — state depends on history, not only the live input.
-**Remanence** — what stays when drive is gone. The trace.
-**Write depth** — how deep that trace is. Shallow to deep, not 0/1.
-**Lean** — this event.
-**Trace** — the path that kept it.
+Three cores still exist so axes can lean different ways. They are **parts of one loop**. The hysteresis that *is* the cell is what remains when top ternary, cores, gates, and V_BUS have all come home.
 
-We did not discover hysteresis. We use it as **graded write depth** on three axes.
+Lean → drive → collapse through the lattice → bus drinks → tails feel the rail → pairs see a new home offset → **settled**. That settled offset *is* hysteresis.
 
 ---
 
-## Where it lives
+## Not this
 
-On the **bus-side lattice path** — the same winding/core the collapse walks through to V_BUS.
+Three isolated BH curves in three drawers. A table of three H values. Software OR of three bits.
 
-Top pair makes D. Under steer dumps leftover current to the rail. Between them the core is on that loop. Return does not go around the memory. Return goes *through* it.
+## This
+
+One loop:
 
 ```
- TOP lean (D)
-      |
-   [ core — hysteresis / remanence / write depth ]
-      |
- BOTTOM lattice → gate → V_BUS
+ three diffs (top)
+        |
+  lattice + cores (between)
+        |
+  gates → V_BUS → everything drinks
+        |
+  settled state of the cell
 ```
 
-Three cores, three loops, one bus. Each axis keeps its own loop. Use deepens. Disuse fades.
+Remanence in iron is how the loop *can* keep a trace. The memory you name in the pitch is the settled loop, not core A alone.
 
----
-
-## Pitch line
-
-Remanence, hysteresis, and inductive recovery are old. The cell uses them as graded state on the bus-side lattice, not as a bit in a table. The trace depth is the memory.
+Use deepens that loop. Disuse fades it. Known physics. New arrangement.
