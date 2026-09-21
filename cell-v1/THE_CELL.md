@@ -1,19 +1,21 @@
-# The cell (one drawing)
+# The cell
 
-One operator. Six seats on a hex. Three differentials. Three cores. Two references.
+Two layers. Same hex. Do not draw them as unrelated parts.
+
+**Top:** three differentials, six seats, one CENTER, three cores.
+**Under:** lattice metal + V_BUS reservoir + steering + pack ask.
 
 ---
 
-## Shape and seats
+## Top — lean
 
-Point-up. Ports at edge centers. Clockwise:
+Point-up hex. Ports at edge centers. Clockwise:
 
 ```
                     A+
                  ________
                 /        \
            C-  /          \  B+
-              |            |
               |   CENTER   |
               |     V0     |
            B-  \          /  C+
@@ -21,82 +23,85 @@ Point-up. Ports at edge centers. Clockwise:
                     A-
 ```
 
-`A+ → B+ → C+ → A- → B- → C- → A+`
+Walk: A+ → B+ → C+ → A- → B- → C- → A+
 
-Opposite sides are one axis:
+Three pairs on that same face, sources starred to CENTER:
 
 ```
-A+ ───[ core A ]─── A-      D_A
-B+ ───[ core B ]─── B-      D_B
-C+ ───[ core C ]─── C-      D_C
+A+ ---- pair A ---- A-     D_A = V(A+) - V(A-)
+B+ ---- pair B ---- B-     D_B = V(B+) - V(B-)
+C+ ---- pair C ---- C-     D_C = V(C+) - V(C-)
 ```
 
-Cores sit at A+, B+, C+. Minus seat is the other end of that same core.
+Core A at A+ (A- is the other end of core A). Same for B, C.
+
+```
+     pair A     pair B     pair C
+         \         |         /
+          +----- CENTER ----+
+                    V0
+```
+
+HOLD 0.45–0.55. Two-of-three commit. Third walking → wait. Opposed → HOLD.
+
+DC = stand. AC = shove. RC = leftover on that axis core.
 
 ---
 
-## Three differentials on one home
+## Under — lattice + bus
 
-Each letter is a pair. Sources star to **one CENTER** inside this hex.
-
-```
-     A+ pair          B+ pair          C+ pair
-        \                |                /
-         \               |               /
-          +----------- CENTER ----------+
-          |              V0              |
-          +--------------+---------------+
-         /               |               \
-        /                |                \
-     A- end           B- end           C- end
-```
+Same six sides, lower metal. Not CENTER.
 
 ```
-D_A = V(A+) - V(A-)
-D_B = V(B+) - V(B-)
-D_C = V(C+) - V(C-)
+ pack --ask-- V_BUS ==========================
+                  |         |         |
+               steer A   steer B   steer C
+                  |         |         |
+                C_A       C_B       C_C
+                  |         |         |
+               wind A    wind B    wind C     (through the cores above)
+                  |         |         |
+                HB A      HB B      HB C
 ```
 
-All three against this V0. Two-of-three reads D_A, D_B, D_C.
-HOLD wobble 0.45–0.55. Commit when two agree and the third is not opposed.
+V_BUS is the second reference: energy, refill, redline send-up.
+Neighbor hexes share **under** (V_BUS + the edge port). They do not share top CENTER.
+
+Tile under: hex lattice of those rails and edge metals. Top cells sit on that lattice.
 
 ---
 
-## Drive and return (same hex, other metal)
-
-Each axis: half-bridge → winding on that core → local cap → steer to **V_BUS**.
+## Stack (side view)
 
 ```
-  pack --ask-- V_BUS ----+------+------+
-  (makeup only)          |      |      |
-                      C_BUS   C_BUS  C_BUS   (one reservoir)
-                         |      |      |
-                      steer  steer  steer
-                         |      |      |
-                      windA  windB  windC
-                         |      |      |
-                       HB A   HB B   HB C
+   A+  B+  C+  A-  B-  C-     seats
+    |   |   |   |   |   |
+  [ pairs + CENTER V0 ]       TOP  lean / RC
+    |   |   |   |   |   |
+  [ cores on A B C axes ]
+    |   |   |   |   |   |
+  [ HB, windings, steer ]     UNDER  AC drive / return
+    |   |   |   |   |   |
+  [ V_BUS + C_BUS lattice ]   UNDER  DC rail / ask / up
+              |
+            pack
 ```
 
-V_BUS is the **other** reference. Energy, refill ask, redline send-up.
-D is never measured on V_BUS. Collapse never dumps on CENTER.
-
-DC = committed stand on an axis.  
-AC = shove across the fence.  
-RC = leftover on that axis core.
+Drive goes down through the core into the bus. Lean is read on top against CENTER.
 
 ---
 
-## What this hex is
+## One event through both layers
 
-| Piece | Where |
-| --- | --- |
-| Six seats | hex sides clockwise |
-| Three diffs | A, B, C opposite pairs |
-| Three cores | at + seats |
-| One home | CENTER in the middle |
-| One rail | V_BUS around / under, not the middle node |
-| Commit | two-of-three on the three D’s |
-| Flower | this hex plus six neighbor hexes sharing edges |
+1. Top HOLD.
+2. AC on under half-bridges. D walks on top.
+3. Two-of-three on top. DC stand or back to HOLD.
+4. Field collapses under → steer → V_BUS. CENTER does not take it.
+5. RC stays in that axis core (between the layers).
+6. Bus quiet → loop. Sag → ask pack. Still falling → send up → PASS.
 
-Neighbor hex shares one side (one port). Shared edge is the event. Shared V_BUS is readiness. CENTER does not pour into the neighbor.
+---
+
+## Flower
+
+Seven of these stacked hexes. Center hex + six outers. Shared sides are shared **ports + under rail**. Twelve mirrors from tiling. Same law.
