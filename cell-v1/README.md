@@ -1,7 +1,3 @@
-# CELL_V1
+# cell-v1
 
-**Start here:** [THE_CELL.md](THE_CELL.md)
-
-Hex + three differentials + three cores + CENTER + V_BUS on one page.
-
-Cell-0 (`CELL0.md`) is one pair of that drawing, 9 V parts.
+**[CELL.md](CELL.md)** is the lock. Everything else in this folder is detail.
