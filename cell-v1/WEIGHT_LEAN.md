@@ -1,39 +1,26 @@
 # WEIGHT = LEAN
 
-A weight is a physical lean off a moving reference. Same path as the signal.
+Lean off 0.50 V. Commitment is how far that lean has walked.
 
-## 1 V threshold map (locked)
+## From 0.50 — ±1 ±2 ±3
 
-Full scale 1.00 V. Home 0.50 V. Seven bands, 100 mV each. Gaps stay empty.
+| Commit | Voltage |
+| --- | --- |
+| +3 | 0.80–0.90 |
+| +2 | 0.65–0.75 |
+| +1 | 0.50–0.60 |
+| **0 HOLD** | **0.50** (home band 0.45–0.55) |
+| −1 | 0.40–0.50 |
+| −2 | 0.25–0.35 |
+| −3 | 0.10–0.20 |
 
-| Band | Voltage | Meaning |
-| --- | --- | --- |
-| Terminal UP | 1.00–0.90 | crisis / collapse |
-| *gap* | 0.90–0.85 | dead |
-| Strong UP | 0.85–0.75 | committed plus |
-| *gap* | 0.75–0.70 | dead |
-| Moderate UP | 0.70–0.60 | leaning plus |
-| *gap* | 0.60–0.55 | dead |
-| **HOLD** | **0.55–0.45** | home |
-| *gap* | 0.45–0.40 | dead |
-| Moderate DOWN | 0.40–0.30 | leaning minus |
-| *gap* | 0.30–0.25 | dead |
-| Strong DOWN | 0.25–0.15 | committed minus |
-| *gap* | 0.15–0.10 | dead |
-| Terminal DOWN | 0.10–0.00 | crisis / collapse |
+Gaps between windows are dead. Do not name them.
 
-Do not fill the gaps. A value in a gap is in transit, not a named state.
+`0.00–0.10` and `0.90–1.00` stay terminal / crisis. Not a fourth commit.
 
-This is the analog-brain layer. Cell-0 stays 9 V jellybean parts. Millivolt pair later.
+±1 is the first lean off home. ±2 committed. ±3 hard commit. Same numbers as Zer0 commitment, now in volts.
 
-## Lean
+## Layer
 
-Direction / magnitude / hardness. HOLD is live tail current, not off.
-
-```
-Idiff = Iss · tanh(Vd / (2 · n · Vt))
-```
-
-Iss = hardness. Vd = direction + magnitude.
-
-Use deepens. Disuse fades. Identical probe, different prior lean, different answer — or it is not a lean.
+This map is the 1 V analog layer.
+Cell-0 is still 9 V parts. Do not hunt these millivolts on a 2N7000.
