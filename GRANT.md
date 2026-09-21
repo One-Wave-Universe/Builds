@@ -1,13 +1,25 @@
-# Builds — Grant front sheet
+# Grant repository
+
+**This repository is the only One Wave Universe repo to use for grant applications.**
 
 https://github.com/One-Wave-Universe/Builds
 
-Engineering and implementation home of One Wave Universe.
+Account: https://github.com/One-Wave-Universe
 
-Sister repos:
-- Science: https://github.com/One-Wave-Universe/One-Wave-Science
-- Mythos: https://github.com/One-Wave-Universe/Mythos-and-Stories
+## What this repo is
+Proposed blueprints, schematics, system architecture, algorithms, hardware packets, and implementation work.
 
-Standing rule: proposed design until a file records a built, measured result.
+Nothing here is a claim of finished, measured hardware unless a file explicitly records that evidence.
 
-Sibling build-class repos: BUCKET-R2, GCAC, hive-pipe, Chats-Animatateo, Animation_Salvation.
+## Why other repos exist
+They are labels, not a hide.
+
+- `One-Wave-Science` — hypotheses and simulations, kept separate so grant claims are not mixed with untested theory.
+- `Mythos-and-Stories` — fiction only, kept separate so stories cannot be read as science or as funded deliverables.
+
+Grant reviewers should evaluate **this repo**. Do not treat the other two as a second application package.
+
+## Start here
+- `README.md`
+- `STATUS.md`
+- `algorithms/`
