@@ -1,57 +1,44 @@
 # CELL (canonical)
 
-This file wins. Other notes are detail. If they fight this page, this page wins.
+**One volt.** The cell is a 1.00 V analog map. CENTER home is 0.50 V. HOLD wobble is 0.45–0.55 V.
+
+9 V is only a junk-box FET trick if you have no low-Vt parts. It is not V_TOP of the architecture. It is not the bus. It is not CENTER.
+
+## Rails at 1 V
+
+| Name | Volts |
+| --- | --- |
+| Pack / high | 1.00 |
+| CENTER / V0 | 0.50 |
+| HOLD | 0.45–0.55 |
+| +1 / −1 | just outside HOLD |
+| +2 / −2 | 0.65–0.75 / 0.25–0.35 |
+| +3 / −3 | 0.80–0.90 / 0.10–0.20 |
+| V_BUS | same 1 V class, living, sag allowed |
+
+Do not scale the bands to 9 V. Do not call 9 V the cell.
 
 ## Object
 
-Two faces. One home. Three differentials.
+**Top:** hex, edge-center ports clockwise A+ B+ C+ A- B- C-. Three pairs star to CENTER. Figure-8 on CENTER.
 
-**Top:** hex, ports at **edge centers** clockwise `A+ B+ C+ A- B- C-`. Three pairs star to **CENTER**. Figure-8 (two square-loop pieces) sits on CENTER.
-
-**Bottom:** V_BUS hex lattice. Leftover **current** from all three axes gates onto that rail. Rail feeds everyone. Pack only on ask. Send-up when still falling. Magnetic skin on the edges holds Br. Cap on the rail is the short echo. Iron Br is the long hold. Reinject is refresh when D sags. Do not mash those three into one word.
-
-**Three nodes, never shorted:** V_TOP (pair headroom, Cell-0 = 9 V) · CENTER (lean home) · V_BUS (energy).
-
-1 V map = D bands, not pack volts. HOLD wobble `0.45–0.55`.
+**Bottom:** 1 V V_BUS lattice. Leftover current in. Feeds everyone. Pack ask / send-up. Magnetic skin = Br. Cap = short echo. Reinject = refresh. Three jobs, not one word.
 
 ## Loop
 
 New views up → last action down → new state → repeat.
+New views = last actions + sent-up.
 
-New views **are** last actions + consequence sent up.
+## D ladder (same 0.50 home)
 
-Views (upper 8): BASELINE DELTA HEADING RESULT  
-Last action down: FLIP (bidirectional — same gate, other direction). PULL / PUSH / PASS also live on the way down. PASS = off, collapse to bus.
-
-## Differentials (same CENTER)
-
-1. D1 BC-DC — stand  
-2. D2 TC-AC — out and back  
-3. D3 QC-RC — rotation on the slice  
-
-Hex is a **slice**, not a volume.
+D1 stand · D2 out-and-back · D3 rotate on the slice.
 
 ## Gates
 
-Three axes, bidirectional.  
-On an axis: CHOICE → PIVOT → FLIP, bidirectional.  
-Back-to-back N-FETs until isolated-body parts. Never both directions ON.
-
-Two-of-three: ±Iss sum, trip 1.5 / release 1.2, GAP inhibits. PERMIT unlocks PUSH/FLIP on the heading only.
-
-## Actuator
-
-Same three windings. HOLD/PASS = regen to V_BUS. Not a second controller.
+Bidirectional on A B C and on CHOICE→PIVOT→FLIP. PERMIT 1.5 / 1.2 Iss units. PASS → bus.
 
 ## Sequence
 
-0 board · 1 see D1 + Br · 2 gate to BUS · 3 D2 same CENTER · 4 second axis drinks rail · 5 third seat · 6 bidirectional · 7 PERMIT · 8 8+skin · 9 seven hexes (flower slice)
+See D at **1 V** (or a divider that *maps* to 1 V — the numbers you write down are 1 V numbers). Then bus, then D2, then third seat. Flower last.
 
-## Cell-0 parts
-
-Breadboard, 9 V, 2×2N7000, 10k, 100k, 100 nF, magamp toroid (not EMI bead), magnet wire, DMM. Then 1N5819, 10 nF, 1 µF BUS.
-
-## Out of this file
-
-Drum, hear, SM, CERN parts, 99% recovery, weight file, CENTER shorted to BUS, fourth repo.
-Analogy (three vortices / tension skin) lives in Science C-317. Grant buys ferrite and FETs.
+Low-Vt / analog-switch silicon for real 1 V ports. 2N7000 at 9 V is a seeing-aid only. Do not publish 9 V as the cell.
