@@ -1,26 +1,16 @@
 # Builds
 
-The grant and engineering home of One Wave.
+Proposed architecture for an analog cell whose weight and memory are a lean in the path.
 
-Proposed designs until a file records a measured result. Empty `cell-v1/LOG.md` means hardware score is 0%.
+**Read first:** [ARCHITECTURE.md](ARCHITECTURE.md)
 
-## Read this first
+Grant face: [GRANT.md](GRANT.md) · map: [GRANT_MAP.md](GRANT_MAP.md) · status: [STATUS.md](STATUS.md)
 
-The weight is a physical lean off a moving virtual ground.
-Memory is that lean remaining in the same path. Not a receipt. Not a log that remembers for the cell. Not a float in `/algorithms`.
+## Folders
 
-- Law: `cell-v1/WEIGHT_LEAN.md`
-- Boundary: `cell-v1/NOT_SOFTWARE.md`
-- First solder: `cell-v1/CELL0.md`
-- Zer0 lock (talk only): `algorithms/LEAN_INTO_ZER0.md`
+- `cell-v1/` — lean, bus, no-clock, Cell-0 netlist, assembled notes
+- `algorithms/` — Rabbit addressing, Zer0 talk
+- `gcac/` — ternary gate toy
+- `bucket-r2/` — later body loop (stub senses)
 
-`algorithms/lean_weight.py` tests the *commit rule*. It does not hold memory.
-
-## Two workstreams
-
-1. **Cell** — `/cell-v1/` — body, lean, hardness, log.
-2. **Algorithm** — `/algorithms/` — addressing + when a lean may be called committed.
-
-Science stays in `One-Wave-Science`. Fiction stays in `Mythos-and-Stories`. Neither is this package.
-
-See `STATUS.md` and `GRANT.md`.
+Science thought-experiments are not this repo. Fiction is not this repo.
