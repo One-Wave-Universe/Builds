@@ -1,61 +1,29 @@
-# References connect — at the right scale
+# Two references
 
-D = DB − DC only means something if both sides share a home.
-Three D’s in one flower only mean something if they share **one** home.
+**CENTER** — home for D. What the pair leans off. Starred inside one flower.
 
-That home is CENTER. It must connect. It must not connect everywhere.
+**V_BUS** — separate reference. Energy, return, lattice readiness. Connected everywhere.
+
+They are both references. They are not the same node.
+
+D is never measured against V_BUS. Collapse is never dumped on CENTER.
 
 ---
 
 ## Inside one flower: one CENTER
 
-Seven pairs, three cores, one virtual ground.
+Three pairs, three cores, one V0. Two-of-three needs that.
 
-```
-   pair A    pair B    pair C
-      \        |        /
-       +---- CENTER ----+
-                 |
-            quiet V0
-```
+CENTER is electrical. Not a fourth core. Not a yoke.
 
-All DB/DC in that flower are measured against this node. Two-of-three is illegal if each axis invents its own 0.50.
-
-CENTER is **electrical**. It is not a fourth core. No ferrous bar through the three cores using CENTER as the yoke — that would magnetically merge H again.
-
-How V0 is made (proposal): resistive divider or a quiet buffer from V_BUS, then left to float a little so history can sit in the pair. Stiff lab ground as CENTER kills the moving-home idea. Stiff V_BUS *as* CENTER dumps collapse into the lean. Separate pin.
+V0 may be *derived from* V_BUS (divider / buffer) then allowed to move a little. Derived ≠ tied. Stiff short from CENTER to V_BUS makes one reference again.
 
 ---
 
-## Between flowers: do not pour CENTER
+## Lattice
 
-Neighbor flowers share **V_BUS** and share an **edge (axis port)**.
-They do **not** share a fat CENTER pour.
+V_BUS is the common reference for power and readiness at every step.
+CENTER is the common reference for leans at every step *inside that flower*.
+Axis metal is the event between flowers.
 
-If you stitch every CENTER together with thick copper, every lean in the field is one node. Fights become shorts. Memory becomes the rail.
-
-Allowed between flowers:
-
-- V_BUS common (readiness)
-- axis metal at the shared edge (the event)
-- a *weak* bias (high-Z) so homes sit in the same voltage *class* (all near mid-rail), not the same instantaneous volt
-
-High-Z tie: large resistors from each flower CENTER toward a mid reference derived from V_BUS. Enough to stop homes wandering to the rails. Not enough to equalize a live D.
-
----
-
-## Three metals again
-
-| Net | Connects |
-| --- | --- |
-| AXIS | neighbor to neighbor at edges |
-| V_BUS | every cell, whole lattice |
-| CENTER | **star inside one flower only** |
-
-CENTER vias do not hop to the next flower.
-
----
-
-## Sense of three cores
-
-Center cell reads D_A, D_B, D_C against **that flower’s** CENTER. That is the connection you wanted: references meet at the integrator, not in the iron.
+Weak high-Z from each CENTER toward mid-rail (from V_BUS) keeps homes in class. Not a CENTER plane.
