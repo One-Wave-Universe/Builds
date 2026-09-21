@@ -1,17 +1,20 @@
 # Grant repository
 
-**This repository is the only One Wave Universe repo to use for grant applications.**
-
 https://github.com/One-Wave-Universe/Builds
 
-## What this repo is
-Proposed blueprints, schematics, system architecture, algorithms, hardware packets, and implementation work.
+**This is the only grant package.**
 
-Nothing here is a claim of finished, measured hardware unless a file explicitly records that evidence.
+## Two workstreams
 
-## What this repo is not
-`One-Wave-Science` is personal thought experiments. It is not part of this grant package and is not a deliverable under this repo.
+1. **Cell** — `/cell-v1/`
+   - Start: `cell-v1/CELL0.md`
+   - Record: `cell-v1/LOG.md` (empty = 0% hardware)
+2. **Algorithm** — `/algorithms/`
+   - Start: `algorithms/README.md`
+   - Code: https://github.com/One-Wave-Universe/RABBIT-HOPPING (`rabbit_hopping.py`)
 
-`Mythos-and-Stories` is fiction. Same rule.
+## Not this package
 
-Those repos stay public so nothing is hidden. They are not funding targets and they are not mixed into Builds.
+`One-Wave-Science` is personal thought experiments.
+`Mythos-and-Stories` is fiction.
+Both stay public. Neither is a funding target.
