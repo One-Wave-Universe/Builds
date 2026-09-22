@@ -1,0 +1,102 @@
+{
+  "version": "1.0.0-LOCKED",
+  "canon": "Algorythm-Zer0 System Thresholds",
+  "source": "Algorythm-Zer0-System-Rules-Thresholds-Variables-Transformations-LOCKED.xlsx",
+  "relational_bands": [
+    {
+      "band": "EXTREME_EXPRESSION_DANGER",
+      "min": 90,
+      "max": 100,
+      "type": "Relational band",
+      "status": "LOCKED",
+      "interpretation": "Upper extreme; domain may define terminal boundary."
+    },
+    {
+      "band": "STRONG_EXPRESSION",
+      "min": 75,
+      "max": 85,
+      "type": "Relational band",
+      "status": "LOCKED",
+      "interpretation": "Strongly expressed relation."
+    },
+    {
+      "band": "MODERATE_EXPRESSION",
+      "min": 60,
+      "max": 70,
+      "type": "Relational band",
+      "status": "LOCKED",
+      "interpretation": "Moderately expressed relation."
+    },
+    {
+      "band": "ACTIVE_MIDDLE_STABLE_OSCILLATING_REGION",
+      "min": 45,
+      "max": 55,
+      "type": "Relational band",
+      "status": "LOCKED",
+      "interpretation": "Stable central operating band around reference."
+    },
+    {
+      "band": "MODERATE_COMPRESSION",
+      "min": 30,
+      "max": 40,
+      "type": "Relational band",
+      "status": "LOCKED",
+      "interpretation": "Moderately compressed relation."
+    },
+    {
+      "band": "STRONG_COMPRESSION",
+      "min": 15,
+      "max": 25,
+      "type": "Relational band",
+      "status": "LOCKED",
+      "interpretation": "Strongly compressed relation."
+    },
+    {
+      "band": "EXTREME_COMPRESSION_DANGER",
+      "min": 0,
+      "max": 10,
+      "type": "Relational band",
+      "status": "LOCKED",
+      "interpretation": "Lower extreme; domain may define terminal boundary."
+    }
+  ],
+  "transition_gaps_rule": "Gaps between named bands are intentional transition regions and must not be auto-filled.",
+  "commitment_states": [
+    {
+      "state": "FULL_DISAGREE",
+      "value": -3,
+      "meaning": "Strong negative commitment",
+      "status": "LOCKED"
+    },
+    {
+      "state": "PARTIAL_DISAGREE",
+      "value": -2,
+      "meaning": "Partial negative commitment",
+      "status": "LOCKED"
+    },
+    {
+      "state": "UNITY_REFERENCE_UNCOMMITTED",
+      "value": 0,
+      "meaning": "Center/reference",
+      "status": "LOCKED"
+    },
+    {
+      "state": "PARTIAL_AGREE",
+      "value": 2,
+      "meaning": "Partial positive commitment",
+      "status": "LOCKED"
+    },
+    {
+      "state": "FULL_AGREE",
+      "value": 3,
+      "meaning": "Strong positive commitment",
+      "status": "LOCKED"
+    }
+  ],
+  "hex_cell_logic": {
+    "positive_scale": ["+1", "+2", "+3"],
+    "virtual_ground": "0",
+    "negative_scale": ["-1", "-2", "-3"],
+    "rule": "Asymmetry drives state transition; zero reference holds current state."
+  }
+}
