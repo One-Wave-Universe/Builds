@@ -1,6 +1,12 @@
-# ALGORYTHM-ZER0: Locked Four Branches & Universal Rules Matrix
+# ALGORYTHM-ZER0: Complete Locked 42-Term Canon (All 4 Branches & Universal Rules)
 
 Comprehensive locked canon for Algorythm-Zer0 across all four branches (**X = Control**, **Y = Structure / Rotation**, **Z = Depth**, **T = Time / Change**) and the **Universal Rules** governance framework.
+
+### Exact Mathematical Hierarchy per Branch
+Each branch follows the strict triangular progression across 6 levels:
+$$\sum_{k=1}^{6} k = 1 + 2 + 3 + 4 + 5 + 6 = 21 \text{ Field terms}$$
+$$\sum_{k=1}^{6} k = 1 + 2 + 3 + 4 + 5 + 6 = 21 \text{ Void terms}$$
+$$\mathbf{21 \text{ Field}} + \mathbf{21 \text{ Void}} = \mathbf{42 \text{ Canonical Terms per Branch}} \quad (\mathbf{168 \text{ Total Across All 4 Branches}})$$
 
 ---
 
@@ -26,71 +32,74 @@ Comprehensive locked canon for Algorythm-Zer0 across all four branches (**X = Co
 
 ---
 
-## 2. Branch X: Control (Locked Canon)
+## 2. Branch X: Control (42 Terms: 21 Field + 21 Void)
 
-- **Foundation**: `FIELD = active interactions | VOID = unexpressed potential band | Cross-mirror: F1↔V6, F2↔V5, F3↔V4, F4↔V3, F5↔V2, F6↔V1`
+- **Cross-mirror**: `F1 ↔ V6, F2 ↔ V5, F3 ↔ V4, F4 ↔ V3, F5 ↔ V2, F6 ↔ V1`
 
-| Level | FIELD Role | FIELD Primitives | FIELD Definition | VOID Role | VOID Primitives | VOID Definition |
-|---|---|---|---|---|---|---|
-| **1** | READ | `READ` | Take in active control condition. | COMPARE | `COMPARE` | Hold unexpressed relational difference against reference. |
-| **2** | POLARITY CHOICE | `POSITIVE / NEGATIVE` | Selects positive or negative side relative to zero/reference. | VALIDATION | `CONFIRM / OVERRIDE` | CONFIRM lets resolved state carry forward; OVERRIDE redirects. |
-| **3** | MOVE | `MODULATE / HOLD / RESET` | MODULATE alters; HOLD preserves; RESET returns to reference. | POTENTIAL VERDICT | `CONFIRM / DEFER / DENY` | CONFIRM supports; DEFER keeps open; DENY contradicts. |
-| **4** | VIEWS UP | `REFERENCE / CHANGE / DIRECTION / RESULT` | REFERENCE baseline, CHANGE delta, DIRECTION vector, RESULT outcome. | ACTIONS DOWN | `PULL / PUSH / FLIP / PASS` | PULL inward, PUSH outward, FLIP invert polarity, PASS continue. |
-| **5** | STATE | `IDLE / PRIMED / EXECUTING / VECTORING / RESOLVING` | IDLE inactive, PRIMED ready, EXECUTING active, VECTORING steered, RESOLVING settling. | SCALE | `MICRO / SMALL / MIDDLE / LARGE / MACRO` | Reach bands from minimal/local to system-wide/next-scale. |
-| **6** | RECURSE | `FEEDBACK / REDIRECT / BRANCH / ESCALATE / RESOLVE` | FEEDBACK updates reference, REDIRECT steers, BRANCH forks, ESCALATE raises, RESOLVE completes. | REBASE POTENTIAL | `RESUME / RETRY / RECALIBRATE / ABORT / REINIT` | Rebase options for next cycle. |
-
----
-
-## 3. Branch Y: Structure / Rotation (Locked Canon)
-
-- **Foundation**: `FIELD = active interactions | VOID = unexpressed potential band | Cross-mirror: F1↔V6, F2↔V5, F3↔V4, F4↔V3, F5↔V2, F6↔V1`
-
-| Level | FIELD Role | FIELD Primitives | FIELD Definition | VOID Role | VOID Primitives | VOID Definition |
-|---|---|---|---|---|---|---|
-| **1** | REFERENCE | `AXIS` | Active structural/rotational reference line. | POTENTIAL REFERENCE | `SITE` | Unexpressed location capable of supporting another axis. |
-| **2** | POLARITY CHOICE | `CLOCKWISE / COUNTERCLOCKWISE` | Rotational direction relative to axis. | STRUCTURAL VALIDATION | `ATTACHED / DETACHED` | ATTACHED incorporates into whole; DETACHED remains separate. |
-| **3** | MOVE | `ROTATE / STABILIZE / REVERSE` | ROTATE displaces; STABILIZE retains orientation; REVERSE flips. | FORM POTENTIAL | `UNBOUNDED / CONSTRAINED / CLOSABLE` | UNBOUNDED free, CONSTRAINED bounded, CLOSABLE ready for enclosure. |
-| **4** | VIEWS UP | `ORIGIN / TRAJECTORY / EXTENT / CONFIGURATION` | Structural geometric inspection hierarchy. | ACTIONS DOWN | `DRAW / DRIVE / INVERT / TRANSMIT` | DRAW inward, DRIVE outward, INVERT flip orientation, TRANSMIT carry onward. |
-| **5** | STATE | `NODE / LINKAGE / NETWORK / BODY / ASSEMBLY` | Granular structural evolution from node to assembly. | SCALE | `MICRO / LOCAL / REGIONAL / SYSTEMIC / SUPRASYSTEM` | Localized extent up to suprasystem potential. |
-| **6** | RECURSE | `CYCLE / MULTIPLY / FOLD / COUPLE / INTEGRATE` | Structural recursion and multi-body integration. | REBASE POTENTIAL | `REALIGN / RESTORE / EMBED / DETACH_REBASE / COALESCE` | Next-cycle structural foundation options. |
+| Level | # | FIELD Role | FIELD Primitives (21 Total) | # | VOID Role | VOID Primitives (21 Total) | Mirror |
+|---|---|---|---|---|---|---|---|
+| **L1** | 1 | READ | `READ` | 1 | COMPARE | `COMPARE` | F1 ↔ V6 |
+| **L2** | 2 | POLARITY CHOICE | `POSITIVE`, `NEGATIVE` | 2 | VALIDATION | `CONFIRM`, `OVERRIDE` | F2 ↔ V5 |
+| **L3** | 3 | MOVE | `MODULATE`, `HOLD`, `RESET` | 3 | POTENTIAL VERDICT | `CONFIRM`, `DEFER`, `DENY` | F3 ↔ V4 |
+| **L4** | 4 | VIEWS UP | `REFERENCE`, `CHANGE`, `DIRECTION`, `RESULT` | 4 | ACTIONS DOWN | `PULL`, `PUSH`, `FLIP`, `PASS` | F4 ↔ V3 |
+| **L5** | 5 | STATE | `IDLE`, `PRIMED`, `EXECUTING`, `VECTORING`, `RESOLVING` | 5 | SCALE | `MICRO`, `SMALL`, `MIDDLE`, `LARGE`, `MACRO` | F5 ↔ V2 |
+| **L6** | 6 | RECURSIVE LOOP | `BEGIN`, `BUILD`, `HOLD`, `EXTEND`, `RESOLVE`, `RETURN` | 6 | MIRROR LOOP | `RECEIVE`, `PREPARE`, `RESERVE`, `OFFER`, `VALIDATE`, `RESTORE` | F6 ↔ V1 |
 
 ---
 
-## 4. Branch Z: Depth (Locked Canon)
+## 3. Branch Y: Structure / Rotation (42 Terms: 21 Field + 21 Void)
 
-- **Foundation**: `DEPTH LADDER: SCALAR → DIFFERENTIAL → VECTOR → TENSOR → STRATUM → HARMONIC`
+- **Cross-mirror**: `F1 ↔ V6, F2 ↔ V5, F3 ↔ V4, F4 ↔ V3, F5 ↔ V2, F6 ↔ V1`
 
-| Level | Depth Layer | FIELD Role | FIELD Primitives | VOID Role | VOID Primitives |
-|---|---|---|---|---|---|
-| **1** | SCALAR | SCALAR | `VALUE` | SCALAR POTENTIAL | `RANGE` |
-| **2** | DIFFERENTIAL | DIFFERENTIAL POLARITY | `INCREASE / DECREASE` | DEPTH VALIDATION | `WITHIN / BEYOND` |
-| **3** | VECTOR | VECTOR | `ORIGIN / DIRECTION / MAGNITUDE` | VECTOR POTENTIAL | `CONE / TARGET / ROUTE` |
-| **4** | TENSOR | VIEWS UP | `PROJECT / COUPLE / TRANSFORM / INTEGRATE` | ACTIONS DOWN | `SELECT / ARRANGE / PERMUTE / COLLAPSE` |
-| **5** | STRATUM | STATE | `DISCRETE / GROUPED / CONNECTED / LAYERED / PROMOTED` | SCALE | `MICRO / LOCAL / MESO / GLOBAL / TRANSSCALE` |
-| **6** | HARMONIC | RECURSE | `RESONATE / MODULATE / SUPERPOSE / ENTRAIN / PHASE_LOCK` | DEPTH REBASE POTENTIAL | `RESEED / REWINDOW / REINDEX / DAMPEN / DISSOLVE` |
-
----
-
-## 5. Branch T: Time / Change & Four-Branch Closure (Locked Canon)
-
-- **Foundation**: `T is the fourth branch and closes the combined X·Y·Z·T state through time.`
-
-| Level | FIELD Role | FIELD Primitives | VOID Role | VOID Primitives |
-|---|---|---|---|---|
-| **1** | TEMPORAL REFERENCE | `MOMENT` | TEMPORAL POTENTIAL | `HORIZON` |
-| **2** | POLARITY CHOICE | `RESISTANCE / CHANGE` | STATE VALIDATION | `PERSIST / YIELD` |
-| **3** | MOVE | `PROCEED / PAUSE / REVERSE` | TEMPORAL POSITION POTENTIAL | `BEFORE / DURING / AFTER` |
-| **4** | VIEWS UP | `STANDS STILL / DRAGS / FLIES / RUNS OUT` | ACTIONS DOWN | `COINCIDENCE / HOPE / DESIRE / PLAN` |
-| **5** | STATE | `BEGINNING / GROWING / LIVING / DECLINING / DYING` | SCALE | `SLOTH / SLOW / NORMAL / FAST / ACCELERATED` |
-| **6** | RECURSE / CLOSURE | `CYCLE / EVOLVE / BRANCH / INTERRUPT / REBASE` | TEMPORAL REBASE POTENTIAL | `RECOMMIT / REOPEN / FREEZE / DECAY / EXTINGUISH` |
+| Level | # | FIELD Role | FIELD Primitives (21 Total) | # | VOID Role | VOID Primitives (21 Total) | Mirror |
+|---|---|---|---|---|---|---|---|
+| **L1** | 1 | REFERENCE | `AXIS` | 1 | POTENTIAL REFERENCE | `SITE` | F1 ↔ V6 |
+| **L2** | 2 | POLARITY CHOICE | `CLOCKWISE`, `COUNTERCLOCKWISE` | 2 | STRUCTURAL VALIDATION | `ATTACHED`, `DETACHED` | F2 ↔ V5 |
+| **L3** | 3 | MOVE | `ROTATE`, `STABILIZE`, `REVERSE` | 3 | FORM POTENTIAL | `UNBOUNDED`, `CONSTRAINED`, `CLOSABLE` | F3 ↔ V4 |
+| **L4** | 4 | VIEWS UP | `ORIGIN`, `TRAJECTORY`, `EXTENT`, `CONFIGURATION` | 4 | ACTIONS DOWN | `DRAW`, `DRIVE`, `INVERT`, `TRANSMIT` | F4 ↔ V3 |
+| **L5** | 5 | STRUCTURAL STATE | `NODE`, `LINKAGE`, `NETWORK`, `BODY`, `ASSEMBLY` | 5 | STRUCTURAL SCALE | `MICRO`, `LOCAL`, `REGIONAL`, `SYSTEMIC`, `SUPRASYSTEM` | F5 ↔ V2 |
+| **L6** | 6 | RECURSIVE LOOP | `CENTER`, `ALIGN`, `TRACE`, `ENCLOSE`, `RESOLVE`, `REENTER` | 6 | MIRROR LOOP | `REMAINDER`, `ANGLE`, `ROUTE`, `DOMAIN`, `NEIGHBOR`, `EXPANSION` | F6 ↔ V1 |
 
 ---
 
-## 6. Four-Branch Integration Summary
+## 4. Branch Z: Depth (42 Terms: 21 Field + 21 Void)
 
-$$\text{Next State} = \mathcal{T}_6\Big(\mathcal{X}_{1..6} \otimes \mathcal{Y}_{1..6} \otimes \mathcal{Z}_{1..6} \otimes \mathcal{T}_{1..5}\Big) \xrightarrow{\text{REBASE}} (0)_{t+1}$$
+- **Ladder**: `SCALAR → DIFFERENTIAL → VECTOR → TENSOR → STRATUM → HARMONIC`
+- **Cross-mirror**: `F1 ↔ V6, F2 ↔ V5, F3 ↔ V4, F4 ↔ V3, F5 ↔ V2, F6 ↔ V1`
 
-1. **X (Control)**: Governs choice, agency, modulation, and routing.
-2. **Y (Structure)**: Governs geometry, axis, orientation, and assembly.
-3. **Z (Depth)**: Governs dimensional hierarchy from scalar to harmonic resonance.
-4. **T (Time/Change)**: Evaluates X, Y, and Z across temporal horizons and executes system-wide closure and rebasing.
+| Level | Depth Layer | # | FIELD Primitives (21 Total) | # | VOID Role | VOID Primitives (21 Total) | Mirror |
+|---|---|---|---|---|---|---|---|
+| **L1** | SCALAR | 1 | `VALUE` | 1 | SCALAR POTENTIAL | `RANGE` | F1 ↔ V6 |
+| **L2** | DIFFERENTIAL | 2 | `INCREASE`, `DECREASE` | 2 | DEPTH VALIDATION | `WITHIN`, `BEYOND` | F2 ↔ V5 |
+| **L3** | VECTOR | 3 | `ORIGIN`, `DIRECTION`, `MAGNITUDE` | 3 | VECTOR POTENTIAL | `CONE`, `TARGET`, `ROUTE` | F3 ↔ V4 |
+| **L4** | TENSOR | 4 | `PROJECT`, `COUPLE`, `TRANSFORM`, `INTEGRATE` | 4 | ACTIONS DOWN | `SELECT`, `ARRANGE`, `PERMUTE`, `COLLAPSE` | F4 ↔ V3 |
+| **L5** | STRATUM | 5 | `DISCRETE`, `GROUPED`, `CONNECTED`, `LAYERED`, `PROMOTED` | 5 | SCALE | `MICRO`, `LOCAL`, `MESO`, `GLOBAL`, `TRANSSCALE` | F5 ↔ V2 |
+| **L6** | HARMONIC | 6 | `OSCILLATE`, `PHASE`, `RATIO`, `SYNCHRONIZE`, `LOCK`, `COHERE` | 6 | MIRROR LOOP | `BAND`, `MODE`, `DETUNE`, `RESONANCE`, `ENTRAINMENT`, `RELEASE` | F6 ↔ V1 |
+
+---
+
+## 5. Branch T: Time / Change (42 Terms: 21 Field + 21 Void)
+
+- **Closure**: Closes the combined $X \cdot Y \cdot Z \cdot T$ system state through time.
+- **Cross-mirror**: `F1 ↔ V6, F2 ↔ V5, F3 ↔ V4, F4 ↔ V3, F5 ↔ V2, F6 ↔ V1`
+
+| Level | # | FIELD Role | FIELD Primitives (21 Total) | # | VOID Role | VOID Primitives (21 Total) | Mirror |
+|---|---|---|---|---|---|---|---|
+| **L1** | 1 | TEMPORAL REF | `MOMENT` | 1 | TEMPORAL POTENTIAL | `HORIZON` | F1 ↔ V6 |
+| **L2** | 2 | POLARITY CHOICE | `RESISTANCE`, `CHANGE` | 2 | STATE VALIDATION | `PERSIST`, `YIELD` | F2 ↔ V5 |
+| **L3** | 3 | MOVE | `PROCEED`, `PAUSE`, `REVERSE` | 3 | TEMPORAL POSITION | `BEFORE`, `DURING`, `AFTER` | F3 ↔ V4 |
+| **L4** | 4 | VIEWS UP | `STANDS STILL`, `DRAGS`, `FLIES`, `RUNS OUT` | 4 | ACTIONS DOWN (ROUTING) | `COINCIDENCE`, `HOPE`, `DESIRE`, `PLAN` | F4 ↔ V3 |
+| **L5** | 5 | STATE | `BEGINNING`, `GROWING`, `LIVING`, `DECLINING`, `DYING` | 5 | SCALE | `SLOTH`, `SLOW`, `NORMAL`, `FAST`, `ACCELERATED` | F5 ↔ V2 |
+| **L6** | 6 | RECURSE / CLOSURE | `RETAIN`, `MEASURE`, `PROJECT`, `EXPERIENCE`, `RESOLVE`, `REBASE` | 6 | MIRROR LOOP | `MEMORY`, `OFFSET`, `POSSIBILITY`, `RESERVE`, `DEFER`, `RESTORE` | F6 ↔ V1 |
+
+---
+
+## 6. System Closure Architecture
+
+$$\text{Next State} = \mathcal{T}_6\Big(\mathcal{X}_{1..6} \otimes \mathcal{Y}_{1..6} \otimes \mathcal{Z}_{1..6} \otimes \mathcal{T}_{1..5}\Big) \xrightarrow{\text{T6 REBASE}} (0)_{t+1}$$
+
+- **X Branch (42 terms)**: Control, agency, move, routing, state, and recursion.
+- **Y Branch (42 terms)**: Structure, geometry, axis, trajectory, assembly, and lattice closure.
+- **Z Branch (42 terms)**: Depth, scalar-to-tensor integration, stratification, and harmonic entrainment.
+- **T Branch (42 terms)**: Time, change polarity, temporal routing, lifecycles, and whole-system recursive rebase.
+- **Total System**: $42 \times 4 = 168$ Canonical Primitives governed by the 15 Universal Rules.
