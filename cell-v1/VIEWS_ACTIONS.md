@@ -1,92 +1,76 @@
-# Views and actions on three differentials
+# Views Up & Actions Down — The 4×4 Lattice Couplings
 
-The 4×4 is not a fourth axis. It is how you *read and drive* A, B, C.
-
----
-
-## Three numbers you actually have
-
-At any quiet instant the flower only owns:
-
-- D_A, D_B, D_C (current leans)
-- H_A, H_B, H_C (hardness / write depth / tail)
-- V_BUS (readiness)
-- whether each axis is in HOLD wobble or committed
-
-Everything below is those, named.
+The lattice is the full body state. It is one continuous magnetic medium spanning the entire collective group. Every cell writes to it, every cell reads from it, and its physical magnetization pattern is the body's combined state.
 
 ---
 
-## Four views (sense)
+## 1. Views Up — Reading the Body State
 
-| View | What you read |
-| --- | --- |
-| BASELINE | Which axes are in HOLD. Home. |
-| DELTA | Sign and size of D on axes that left HOLD. Change. |
-| HEADING | Which way the two-of-three points (the agreeing pair). Direction. |
-| RESULT | After the event settles: new D and H vs what they were. What stuck. |
+Each cell's figure-8 read head reads the continuous lattice underneath it. That inductive interrogation is a view up.
 
-BASELINE is not “zero volts.” It is “in the wobble.”
-DELTA is not a derivative chip. It is D while the event is live.
-HEADING is the coherence bit: the way two axes agree.
-RESULT is remanence after refractory — memory of that event, not a log file.
+| View | Meaning | Memory Read | Strain Read |
+|:---|:---|:---|:---|
+| **BASELINE** | Resting magnetization | Lattice resting pattern at node | Baseline load / resting flux density |
+| **DELTA** | Change rate | Excursion since last event ($d\Phi/dt$) | Rate of change of mechanical / electrical load |
+| **HEADING** | Trajectory | Direction of movement (deepening/fading) | Trajectory of strain (rising or falling toward saturation) |
+| **RESULT** | Committed state | Remanence state post-write | Residual committed strain level |
 
-You cannot have a fifth view without a fourth axis or a bus-as-memory cheat. V_BUS is readiness, not RESULT.
+Views up = the cell interrogating the body state across four angles on the same lattice.
 
 ---
 
-## Four actions (drive)
+## 2. Actions Down — Writing the Body State
 
-| Action | What the half-bridges do |
-| --- | --- |
-| PULL | Drive agreeing axes *toward* CENTER (reduce \|D\|). |
-| PUSH | Drive agreeing axes *farther* from CENTER (increase \|D\|). |
-| FLIP | Swap sign on the heading pair (A+/A− role reverse). |
-| PASS | No drive. Coast HOLD. Collapse to bus. Let neighbors / ring act. |
+The cell's collapse pulse and drive current write back to the lattice. That physical write is an action down.
 
-PASS is the default. PUSH/PULL/FLIP only after two-of-three has committed a heading.
+| Action | Meaning | Physical Write | Strain Impact |
+|:---|:---|:---|:---|
+| **PULL** | Route inward | Draw from lattice, reinforce toward center | Relieves outward strain, consolidates charge |
+| **PUSH** | Route outward | Drive into lattice, deepen trace past $H_c$ | Incurs high strain, risks driving toward saturation |
+| **FLIP** | Invert polarity | Invert magnetic domain orientation | Rapid excursion, high instantaneous $\mathrm{d}\Phi/\mathrm{d}t$ |
+| **PASS** | Continue | No write, let state stand (coast) | Zero strain addition, allows thermal/bus relaxation |
 
-One voice alone never PUSH/FLIP. That would be winner-take-all.
-
----
-
-## Sixteen couplings
-
-Each view×action is a *permission*, not a wire:
-
-- You may PUSH on a DELTA (deepen the live lean).
-- You may PULL on a RESULT that is too far (home a stuck axis).
-- You may FLIP on a HEADING (turn).
-- You may PASS on BASELINE (stay).
-
-The path that carries that permission is still A, B, or C plus a center–outer mirror. Use hardens that path. Disuse fades it. That is how the 4×4 becomes a skill instead of a lookup table.
-
-Forbidden: PASS that is actually a hidden clock. If nothing is crossing, nothing steps.
+Actions down = the cell modifying the body state through four physical operations.
 
 ---
 
-## Hardness breaks a fight
+## 3. The 4×4 Coupling Matrix
 
-Two flowers (or two axes) opposed:
+Four views up $\times$ four actions down = sixteen physical couplings.
 
-1. Both HOLD. No commit.
-2. Drive continues from outside.
-3. The axis whose H is larger moves less for the same Vd (tail / remanence).
-4. The softer axis gets shoved into the harder one’s wobble or into agreement.
-5. When opposition ends, two-of-three may commit.
+```
+              VIEWS UP (reading lattice)
+              BASE  DELTA  HEAD  RESULT
+              │      │      │      │
+    PULL ─────┼──────┼──────┼──────┤
+              │      │      │      │
+    PUSH ─────┼──────┼──────┼──────┤
+ACTIONS       │      │      │      │
+DOWN          │      │      │      │
+    FLIP ─────┼──────┼──────┼──────┤
+              │      │      │      │
+    PASS ─────┼──────┼──────┼──────┤
+              │      │      │      │
+```
 
-If H is equal and external drive stays symmetric, they stay HOLD. That is a stalemate, not a crash. PASS. Wait for a third event (ring hop, bus sag changing Iss, neighbor).
-
-No oscillator. No referee chip.
+These sixteen couplings are not a software lookup table. They are sixteen physical analog routing paths through the figure-8 read/write stack.
 
 ---
 
-## Axis gates (still three seats on one winding)
+## 4. The Recursive Closure
 
-Along one axis the proposed chain remains CHOICE → PIVOT → FLIP → PIVOT → CHOICE.
+The last action down becomes the new view up:
 
-- CHOICE: enter or refuse the lean (wobble gate).
-- PIVOT: hand the difference to the other end / the neighbor.
-- FLIP: sign change (same as action FLIP).
+$$\text{View Up} \longrightarrow \text{Action Down} \longrightarrow \text{Lattice Changes} \longrightarrow \text{New View Up} \longrightarrow \text{New Action Down} \dots$$
 
-Transistor map open. Meaning locked to the differential, not to six extra FETs per adjective.
+The cycle closes because the cell is always reading what it just wrote, and the lattice is always carrying the latest state.
+
+---
+
+## 5. Full Body State, Fully Connected
+
+- A write at cell 1 propagates across the shared medium to cell 7.
+- A read at cell 7 includes cell 1's history.
+- Every cell's action down is part of every cell's view up.
+
+The body state is one connected medium. Views up read it. Actions down write it. Sixteen couplings. One recursion. One body.
