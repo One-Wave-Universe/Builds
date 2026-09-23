@@ -1,6 +1,6 @@
 # THE BUILD
 
-1.00 V hex cell. Letters are edges. Two memories. Bus under. This page is the whole thing.
+1.00 V hex cell. Letters are edges. Two figure-8s. Bus under. This page is the whole thing.
 
 ---
 
@@ -14,29 +14,31 @@ Cell **1.00 V**. Home **0.50 V**. HOLD wobble **0.45–0.55 V**, live not off. 9
 
 Point-up hex. Six letters **are the six edges**, clockwise A+ B+ C+ A- B- C-. Not the points.
 
-A flower is seven hexes. Neighbors share a **side**. Middle A+ *is* neighbor A- on the same copper, same bus, same skin. Corners cannot connect a flower.
+A flower is seven hexes. Neighbors share a **side**. Middle A+ *is* neighbor A- on the same copper, same bus, same square. Corners cannot connect a flower. Connected cells are the distributed intelligence.
 
 Hex is a slice. Seven hexes is still a slice.
 
 ---
 
-## Top
+## Differential side
 
-Three leans into one home.
+Three leans into one home. Ternary: DOWN / HOLD / UP.
 
-**Figure-eight shape = two squares with a shared middle.** That shared middle sits on the 0.50 home. That remanence is **one-cell memory**.
+**Round figure-8 toroid.** That is the ternary. Two round windows, shared middle. Not a square.
+
+DC is void. AC is field rotation. AC and mirrored DC. RC is what remains and goes up with them.
 
 ---
 
-## Bottom
+## Lattice and bus
 
-Same six edges. 1 V bus copper on those edges. All leftover current gates onto that copper. The bus feeds every lean. Pack only pays loss. If the bus is still falling, stop pushing.
+Same six edges. 1 V bus on those edges.
 
-**Lattice skin on those edges = group memory.** Shared side, shared diary.
+**Square figure-8.** Lattice and bus, one metal. All leftover current goes through that square onto the bus. That current is the write. The bus feeds every lean. Pack only pays loss. If the bus is still falling, stop pushing.
 
-Cap on the bus = last kick only. Reinject = refresh only. Not diaries.
+Cap on the bus = last kick only. Not a diary.
 
-Home is not the bus. Never one pour.
+Home is not the bus. Never one pour. No comparators. All analog.
 
 ---
 
@@ -51,47 +53,23 @@ Off dumps to the bus.
 
 ## Gates
 
-Three axes, bidirectional. CHOICE → PIVOT → FLIP, bidirectional. Both readings on. Never both directions ON.
+Three axes, bidirectional. The band is the core, not a comparator.
 Two agrees → push. One voice waits. Fight holds. Gap waits.
 Same windings may throw. No extra controller in Phase I.
 
 ---
 
-## Analog nets / crossbars
-
-Steal current-add and no clock. Refuse a downloadable G and a row-column grid. Shared edge is *meant* to be common (group memory), not a sneak error. Isolation we need is home ≠ bus.
-
----
-
 ## Parts
 
-Logic-level N-FETs (2N7000 only as seeing-aid), 10 k loads, 100 k gates to 0 V, 100 nF on pack, two square-loop rings (magamp, not EMI bead), 30 AWG, Schottky 1N5819, 10 nF, 1 µF, copper for edges, Permalloy or ferrite foil for skin, DMM. Divider to 0.50 if the pack is not already split.
-
----
-
-## Breadboard
-
-Red = 1.00 (or dirty headroom you still *map* as 1 V). Blue = 0. Row 15 = home only. Q1 ~row 5, Q2 ~row 8, sources to 15. Magnet wire 15 through the two rings back to 15. Row 22 = bus. Diode to 22. Cap 22 to blue. Never 15 to 22.
-
----
-
-## Underside how
-
-Flip hex. Copper on all six **sides**. Foil along that copper. Keep-out under the home island. Each lean's kick → Schottky → that copper loop.
-
----
-
-## PCB
-
-40 mm flat-to-flat. Pads on side midpoints. Home island + two-square footprint. Bottom pour = bus, not stitched to home. `cad/pcb_hex.svg`.
+Logic-level N-FETs (2N7000 only as seeing-aid), 10 k loads, 100 k gates to 0 V, 100 nF on pack, **one round figure-8 toroid on the pair**, **one square figure-8 on the lattice/bus**, 30 AWG, Schottky, copper for edges, DMM. No LM339. No op-amp. No EMI bead.
 
 ---
 
 ## Phase I
 
-1. See a lean against 0.50.
-2. See leftover on the two-square home.
-3. Kick moves bus, not home.
+1. See a lean against 0.50 on the round toroid.
+2. See the square take the collapse, not the home.
+3. Kick moves bus, not CENTER.
 4. Second lean feels live bus vs empty bus.
 5. Raw energy fraction.
 
@@ -99,10 +77,10 @@ Flip hex. Copper on all six **sides**. Foil along that copper. Keep-out under th
 
 ## Out
 
-Drum. Hear. Weight file. 99%. Standard Model in this repo. Science C-317 keeps the vortex/tension analogy.
+Drum. Hear. Weight file. 99%. Comparators. Standard Model in this repo.
 
 ---
 
 ## Also
 
-`RULES.md` `GRANT.md` `cell-v1/CELL.md` `cell-v1/FLOWER.md` `cell-v1/MEMORY.md` `cell-v1/PARTS.md` `cell-v1/BREADBOARD.md` `BUILD_BOOK.md`
+`RULES.md` `cell-v1/CELL.md` `cell-v1/MEMORY.md` `cell-v1/DC_AC_RC.md` `cell-v1/FLOWER.md`

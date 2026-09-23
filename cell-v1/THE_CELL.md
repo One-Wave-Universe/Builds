@@ -1,9 +1,13 @@
 # The cell
 
-**Top:** three differentials. Ternary. CENTER.
-**Bottom:** V_BUS lattice. Reinjection. Mirror loop. **Hysteresis on this path.**
+**Differential side:** three leans. Ternary. **Round figure-8 toroid.**
+**Lattice and bus side:** V_BUS. **Square figure-8.** Collapse through that square is the write.
+
+All analog. No comparators.
 
 The bus is fed by everything. The bus feeds everything.
+
+DC is void. AC is field rotation. AC and mirrored DC. RC goes up with them.
 
 ---
 
@@ -20,19 +24,8 @@ The bus is fed by everything. The bus feeds everything.
                     A-
 ```
 
----
+Round toroid on the pairs. Square figure-8 under the edges, with the bus.
 
-## Bus-side lattice (hysteresis lives here)
+CENTER stays off the bus loop.
 
-Each axis winding on the bottom lattice runs **through its core** on the way to the steer gate.
-
-```
- pair A -- wind A -- [core A hysteresis] -- gate A --\
- pair B -- wind B -- [core B hysteresis] -- gate B --+== V_BUS
- pair C -- wind C -- [core C hysteresis] -- gate C --/
-```
-
-Collapse does not skip the memory. Remanence is on the same metal that returns charge.
-Write depth = trace depth. Use deepens. Disuse fades. Not a bit. Known physics, new arrangement.
-
-CENTER stays off this loop.
+The flower connects every cell on those edges. That is the distributed intelligence.
