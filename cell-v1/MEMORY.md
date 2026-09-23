@@ -1,11 +1,13 @@
 # Memory
 
-Two hysteresis stores. Do not mash.
+Two figure-8s. Do not mash them.
 
-**Figure-eight shape on the middle = single cell.**  
-Two square-loop rings sharing a middle. That hex's home. Private diary.
+**Round figure-8 toroid = differential / ternary side.**
+The pair. DOWN / HOLD / UP. One cell's lean. Round windows, not square.
 
-**Lattice on the shared edges = group.**  
-Skin on the letters. Two cells own that side. Flower muscle.
+**Square figure-8 = lattice and bus side.**
+Shared edges. Group diary. The flower's muscle. Square loop, not the round toroid.
 
-Cap = last kick. Reinject = refresh. Not diaries.
+No comparators. The core's own loop is the band. Asymmetry is the move.
+
+Cap = last kick. Not a diary.

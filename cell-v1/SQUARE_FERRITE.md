@@ -1,17 +1,19 @@
 # Square ferrite
 
-**Two squares, one figure-8, on shared CENTER.**
+**Square figure-8 is the lattice and the bus. Not the pair.**
 
-The iron is the common home for all three differentials. Not three irons. Not a core per winding.
+The differential / ternary side wears a **round** figure-8 toroid. See `CELL.md`.
 
-Three pairs star electrically to CENTER. The figure-8 *is* that CENTER in magnetic form: remanence of the shared reference. When the three D's settle, Br is the leftover of that one home — the cell diary.
+The square loop sits on the shared metal: bus copper and the lattice on the six edges. Two square windows, one shared middle, on that underside. Remanence there is the group trace. Collapse current through that square is the write. Same current returns to the bus.
 
 ```
- pair A \ 
- pair B --+-- CENTER -- figure-8 (two squares) -- header (not V_BUS)
- pair C /
+ ternary pair -- round figure-8 toroid -- CENTER
+                         |
+                         |  collapse current (the write)
+                         v
+              square figure-8  ==  lattice + V_BUS
 ```
 
-V_BUS still takes leftover *current*. The ferrite does not eat the dump. It holds the home's history so the next D's start from a moved V0, not from a dead zero.
+Do not park the square on CENTER and call it the cell diary. That mashed the two sides.
 
-Cell-0 already drew this: one core on CENTER. The 8 is that drawing with two windows so the home can lean + or −.
+Not an EMI bead. No comparator reading it. The square's own loop is the lattice band.

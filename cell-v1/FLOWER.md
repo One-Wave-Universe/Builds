@@ -14,6 +14,8 @@ Plus against minus on the same copper. That is the mirror. Tiling does it. No ha
 
 Outer hexes kiss each other the same way on the side they share.
 
-Twelve shared sides per flower. Bus copper and magnetic skin run those same sides underneath. Shared side = shared blood = shared long trace.
+Twelve shared sides per flower. The **square figure-8** runs those sides: bus and lattice together. Shared side = shared blood = shared trace.
+
+**All connected cells are the distributed intelligence.** No supervisor. No polling. No clock. A write on one edge is already a write on the neighbor, because it is the same copper and the same square.
 
 If a drawing puts A+ on a point, throw the drawing out. The flower cannot connect.
