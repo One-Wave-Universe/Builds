@@ -4,4 +4,4 @@
 
 Grant: [GRANT.md](GRANT.md) · Rules: [RULES.md](RULES.md) · The build: [THE_BUILD.md](THE_BUILD.md)
 
-License: [LICENSE](LICENSE) · CLA: [CLA.md](CLA.md) · Notice: [NOTICE](NOTICE)
+Copyright: [COPYRIGHT.md](COPYRIGHT.md) · License: [LICENSE](LICENSE) · CLA: [CLA.md](CLA.md) · Notice: [NOTICE](NOTICE)
