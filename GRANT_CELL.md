@@ -1,62 +1,84 @@
 # Grant cell
 
-Proposed analog operator. Physical. Not a weight file. Not a simulation of a cap standing in for a cap.
+## Proposed CELL_V1 analog control cell
 
----
+CELL_V1 is a proposed event-driven physical control cell intended to combine local state retention, ternary differential decision, motor-field actuation, and inductive energy return in one coupled hardware loop.
 
-## Problem
+It is a feasibility-stage architecture. No working-cell claim is made until the bench log contains measurements.
 
-Almost every net that learns stores state in one place and computes in another. That state copies. Analog event-driven chips exist (Mead line, DYNAP, Blumind). Magnetic multi-state exists (MTJ / magamp cores). Energy recovery exists (resonant / adiabatic). They are almost never **the same path**: lean, hold, and return on one axis, three axes on one hex, one reservoir that is fed by everything and feeds everything.
+## Technical problem
 
-## Innovation sentence
+Conventional systems commonly separate sensing, state storage, control logic, actuation, and power recovery. CELL_V1 tests whether those functions can be coupled through one physical state path so that prior use changes the next response without requiring a clocked software state table.
 
-A hex cell whose three differentials lean off a local CENTER, whose leftover charge from all three axes is gated onto a shared V_BUS under the cell, and whose next event drinks that bus before the pack. Memory is remanence on three cores, one per axis. Commit is two-of-three coherence, not a clock and not a float table.
+## Architecture
 
----
+### 1. Square figure-8 nucleus
 
-## The object
+A **square figure-8 toroidal nucleus** forms the brain-side retained-state structure on the lattice-bus / vagus-nerve side of the cell.
 
-Two faces, both powered.
+The nucleus is neither CENTER nor V_BUS. Its hysteretic state is proposed to bias the next physical decision.
 
-**Top — ternary.** Six seats clockwise A+ B+ C+ A- B- C-. Three pairs. One CENTER. D_A D_B D_C. HOLD wobble 0.45–0.55 V (1 V map). ±1 ±2 ±3 outside.
+### 2. Three mirrored differential gate pairs
 
-**Between — three cores.** Square-loop, at A+ B+ C+. Minus seat is the other end of that core. H is per axis. One shared core is illegal (disagreement dies).
+The six edge seats form three opposed axes:
 
-**Bottom — reinjection.** Mirror loop of the top trit. Half-bridges, windings, steer gates from *all three* diffs, C_BUS reservoir, V_BUS. Pack only on ask. Strain send-up → PASS.
+A+↔A−, B+↔B−, C+↔C−.
 
-Two references: CENTER (lean home) and V_BUS (energy home). Derived mid-rail from the bus is allowed. A short between them is not.
+Their combined physical state resolves a ternary lean:
 
-Bus is circulation: fed by everything that is still charge; feeds every pair, tail, neighbor. Not CENTER.
+**DOWN / HOLD / UP = − / (0) / +.**
 
-## Operator law
+Transitions are threshold- and hysteresis-driven rather than globally clocked.
 
-Agreement → reinforce. Opposition → HOLD. One voice → wait.
-Two-of-three, third not walking into opposition.
-This-event strength = max live |D| of agreeing axes.
-Stickiness = write depth on those cores.
-Fights do not oscillate and do not latch: HOLD, then wobble, new event required.
+### 3. Two outer round figure-8 toroidal structures
 
-DC = stand. AC = shove. RC = leftover on that core.
+Two outer round figure-8 toroidal structures form the combined outer electrical / magnetic field.
 
-Flower = seven of these sandwiches tiled. Shared bottom edge + V_BUS. CENTER stays local.
+They carry **six windings total**, organized as **two mirrored groups of three**. The proposed role of this 3+3 shell is to convert the resolved ternary lean into a larger differential motor-control bias.
 
-## What Phase I is (when funded)
+### 4. Reinjection and lattice bus
 
-One axis that shows: quiet CENTER while a kick hits V_BUS; leftover core sign; a second axis that drinks a charged rail differently than a dead rail. Energy in vs energy back, fraction stated raw.
+Inductive collapse is steered to **V_BUS**, the shared energy/readiness rail. **CENTER** remains the local lean reference.
 
-Until then this packet *is* the deliverable: proposed architecture.
+Returned energy and neighboring consequences re-enter the same state loop; they do not create a separate controller.
+
+## Closed-loop hypothesis
+
+sensor / neighbor consequence
+→ nucleus retained bias
+→ mirrored differential gates
+→ ternary lean
+→ outer 3+3 field
+→ motor / field action
+→ inductive return
+→ V_BUS / lattice consequence
+→ next decision.
+
+The Phase-I research question is whether that loop can be demonstrated measurably and repeatably.
+
+## Phase I
+
+Build and instrument the minimum cell path needed to measure:
+
+1. CENTER stability during switching;
+2. ternary differential response;
+3. different response to an identical probe after different prior magnetic writes;
+4. energy into the winding path versus energy recovered to V_BUS;
+5. whether reinjected/lattice state measurably changes the next event.
+
+## Success evidence
+
+- oscilloscope traces;
+- filled `cell-v1/LOG.md`;
+- measured differential values;
+- measured retention / decay behavior;
+- measured energy accounting;
+- repeatable parts and wiring record.
+
+## Stop condition
+
+If an identical probe after different prior writes produces no repeatable state-dependent difference, the retained-state premise fails and the architecture is revised before scaling.
 
 ## Do not claim
 
-Feelings. Consciousness. Free energy. A downloadable style. Drum. Hear. Cosmology. FOC-as-the-cell. 99% recovery. Measured D.
-
-## Holes a reviewer will poke (honest)
-
-1. 9 V jellybean Cell-0 vs 1 V band map — two layers, must stay named.
-2. Pair I²R that already became heat cannot be gated; only leftover current can.
-3. Three cores in a flat hex will talk magnetically; 120° is the 2D answer, not zero bleed.
-4. Two-of-three transistor map is not drawn.
-5. Top rail vs under rail: two powered faces, still only two references — say how top rail is tapped without becoming CENTER.
-6. Sync steer vs Schottky is sequence, not both-at-once.
-
-Those are engineering. The law is set.
+Consciousness, feelings, free energy, 100% recovery, measured torque, measured efficiency, proven lattice intelligence, or a working full cell before the evidence exists.
