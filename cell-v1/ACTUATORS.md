@@ -1,42 +1,37 @@
 # Ternary windings — motors and actuators
 
-The actuator is not a second invention. It is the **same three windings** on the three figure-8s.
+The actuator is not a second brain. It is the outer field expression of the same CELL_V1 decision.
 
-A B C hex seats already are a three-phase set. Two-of-three + PERMIT already is commutation permission. HOLD already is coast. Collapse already returns to V_BUS (regen).
+## Outer motor-field shell
 
-No FOC chip required for the proposal. Field-oriented control is a later overlay if someone wants sine. The cell speaks UP / HOLD / DOWN.
+Two round figure-8 toroidal structures carry **six windings total**:
 
----
+- outer figure-8 A: three windings
+- outer figure-8 B: three mirrored windings
 
-## Map
+Together they form a **mirrored 3+3 differential field system**.
 
-| Cell | Winding / machine |
+The three mirrored gate axes resolve the local state first. The outer 3+3 winding shell then expresses that resolved state as a larger − / (0) / + motor-field bias.
+
+## State map
+
+| Cell state | Motor-field meaning |
 | --- | --- |
-| PUSH on heading axes | torque / force that way |
-| PULL | reduce |D|, current toward CENTER |
-| FLIP | reverse that axis |
-| PASS / HOLD | coast — switches open, current steers to V_BUS |
-| PERMIT off | no PUSH/FLIP |
-| send-up (bus redline) | PASS, ask pack |
+| UP / PUSH | bias field in the resolved positive direction |
+| DOWN / PULL | bias field in the resolved negative direction |
+| HOLD / PASS | no new net drive; permit inductive return |
+| FLIP | reverse the resolved axis relation |
+| bus redline | prefer HOLD / PASS and reduce new drive |
 
-Three half-bridges on V_BUS = the ordinary three-phase inverter *topology*. The *brain* of it is two-of-three, not a PWM timer.
+HOLD is not a clocked pause. It is the physical center condition.
 
----
+## Reinjection
 
-## What HOLD is on a motor
+When drive falls, winding energy is steered back to V_BUS. The returning energy and its consequence re-enter the same cell loop; they do not bypass the nucleus or create a second controller.
 
-Coast / regen. Current has to go somewhere; it goes to the bus lattice. That is the same reinjection. A parked actuator is HOLD + leftover Br in the figure-8, not a shorted winding unless you choose a brake (that's a different action, not default).
+## Anti-drift
 
----
-
-## Sequence (proposal)
-
-Rotate heading A→B→C by which two axes are IN the same way. That *is* six-step / ternary step on a three-phase machine. Smoothness later. First: the same PERMIT that fires the flower can turn a shaft or a linear coil if those windings *are* the figure-8 windings or are coupled to them.
-
-Do not add a second ABC that ignores the cell. If you need more force, scale current on V_BUS or stack flowers. Don't invent a fourth phase.
-
----
-
-## Linear actuators
-
-Same map. One figure-8 can be a voice-coil / solenoid pair (+ window / − window). HOLD = rest. PUSH/PULL = throw. FLIP = other direction. Three of those at 120° on the hex is a planar stepper if you want it. Still one bus.
+- Do not reduce the architecture to an ordinary three-phase inverter.
+- Do not call the six windings six independent phases.
+- Do not add a separate PWM/FOC controller as the CELL_V1 brain.
+- Do not claim torque, efficiency, field strength, or recovery percentage until measured.
