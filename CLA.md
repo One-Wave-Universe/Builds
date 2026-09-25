@@ -52,7 +52,7 @@ I have read CLA.md and I agree.
 ```
 
 GitHub username is the signature. Date is the PR date.
-Original work by Mark Wright / One-Wave-Universe is already covered.
+Original work by Mark Wright Adlard Adlard / One-Wave-Universe is already covered.
 
 ## 7. Not legal advice
 
