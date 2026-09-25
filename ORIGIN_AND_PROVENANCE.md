@@ -2,7 +2,7 @@
 
 ## Project origin
 
-The CELL_V1 architecture and the related One-Wave hardware concepts documented in this repository were originated and developed by **Mark Wright / One-Wave-Universe**.
+The CELL_V1 architecture and the related One-Wave hardware concepts documented in this repository were originated and developed by **Mark Wright Adlard Adlard / One-Wave-Universe**.
 
 This repository is the **canonical public development record** for the Builds project. It records the evolution of the architecture, including its circuit descriptions, magnetic/toroidal structures, mirrored differential gates, ternary lean, bus/reinjection system, motor-field geometry, grant materials, diagrams, and related implementation notes.
 
@@ -27,7 +27,7 @@ Later commits document the continuing refinement of CELL_V1 and should be read a
 
 When referring to the origin of the project, use:
 
-**CELL_V1 / One-Wave Builds — originated and developed by Mark Wright, One-Wave-Universe.**
+**CELL_V1 / One-Wave Builds — originated and developed by Mark Wright Adlard Adlard, One-Wave-Universe.**
 
 Repository:
 
