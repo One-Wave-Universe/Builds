@@ -2,7 +2,7 @@
 
 Copyright © 2026 One-Wave-Universe.
 
-Original work in this repository is authored by Mark Wright unless otherwise identified in the relevant file or contribution history.
+Original work in this repository is authored by Mark Wright Adlard unless otherwise identified in the relevant file or contribution history.
 
 ## Ownership
 
@@ -26,7 +26,7 @@ These licenses grant permissions subject to their terms. They do not transfer co
 
 When attribution is required by the applicable license, use:
 
-**Mark Wright / One-Wave-Universe**
+**Mark Wright Adlard Adlard / One-Wave-Universe**
 
 Repository:
 
