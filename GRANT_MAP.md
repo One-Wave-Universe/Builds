@@ -1,133 +1,100 @@
 # Grant map
 
-Status today: law is written. `cell-v1/LOG.md` is empty. Hardware score is 0%. Do not claim a working cell.
+## Current status
 
-## Pitch (honest)
+CELL_V1 topology is consolidated in `cell-v1/CELL.md`.
 
-**Problem.** Digital nets store weights in one place and compute in another. Style and memory can be copied as a file. Analog event-driven hardware that *is* its history is rare, and most of it is still a conductance table next to a processor.
+Hardware evidence remains incomplete. `cell-v1/LOG.md` is the measurement gate. Do not claim a working full cell until it contains repeatable bench results.
 
-**What we build.** A hex cell, three mirrored axes, event-driven (no clock). A lean off a moving 0.50 V home is the state. HOLD is live current in `0.45–0.55 V`. Commit is ±1 ±2 ±3 outside that wobble. Collapse energy returns on a DC bus through the same magnetic path that just wrote. Neighbor cells share the bus, never CENTER.
+## Canonical architecture
 
-**What we do not claim.** Consciousness. Feelings. Free energy. A downloadable brain. Science cosmology.
+1. **Square figure-8 toroidal nucleus** — retained-state brain-side structure on the lattice-bus / vagus-nerve side.
+2. **Three mirrored differential gate pairs** — resolve one − / (0) / + ternary lean.
+3. **Two outer round figure-8 toroidal structures** — combined outer electrical / magnetic field.
+4. **Six outer windings** — mirrored 3+3 motor-field system.
+5. **CENTER** — local lean reference.
+6. **V_BUS** — shared reinjection / energy / readiness rail.
+7. **Closed loop** — returned energy and neighbor consequence must feed the next physical decision.
 
-**Technical risk (the actual research question).** Can one physical axis show: (a) a quiet home under switching, (b) a lean that survives as magnetic state, (c) the same probe answering differently after a different prior lean, (d) measured joules in vs joules back, always less than in?
+## Phase-I research question
 
-If (c) fails, stop. That is the Phase I gate.
+Can one physical CELL_V1 path demonstrate all of the following in a repeatable measurement sequence?
 
-## Two workstreams only
+- stable local reference under switching;
+- ternary differential resolution;
+- state-dependent response after different prior writes;
+- inductive energy return to V_BUS;
+- a measurable effect of returned/lattice state on the next event.
 
-| Stream | Folder | Phase I job |
-| --- | --- | --- |
-| Cell | `/cell-v1/` | Solder Cell-0. Log volts. Add bus. Prove lean + recovery numbers. |
-| Algorithm | `/algorithms/` | Rabbit Hopping addressing. Zer0 may *name* a T6 settle. It does not hold memory. |
+If the state-dependent probe test fails, stop and revise before scaling.
 
 ## Work packages
 
-### WP0 — paper lock (done enough to apply)
+### WP0 — canonical lock
 
-Geometry, no-clock, lean bands, bus law, readiness language, anti-drift. Repo is the packet.
+Keep `cell-v1/CELL.md` authoritative. Detail and grant files must agree with it.
 
-### WP1 — Cell-0 bench (must start now)
+### WP1 — minimum differential bench
 
-Parts: 9 V pack, 2N7000/BS170 pair, 10k/100k, 100 nF, square-loop core, DMM, breadboard.
+Demonstrate DOWN / HOLD / UP around the local reference and record raw voltages/currents.
 
-T1–T5 in `CELL0.md`. Write every number in `LOG.md`.
+### WP2 — nucleus retention test
 
-Deliverable: photo + table of DB, DC, D, leftover core sign.
+Apply controlled prior writes to the square figure-8 nucleus, then use an identical probe.
 
-### WP2 — one-axis return
+Deliverable: overlaid traces showing whether prior physical state changes the response.
 
-Steering onto `C_BUS`. Measure E_in, E_rec, E_loss. Say the percentage you got.
+### WP3 — reinjection accounting
 
-Deliverable: one plot, one number, CENTER did not take the charge.
+Measure winding-path energy in and recovered energy returned to V_BUS.
 
-### WP3 — lean test (Phase I kill-gate)
+Deliverable: E_in, E_rec, E_loss with no energy-creation claim.
 
-Identical probe. Different prior write. Different D.
+### WP4 — closed-loop test
 
-Shallow write vs deep write vs quiet wait. Shallow fades, deep remains.
+Feed the returned bus/lattice consequence into the next cell event and test whether it changes the next physical decision in a repeatable way.
 
-Deliverable: two traces overlaid. If they match, the model is wrong.
+### WP5 — outer 3+3 motor-field shell
 
-### WP4 — bidirectional port
+Connect the two outer round figure-8 structures and their mirrored six windings. Demonstrate the larger differential field response to the resolved ternary lean.
 
-Back-to-back FETs on one axis. Current both ways. Lean picks the way. No clock.
+Torque and efficiency claims require measurement.
 
-### WP5 — 1 V layer (not Cell-0 parts)
+### WP6 — scale only after single-cell pass
 
-Low-Vt / subthreshold matched pair. Map `0.45–0.55` wobble and ±1 ±2 ±3. Tail current = hardness.
+Three-axis integration, flower, neighboring-cell coupling, and larger lattice field are Phase II.
 
-### WP6 — three axes + flower (Phase II)
+## Reviewer evidence map
 
-Shared bus. No shared CENTER. Rotation A→B→C. Seven-cell flower. 12 mirrors from tiling.
+| Claim | Authority / evidence |
+| --- | --- |
+| Canonical topology | `cell-v1/CELL.md` |
+| Nucleus role | `cell-v1/SQUARE_FERRITE.md` |
+| Differential logic | `cell-v1/DIFFERENTIALS.md` |
+| No-clock rule | `cell-v1/NO_CLOCK.md` |
+| Reinjection / energy accounting | `cell-v1/REINJECT_BUS.md` |
+| Outer motor-field shell | `cell-v1/ACTUATORS.md` |
+| Bench evidence | `cell-v1/LOG.md` |
+| Full integration view | `cell-v1/CELL_ASSEMBLED.md` |
 
-### WP7 — readiness
+## Locked design topology
 
-Show event rate and latency vs bus volts and tail current. Language: the cell *is* sluggish. Not *feels*.
+- hex edge geometry;
+- three mirrored axes;
+- square figure-8 nucleus;
+- two outer round figure-8s;
+- mirrored 3+3 outer windings;
+- ternary − / (0) / + lean;
+- no global clock;
+- CENTER separate from V_BUS;
+- reinjection re-enters the same state loop.
 
-### WP8 — addressing only
+## Still hypothesis / engineering
 
-Rabbit Hopping stays reversible addressing. Not weights.
+Material selection, winding turns, coupling coefficient, exact transistor implementation, retention depth, decay/fade law, field strength, torque, recovery fraction, thermal behavior, multi-cell usefulness, and higher-level behavior.
 
-## Evidence table (what a reviewer can open)
+## Grant language
 
-| Claim | File | Evidence now |
-| --- | --- | --- |
-| Lean ≠ file | `NOT_SOFTWARE.md` | text |
-| Bands / wobble | `WEIGHT_LEAN.md` | text |
-| No clock | `NO_CLOCK.md` | text |
-| Bus + accounting | `REINJECT_BUS.md` | text |
-| Readiness | `READINESS.md` | text |
-| Solder steps | `CELL0.md` | text |
-| Measured D | `LOG.md` | **empty** |
-| Addressing | `algorithms/RABBIT.md` | code in RABBIT-HOPPING |
+Use: event-driven analog control cell, hysteretic retained state, mirrored differential axes, ternary lean, mirrored 3+3 winding shell, inductive energy return, measurable state-dependent response, falsifiable Phase-I test.
 
-Until LOG has numbers, the proposal is a feasibility study, not a hardware result.
-
-## Locked vs hypothesis (say it in the pitch)
-
-**Locked as design law:** hex, three axes, 12 flower mirrors from tiling, event-driven, HOLD wobble, ±1±2±3, return ≠ CENTER, no created energy.
-
-**Hypothesis:** flower computes, outer ring is the under-loop, inverted stack is a split, 4×4 brainstem, 3:1 / 6:1 ratios, drummer-scale behavior.
-
-## Words to use / dump
-
-Use: analog cell, event-driven, bidirectional port, measured lean, magnetic hold, DC-link return, energy accounting, system readiness.
-
-Dump: soul, feelings, consciousness, trained weights, neuromorphic neuron chip, backprop, free energy, downloadable style, cosmology.
-
-## Likely doors (not an application)
-
-- NSF SBIR/STTR project pitch first (rolling; full proposal windows). Phase I is a risk-reduction bench, not a product. Pitch wants *the technical risk*, not a brand story.
-- Hardware / microelectronics / analog computing frames beat "AI model" frames.
-- DoD/DAF neuromorphic topics exist; they usually want SWAP and a task metric. Only apply if you will measure a task, not a vibe.
-- University or shop partnership helps WP5 (matched subthreshold silicon).
-
-Register nothing from this file. Read the live solicitation before any submit.
-
-## Ask shape (Phase I, 6–12 months)
-
-People-time: bench + log + one-axis return + lean test.
-Stuff: cores with real square-loop / wide coercivity, low-Vt pair or analog array time, scope that can catch events, bus caps, current sense.
-Not in Phase I: flower, hemispheres, bucket, speech processor, 1 V production silicon.
-
-Success = WP3 overlay plot + WP2 recovery fraction + a filled LOG.md.
-
-Fail = WP3 traces match. Then rewrite the cell, do not scale it.
-
-## Budget buckets (fill dollars to your shop)
-
-- PI / technician time
-- Parts and cores (the core is the special one)
-- Instruments (scope, current probe) if you lack them
-- Board spin after breadboard
-- Foundry / analog-array access only if WP1–3 already speak
-- Travel / photos / reporting
-
-No line item named "AI training compute."
-
-## Reviewer one-pager
-
-You can paste this:
-
-> We propose to build and measure a single analog axis in which state is a voltage lean off a 0.50 V home band (0.45–0.55 V wobble). The axis is event-driven and bidirectional. After an event, collapse energy is steered to a DC bus through the same magnetic element that took the write. We will report energy in vs energy recovered (never claiming creation) and the Section-22 test: identical probe, different prior lean, different response. Memory is that lean, not a file. Phase I stops at one axis. Later scale (flower, lattice) is out of scope until that test passes.
+Avoid: consciousness, feelings, free energy, guaranteed efficiency, proven intelligence, proven motor performance, or claims that bench data does not support.
