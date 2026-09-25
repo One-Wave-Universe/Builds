@@ -1,29 +1,25 @@
 # Cores
 
-Two shapes. Do not mash them.
+CELL_V1 uses two toroidal roles. Do not mash them.
 
-**Round figure-8 toroid** — differential / ternary side. One per axis, parked at the + outer. A− is the other end of that same round toroid, not a second memory. Center has no core of its own.
+## Square figure-8 nucleus
 
-**Square figure-8** — lattice and bus side only. Shared edges. Not on the pair. Not in the center puck.
+The **square figure-8 toroidal structure is the nucleus**.
 
-A single shared core for all three axes makes H global. Then two-of-three is fake. 120° apart at the + outers is the isolation for the round toroids.
+It is the retained-state brain-side structure coupled to the lattice-bus / vagus-nerve side. It is not CENTER and it is not V_BUS. Its magnetic history is part of the next physical decision.
 
-No comparators. The round toroid's own coercivity is the ternary band. The square's own loop is the lattice band.
+## Two outer round figure-8 toroidal structures
 
----
+The two **round figure-8 toroidal structures** form the combined outer electrical / magnetic field shell.
 
-## How center sees three states
+Together they carry **six windings total**, arranged as **two mirrored groups of three**. Those windings express the resolved − / (0) / + lean as a larger differential bias for motor control.
 
-Electrical, not a shared flux lump.
+The six windings are not six independent memories, six independent motors, or six independent controllers.
 
-Each axis: the round figure-8, and D from the pair (DB−DC). Center reads three D's. No Hall required. No LM339.
+## Coupling rule
 
----
+The nucleus, three mirrored gate pairs, outer 3+3 windings, V_BUS reinjection, and neighboring lattice state must close one loop.
 
-## Drive
+Magnetic isolation, coupling coefficients, material choice, winding turns, field strength, and retention depth remain bench quantities until measured.
 
-Three paths. One per axis. Shared V_BUS through the square figure-8. Not a multiplexed single driver — that would serialize the flower into a clock.
-
-Flower: round toroid per axis on the pairs, one square figure-8 family on the shared edges, 1 V_BUS, 1 CENTER per cell, no center core.
-
-The connected cells are the distributed intelligence. The square on the shared side is how they touch.
+No global clock. No comparator may become the hidden state machine.
