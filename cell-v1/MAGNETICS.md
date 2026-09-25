@@ -1,45 +1,50 @@
 # Magnetics
 
-The part you buy is a **toroid** (or two toroids making the figure-8). Square-loop ferrite / magamp tape. Not an EMI bead.
+CELL_V1 uses two magnetic geometries with different jobs.
 
-## Field on a toroid
+## 1. Square figure-8 toroidal nucleus
 
-Mean magnetic path ℓ_e around the ring.
+One square figure-8 toroidal structure forms the cell nucleus on the brain / lattice-bus / vagus-nerve side.
+
+Its proposed role is retained magnetic state that biases the next physical decision.
+
+Hysteresis relationships remain ordinary magnetic physics:
 
 ```
 H = N I / ℓ_e
-B = μ(H, history)     ← μ is not a constant. That is hysteresis.
+B = μ(H, history)
 Φ = B · A_e
 λ = N Φ
-v = dλ/dt = N dΦ/dt
+v = dλ/dt
 ```
 
-Ampère: current in the winding *is* H. Faraday: when Φ changes, the same winding *is* the voltage that the gate sends to V_BUS.
+Remanence, coercivity, minor/major loops, saturation, and loss must be measured for the selected material.
 
-Energy in the field ~ ∫ H·dB · volume. Loop area is loss-per-cycle. Minor loop → small area. Major loop → large area.
+## 2. Two outer round figure-8 toroidal structures
 
-Remanence: I → 0, H → 0, B → Br ≠ 0. That Br is old state in iron.
+The outer field shell uses **two round figure-8 toroidal structures total**.
 
-## Toroid per window
+Each outer figure-8 carries three windings; together they produce **six windings arranged as mirrored 3+3**.
 
-Figure-8 = **two toroids** (or one binoc / two-hole core) with a shared or tightly coupled center. Each toroid is one window (+ or −).
+Their proposed job is to turn the resolved − / (0) / + ternary lean into a larger coupled electrical / magnetic field for motor control.
 
-```
-   (toroid +)     (toroid −)
-      A+             A-
-        \           /
-         shared sense of one axis
-```
+The six windings are not six independent memories or six independent state machines.
 
-Wind the same N on each ring, opposite sense if you want D to be the difference of two λ's. Or one winding through both holes like a common-mode choke — then the figure-8 *is* the differential.
+## Coupling
 
-Cell-0: **one toroid** on CENTER / on the pair so Br leftover is visible.
-Full cell: two toroids per axis × three axes = six rings, or three binoc cores. Still one settled cell state on V_BUS + CENTER.
+The central nucleus and outer field shell must be characterized as a coupled magnetic system:
 
-## Why toroid not a rod
+- mutual coupling;
+- stray field;
+- saturation;
+- coercivity;
+- turns ratio;
+- thermal loss;
+- field symmetry;
+- retention depth.
 
-Closed path. Flux stays in the ferrite. Little stray H to write the neighbor axis. 120° and closed rings are the isolation. A bar through the hex center would yoke all three — illegal.
+Those are bench quantities, not assumptions.
 
-## Numbers (order, not a bench log)
+## Anti-drift
 
-Square ferrite: Br/Bm high, Hc set by mix (NiZn / MnZn square, or tape 80 permalloy). Turns N: enough λ that dλ/dt at your event speed is a clean pulse into C_steer, not a spark and not invisible. Cell-0: whatever fits the 9 V flyback the diode can eat.
+Do not revert to the older model of one round figure-8 per A/B/C axis. The current CELL_V1 lock is **one square figure-8 nucleus + two outer round figure-8 structures with mirrored 3+3 windings**.
