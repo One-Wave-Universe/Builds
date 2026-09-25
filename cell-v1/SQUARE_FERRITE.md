@@ -1,12 +1,12 @@
 # Square figure-8 nucleus
 
-**The square figure-8 toroidal structure is the CELL_V1 nucleus.**
+**The square figure-8 toroidal structure is the CELL_V1 nucleus: the brain-side structure on the lattice bus / vagus-nerve side of the cell.**
 
-It is the central retained-state / magnetic core structure of the cell. It is not the outer motor-field shell and it is not interchangeable with CENTER or V_BUS.
+It is the central retained-state / magnetic brain-side structure that sits on the lattice-bus / vagus-nerve side of the architecture. It is not the outer motor-field shell and it is not interchangeable with CENTER or V_BUS.
 
 ## Relationship to the rest of the cell
 
-- **Nucleus:** one square figure-8 toroidal structure at the center.
+- **Nucleus / brain side:** one square figure-8 toroidal structure coupled to the lattice bus on the vagus-nerve side.
 - **Gate structure:** three mirrored differential gate pairs resolve the local ternary lean around − / (0) / +.
 - **Outer shell:** two round figure-8 toroidal structures surround the nucleus and form the larger coupled electrical / magnetic field structure.
 - **Motor windings:** the two outer round figure-8 structures carry six windings total, organized as two mirrored groups of three.
