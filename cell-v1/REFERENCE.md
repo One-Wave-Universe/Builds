@@ -1,29 +1,33 @@
-# Two references
+# Two electrical references
 
-**CENTER** — home for D. What the pair leans off. Starred inside one flower.
+CELL_V1 has two electrical reference roles. Neither one is the square figure-8 nucleus.
 
-**V_BUS** — separate reference. Energy, return, lattice readiness. Connected everywhere.
+## CENTER
 
-They are both references. They are not the same node.
+**CENTER** is the local home for the differential lean.
 
-D is never measured against V_BUS. Collapse is never dumped on CENTER.
+- DOWN / HOLD / UP are resolved around CENTER.
+- CENTER may be derived from the supply/bus through a high-impedance reference or buffer.
+- CENTER is not the reinjection rail.
+- Collapse energy is never intentionally dumped onto CENTER.
 
----
+## V_BUS
 
-## Inside one flower: one CENTER
+**V_BUS** is the shared energy / readiness / reinjection rail across the lattice.
 
-Three pairs, three cores, one V0. Two-of-three needs that.
+- outer-winding collapse returns here;
+- cells may draw from the shared reservoir;
+- bus condition may influence the next threshold event;
+- V_BUS is not the local ternary zero.
 
-CENTER is electrical. Not a fourth core. Not a yoke.
+## Nucleus relationship
 
-V0 may be *derived from* V_BUS (divider / buffer) then allowed to move a little. Derived ≠ tied. Stiff short from CENTER to V_BUS makes one reference again.
+The **square figure-8 toroidal nucleus** is the brain-side retained-state structure coupled to the lattice-bus / vagus-nerve side.
 
----
+It is a magnetic/state element, not a third electrical reference.
 
-## Lattice
+## Rule
 
-V_BUS is the common reference for power and readiness at every step.
-CENTER is the common reference for leans at every step *inside that flower*.
-Axis metal is the event between flowers.
+CENTER ≠ V_BUS ≠ nucleus.
 
-Weak high-Z from each CENTER toward mid-rail (from V_BUS) keeps homes in class. Not a CENTER plane.
+The three mirrored gate pairs read/act around CENTER. The outer 3+3 winding shell exchanges energy with V_BUS. The nucleus carries retained-state bias into the next physical decision.
