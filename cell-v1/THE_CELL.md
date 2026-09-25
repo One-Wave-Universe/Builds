@@ -1,15 +1,16 @@
 # The cell
 
-**Differential side:** three leans. Ternary. **Round figure-8 toroid.**
-**Lattice and bus side:** V_BUS. **Square figure-8.** Collapse through that square is the write.
+CELL_V1 is one coupled physical state machine.
 
-All analog. No comparators.
+## Core topology
 
-The bus is fed by everything. The bus feeds everything.
+- **Nucleus / brain side:** one square figure-8 toroidal structure on the lattice-bus / vagus-nerve side.
+- **Gate layer:** three mirrored differential axes A, B, C resolve one local ternary lean around − / (0) / +.
+- **Outer field shell:** two round figure-8 toroidal structures form one combined outer electrical / magnetic field.
+- **Motor field:** six windings total, arranged as two mirrored groups of three.
+- **Energy / readiness:** V_BUS carries reinjection and lattice readiness. CENTER remains the local lean reference.
 
-DC is void. AC is field rotation. AC and mirrored DC. RC goes up with them.
-
----
+All analog. No global clock. No second controller bypasses the ternary decision.
 
 ## Seats
 
@@ -18,14 +19,26 @@ DC is void. AC is field rotation. AC and mirrored DC. RC goes up with them.
                  ________
                 /        \
            C-  /          \  B+
-              |   CENTER   |
+              |  NUCLEUS   |
            B-  \          /  C+
                 \________/
                     A-
 ```
 
-Round toroid on the pairs. Square figure-8 under the edges, with the bus.
+The six edge seats are three mirrored axes, not six independent gates.
 
-CENTER stays off the bus loop.
+## Whole-cell loop
 
-The flower connects every cell on those edges. That is the distributed intelligence.
+sensor / neighbor consequence
+→ square figure-8 nucleus
+→ three mirrored gate pairs
+→ DOWN / HOLD / UP
+→ outer mirrored 3+3 winding field
+→ motor / field action
+→ collapse / inductive return
+→ V_BUS
+→ next nucleus / gate decision
+
+CENTER stays off the recovery bus. The flower connects neighboring cells on the edge axes while V_BUS provides the shared energy/readiness layer.
+
+This file is detail under `CELL.md`; if wording conflicts, `CELL.md` wins.
