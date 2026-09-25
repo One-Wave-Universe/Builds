@@ -1,52 +1,50 @@
 # Grant architecture
 
-**Project:** One-volt analog hex cell. Shared-bus energy return. History in the path.
-**Repo:** https://github.com/One-Wave-Universe/Builds
-**Ask:** Phase I — one cell and a two-axis bus couple, measured.
-
----
+**Project:** CELL_V1 event-driven analog control cell with hysteretic state, mirrored 3+3 motor-field actuation, and shared-bus energy return.  
+**Repo:** https://github.com/One-Wave-Universe/Builds  
+**Ask:** Phase I — build and measure the minimum closed CELL_V1 loop.
 
 ## Problem
 
-State lives in a file. Compute lives somewhere else. Copies are free. Analog chips still usually *load* weights. Energy recovery is a separate trick. Copper is treated as dead.
+Sensing, memory, control, actuation, and power recovery are usually implemented as separate subsystems. CELL_V1 tests whether those functions can be coupled through the same physical state path so that prior hardware state changes the next response without a global clock or a software weight table.
 
-## Solution (the architecture)
+## Proposed solution
 
-A **1.00 V** hex.
+A 1 V-class hexagonal analog cell with:
 
-Middle **0.50 V**. Live wobble **0.45–0.55 V**.
-Ports on the **sides:** A+ B+ C+ A− B− C−.
-Three leans into that middle. A square-loop figure-8 on the middle keeps a trace.
-Under the hex: a **1 V bus**. All leftover current goes in. The bus feeds every lean. Pack only pays loss. If the bus keeps falling, stop pushing.
-Edges can wear a magnetic skin (foil now, plated NiFe later). Cap on the bus = short echo. Skin / 8 = long hold.
-Two agrees → push. One voice waits. Fight holds. Off → bus (regen).
-Gates both ways. Next view = last move + what came back up.
-Same windings can throw. No second brain in Phase I.
+- one **square figure-8 toroidal nucleus** on the brain/lattice-bus/vagus side;
+- three mirrored differential axes resolving **− / (0) / +**;
+- two outer **round figure-8 toroidal structures** carrying **six windings as mirrored 3+3**;
+- a distinct local **CENTER** reference;
+- a shared **V_BUS** for recovered inductive energy and lattice readiness;
+- reinjection that returns into the same decision loop.
 
-## Novelty
+The nucleus, gates, outer winding shell, motor response, bus return, and neighbor consequence are treated as one coupled physical state machine.
 
-Not a new law. Faraday, remanence, current-sum, plated wire, half-bridges are old.
-New arrangement: **one volt, one home, three leans, leftover current is blood, history in home and mesh, coherence instead of a timer.**
+## Innovation being tested
 
-Schematic copies. Lived trace does not.
+The novelty claim is the **arrangement**, not a new physical law: retained magnetic state, differential ternary control, mirrored 3+3 field actuation, and energy return are deliberately closed into one event-driven hardware loop.
 
-## Phase I
+## Phase I evidence
 
-1. 1 V-mapped pair. See a lean. See leftover remanence.
-2. Gate collapse to a bus row. Home ≠ bus.
-3. Second lean on a live bus vs an empty bus.
-4. Energy in vs energy back. Raw fraction.
+Phase I will measure:
 
-Deliverable: four traces + repeatable parts list.
+1. local reference stability;
+2. repeatable ternary differential behavior;
+3. state-dependent response after different prior writes;
+4. energy in versus energy recovered to V_BUS;
+5. whether the returned bus/lattice condition changes the next event.
 
-## Phase II (not this check)
+Deliverables: traces, filled bench log, parts/wiring record, and raw energy-accounting results.
 
-Third lean, permit block, seven-hex slice, plated mesh, throw on the same windings.
+## Scaling
 
-## Will not claim
+Flower, multi-cell lattice, larger motor field, and higher-level control remain Phase-II hypotheses until the single-cell loop passes the retention and reinjection tests.
 
-Feelings. Free energy. A downloadable mind. 99% recovery. A product that hears.
+## Claims boundary
 
-## Why fund
+The proposal does not claim consciousness, feelings, free energy, 100% recovery, measured motor performance, or a completed working cell.
 
-Small. Physical. Repeatable in a year on a bench. Edge-compute and hardware-state story without fiction.
+## Why Phase I is fundable
+
+The central uncertainty is concrete and falsifiable: **does the physical state of the nucleus and reinjection path produce a repeatable, measurable difference in the next cell response?** The experiment can fail cleanly, and failure prevents premature scale-up.
