@@ -17,15 +17,21 @@ One **square figure-8 toroidal nucleus** sits on the lattice-bus / vagus-nerve s
 
 Its job is retained-state bias and participation in the next physical decision. It is not CENTER and it is not V_BUS.
 
-## Three mirrored gate pairs
+## Three mirrored differential axes and voltage-gated depth
 
-The three axes resolve one ternary lean:
+A+↔A−, B+↔B−, and C+↔C− are three spatial opposed bias loops around the nucleus. They are not three sequential voltage levels.
+
+Each axis carries a local ternary lean:
 
 - DOWN = negative lean
-- HOLD = centered live state
+- HOLD = centered live balance
 - UP = positive lean
 
-CHOICE, PIVOT, and FLIP are coupled gate functions. The transistor implementation remains an engineering task; the topology does not.
+Both opposed sides may remain biased / active around CENTER; the meaningful state is their differential lean.
+
+CHOICE → PIVOT → FLIP is the voltage-gated depth ladder. Promotion or relaxation through that ladder occurs when differential magnitude crosses calibrated hysteretic bands. Exact device thresholds, enter/exit voltages, spacing, material, winding gauge, turns, and coupling remain engineering / bench variables.
+
+POINT → PATH → FIELD is a separate scale-up relation. Do not map A/B/C onto POINT/PATH/FIELD.
 
 No global clock. Threshold crossings, hysteresis, retained state, bus condition, and neighboring consequences determine transitions.
 
@@ -90,7 +96,9 @@ If identical probes after different prior writes do not produce distinguishable 
 ## Locked topology
 
 - square figure-8 = nucleus / brain side;
-- three mirrored gate pairs;
+- three mirrored A/B/C differential axes around the nucleus;
+- CHOICE/PIVOT/FLIP voltage-gated depth distinct from A/B/C;
+- POINT/PATH/FIELD scale distinct from both axis and gate depth;
 - two outer round figure-8s;
 - six outer windings = mirrored 3+3;
 - − / (0) / + ternary lean;
