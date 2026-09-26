@@ -60,19 +60,19 @@ Stack inverted: A+ of the upper flower meets A− of the lower. Another differen
 Each A/B/C differential uses the same normalized 0–100 readout around CENTER = 50:
 
 ```
-100–90  = +3  FLIP
+100–90  = +3  EXTREME EXPRESSION / DANGER
  90–85  = gap
- 85–75  = +2  PIVOT
+ 85–75  = +2  STRONG EXPRESSION
  75–70  = gap
- 70–60  = +1  CHOICE
+ 70–60  = +1  MODERATE EXPRESSION
  60–55  = gap
- 55–45  =  0  HOLD
+ 55–45  =  0  ACTIVE MIDDLE / STABLE OSCILLATING REGION
  45–40  = gap
- 40–30  = −1  CHOICE
+ 40–30  = −1  MODERATE COMPRESSION
  30–25  = gap
- 25–15  = −2  PIVOT
+ 25–15  = −2  STRONG COMPRESSION
  15–10  = gap
- 10–0   = −3  FLIP
+ 10–0   = −3  EXTREME COMPRESSION / DANGER
 ```
 
 The 5-point gaps are hysteretic transition bands and use prior state to decide whether the axis is entering or leaving a commit level.
@@ -81,16 +81,9 @@ The 5-point gaps are hysteretic transition bands and use prior state to decide w
 
 The differential does not need an OFF neutral. Around CENTER the opposed sides can remain live and exchange / circulate current while the net difference stays near zero. A bias shifts that live orbit toward + or −.
 
-What changes with voltage is **commit depth**, not axis identity:
+What changes with voltage is **expression/compression strength**, not axis identity. The named bands are moderate, strong, and extreme on either side of the active middle. The six gaps remain hysteretic transition regions.
 
-- inside the home wobble: HOLD / live balance
-- first calibrated crossing: CHOICE depth
-- next crossing: PIVOT depth
-- next crossing: FLIP depth
-
-Exact enter/exit voltages remain bench calibration and must include hysteresis. When magnitude falls, the axis can descend the same depth ladder rather than being forced to continue upward.
-
-A/B/C therefore run in parallel as three spatial differentials. CHOICE/PIVOT/FLIP is the threshold ladder within their coupled behavior. POINT/PATH/FIELD belongs to larger scale organization and is not an alias for A/B/C.
+A/B/C therefore run in parallel as three spatial differentials. CHOICE/PIVOT/FLIP is separate control logic and must not be inferred directly from ±1/±2/±3. POINT/PATH/FIELD belongs to larger scale organization and is not an alias for A/B/C.
 
 ## Drive is still a difference
 
