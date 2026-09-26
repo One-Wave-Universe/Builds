@@ -23,15 +23,15 @@ Needs:
 
 The event bands are fixed in normalized 0–100 form:
 
-- +3: 90–100
-- +2: 75–85
-- +1: 60–70
-- HOLD: 45–55
-- −1: 30–40
-- −2: 15–25
-- −3: 0–10
+- +3 / 90–100: EXTREME EXPRESSION / DANGER
+- +2 / 75–85: STRONG EXPRESSION
+- +1 / 60–70: MODERATE EXPRESSION
+- 0 / 45–55: ACTIVE MIDDLE / STABLE OSCILLATING REGION
+- −1 / 30–40: MODERATE COMPRESSION
+- −2 / 15–25: STRONG COMPRESSION
+- −3 / 0–10: EXTREME COMPRESSION / DANGER
 
-The six 5-point spaces between those bands are hysteresis / transition gaps. No timer resolves them. Prior settled state plus the direction of the analog lean determines which band owns the crossing.
+The six 5-point spaces between those bands are hysteresis / transition gaps. No timer resolves them. Prior settled state plus the direction of the analog lean determines which band owns the crossing. The two extreme bands are protection / terminal regions where the implementation may reset, release, clamp, or fail safely.
 
 ## Thresholds are the events
 
