@@ -1,32 +1,42 @@
-# Reinjection bus
+# Reinjection bus / vagus circulation
 
-A shared DC / analog bus spans the lattice. Every cell may draw from it. Every cell may return recovered inductive energy and physical consequences to it through gated / steered paths.
+The CELL_V1 vagus system is a paired lattice circulation:
 
-**CENTER / virtual ground and V_BUS are different nodes.**
+- **arterial / feed side** distributes available energy and the present live bus condition toward cells;
+- **venous / return side** receives recovered inductive energy and physical consequences from cells and returns them toward shared storage / the live bus state.
+
+Every cell participates in both sides.
+
+**CENTER / virtual ground remains separate from both.**
 
 - CENTER = fixed virtual-ground center reference for the differential structure.
-- V_BUS = live shared analog / energy / readiness / reinjection state.
-- V_BUS is not assumed to be neutral or zero; when read, it is whatever value the coupled system physically has at that moment.
+- arterial/feed = outward distribution side of the vagus circulation.
+- venous/return = recovery / consequence side of the vagus circulation.
+- V_BUS live state = the shared physical condition produced by the coupled feed/return system.
 
-Both mirrored sides can read V_BUS and, through their gated return paths, contribute to its next state.
+V_BUS is not assumed to be neutral or zero; when read, it is whatever value the coupled system physically has at that moment.
 
 ## Conceptual topology
 
 ```
-       V_BUS shared live rail
-            |
-   ┌────────┼────────┐
- [A stage] [B stage] [C stage]
-   |         |        |
-  WA        WB       WC
-   |         |        |
-   └────────┼────────┘
-            |
-    steering / gated return
-            |
-       DC-link storage
-            |
-       back to V_BUS
+        shared storage / live V_BUS state
+                   │
+          arterial/feed rail
+                   │
+       ┌───────────┼───────────┐
+    [A stage]   [B stage]   [C stage]
+       │           │           │
+      WA          WB          WC
+       │           │           │
+       └───────────┼───────────┘
+                   │
+        steering / gated return
+                   │
+          venous/return rail
+                   │
+        local / shared storage
+                   │
+          updates live V_BUS
 ```
 
 Per axis:
@@ -34,29 +44,29 @@ Per axis:
 - bidirectional drive / switching path,
 - winding or coupled magnetic path,
 - steering / synchronous return on collapse,
-- local storage / DC-link element,
-- gated return to V_BUS,
-- sensing relative to CENTER plus the present shared bus condition.
+- local storage / DC-link element where useful,
+- gated connection to the venous return side,
+- sensing relative to CENTER plus the present feed-side bus condition.
 
-The exact voltage level and implementation are bench choices. Do not confuse an early prototype supply with the architectural meaning of V_BUS.
+The exact voltage level and implementation are bench choices. Do not confuse an early prototype supply with the architectural meaning of the vagus system.
 
-## Recovery
+## Recovery loop
 
-Drive releases. Field collapses. Current wants to continue. A controlled return path can steer some of that energy toward local storage and V_BUS:
-
-1. active drive changes state,
-2. winding field collapses,
-3. steering / synchronous path conducts,
-4. current charges storage / returns to bus,
-5. V_BUS changes,
-6. both sides can read that resulting state on the next interaction.
+1. arterial/feed side presents the current shared condition / available energy,
+2. local threshold and hysteresis state determines action,
+3. winding stores magnetic energy during action,
+4. active drive changes state,
+5. winding field collapses,
+6. steering / synchronous path routes return onto the venous side,
+7. returned energy / consequence changes shared storage / live V_BUS,
+8. the updated state is redistributed on the arterial/feed side.
 
 Useful accounting:
 
-- E_in = ∫ V(t)·I(t) dt at the source / bus
+- E_in = ∫ V(t)·I(t) dt at the source / feed
 - E_L = ½ L I² at a measured instant
 - E_C = ½ C V²
-- E_rec = measured returned energy
+- E_rec = measured energy arriving on the venous return
 - E_loss = input − recovered − useful output − stored change, within measurement uncertainty
 
 CELL_V1 does not assume created energy. Recovery fraction must be measured.
@@ -69,21 +79,17 @@ That makes memory and recovery **coupled parts of one loop**, but bench work mus
 
 Do not claim that every write necessarily deepens memory or that a given write depth maps to a specific lifetime until measured.
 
-## Bus state
+## Why split feed and return
 
-V_BUS is more than a power reservoir if the experiment shows cells can usefully respond to its instantaneous value.
+A paired feed/return architecture gives the vagus system a cleaner physical role:
 
-Possible measurable descriptors include:
+- the feed side does not have to absorb every collapse event directly,
+- the return side can be steered, measured, buffered, and gated separately,
+- returned energy can be accounted for before being reintroduced,
+- one cell's collapse is less likely to swamp another cell's immediate feed path,
+- and flower-scale circulation can merge recursively without using CENTER as a dump node.
 
-- absolute bus voltage / current,
-- rising vs falling tendency,
-- local impedance,
-- returned-energy pulses,
-- cross-cell perturbation,
-- recovery fraction,
-- settling after an event.
-
-The labels ready / depleted / recovering are engineering interpretations of those measurements, not fixed metaphysical states.
+Whether the two sides should be separate conductors everywhere, partially shared through switched elements, or locally combined through storage is a bench design question.
 
 ## Proven / ordinary bench / hypothesis
 
@@ -93,43 +99,47 @@ Established mechanisms:
 - MOSFET switching,
 - hysteresis / remanence,
 - differential sensing,
-- shared-rail power distribution.
+- paired supply/return distribution,
+- local decoupling and shared-rail impedance control.
 
 Ordinary bench work:
 - half-bridge / bidirectional switching,
 - synchronous steering,
 - cap sizing,
-- rail sensing,
+- feed and return current sensing,
 - current-direction sensing,
 - decoupling and impedance control.
 
 Hypothesis until measured:
-- shared V_BUS couples cells usefully,
+- the paired vagus circulation couples cells usefully,
 - returned energy can participate in the next state without destabilizing the lattice,
 - desired short / medium / long retention regimes emerge,
 - one coupled arrangement supports both useful memory and useful recovery,
-- A/B/C cross-coupling remains controllable.
+- A/B/C cross-coupling remains controllable,
+- recursive artery/vein merging remains stable at flower scale.
 
 ## Hard parts
 
 1. Steer recovery without moving CENTER.
-2. Keep V_BUS distinct from virtual ground.
-3. Prevent one branch from swamping the other A/B/C branches.
+2. Keep both circulation paths distinct from virtual ground.
+3. Prevent venous return spikes from swamping the arterial/feed side.
 4. Characterize short / medium / long hysteresis rather than naming durations prematurely.
 5. Determine winding gauge, turn count, spacing, geometry, and coupling experimentally.
 6. Control saturation / erase / fade so the lattice does not freeze.
-7. Measure or do not claim.
+7. Determine optimum feed/return impedance and local storage.
+8. Measure or do not claim.
 
 ## Build order
 
-1. One axis recovery — one winding, steering, storage. Measure E_in vs E_rec.
-2. Characterize threshold / return waveform.
-3. Add magnetic state element. Measure hysteresis.
-4. Same probe, different prior state, compare response. Stop if no reproducible state dependence.
-5. Characterize retention over progressively longer intervals.
-6. Add three axes A/B/C on one shared V_BUS. Measure cross-coupling.
-7. Add threshold-driven A→B→C field progression; no global clock.
-8. Tune winding gauge / turns / spacing / coupling.
-9. Flower / multi-cell lattice only after the single-cell loop is reproducible.
+1. One axis with separate feed and return nodes.
+2. One winding, steering, storage. Measure E_in vs E_rec.
+3. Characterize feed-side disturbance when return fires.
+4. Add magnetic state element. Measure hysteresis.
+5. Same probe, different prior state, compare response. Stop if no reproducible state dependence.
+6. Characterize retention over progressively longer intervals.
+7. Add three axes A/B/C on one paired feed/return circulation. Measure cross-coupling.
+8. Add threshold-driven A→B→C field progression; no global clock.
+9. Tune winding gauge / turns / spacing / coupling.
+10. Flower / multi-cell lattice only after the single-cell circulation is reproducible.
 
 Nothing above the single-cell validation matters until that validation works.
