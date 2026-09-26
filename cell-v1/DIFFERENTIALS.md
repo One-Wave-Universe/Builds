@@ -55,6 +55,28 @@ Stack inverted: A+ of the upper flower meets A− of the lower. Another differen
 
 ---
 
+## Seven-band axis readout
+
+Each A/B/C differential uses the same normalized 0–100 readout around CENTER = 50:
+
+```
+100–90  = +3  FLIP
+ 90–85  = gap
+ 85–75  = +2  PIVOT
+ 75–70  = gap
+ 70–60  = +1  CHOICE
+ 60–55  = gap
+ 55–45  =  0  HOLD
+ 45–40  = gap
+ 40–30  = −1  CHOICE
+ 30–25  = gap
+ 25–15  = −2  PIVOT
+ 15–10  = gap
+ 10–0   = −3  FLIP
+```
+
+The 5-point gaps are hysteretic transition bands and use prior state to decide whether the axis is entering or leaving a commit level.
+
 ## Live orbit / lean
 
 The differential does not need an OFF neutral. Around CENTER the opposed sides can remain live and exchange / circulate current while the net difference stays near zero. A bias shifts that live orbit toward + or −.
