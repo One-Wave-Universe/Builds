@@ -1,56 +1,60 @@
 # Flower
 
-**The letters are the edges.** Not the corners. Corners cannot be shared. Edges can.
+The flower is the first scale at which the CELL_V1 architecture gains a true **combined body state**.
 
-Seven hexes: one middle, six around. Each neighbor shares **one whole side** with the middle.
+Shared edges still form the A+/A−, B+/B−, C+/C− differential relationships, but the important new feature is that many local cell consequences now coexist on one coupled lattice.
 
-```
-Middle side A+  kisses  neighbor side A-
-Middle side B+  kisses  neighbor side B-
-Middle side C+  kisses  neighbor side C-
-```
+## Why reinjection begins here
 
-Plus against minus on the same shared boundary. That is the mirror. Tiling creates the opposed differential surface.
+A lone cell can have:
 
-Outer hexes meet each other the same way on the side they share.
+- local lean,
+- local hysteresis,
+- local winding action,
+- local recovery.
 
-## Flower is one differential system
+But there is no larger body state yet to reinject.
 
-The flower is not a bag of independent cells. Its meaning is the **complete coupled differential lean** created by all shared A/B/C surfaces, the nucleus, the field structures, and the common lattice-side return.
+In a flower, multiple cells contribute simultaneously to one shared lattice condition. Their returns can be combined, measured, stored, and redistributed.
 
-The center hex / nucleus relationship organizes the flower as one higher-scale state machine.
-
-If two mirrored flower-side geometries face one another around the same nucleus and share the same lattice-side return, **do not count them as two independent flowers**. They are the two opposed halves of **one flower-scale cell**.
-
-## Nucleus and bus
-
-The **square figure-8 nucleus remains the retained-state / brain-side center of the combined flower-scale structure**.
-
-The lattice-side copper / return paths of the member cells are not separate final buses. As the flower scales, those local segments join into the larger continuous **V_BUS / vagus bus**.
-
-So the scale-up is:
+That creates the first complete vagus loop:
 
 ```
-local differential edges
-        ↓
-flower-wide differential lean
-        ↓
-one nucleus-centered combined state
-        ↓
-local return segments merge
-        ↓
-one scaled shared vagus bus
+cells act
+  ↓
+venous return combines consequences
+  ↓
+shared V_BUS becomes the flower/body state
+  ↓
+arterial feed redistributes it
+  ↓
+cells act again from the combined state
 ```
 
-V_BUS is still live state, not CENTER and not neutral zero.
+## Muscle-memory level
+
+The flower / body lattice is therefore the first plausible scale for the proposed **muscle-memory-like** behavior.
+
+Repeated multi-cell patterns may alter the shared hysteretic state so later movements begin from a different physical bias.
+
+That is not assumed to work merely because the topology exists. It must be demonstrated with repeated-pattern experiments.
+
+## One flower-scale differential system
+
+If the geometry has two opposed flower-side structures around one nucleus and one coupled lattice, they are two halves of **one flower-scale differential system**, not two independent flowers.
+
+At this scale:
+
+- the nucleus participates in the combined retained state,
+- local venous paths merge into one larger return network,
+- local arterial paths merge into one larger feed network,
+- the shared V_BUS represents the current combined body / lattice state,
+- CENTER remains virtual ground and is not the reinjection rail.
 
 ## Anti-drift
 
-- One mirrored two-sided flower assembly around one nucleus = **one flower-scale cell**.
-- Do not split its two opposed halves into two independent flowers.
-- Do not create a second nucleus for the mirrored half unless the architecture explicitly defines a second independent cell.
-- Local bus segments combine into the scaled shared vagus bus.
-- CENTER remains virtual ground and stays distinct from V_BUS.
+- Single cell: local memory / local recovery.
+- Flower cluster: first full reinjection loop.
+- Body-scale V_BUS: combined state, not neutral zero.
+- “Muscle memory” = proposed distributed retained lattice bias, not a proven biological equivalent.
 - No global clock.
-
-If a drawing puts A+ on a point instead of a shared edge, throw the drawing out. The flower cannot connect correctly.
