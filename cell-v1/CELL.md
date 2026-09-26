@@ -19,8 +19,8 @@ One CELL_V1 includes, as one coupled physical state machine:
 - the square figure-8 toroidal nucleus / retained-state structure,
 - the two outer round figure-8 field structures with mirrored 3+3 windings,
 - the local flower geometry and its shared-edge differential relationships,
-- the lattice-side return / reinjection network,
-- and its connection into the scaled shared V_BUS / vagus bus.
+- the paired lattice-side feed/return circulation,
+- and its connection into the scaled shared V_BUS / vagus system.
 
 Do not describe any one of those pieces as “the cell” by itself. The **cell is the full differential leaning loop** produced by all of them together.
 
@@ -46,38 +46,43 @@ Do not describe any one of those pieces as “the cell” by itself. The **cell 
    - The six windings are not six independent motors or six independent gates.
    - The round figure-8 toroids are not the center reference. CENTER is virtual ground.
 
-4. **Lattice bus / vagus side**
+4. **Lattice bus / vagus circulation**
    - **CENTER is the virtual-ground center reference.**
    - **V_BUS is not zero, neutral, or a preset midpoint.**
-   - V_BUS is the shared live analog state / energy / readiness / reinjection rail across the lattice.
-   - At any observation, V_BUS is whatever physical value the coupled system has actually reached at that instant.
-   - Both mirrored sides can read V_BUS and can feed consequences / recovered energy back into it.
-   - Collapse energy returns to V_BUS; it is never dumped onto CENTER.
+   - The vagus system is a paired circulation:
+     - **arterial/feed path** carries available bus energy and the present shared condition outward to cells / flower regions;
+     - **venous/return path** carries recovered inductive energy and physical consequences back toward the shared reservoir / combined bus.
+   - The two paths are parts of one closed circulation, not independent control systems.
+   - At any observation, the live bus condition is whatever physical value the coupled system has actually reached at that instant.
+   - Both mirrored sides can read the present shared condition and contribute back through the return side.
+   - Collapse energy returns through the venous/return path; it is never dumped onto CENTER.
    - Neighbor coupling and returned consequences feed the next cell decision.
 
 ## Flower scaling rule
 
 A flower is not two independent cells or two independent flowers simply because the geometry is mirrored or layered.
 
-**When two mirrored flower-side structures are coupled through one nucleus and one continuous lattice-side bus, they are one complete flower-scale cell.**
+**When two mirrored flower-side structures are coupled through one nucleus and one continuous paired lattice circulation, they are one complete flower-scale cell.**
 
 At that scale:
 
 - the nucleus remains one nucleus for the combined structure,
 - the mirrored flower sides are two differential halves of one larger leaning system,
-- their lattice-bus paths combine into one scaled shared **vagus bus**,
-- and the resulting bus is the live common state seen by the whole combined flower.
+- their local arterial/feed paths merge into one scaled outward vagus feed tree,
+- their local venous/return paths merge into one scaled return tree,
+- together those two trees form the combined **vagus circulation**,
+- and the resulting live bus condition is seen by the whole combined flower.
 
 So do **not** count “two flower faces” as “two flowers” when they are the opposed halves of one nucleus-centered structure. The complete opposed structure is **one flower-scale cell**.
 
-Scaling does not invent a second bus. Local bus segments join into the larger continuous V_BUS / vagus circulation path.
+Scaling does not invent a second controller. Local circulation segments join into the larger paired vagus system.
 
 ## Unified loop
 
 ```
 virtual-ground CENTER = fixed center reference
                   │
-neighbor / sensor consequence
+shared bus condition arrives on arterial/feed side
         ↓
 square figure-8 nucleus
 (retained-state bias)
@@ -94,16 +99,16 @@ combined motor / field action
         ↓
 collapse / inductive return
         ↓
-local lattice return paths merge
+venous/return paths merge
         ↓
-scaled V_BUS / vagus live state
+shared storage / V_BUS state updates
         ↓
-both mirrored sides read the resulting bus state
+arterial/feed side carries the new condition outward
         ↓
 next nucleus / gate decision
 ```
 
-No subsystem bypasses the ternary decision. Nucleus, gates, outer windings, reinjection, bus, flower geometry, and neighbor coupling are one coupled physical state machine.
+No subsystem bypasses the ternary decision. Nucleus, gates, outer windings, paired vagus circulation, flower geometry, and neighbor coupling are one coupled physical state machine.
 
 ## State / action law
 
@@ -112,13 +117,13 @@ Next view = last move + what came back up.
 Two agrees → push.  
 One voice → wait.  
 Opposition → HOLD.  
-Drive off → return energy to V_BUS.
+Drive off → return energy through the venous path toward V_BUS.
 
 HOLD is live readiness around center, not a clocked idle.
 
 ## Established pieces vs experimental integration
 
-Established electrical / magnetic mechanisms include differential sensing, MOSFET switching, inductive energy recovery, hysteresis / remanence, magnetic coupling, and rotating-field motor principles.
+Established electrical / magnetic mechanisms include differential sensing, MOSFET switching, inductive energy recovery, hysteresis / remanence, magnetic coupling, rotating-field motor principles, and paired supply/return distribution.
 
 **CELL_V1 does not claim the integrated architecture is already proven.** The experimental work is the exact coupled arrangement and its operating values, including:
 
@@ -127,9 +132,10 @@ Established electrical / magnetic mechanisms include differential sensing, MOSFE
 - exact gate topology and bidirectional drive,
 - winding gauge, turn count, spacing, and geometry,
 - coupling strength between nucleus, outer figure-8 structures, and neighboring cells,
+- separation / impedance of arterial and venous paths,
 - reinjection efficiency and shared-bus stability,
 - torque, field strength, retention depth, and cross-coupling,
-- and whether flower-scale bus merging behaves as the intended larger vagus state.
+- and whether flower-scale circulation behaves as the intended larger vagus system.
 
 These remain bench quantities until measured.
 
@@ -141,13 +147,16 @@ These remain bench quantities until measured.
 - Six outer windings = **mirrored 3+3**.
 - **CENTER = virtual-ground center reference.**
 - **CENTER ≠ V_BUS.**
-- **V_BUS = live analog state; do not describe it as neutral zero.**
-- Both mirrored sides can read from and feed consequences back to V_BUS.
+- **Vagus = paired arterial/feed + venous/return circulation.**
+- The arterial/feed path carries shared condition / available energy outward.
+- The venous/return path carries recovered energy / consequence back.
+- V_BUS live state is produced by the coupled circulation; do not describe it as neutral zero.
+- Both mirrored sides can read from the shared condition and feed consequences back through the return side.
 - A mirrored / two-sided flower assembly around one nucleus is **one flower-scale cell**, not two independent flowers.
-- Local lattice-bus segments merge into the scaled shared **vagus bus**.
+- Local arterial and venous segments merge recursively into the scaled shared vagus circulation.
 - No global clock or timing-based commutation.
 - No second controller that bypasses the cell's ternary decision.
 - Reinjection must re-enter the same state loop.
-- Do not claim measured retention, coupling, recovery, torque, efficiency, or useful flower-scale bus behavior until bench data exists.
+- Do not claim measured retention, coupling, recovery, torque, efficiency, or useful flower-scale circulation until bench data exists.
 
 This file is the CELL_V1 authority. Detail files must agree with it.
