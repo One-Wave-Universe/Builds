@@ -2,7 +2,7 @@
 
 ## Canonical CELL_V1 lock
 
-**1 volt.** Middle **0.50.** Wobble **0.45–0.55.**
+**1 volt normalized axis.** CENTER **0.50 / 50.** HOLD band **0.45–0.55 / 45–55.** Seven-band scale locked below.
 
 Letters **are the six edges:** A+ B+ C+ A− B− C−. Flowers share sides. Opposed edges form three mirrored axes.
 
@@ -62,6 +62,42 @@ next nucleus / gate decision
 ```
 
 No subsystem bypasses the ternary decision. Nucleus, gates, outer windings, reinjection, bus, and neighbor coupling are one coupled physical state machine.
+
+## Locked seven-band differential scale
+
+Normalize each axis to a 0–100 differential magnitude scale around CENTER = 50.
+
+| Band | State | Gate depth |
+| --- | --- | --- |
+| 100–90 | +3 | FLIP |
+| 85–75 | +2 | PIVOT |
+| 70–60 | +1 | CHOICE |
+| 55–45 | 0 | HOLD |
+| 40–30 | −1 | CHOICE |
+| 25–15 | −2 | PIVOT |
+| 10–0 | −3 | FLIP |
+
+The unassigned 5-point windows are hysteresis / transition gaps:
+
+- 90–85
+- 75–70
+- 60–55
+- 45–40
+- 30–25
+- 15–10
+
+These gaps are intentional anti-chatter regions. They are not extra logical states. Entry and exit direction through a gap depend on the prior settled state / hysteresis history.
+
+Locked mapping:
+
+```
+±1 = CHOICE
+±2 = PIVOT
+±3 = FLIP
+0  = HOLD
+```
+
+A/B/C each use this same seven-band scale. A/B/C remain three spatial differential axes around the nucleus; the seven bands are the voltage / magnitude states on each axis.
 
 ## Axis / gate / scale law
 
