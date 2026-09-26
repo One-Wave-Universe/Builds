@@ -19,6 +19,20 @@ Needs:
 - Sense of *direction*, not only size
 - Back-to-back FETs or an honest body-diode plan
 
+## Locked threshold bands
+
+The event bands are fixed in normalized 0–100 form:
+
+- +3: 90–100
+- +2: 75–85
+- +1: 60–70
+- HOLD: 45–55
+- −1: 30–40
+- −2: 15–25
+- −3: 0–10
+
+The six 5-point spaces between those bands are hysteresis / transition gaps. No timer resolves them. Prior settled state plus the direction of the analog lean determines which band owns the crossing.
+
 ## Thresholds are the events
 
 HOLD is the wait between crossings. Lean gathers. Cross a band → fire (drive, write the core, bus sees the return). Then HOLD again.
