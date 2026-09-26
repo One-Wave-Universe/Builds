@@ -35,6 +35,22 @@ POINT → PATH → FIELD is a separate scale-up relation. Do not map A/B/C onto 
 
 No global clock. Threshold crossings, hysteresis, retained state, bus condition, and neighboring consequences determine transitions.
 
+## Locked seven-band scale
+
+Every A/B/C axis uses the same normalized differential bands:
+
+- 100–90 = +3 / FLIP
+- 85–75 = +2 / PIVOT
+- 70–60 = +1 / CHOICE
+- 55–45 = 0 / HOLD
+- 40–30 = −1 / CHOICE
+- 25–15 = −2 / PIVOT
+- 10–0 = −3 / FLIP
+
+The intervening 5-point ranges are hysteresis / transition gaps. They prevent boundary chatter and are resolved from prior settled state and direction of travel.
+
+This mapping is canonical unless changed deliberately in CELL.md.
+
 ## Outer field shell
 
 Two **round figure-8 toroidal structures** form one combined outer electrical / magnetic field.
