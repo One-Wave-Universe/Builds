@@ -2,7 +2,7 @@
 
 Identity of the flower. Analog. No MCU.
 
-Axis state is first quantized by the locked seven-band differential scale: 0, ±1, ±2, ±3. The two-of-three summer acts only on committed signed axis states; hysteresis gaps inhibit commitment.
+Axis state is first placed in the locked seven-band EXPRESS↔COMPRESS scale: 0, ±1, ±2, ±3. Those numbers describe direction and strength of lean, not CHOICE/PIVOT/FLIP. The two-of-three summer acts only on committed signed axis states; hysteresis gaps inhibit commitment.
 
 One **unit** = Iss from one committed IN contribution. Threshold = 1.5 units.
 
@@ -24,7 +24,7 @@ Walking third is **not** inside the sum. Separate inhibit. If any axis is in a g
 Per axis:
 
 - Diff already exists (the pair). D is a voltage.
-- Windowing must implement the locked bands: 45–55 HOLD; 60–70 / 30–40 CHOICE; 75–85 / 15–25 PIVOT; 90–100 / 0–10 FLIP, with the six 5-point gaps treated as hysteresis / transition bands. Outputs: HOLD, GAP (in the unnamed bands), IN (in ±1/±2/±3).
+- Windowing must implement the locked bands: 45–55 active middle; 60–70 moderate expression / 30–40 moderate compression; 75–85 strong expression / 15–25 strong compression; 90–100 extreme expression-danger / 0–10 extreme compression-danger, with the six 5-point gaps treated as hysteresis / transition bands. Outputs: HOLD, GAP (in the unnamed bands), IN (in ±1/±2/±3).
 - Sign: one comparator on D vs CENTER → S.
 
 Shared:
