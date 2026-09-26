@@ -1,8 +1,15 @@
 # Bus-side lattice
 
-V_BUS is the shared circulation / readiness / reinjection rail of the lattice.
+The vagus side of CELL_V1 is a **paired circulation**, not one undifferentiated wire.
 
-It is **not** the square figure-8 nucleus and it is not CENTER.
+It has two complementary lattice paths:
+
+- **arterial / feed path** — carries available bus energy and the present shared condition outward toward cells and flower regions;
+- **venous / return path** — carries recovered inductive energy and physical consequences back toward the shared reservoir / combined bus.
+
+Together they form one closed vagus circulation.
+
+It is **not** the square figure-8 nucleus and neither path is CENTER.
 
 ## Cell relationship
 
@@ -13,28 +20,41 @@ Each complete CELL_V1 contributes its full differential leaning loop:
 - two outer round figure-8 field structures;
 - six outer windings as mirrored 3+3;
 - virtual-ground CENTER;
-- gated return / reinjection paths;
-- and access to the shared live V_BUS.
+- one local arterial/feed branch;
+- one local venous/return branch;
+- gated reinjection between the active cell and the return side;
+- and access to the scaled shared circulation.
 
-Outer-winding collapse is steered back to V_BUS. Bus condition and neighbor consequences may then affect the next nucleus / gate decision.
+The cell reads the present shared condition arriving on the feed side. Outer-winding collapse and other return consequences are steered onto the return side. That return updates the shared reservoir / live bus state, which then becomes the next condition carried outward.
 
-## Scaling into the vagus bus
+## Scaling into the vagus system
 
-The local lattice-side paths are segments of one larger circulation network.
-
-As cells join into a flower:
+The lattice scales as paired trees / meshes:
 
 ```
-cell bus segment
-      + cell bus segment
-      + ...
-      ↓
-flower-scale shared V_BUS
+          shared storage / live bus state
+                 │
+          arterial/feed trunk
+            /    |    \
+        cell   cell   cell
+          \     |     /
+          venous/return trunk
+                 │
+          shared storage / bus
 ```
 
-As the structure grows beyond one flower, those flower-scale paths continue to merge into the larger **vagus bus**.
+At flower scale:
 
-The vagus bus therefore scales by **combining the member lattice return paths into one continuous shared live state**, not by creating an unrelated high-level control bus.
+```
+local feed branches  → merge into flower feed
+local return branches ← merge into flower return
+
+flower feed + flower return = one flower-scale vagus circulation
+```
+
+As flowers combine, the same rule repeats. Local feed paths join the larger outward distribution network; local return paths join the larger recovery / consequence network.
+
+The vagus system therefore scales by **recursive pairing of feed and return**, not by creating a new high-level controller.
 
 ## Mirrored flower rule
 
@@ -42,21 +62,33 @@ If two opposed flower-side geometries share:
 
 - one nucleus-centered retained-state structure,
 - one coupled differential leaning loop,
-- and one merged lattice return / V_BUS,
+- one combined arterial/feed network,
+- and one combined venous/return network,
 
 then they are **one combined flower-scale cell**, not two independent flowers.
 
 The two sides are differential halves of one system.
 
+## Electrical meaning
+
+The artery/vein language is architectural shorthand, not a claim that current can only ever move one physical direction in every conductor.
+
+Implementation may use MOSFETs, diodes, synchronous steering, local capacitors, and bidirectional segments as required. What is locked is the **functional separation**:
+
+- feed/distribute,
+- return/recover,
+- CENTER stays separate.
+
 ## Lattice state
 
-The lattice state is the coupled result of:
+The live lattice state is the coupled result of:
 
 - local differential leans,
 - nucleus retained state,
 - outer fields,
-- returned energy,
-- shared bus condition,
+- feed-side condition,
+- returned energy / consequence,
+- shared reservoir state,
 - and neighbor interactions.
 
-Whether that coupling produces useful collective behavior is a measurement question. The topology is canonical; the performance is not assumed.
+Whether that circulation produces useful collective behavior is a measurement question. The topology is canonical; the performance is not assumed.
