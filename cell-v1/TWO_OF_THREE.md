@@ -2,7 +2,9 @@
 
 Identity of the flower. Analog. No MCU.
 
-One **unit** = Iss from one IN. Threshold = 1.5 units.
+Axis state is first quantized by the locked seven-band differential scale: 0, ±1, ±2, ±3. The two-of-three summer acts only on committed signed axis states; hysteresis gaps inhibit commitment.
+
+One **unit** = Iss from one committed IN contribution. Threshold = 1.5 units.
 
 | INs | Sum | Result |
 | --- | --- | --- |
@@ -22,7 +24,7 @@ Walking third is **not** inside the sum. Separate inhibit. If any axis is in a g
 Per axis:
 
 - Diff already exists (the pair). D is a voltage.
-- Window: two comparators (or one window chip e.g. window detector) vs 0.45 / 0.55 and vs commit edges. Outputs: HOLD, GAP (in the unnamed bands), IN (in ±1/±2/±3).
+- Windowing must implement the locked bands: 45–55 HOLD; 60–70 / 30–40 CHOICE; 75–85 / 15–25 PIVOT; 90–100 / 0–10 FLIP, with the six 5-point gaps treated as hysteresis / transition bands. Outputs: HOLD, GAP (in the unnamed bands), IN (in ±1/±2/±3).
 - Sign: one comparator on D vs CENTER → S.
 
 Shared:
