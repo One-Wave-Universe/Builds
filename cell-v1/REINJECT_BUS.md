@@ -1,125 +1,135 @@
 # Reinjection bus
 
-A shared DC bus that spans the whole lattice. Every cell draws from it. Every cell returns to it. Collapsing fields are steered back to it instead of dumped as heat. Recovered energy is available to any other cell that needs it.
+A shared DC / analog bus spans the lattice. Every cell may draw from it. Every cell may return recovered inductive energy and physical consequences to it through gated / steered paths.
 
-Not just efficiency. Circulatory. Blood does not belong to one organ. Same here.
+**CENTER / virtual ground and V_BUS are different nodes.**
 
-CENTER / V0 stays quiet. The bus is other metal.
+- CENTER = fixed virtual-ground center reference for the differential structure.
+- V_BUS = live shared analog / energy / readiness / reinjection state.
+- V_BUS is not assumed to be neutral or zero; when read, it is whatever value the coupled system physically has at that moment.
 
-## Topology
+Both mirrored sides can read V_BUS and, through their gated return paths, contribute to its next state.
+
+## Conceptual topology
 
 ```
-       +1V rail (shared DC bus)
+       V_BUS shared live rail
             |
-   ┌───────┼───────┐
- [HB-A]  [HB-B]  [HB-C]     3 half-bridges
-   |        |       |
-  WA       WB      WC       windings
-   |        |       |
-   └───────┼───────┘
+   ┌────────┼────────┐
+ [A stage] [B stage] [C stage]
+   |         |        |
+  WA        WB       WC
+   |         |        |
+   └────────┼────────┘
             |
-     steering / clamp
+    steering / gated return
             |
-       DC-link cap
+       DC-link storage
             |
-     ──→ back to +1V rail
+       back to V_BUS
 ```
 
 Per axis:
 
-- Half-bridge — two MOSFETs, winding forward or reverse
-- Winding — field stores the event
-- Steering — diode or synchronous switch on the collapse
-- DC-link cap — local reservoir
-- Return — cap feeds the main bus
+- bidirectional drive / switching path,
+- winding or coupled magnetic path,
+- steering / synchronous return on collapse,
+- local storage / DC-link element,
+- gated return to V_BUS,
+- sensing relative to CENTER plus the present shared bus condition.
 
-Cell-0 is still one pair at 9 V. This +1 V rail is the analog-brain / lattice bus layer. Do not mash the two supplies into one node.
+The exact voltage level and implementation are bench choices. Do not confuse an early prototype supply with the architectural meaning of V_BUS.
 
 ## Recovery
 
-Drive off. Field collapses. Current wants to keep going. Steered to the cap:
+Drive releases. Field collapses. Current wants to continue. A controlled return path can steer some of that energy toward local storage and V_BUS:
 
-1. Drive MOSFET off
-2. Winding spikes (L·di/dt)
-3. Steering conducts
-4. Current into DC-link cap
-5. Cap voltage rises
-6. Energy on the cap: E = ½ C V²
+1. active drive changes state,
+2. winding field collapses,
+3. steering / synchronous path conducts,
+4. current charges storage / returns to bus,
+5. V_BUS changes,
+6. both sides can read that resulting state on the next interaction.
 
-Any cell may draw bus first, external supply second. Only losses get replaced by the source.
+Useful accounting:
 
-## Accounting — no created energy
+- E_in = ∫ V(t)·I(t) dt at the source / bus
+- E_L = ½ L I² at a measured instant
+- E_C = ½ C V²
+- E_rec = measured returned energy
+- E_loss = input − recovered − useful output − stored change, within measurement uncertainty
 
-- E_in = ∫ V(t)·I(t) dt at the rail
-- E_L = ½ L I² at peak winding current
-- E_rec = ½ C (V_final² − V_initial²)
-- E_loss = E_in − E_rec − E_useful
+CELL_V1 does not assume created energy. Recovery fraction must be measured.
 
-If you recover 40%, say 40%. Never 100%. Never more than in.
-CELL_V1 does not assume energy creation.
+## Memory and return are coupled, not automatically identical
 
-## Memory and return are the same path
+The proposed architecture routes return through state-bearing magnetic / electrical structures so prior state may condition the return path.
 
-The return goes through the same state-bearing magnetic element that just took the write. The path that wrote is the path the energy comes home on. Return is conditioned by the write.
+That makes memory and recovery **coupled parts of one loop**, but bench work must determine whether they can share enough physical path to produce the desired behavior without unwanted saturation, oscillation, or cross-coupling.
 
-- The cell keeps direction, phase, magnitude of that use
-- Every write deepens the lean
-- Every return walks the same lean
-- Memory and recovery are one process, not two boxes
+Do not claim that every write necessarily deepens memory or that a given write depth maps to a specific lifetime until measured.
 
-Write depth is how hard the lean sits:
+## Bus state
 
-- Shallow — low current, partial alignment, fades
-- Deep — high current, consolidated
-- Saturated — protected, decades
+V_BUS is more than a power reservoir if the experiment shows cells can usefully respond to its instantaneous value.
 
-Same core. Same path. Different write energy.
+Possible measurable descriptors include:
 
-## Bus voltage is lattice state
+- absolute bus voltage / current,
+- rising vs falling tendency,
+- local impedance,
+- returned-energy pulses,
+- cross-cell perturbation,
+- recovery fraction,
+- settling after an event.
 
-Not just power. Every cell can feel it. No central controller.
-
-- High — charged, ready to drive
-- Low — depleted, conserve
-- Rising — recovering
-- Falling — spending faster than return
+The labels ready / depleted / recovering are engineering interpretations of those measurements, not fixed metaphysical states.
 
 ## Proven / ordinary bench / hypothesis
 
-Proven: ½LI², ½CV², steering of collapse, hysteresis, deeper alignment with repeat write.
+Established mechanisms:
+- ½LI² and ½CV² energy storage,
+- steering of inductive collapse,
+- MOSFET switching,
+- hysteresis / remanence,
+- differential sensing,
+- shared-rail power distribution.
 
-Ordinary bench: half-bridge, synchronous steering, cap sizing, sense the rail.
+Ordinary bench work:
+- half-bridge / bidirectional switching,
+- synchronous steering,
+- cap sizing,
+- rail sensing,
+- current-direction sensing,
+- decoupling and impedance control.
 
 Hypothesis until measured:
-
-- Return stays off V0 / CENTER
-- Shared bus couples cells usefully
-- Write depth gives the hardness range we want
-- Bus voltage is enough local coordination
+- shared V_BUS couples cells usefully,
+- returned energy can participate in the next state without destabilizing the lattice,
+- desired short / medium / long retention regimes emerge,
+- one coupled arrangement supports both useful memory and useful recovery,
+- A/B/C cross-coupling remains controllable.
 
 ## Hard parts
 
-1. Steer recovery without moving CENTER
-2. Shared bus impedance — local decoupling, layout
-3. Saturation — need fade / erase or the lattice freezes its first habit
-4. Material — wide coercivity range, not a random EMI bead
-5. Measure or do not claim
+1. Steer recovery without moving CENTER.
+2. Keep V_BUS distinct from virtual ground.
+3. Prevent one branch from swamping the other A/B/C branches.
+4. Characterize short / medium / long hysteresis rather than naming durations prematurely.
+5. Determine winding gauge, turn count, spacing, geometry, and coupling experimentally.
+6. Control saturation / erase / fade so the lattice does not freeze.
+7. Measure or do not claim.
 
 ## Build order
 
-1. One axis recovery — one winding, steering, cap. E_in vs E_rec.
-2. Say the number you got.
-3. Magnetic core on that winding. Hysteresis. Write depth.
-4. Identical probe, different prior lean, different response. Stop here if this fails.
-5. Three axes A B C. Shared bus. Cross-coupling.
-6. Sequence A→B→C. Field rotates. Recovery during rotation.
-7. Flower. Seven cells, one bus. Aggregate recovery.
-8. Volume / hemisphere / body.
+1. One axis recovery — one winding, steering, storage. Measure E_in vs E_rec.
+2. Characterize threshold / return waveform.
+3. Add magnetic state element. Measure hysteresis.
+4. Same probe, different prior state, compare response. Stop if no reproducible state dependence.
+5. Characterize retention over progressively longer intervals.
+6. Add three axes A/B/C on one shared V_BUS. Measure cross-coupling.
+7. Add threshold-driven A→B→C field progression; no global clock.
+8. Tune winding gauge / turns / spacing / coupling.
+9. Flower / multi-cell lattice only after the single-cell loop is reproducible.
 
-Nothing above 4 matters until 4 works.
-
-## Cell-0 hook
-
-`CELL0.md` pair first (9 V, DB/DC, CENTER, core).
-After T5: leftover drain and kick to this bus, not to CENTER.
-Shared bus later. Shared CENTER never.
+Nothing above the single-cell validation matters until that validation works.
