@@ -69,13 +69,13 @@ Normalize each axis to a 0–100 differential magnitude scale around CENTER = 50
 
 | Band | State | Gate depth |
 | --- | --- | --- |
-| 100–90 | +3 | FLIP |
-| 85–75 | +2 | PIVOT |
-| 70–60 | +1 | CHOICE |
-| 55–45 | 0 | HOLD |
-| 40–30 | −1 | CHOICE |
-| 25–15 | −2 | PIVOT |
-| 10–0 | −3 | FLIP |
+| 100–90 | +3 | EXTREME EXPRESSION / DANGER |
+| 85–75 | +2 | STRONG EXPRESSION |
+| 70–60 | +1 | MODERATE EXPRESSION |
+| 55–45 | 0 | ACTIVE MIDDLE / STABLE OSCILLATING REGION |
+| 40–30 | −1 | MODERATE COMPRESSION |
+| 25–15 | −2 | STRONG COMPRESSION |
+| 10–0 | −3 | EXTREME COMPRESSION / DANGER |
 
 The unassigned 5-point windows are hysteresis / transition gaps:
 
@@ -88,14 +88,19 @@ The unassigned 5-point windows are hysteresis / transition gaps:
 
 These gaps are intentional anti-chatter regions. They are not extra logical states. Entry and exit direction through a gap depend on the prior settled state / hysteresis history.
 
-Locked mapping:
+Locked band meaning:
 
 ```
-±1 = CHOICE
-±2 = PIVOT
-±3 = FLIP
-0  = HOLD
++3 = EXTREME EXPRESSION / DANGER
++2 = STRONG EXPRESSION
++1 = MODERATE EXPRESSION
+ 0 = ACTIVE MIDDLE / STABLE OSCILLATING REGION
+-1 = MODERATE COMPRESSION
+-2 = STRONG COMPRESSION
+-3 = EXTREME COMPRESSION / DANGER
 ```
+
+The ±3 edge bands are terminal / protection boundaries for a domain-specific reset, release, clamp, or failure response. They are not ordinary CHOICE/PIVOT/FLIP operating steps.
 
 A/B/C each use this same seven-band scale. A/B/C remain three spatial differential axes around the nucleus; the seven bands are the voltage / magnitude states on each axis.
 
@@ -104,7 +109,7 @@ A/B/C each use this same seven-band scale. A/B/C remain three spatial differenti
 Keep three different things separate:
 
 1. **Axis:** A, B, C = three mirrored spatial differentials around the nucleus.
-2. **Gate depth:** CHOICE → PIVOT → FLIP = voltage-gated progression as differential magnitude crosses calibrated hysteretic bands. It must also be able to fall back through the bands as the lean relaxes.
+2. **Expression/compression strength:** the seven voltage bands say how far the live differential has leaned from CENTER, from moderate through strong to extreme. CHOICE/PIVOT/FLIP remain separate control functions and are not aliases for ±1/±2/±3.
 3. **Scale:** POINT → PATH → FIELD = larger coupled organization. Scale promotion is not the same thing as moving from A to B to C.
 
 A live differential may oscillate / circulate around CENTER while carrying a net lean. HOLD means the opposed sides remain active but balanced closely enough that no directional commit is permitted. Crossing a voltage band changes gate depth; it does not rename the active axis.
@@ -124,7 +129,7 @@ HOLD is live readiness around center, not a clocked idle.
 - Two outer round figure-8s = **combined outer field shell**.
 - Six outer windings = **mirrored 3+3**.
 - A/B/C are axes, **not voltage levels**.
-- CHOICE/PIVOT/FLIP are the voltage-gated depth ladder.
+- The seven voltage bands are EXPRESS ↔ COMPRESS strength bands, not CHOICE/PIVOT/FLIP.
 - POINT/PATH/FIELD are scale states and must not be collapsed into A/B/C.
 - CENTER ≠ V_BUS.
 - No global clock or timing-based commutation.
