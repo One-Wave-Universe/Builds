@@ -16,11 +16,13 @@ Three leans. Ternary is **DOWN / HOLD / UP** around **− / (0) / +**. **All ana
    - It is not CENTER and it is not V_BUS.
    - Its magnetic history biases the next physical state.
 
-2. **Three mirrored differential gate pairs**
-   - A+↔A−, B+↔B−, C+↔C−.
-   - The three pairs resolve one local ternary lean: DOWN / HOLD / UP.
-   - CHOICE, PIVOT, and FLIP are coupled gate functions, not independent controllers.
-   - Thresholds, hysteresis, retained state, bus condition, and neighbor state drive transitions.
+2. **Three mirrored differential axes around the nucleus**
+   - A+↔A−, B+↔B−, C+↔C− are three spatial axes / edge-seat pairs, not three voltage levels.
+   - Each axis is one opposed differential bias loop across the two sides of the cell around the nucleus.
+   - Each axis can be live on both sides while its net lean resolves DOWN / HOLD / UP around CENTER.
+   - The cell-level action is formed from the coupled A/B/C leans; A, B, and C are not a promotion ladder.
+   - CHOICE → PIVOT → FLIP is the voltage-gated depth ladder inside the differential behavior, not A → B → C.
+   - Threshold crossings, hysteresis, retained state, bus condition, and neighbor state drive transitions.
 
 3. **Two outer round figure-8 toroidal structures — motor-field shell**
    - The two outer round figure-8 toroidal structures form one combined outer electrical / magnetic field.
@@ -61,7 +63,15 @@ next nucleus / gate decision
 
 No subsystem bypasses the ternary decision. Nucleus, gates, outer windings, reinjection, bus, and neighbor coupling are one coupled physical state machine.
 
-## State / action law
+## Axis / gate / scale law
+
+Keep three different things separate:
+
+1. **Axis:** A, B, C = three mirrored spatial differentials around the nucleus.
+2. **Gate depth:** CHOICE → PIVOT → FLIP = voltage-gated progression as differential magnitude crosses calibrated hysteretic bands. It must also be able to fall back through the bands as the lean relaxes.
+3. **Scale:** POINT → PATH → FIELD = larger coupled organization. Scale promotion is not the same thing as moving from A to B to C.
+
+A live differential may oscillate / circulate around CENTER while carrying a net lean. HOLD means the opposed sides remain active but balanced closely enough that no directional commit is permitted. Crossing a voltage band changes gate depth; it does not rename the active axis.
 
 Next view = last move + what came back up.
 
@@ -77,6 +87,9 @@ HOLD is live readiness around center, not a clocked idle.
 - Square figure-8 = **nucleus / brain side**, not the bus itself.
 - Two outer round figure-8s = **combined outer field shell**.
 - Six outer windings = **mirrored 3+3**.
+- A/B/C are axes, **not voltage levels**.
+- CHOICE/PIVOT/FLIP are the voltage-gated depth ladder.
+- POINT/PATH/FIELD are scale states and must not be collapsed into A/B/C.
 - CENTER ≠ V_BUS.
 - No global clock or timing-based commutation.
 - No second controller that bypasses the cell's ternary decision.
