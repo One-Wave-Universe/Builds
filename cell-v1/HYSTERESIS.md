@@ -1,31 +1,75 @@
 # Hysteresis
 
-The whole system state after the loop settles. Not three separate memories.
+CELL_V1 distinguishes **local cell memory** from **combined body / lattice memory**.
 
-Three cores still exist so axes can lean different ways. They are **parts of one loop**. The hysteresis that *is* the cell is what remains when top ternary, cores, gates, and V_BUS have all come home.
+## Local cell memory
 
-Lean → drive → collapse through the lattice → bus drinks → tails feel the rail → pairs see a new home offset → **settled**. That settled offset *is* hysteresis.
+A single cell can retain local state through:
 
----
+- magnetic hysteresis / remanence,
+- threshold enter / exit separation,
+- retained differential lean,
+- local electrical storage / recovery,
+- coupling between its nucleus, gates, and windings.
 
-## Not this
+This does not require a full body-scale reinjection loop.
 
-Three isolated BH curves in three drawers. A table of three H values. Software OR of three bits.
+A single cell can therefore remember its own recent physical history without pretending that it already has a body state.
 
-## This
+## Body / lattice memory
 
-One loop:
+Once many cells are coupled into a flower / body lattice, their local states and returns can combine into a larger shared condition.
+
+That enables the proposed higher-scale loop:
 
 ```
- three diffs (top)
-        |
-  lattice + cores (between)
-        |
-  gates → V_BUS → everything drinks
-        |
-  settled state of the cell
+local cell actions
+      ↓
+combined lattice consequence
+      ↓
+shared return / V_BUS update
+      ↓
+redistributed feed
+      ↓
+future cell decisions
 ```
 
-Remanence in iron is how the loop *can* keep a trace. The memory you name in the pitch is the settled loop, not core A alone.
+This is the level at which the architecture uses the phrase **muscle memory**: a repeated body-scale pattern may leave a persistent distributed bias in the coupled hysteretic lattice and thereby alter later body-scale responses.
 
-Use deepens that loop. Disuse fades it. Known physics. New arrangement.
+That is an architectural hypothesis, not a measured claim.
+
+## Retention regimes
+
+Short-, medium-, and long-retention hysteretic behavior remain design targets to characterize experimentally.
+
+Candidate controls include:
+
+- material coercivity / remanence,
+- write current / event energy,
+- number of reinforcing events,
+- winding turns and geometry,
+- magnetic coupling,
+- threshold enter / exit spacing,
+- leakage and demagnetizing paths,
+- flower / body bus loading,
+- reinjection strength at cluster scale.
+
+Do not assign lifetimes until measured.
+
+## Established vs unproven
+
+Established:
+- magnetic hysteresis and remanence,
+- threshold hysteresis,
+- inductive storage and collapse,
+- local energy recovery,
+- coupled electrical networks.
+
+Unproven CELL_V1 integration:
+- whether local retained state combines into a useful body-scale state,
+- whether repeated body patterns create reproducible distributed bias,
+- whether that bias behaves usefully enough to justify the “muscle memory” analogy,
+- how long the distributed state persists,
+- how it fades, reinforces, or interferes with other patterns.
+
+Measure first. Name second.
