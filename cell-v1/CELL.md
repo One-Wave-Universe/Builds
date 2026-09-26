@@ -18,145 +18,94 @@ One CELL_V1 includes, as one coupled physical state machine:
 - virtual-ground CENTER,
 - the square figure-8 toroidal nucleus / retained-state structure,
 - the two outer round figure-8 field structures with mirrored 3+3 windings,
-- the local flower geometry and its shared-edge differential relationships,
-- the paired lattice-side feed/return circulation,
-- and its connection into the scaled shared V_BUS / vagus system.
+- the local sensing / gating / winding return paths.
 
 Do not describe any one of those pieces as “the cell” by itself. The **cell is the full differential leaning loop** produced by all of them together.
+
+A single isolated cell may have **local hysteresis and local energy recovery**, but it does **not** need the full body-scale reinjection circulation. The full vagus reinjection loop appears when cells are joined into a flower / body lattice and there is a meaningful combined state to circulate back.
 
 ## One cell, four coupled layers
 
 1. **Square figure-8 toroidal nucleus — brain side**
    - The square figure-8 toroidal structure is the cell nucleus.
-   - It is the brain-side retained-state structure coupled to the lattice-bus / vagus side.
+   - It is the brain-side retained-state structure.
    - It is not CENTER and it is not V_BUS.
-   - Its magnetic history biases the next physical state.
+   - Its magnetic history can bias the next physical state.
 
 2. **Three mirrored differential gate pairs**
    - A+↔A−, B+↔B−, C+↔C−.
-   - Each axis is one bidirectional differential channel around the virtual-ground CENTER.
+   - Each axis is one bidirectional differential channel around virtual-ground CENTER.
    - Together, the three axes create the cell's complete local differential lean.
-   - CHOICE, PIVOT, and FLIP are coupled gate functions, not independent controllers.
-   - Thresholds, hysteresis, retained state, live bus condition, and neighbor state drive transitions.
+   - Thresholds, hysteresis, retained state, and neighbor state drive transitions.
 
 3. **Two outer round figure-8 toroidal structures — motor-field shell**
    - The two outer round figure-8 toroidal structures form one combined outer electrical / magnetic field.
-   - They carry **six windings total**, organized as **two mirrored groups of three**.
+   - They carry six windings total, organized as mirrored 3+3.
    - The 3+3 winding system expresses the cell's resolved − / (0) / + lean as a larger differential bias for motor / field control.
-   - The six windings are not six independent motors or six independent gates.
    - The round figure-8 toroids are not the center reference. CENTER is virtual ground.
 
-4. **Lattice bus / vagus circulation**
-   - **CENTER is the virtual-ground center reference.**
-   - **V_BUS is not zero, neutral, or a preset midpoint.**
-   - The vagus system is a paired circulation:
-     - **arterial/feed path** carries available bus energy and the present shared condition outward to cells / flower regions;
-     - **venous/return path** carries recovered inductive energy and physical consequences back toward the shared reservoir / combined bus.
-   - The two paths are parts of one closed circulation, not independent control systems.
-   - At any observation, the live bus condition is whatever physical value the coupled system has actually reached at that instant.
-   - Both mirrored sides can read the present shared condition and contribute back through the return side.
-   - Collapse energy returns through the venous/return path; it is never dumped onto CENTER.
-   - Neighbor coupling and returned consequences feed the next cell decision.
+4. **Scale-dependent vagus coupling**
+   - A single isolated cell can recover its own winding energy locally.
+   - **Full reinjection is a cluster / body function, not a requirement inside one isolated cell.**
+   - Once cells form a flower / lattice, their local returns combine into a shared body state.
+   - That combined state can then be redistributed through the vagus circulation and influence later cell decisions.
 
 ## Flower scaling rule
 
-A flower is not two independent cells or two independent flowers simply because the geometry is mirrored or layered.
+When cells are joined into a flower / body cluster:
 
-**When two mirrored flower-side structures are coupled through one nucleus and one continuous paired lattice circulation, they are one complete flower-scale cell.**
+- local differential states contribute to a combined flower state,
+- local return paths merge into a common return network,
+- the combined state is accumulated on the shared lattice / bus,
+- that body-scale state is then redistributed through the feed side,
+- and the returned state can bias future local decisions.
 
-At that scale:
+That closed cluster circulation is the first level at which **reinjection** has its full architectural meaning.
 
-- the nucleus remains one nucleus for the combined structure,
-- the mirrored flower sides are two differential halves of one larger leaning system,
-- their local arterial/feed paths merge into one scaled outward vagus feed tree,
-- their local venous/return paths merge into one scaled return tree,
-- together those two trees form the combined **vagus circulation**,
-- and the resulting live bus condition is seen by the whole combined flower.
+The phrase **muscle memory** is shorthand for this proposed distributed retained body state: repeated body-scale patterns may leave a persistent bias across the coupled hysteretic lattice. That behavior remains a bench hypothesis until measured.
 
-So do **not** count “two flower faces” as “two flowers” when they are the opposed halves of one nucleus-centered structure. The complete opposed structure is **one flower-scale cell**.
-
-Scaling does not invent a second controller. Local circulation segments join into the larger paired vagus system.
-
-## Unified loop
+## Unified scaling
 
 ```
-virtual-ground CENTER = fixed center reference
-                  │
-shared bus condition arrives on arterial/feed side
-        ↓
-square figure-8 nucleus
-(retained-state bias)
-        ↓
-three mirrored gate pairs
-(A+/A−, B+/B−, C+/C−)
-        ↓
-complete differential lean
-        ↓
-two outer round figure-8s
-6 windings = mirrored 3 + 3
-        ↓
-combined motor / field action
-        ↓
-collapse / inductive return
-        ↓
-venous/return paths merge
-        ↓
-shared storage / V_BUS state updates
-        ↓
-arterial/feed side carries the new condition outward
-        ↓
-next nucleus / gate decision
+SINGLE CELL
+CENTER
+  ↓
+A/B/C differential lean
+  ↓
+nucleus + 3+3 field structure
+  ↓
+local action
+  ↓
+local recovery / retained state
+
+FLOWER / BODY CLUSTER
+many local cell states
+  ↓
+combined lattice / body state
+  ↓
+venous return merges consequences
+  ↓
+shared storage / V_BUS updates
+  ↓
+arterial feed redistributes that state
+  ↓
+cells receive the combined consequence
+  ↓
+next differential decisions
 ```
-
-No subsystem bypasses the ternary decision. Nucleus, gates, outer windings, paired vagus circulation, flower geometry, and neighbor coupling are one coupled physical state machine.
-
-## State / action law
-
-Next view = last move + what came back up.
-
-Two agrees → push.  
-One voice → wait.  
-Opposition → HOLD.  
-Drive off → return energy through the venous path toward V_BUS.
-
-HOLD is live readiness around center, not a clocked idle.
-
-## Established pieces vs experimental integration
-
-Established electrical / magnetic mechanisms include differential sensing, MOSFET switching, inductive energy recovery, hysteresis / remanence, magnetic coupling, rotating-field motor principles, and paired supply/return distribution.
-
-**CELL_V1 does not claim the integrated architecture is already proven.** The experimental work is the exact coupled arrangement and its operating values, including:
-
-- short-, medium-, and long-retention hysteresis regimes,
-- threshold enter / exit bands and refractory behavior,
-- exact gate topology and bidirectional drive,
-- winding gauge, turn count, spacing, and geometry,
-- coupling strength between nucleus, outer figure-8 structures, and neighboring cells,
-- separation / impedance of arterial and venous paths,
-- reinjection efficiency and shared-bus stability,
-- torque, field strength, retention depth, and cross-coupling,
-- and whether flower-scale circulation behaves as the intended larger vagus system.
-
-These remain bench quantities until measured.
 
 ## Hard anti-drift rules
 
 - **CELL_V1 = complete differential leaning system**, not an isolated component.
-- Square figure-8 = **nucleus / brain side**, not the bus itself.
-- Two outer round figure-8s = **combined outer field shell**.
-- Six outer windings = **mirrored 3+3**.
-- **CENTER = virtual-ground center reference.**
-- **CENTER ≠ V_BUS.**
-- **Vagus = paired arterial/feed + venous/return circulation.**
-- The arterial/feed path carries shared condition / available energy outward.
-- The venous/return path carries recovered energy / consequence back.
-- V_BUS live state is produced by the coupled circulation; do not describe it as neutral zero.
-- Both mirrored sides can read from the shared condition and feed consequences back through the return side.
-- A mirrored / two-sided flower assembly around one nucleus is **one flower-scale cell**, not two independent flowers.
-- Local arterial and venous segments merge recursively into the scaled shared vagus circulation.
+- Square figure-8 = nucleus / retained-state structure.
+- Two outer round figure-8s = combined outer field shell.
+- Six outer windings = mirrored 3+3.
+- CENTER = virtual-ground center reference.
+- CENTER ≠ V_BUS.
+- A single cell can have local hysteresis and recovery without a full vagus reinjection loop.
+- **Full reinjection begins at flower / body scale, where a combined state exists to circulate back.**
+- Muscle-memory language refers to a proposed distributed retained body state, not a proven biological equivalent.
 - No global clock or timing-based commutation.
-- No second controller that bypasses the cell's ternary decision.
-- Reinjection must re-enter the same state loop.
-- Do not claim measured retention, coupling, recovery, torque, efficiency, or useful flower-scale circulation until bench data exists.
+- Do not claim measured retention, recovery, coupling, torque, or body-memory behavior until bench data exists.
 
 This file is the CELL_V1 authority. Detail files must agree with it.
