@@ -29,7 +29,7 @@ Each axis carries a local ternary lean:
 
 Both opposed sides may remain biased / active around CENTER; the meaningful state is their differential lean.
 
-CHOICE → PIVOT → FLIP is the voltage-gated depth ladder. Promotion or relaxation through that ladder occurs when differential magnitude crosses calibrated hysteretic bands. Exact device thresholds, enter/exit voltages, spacing, material, winding gauge, turns, and coupling remain engineering / bench variables.
+CHOICE → PIVOT → FLIP remains separate control logic. Differential magnitude instead moves through the locked EXPRESS↔COMPRESS strength bands. Exact device thresholds, enter/exit voltages, spacing, material, winding gauge, turns, and coupling remain engineering / bench variables.
 
 POINT → PATH → FIELD is a separate scale-up relation. Do not map A/B/C onto POINT/PATH/FIELD.
 
@@ -39,13 +39,13 @@ No global clock. Threshold crossings, hysteresis, retained state, bus condition,
 
 Every A/B/C axis uses the same normalized differential bands:
 
-- 100–90 = +3 / FLIP
-- 85–75 = +2 / PIVOT
-- 70–60 = +1 / CHOICE
-- 55–45 = 0 / HOLD
-- 40–30 = −1 / CHOICE
-- 25–15 = −2 / PIVOT
-- 10–0 = −3 / FLIP
+- 100–90 = +3 / EXTREME EXPRESSION / DANGER
+- 85–75 = +2 / STRONG EXPRESSION
+- 70–60 = +1 / MODERATE EXPRESSION
+- 55–45 = 0 / ACTIVE MIDDLE / STABLE OSCILLATING REGION
+- 40–30 = −1 / MODERATE COMPRESSION
+- 25–15 = −2 / STRONG COMPRESSION
+- 10–0 = −3 / EXTREME COMPRESSION / DANGER
 
 The intervening 5-point ranges are hysteresis / transition gaps. They prevent boundary chatter and are resolved from prior settled state and direction of travel.
 
@@ -113,7 +113,8 @@ If identical probes after different prior writes do not produce distinguishable 
 
 - square figure-8 = nucleus / brain side;
 - three mirrored A/B/C differential axes around the nucleus;
-- CHOICE/PIVOT/FLIP voltage-gated depth distinct from A/B/C;
+- EXPRESS/COMPRESS seven-band strength scale distinct from A/B/C;
+- CHOICE/PIVOT/FLIP control functions distinct from the seven-band scale;
 - POINT/PATH/FIELD scale distinct from both axis and gate depth;
 - two outer round figure-8s;
 - six outer windings = mirrored 3+3;
