@@ -1,67 +1,75 @@
 # Hysteresis
 
-The whole system state after the loop settles. Not three isolated software memories.
+CELL_V1 distinguishes **local cell memory** from **combined body / lattice memory**.
 
-Three magnetic / differential axes may lean differently, but they are **parts of one coupled loop**. The hysteresis that matters at cell level is what remains when differential state, nucleus, gates, windings, return path, and V_BUS have all interacted and settled.
+## Local cell memory
 
-Lean → drive → field / winding action → collapse through gated return → V_BUS changes → gates and tails see the resulting condition → **settled physical state**.
+A single cell can retain local state through:
 
-That settled offset / retained condition is the memory candidate to measure.
+- magnetic hysteresis / remanence,
+- threshold enter / exit separation,
+- retained differential lean,
+- local electrical storage / recovery,
+- coupling between its nucleus, gates, and windings.
 
----
+This does not require a full body-scale reinjection loop.
 
-## Not this
+A single cell can therefore remember its own recent physical history without pretending that it already has a body state.
 
-Three isolated B-H curves in three drawers. A table of three H values. Software OR of three bits.
+## Body / lattice memory
 
-## This
+Once many cells are coupled into a flower / body lattice, their local states and returns can combine into a larger shared condition.
 
-One coupled physical loop:
+That enables the proposed higher-scale loop:
 
 ```
- three A/B/C differentials
-        |
- square figure-8 nucleus
-        |
- outer 3+3 windings / magnetic field
-        |
- gates → return / reinjection → V_BUS
-        |
- next threshold state
+local cell actions
+      ↓
+combined lattice consequence
+      ↓
+shared return / V_BUS update
+      ↓
+redistributed feed
+      ↓
+future cell decisions
 ```
 
-Remanence in magnetic material is one established mechanism by which the loop can retain a trace. CELL_V1's proposed memory is the behavior of the complete coupled loop, not core A alone.
+This is the level at which the architecture uses the phrase **muscle memory**: a repeated body-scale pattern may leave a persistent distributed bias in the coupled hysteretic lattice and thereby alter later body-scale responses.
 
-## Retention regimes are an experimental target
+That is an architectural hypothesis, not a measured claim.
 
-The architecture currently distinguishes **short-, medium-, and long-retention hysteretic behavior as a design goal**, not as a measured result.
+## Retention regimes
+
+Short-, medium-, and long-retention hysteretic behavior remain design targets to characterize experimentally.
 
 Candidate controls include:
 
 - material coercivity / remanence,
-- write current and pulse / event energy,
+- write current / event energy,
 - number of reinforcing events,
 - winding turns and geometry,
 - magnetic coupling,
 - threshold enter / exit spacing,
 - leakage and demagnetizing paths,
-- bus loading and reinjection conditions.
+- flower / body bus loading,
+- reinjection strength at cluster scale.
 
-Do **not** assign durations such as seconds, hours, years, or decades until measured.
+Do not assign lifetimes until measured.
 
-## What is established vs what is not
+## Established vs unproven
 
-Established physics:
+Established:
 - magnetic hysteresis and remanence,
-- dependence of magnetic response on material and applied field history,
-- inductive storage / collapse,
-- threshold circuits with separate enter / exit points.
+- threshold hysteresis,
+- inductive storage and collapse,
+- local energy recovery,
+- coupled electrical networks.
 
 Unproven CELL_V1 integration:
-- whether one coupled loop produces useful short / medium / long retention bands,
-- how cleanly those bands separate,
-- whether the same path can support memory and useful reinjection without instability,
-- how repeat use changes retention,
-- whether disuse produces the desired fade law.
+- whether local retained state combines into a useful body-scale state,
+- whether repeated body patterns create reproducible distributed bias,
+- whether that bias behaves usefully enough to justify the “muscle memory” analogy,
+- how long the distributed state persists,
+- how it fades, reinforces, or interferes with other patterns.
 
-Use may deepen a retained state and disuse may allow it to relax, but the exact CELL_V1 behavior must be measured rather than assumed.
+Measure first. Name second.
