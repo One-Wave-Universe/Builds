@@ -10,17 +10,25 @@
 
 ## Voltage-gated depth
 
-The ladder is:
+The ladder is locked to the normalized seven-band axis scale:
 
 ```
-HOLD / home wobble
-      ↕  threshold + hysteresis
-CHOICE
-      ↕  threshold + hysteresis
-PIVOT
-      ↕  threshold + hysteresis
-FLIP
+100–90  +3  FLIP
+ 90–85      hysteresis gap
+ 85–75  +2  PIVOT
+ 75–70      hysteresis gap
+ 70–60  +1  CHOICE
+ 60–55      hysteresis gap
+ 55–45   0  HOLD
+ 45–40      hysteresis gap
+ 40–30  −1  CHOICE
+ 30–25      hysteresis gap
+ 25–15  −2  PIVOT
+ 15–10      hysteresis gap
+ 10–0   −3  FLIP
 ```
+
+The same map applies on A, B, and C. The gap is resolved from the prior settled state / direction of travel, so the gate does not chatter at a boundary.
 
 This ladder is driven by differential magnitude relative to CENTER plus retained-state bias and bus / neighbor condition. It is not A → B → C.
 
