@@ -41,6 +41,8 @@ A+ and A− are not two inputs. They are two ends of one channel.
 
 Same for B and C. Three differentials. Six seats. Three numbers.
 
+A/B/C are geometric axes, not sequential voltage levels. The two sides of each axis form one opposed bias loop around the nucleus. Both sides may remain electrically active; the state is the signed imbalance between them.
+
 Cell-0 is exactly this: one pair, read D, CENTER in the middle. That is the whole first drawing.
 
 ---
@@ -52,6 +54,21 @@ Center A+ meets neighbor A−. That joint is one differential surface: plus of o
 Stack inverted: A+ of the upper flower meets A− of the lower. Another differential surface. That is the hypothesized split — a difference between two lean fields, not a data bus.
 
 ---
+
+## Live orbit / lean
+
+The differential does not need an OFF neutral. Around CENTER the opposed sides can remain live and exchange / circulate current while the net difference stays near zero. A bias shifts that live orbit toward + or −.
+
+What changes with voltage is **commit depth**, not axis identity:
+
+- inside the home wobble: HOLD / live balance
+- first calibrated crossing: CHOICE depth
+- next crossing: PIVOT depth
+- next crossing: FLIP depth
+
+Exact enter/exit voltages remain bench calibration and must include hysteresis. When magnitude falls, the axis can descend the same depth ladder rather than being forced to continue upward.
+
+A/B/C therefore run in parallel as three spatial differentials. CHOICE/PIVOT/FLIP is the threshold ladder within their coupled behavior. POINT/PATH/FIELD belongs to larger scale organization and is not an alias for A/B/C.
 
 ## Drive is still a difference
 
