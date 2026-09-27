@@ -28,9 +28,11 @@ If it was decided, it is here. Do not drop it. Do not make him say it again.
 18b. Current core hardware stays **2D / planar**; its magnetic field is still 3D. **No comparators. All analog.**
 
 ## Memory
-31. Retained magnetic history belongs to the active nucleus / path for that cell role; do not assign memory by shape name alone.
-32. The **common outer/body round-toroid differential pair is the shared interconnect layer** across cell types. Nucleus geometry is the specialization layer.
-32b. Grid / lattice coupling, local retained state, and group memory stay distinct physical roles even when they share magnetic coupling.
+31. **Local retained state** belongs to the active nucleus / local hysteretic path for that cell role.
+32. **Muscle memory / group memory** belongs to the hysteretic lattice / shared edge traces beneath the cells. Neighboring cells share those path segments, so repeated use can bias the route at cluster scale.
+32a. **V_BUS / reinjection participates in the same action→consequence cycle but is not by itself the long-term memory store.** The rail/cap is readiness + returned energy + short echo; the hysteretic path is what holds the habit.
+32b. The **common outer/body round-toroid differential pair is the shared interconnect layer** across cell types. Nucleus geometry is the specialization layer.
+32c. Local nucleus memory, hysteretic lattice muscle memory, and V_BUS readiness/echo are distinct physical roles that interact in one continuing loop.
 
 ## Up
 33. DC, AC, and RC go up, as field and void.
