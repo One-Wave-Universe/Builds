@@ -279,3 +279,101 @@ OLD retained state + NEW incoming excitation -> shared magnetic transition -> NE
 ```
 
 This supports the *mechanism class* for simultaneous old-history/new-drive interaction. It does not establish CELL's semantic mapping. The four views, four actions, ternary CENTER, three mirror gates and one-FLIP recursion remain CELL-specific hypotheses requiring bench validation.
+
+
+## Literal wedge-to-toroid wiring target
+
+This is the current bench wiring target.
+
+### Geometry lock
+
+Inside one cell:
+
+```text
+A+ tip <-> tip A-
+B+ tip <-> tip B-
+C+ tip <-> tip C-
+```
+
+Between neighboring cells:
+
+```text
+cell N wedge BASE <-> BASE neighboring-cell wedge
+```
+
+Hard rule:
+- tip-to-tip = intra-cell differential geometry;
+- base-to-base = inter-cell lattice connection.
+
+### FIELD / VOID body sides
+
+FIELD and VOID are the two mirrored sides of the body architecture.
+
+Each cell couples into both sides through **exactly two plain round toroids total**:
+
+```text
+FIELD BODY SIDE                 VOID BODY SIDE
+      |                              |
+ FIELD round toroid             VOID round toroid
+  TA_F TB_F TC_F                TA_V TB_V TC_V
+      \   |   /                    \   |   /
+       local A/B/C differential cell
+```
+
+Each toroid carries three separate coupling windings, one for A, one for B, and one for C.
+
+Do not electrically short A/B/C together on either toroid.
+
+### Wedge winding exposure
+
+Each of the six wedge windings is brought out independently:
+
+```text
+WA+_1 WA+_2
+WB+_1 WB+_2
+WC+_1 WC+_2
+WA-_1 WA-_2
+WB-_1 WB-_2
+WC-_1 WC-_2
+```
+
+The two body toroids are also fully exposed:
+
+```text
+FIELD toroid:
+TA_F1 TA_F2
+TB_F1 TB_F2
+TC_F1 TC_F2
+
+VOID toroid:
+TA_V1 TA_V2
+TB_V1 TB_V2
+TC_V1 TC_V2
+```
+
+No permanent series/parallel connection is locked until winding sense, coupling, phase, and CENTER behavior are measured.
+
+### CENTER rule
+
+A/B/C remain three separate mirrored differentials, but all three must reference the same active CENTER relation at every mirror step.
+
+```text
+A differential <-> CENTER
+B differential <-> CENTER
+C differential <-> CENTER
+```
+
+CENTER is not V_BUS and is not the main winding-current return.
+
+The exact winding/coupling geometry that makes the two body toroids participate in one balanced CENTER relation remains a bench question.
+
+### Mirrored body-side power
+
+Both FIELD and VOID receive energy and return consequence:
+
+```text
+V_BUS -> FIELD side -> local event -> FIELD return -> V_BUS
+V_BUS -> VOID side  -> local event -> VOID return  -> V_BUS
+```
+
+Neither side is permanently input-only or return-only.
