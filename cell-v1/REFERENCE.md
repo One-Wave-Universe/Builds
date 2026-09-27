@@ -1,6 +1,6 @@
 # Two electrical references
 
-CELL_V1 has two electrical reference roles. Neither one is the square figure-8 nucleus.
+CELL_V1 has two electrical reference roles. Neither one is interchangeable with the role-specific nucleus geometry.
 
 ## CENTER
 
@@ -22,12 +22,19 @@ CELL_V1 has two electrical reference roles. Neither one is the square figure-8 n
 
 ## Nucleus relationship
 
-The **square figure-8 toroidal nucleus** is the brain-side retained-state structure coupled to the lattice-bus / vagus-nerve side.
+The nucleus is a magnetic/state element, not a third electrical reference.
 
-It is a magnetic/state element, not a third electrical reference.
+Current role map:
+- sensor cell -> round figure-8 nucleus;
+- motor-control cell -> square figure-8 nucleus for grid / lattice connection;
+- M4 cell -> two triangular toroidal loops base-to-base;
+- five-mind cell -> double pentagon;
+- six-mind cell -> double hexagon.
+
+M4 also uses two plain round outer toroids; those are not electrical references.
 
 ## Rule
 
 CENTER ≠ V_BUS ≠ nucleus.
 
-The three mirrored gate pairs read/act around CENTER. The outer 3+3 winding shell exchanges energy with V_BUS. The nucleus carries retained-state bias into the next physical decision.
+The three mirrored gate pairs read/act around CENTER where that interface is used. Field / winding structures exchange energy with V_BUS. The role-specific nucleus carries retained-state bias into the next physical decision.
