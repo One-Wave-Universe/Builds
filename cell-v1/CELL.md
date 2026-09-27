@@ -25,7 +25,7 @@ CELL_V1 uses one **common outer/body differential interface** across cell types,
 - This is the figure-8 role currently retained for the sensor cell.
 
 ### Motor-control cell
-- **Nucleus:** one planar **square figure-8 toroid**.
+- **Nucleus:** one planar **one-piece square two-aperture figure-8 hysteretic magnetic core**.
 - Purpose: motor-control brain with clean grid / lattice alignment and connection.
 - Do not generalize this square nucleus to the sensor cell or M4 cell.
 
@@ -64,7 +64,7 @@ sensor / neighbor consequence
         ↓
 role-specific nucleus
 (round figure-8 sensor
- square figure-8 motor-control
+ one-piece square two-aperture figure-8 motor-control
  double-triangle M4
  double-pentagon five-mind
  double-hexagon six-mind)
@@ -145,7 +145,7 @@ HOLD is live readiness around center, not a clocked idle.
 ## Hard anti-drift rules
 
 - **Sensor nucleus = round figure-8 toroid.**
-- **Motor-control nucleus = square figure-8 toroid for grid/lattice connection.**
+- **Motor-control nucleus = one-piece square two-aperture figure-8 hysteretic magnetic core for grid/lattice connection.**
 - **M4 nucleus = two triangular toroidal loops base-to-base.**
 - **Every cell type uses the same two plain round outer/body toroids.**
 - **The common outer/body pair is not figure-8.**
@@ -200,3 +200,16 @@ OLD ACTIONS DOWN ↓
 ```
 
 The nerve/interconnect implementation target is a **bidirectional wave gate** built from discrete MOSFET/passive/magnetic elements. The normalized CELL electrical span remains **1 V or less** around its CENTER reference. Exact MOSFET technology, gate topology, usable VGS, on-resistance and threshold margin are **not locked** until a real device is selected and measured; MOSFET datasheet threshold voltage alone must not be treated as a guaranteed low-resistance ON voltage.
+
+
+## Motor nucleus retained-history interaction — reference-anchored
+
+The motor nucleus is a **single continuous magnetic piece with two square apertures**, not two joined square cores. Its nearest established mechanism class is the historical **transfluxor / multi-aperture hysteretic magnetic core**: multiple apertures form distinct flux paths that share portions of the same magnetic body, and a prior magnetic setting changes the response to later excitation.
+
+CELL uses that established history dependence as the physical candidate for:
+
+```text
+OLD retained state + NEW incoming excitation -> shared magnetic transition -> NEXT retained state
+```
+
+This supports the *mechanism class* for simultaneous old-history/new-drive interaction. It does not establish CELL's semantic mapping. The four views, four actions, ternary CENTER, three mirror gates and one-FLIP recursion remain CELL-specific hypotheses requiring bench validation.
