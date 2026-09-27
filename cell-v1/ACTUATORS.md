@@ -4,14 +4,16 @@ The actuator is not a second brain. It is the outer field expression of the same
 
 ## Outer motor-field shell
 
-Two round figure-8 toroidal structures carry **six windings total**:
+The common outer/body field uses **two plain round toroids**.
 
-- outer figure-8 A: three windings
-- outer figure-8 B: three mirrored windings
+A candidate implementation places **six windings total** across that common pair:
 
-Together they form a **mirrored 3+3 differential field system**.
+- round toroid A: three windings
+- round toroid B: three mirrored windings
 
-The three mirrored gate axes resolve the local state first. The outer 3+3 winding shell then expresses that resolved state as a larger − / (0) / + motor-field bias.
+Together they may form a **mirrored 3+3 differential field system**, subject to bench validation.
+
+For a motor-control cell, the **square figure-8 nucleus** and the live differential state resolve locally first. The common plain-round body pair then expresses the resolved state into the larger motor-field response.
 
 ## State map
 
@@ -32,6 +34,8 @@ When drive falls, winding energy is steered back to V_BUS. The returning energy 
 ## Anti-drift
 
 - Do not reduce the architecture to an ordinary three-phase inverter.
+- Do not call the common outer/body round toroids figure-8s.
+- The square figure-8 nucleus is motor-control-cell specific.
 - Do not call the six windings six independent phases.
 - Do not add a separate PWM/FOC controller as the CELL_V1 brain.
 - Do not claim torque, efficiency, field strength, or recovery percentage until measured.
