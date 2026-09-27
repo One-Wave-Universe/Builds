@@ -16,10 +16,11 @@ One-page integration authority beneath `CELL.md`.
 
 - Sensor cell -> round figure-8 nucleus.
 - Motor-control cell -> **square figure-8 nucleus**.
+- M4 cell -> dedicated two-pyramid / double-triangle nucleus.
 - Five-mind -> double pentagon.
 - Six-mind -> double hexagon.
 
-M4 is not in this nucleus list. **M4 is the pyramidal routing/connection layer** linking the six A/B/C wedge routes inside and between cells.
+Separate from the M4 nucleus, the cluster uses six pyramidal A/B/C routing wedges. These meet tip-to-tip inside a cell and base-to-base between cells.
 
 The **square figure-8 nucleus belongs to the motor-control cell**. Do not make it generic.
 
@@ -40,6 +41,14 @@ No global clock. Threshold crossings, hysteresis, bus condition, retained state,
 The two plain round outer/body toroids form the common differential shell used across cell roles.
 
 A mirrored 3+3 winding implementation on that common pair remains a build candidate until measured.
+
+## Local body-state interpretation
+
+The two plain round toroids are the FIELD/VOID nerve/body-control interface. Their combined 3D magnetic field is the current candidate for the cell's local body-state field.
+
+The dedicated domain-wall hysteretic layer beneath connected cells carries longer-lived shared body-state / muscle-memory history.
+
+A separate literal sphere is not locked until measurement shows a distinct spherical structure is needed.
 
 ## CENTER and V_BUS
 
