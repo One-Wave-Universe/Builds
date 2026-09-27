@@ -1,25 +1,53 @@
 # Cores
 
-CELL_V1 uses two toroidal roles. Do not mash them.
+CELL_V1 uses **role-specific nucleus geometry**. Do not mash sensor, motor-control, M4, five-mind, and six-mind cores together.
 
-## Square figure-8 nucleus
+## Sensor-cell nucleus
 
-The **square figure-8 toroidal structure is the nucleus**.
+The **sensor-cell nucleus is a planar round figure-8 toroid**.
 
-It is the retained-state brain-side structure coupled to the lattice-bus / vagus-nerve side. It is not CENTER and it is not V_BUS. Its magnetic history is part of the next physical decision.
+It is the simplest local binary / differential sensing brain candidate. Its two opposed lobes carry the local retained magnetic history used by the next physical sensing decision.
 
-## Two outer round figure-8 toroidal structures
+## Motor-control-cell nucleus
 
-The two **round figure-8 toroidal structures** form the combined outer electrical / magnetic field shell.
+The **motor-control-cell nucleus is a planar square figure-8 toroid**.
 
-Together they carry **six windings total**, arranged as **two mirrored groups of three**. Those windings express the resolved − / (0) / + lean as a larger differential bias for motor control.
+The square geometry is kept where the nucleus must align cleanly to the grid / lattice connection. It is not the universal nucleus for every cell.
 
-The six windings are not six independent memories, six independent motors, or six independent controllers.
+## M4 cell
+
+### M4 nucleus
+
+The **M4 cell nucleus is two triangular toroidal loops arranged base-to-base**.
+
+This is the current planar double-triangle / pyramid nucleus form.
+
+### M4 outer toroids
+
+The M4 cell uses **two plain round toroids** as the outer field pair.
+
+They are **not round figure-8 toroids**.
+
+Where the existing mirrored 3+3 winding / motor-field concept is used, those windings map onto the two round outer toroids and remain bench quantities until measured.
+
+## Five-mind nucleus
+
+The **five-mind nucleus is a double-pentagon toroidal geometry**.
+
+## Six-mind nucleus
+
+The **six-mind nucleus is a double-hexagon toroidal geometry**.
+
+## Dimensional rule
+
+The current cores / windings are **planar / 2D hardware geometries**. Their magnetic fields are inherently **3D**.
+
+Do not turn the present core hardware into speculative 3D solids just because the field is volumetric.
 
 ## Coupling rule
 
-The nucleus, three mirrored gate pairs, outer 3+3 windings, V_BUS reinjection, and neighboring lattice state must close one loop.
+Role-specific nucleus, differential paths, field / actuator coupling, V_BUS reinjection, and neighboring lattice state must close one physical loop.
 
-Magnetic isolation, coupling coefficients, material choice, winding turns, field strength, and retention depth remain bench quantities until measured.
+Magnetic isolation, coupling coefficients, material choice, winding turns, field strength, retention depth, and motor torque remain bench quantities until measured.
 
 No global clock. No comparator may become the hidden state machine.
