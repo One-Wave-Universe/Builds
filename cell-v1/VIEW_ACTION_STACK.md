@@ -158,3 +158,18 @@ Established analog electromagnetic precedents can support individual operations,
 6. ternary action resolution and binary/Void closure;
 7. history-dependent response in nucleus and etched lattice paths;
 8. protected recovery to V_BUS without corrupting CENTER or retained path state.
+
+
+## Reference map for this stack
+
+Mechanism-level evidence is centralized in `PROVEN_PARTS_REFERENCES.md`.
+
+- **BC–DC / TC–AC opposed analog relations:** conventional differential/transformer behavior is established; CELL naming and thresholds are architectural mappings.
+- **QC–RC rotating/vector magnetic relation:** resolver orthogonal magnetic channels (R1) and rotating-field machinery (R3) are the established precedents. The square figure-8 implementation remains experimental.
+- **Direction / Phase / Strength / Reference:** these are CELL's four descriptors of the physical view. Resolver/rotating-field references establish measurable direction/phase/amplitude phenomena, not the CELL semantics.
+- **Inward / Outward / Across / Over:** CELL four-action layer; no external reference is claimed to prove this mapping.
+- **A/B/C:** synchro 120-degree electromagnetic geometry (R2) and three-half-bridge motor stages (R7) are established precedents for three physical axes/power legs. Four-actions → A/B/C mapping remains experimental.
+- **Hysteretic memory:** ferrite hysteresis (R4) and patterned magnetic/domain-wall paths (R5,R6) establish history-dependent magnetic mechanisms. Useful CELL memory remains a measurement.
+- **Reinjection:** inductive/DC-link return is established (R8). Useful shared CELL reinjection without disturbing CENTER/memory remains experimental.
+
+**Evidence rule:** never promote a mechanism-level reference into proof of the complete CELL loop.
