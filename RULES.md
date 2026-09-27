@@ -17,18 +17,18 @@ If it was decided, it is here. Do not drop it. Do not make him say it again.
 10. Hex is a slice. Seven hexes is the flower slice. Not a volume yet.
 
 ## Faces
-11. Top / differential side: three leans. **Round figure-8 toroid.** That is the ternary. Not a square on the middle.
-12. Bottom: 1 V bus on those same six edges. **Square figure-8** on the lattice and the bus. Not the round toroid.
-13. Middle is not the bus. Never one pour.
-14. Leftover **current** from all three leans gates onto the bus. That current is the write through the square.
-15. The bus feeds everything.
-16. Pack only pays loss. If the bus is still falling, stop pushing (send-up).
-17. Cap on the bus = short echo. Reinject = refresh.
-18. Round toroid on the pair. Square-loop on the lattice and bus. Neither is an EMI bead. **No comparators. All analog.**
+11. Geometry is **cell-role specific**. Do not force one nucleus shape onto every cell.
+12. **Sensor-cell nucleus:** one planar **round figure-8 toroid** for the simple binary / differential sensing brain.
+13. **Motor-control-cell nucleus:** one planar **square figure-8 toroid** where the nucleus must align to the grid / lattice connection.
+14. **M4 cell outer field:** two **plain round toroids**, not round figure-8 toroids.
+15. **M4 cell nucleus:** two triangular toroidal loops arranged **base-to-base** (double-triangle / planar pyramid form).
+16. **Five-mind nucleus:** **double pentagon** toroidal geometry.
+17. **Six-mind nucleus:** **double hexagon** toroidal geometry.
+18. Current core hardware stays **2D / planar**; its magnetic field is still 3D. **No comparators. All analog.**
 
 ## Memory
-31. **Round figure-8 toroid = ternary / differential side.** One cell's lean.
-32. **Square figure-8 = lattice and bus.** Group memory. The flower's connected cells are the distributed intelligence.
+31. Retained magnetic history belongs to the active nucleus / path for that cell role; do not assign memory by shape name alone.
+32. Grid / lattice coupling, local retained state, and group memory stay distinct physical roles even when they share magnetic coupling.
 
 ## Up
 33. DC, AC, and RC go up, as field and void.
