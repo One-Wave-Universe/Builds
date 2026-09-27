@@ -1,84 +1,117 @@
-# Grant cell
+# CELL_V1 — interview / validation brief
 
-## Proposed CELL_V1 analog control cell
+**Status:** Proposed hardware architecture. Most constituent technologies are established; the exact CELL_V1 integration is unproven until bench measurements exist.
 
-CELL_V1 is a proposed event-driven physical control cell intended to combine local state retention, ternary differential decision, motor-field actuation, and inductive energy return in one coupled hardware loop.
+## What CELL_V1 is
 
-It is a feasibility-stage architecture. No working-cell claim is made until the bench log contains measurements.
+CELL_V1 is a hardware-first analog control-cell family intended to couple:
 
-## Technical problem
+- live differential state;
+- a local - / (0) / + ternary decision around CENTER;
+- magnetic / hysteretic retained state;
+- a common body differential interface;
+- motor / field expression;
+- inductive return to a shared V_BUS;
+- direct cell-to-cell scaling without a global clock or software state controller.
 
-Conventional systems commonly separate sensing, state storage, control logic, actuation, and power recovery. CELL_V1 tests whether those functions can be coupled through one physical state path so that prior use changes the next response without requiring a clocked software state table.
+The first objective is not to prove the whole android. It is to validate the smallest physical loop and its interfaces.
 
-## Architecture
+## Common body differential interface
 
-### 1. Square figure-8 nucleus
+Every cell role uses the same **two plain round outer/body toroids**.
 
-A **square figure-8 toroidal nucleus** forms the brain-side retained-state structure on the lattice-bus / vagus-nerve side of the cell.
+This common pair is the body / interconnect geometry shared by sensor, motor-control, M4, five-mind, and six-mind cells so different cell roles can connect through the same physical differential language.
 
-The nucleus is neither CENTER nor V_BUS. Its hysteretic state is proposed to bias the next physical decision.
+The common outer/body toroids are **not figure-8 toroids**.
 
-### 2. Three mirrored differential gate pairs
+## Role-specific nucleus
 
-The six edge seats form three opposed axes:
+The nucleus changes with the job of the cell:
 
-A+↔A−, B+↔B−, C+↔C−.
+- **Sensor cell:** round figure-8 toroid nucleus.
+- **Motor-control cell:** **square figure-8 toroid nucleus** for grid / lattice alignment.
+- **M4 cell:** two triangular toroidal loops base-to-base.
+- **Five-mind cell:** double pentagon nucleus.
+- **Six-mind cell:** double hexagon nucleus.
 
-Their combined physical state resolves a ternary lean:
+Current core hardware is planar / 2D; the magnetic fields are 3D.
 
-**DOWN / HOLD / UP = − / (0) / +.**
+## Motor-control cell
 
-Transitions are threshold- and hysteresis-driven rather than globally clocked.
+For the motor-control cell specifically:
 
-### 3. Two outer round figure-8 toroidal structures
+```text
+plain round body toroid
+        ↕
+square figure-8 motor-control nucleus
+        ↕
+live A/B/C differential state
+        ↕
+- / (0) / + decision
+        ↕
+plain round body toroid
+        ↕
+motor / field consequence
+        ↕
+V_BUS return / reinjection
+```
 
-Two outer round figure-8 toroidal structures form the combined outer electrical / magnetic field.
+The square figure-8 nucleus is **motor-control specific**. It is not the generic nucleus for every cell type.
 
-They carry **six windings total**, organized as **two mirrored groups of three**. The proposed role of this 3+3 shell is to convert the resolved ternary lean into a larger differential motor-control bias.
+## Shared electrical state machine
 
-### 4. Reinjection and lattice bus
+Where the A/B/C interface is used:
 
-Inductive collapse is steered to **V_BUS**, the shared energy/readiness rail. **CENTER** remains the local lean reference.
+```text
+A+ <-> A-
+B+ <-> B-
+C+ <-> C-
+```
 
-Returned energy and neighboring consequences re-enter the same state loop; they do not create a separate controller.
+These are three opposed spatial differentials. Their local state resolves:
 
-## Closed-loop hypothesis
+```text
+DOWN / HOLD / UP = - / (0) / +
+```
 
-sensor / neighbor consequence
-→ nucleus retained bias
-→ mirrored differential gates
-→ ternary lean
-→ outer 3+3 field
-→ motor / field action
-→ inductive return
-→ V_BUS / lattice consequence
-→ next decision.
+HOLD is active balance, not OFF.
 
-The Phase-I research question is whether that loop can be demonstrated measurably and repeatably.
+Transitions are driven by physical thresholds, hysteresis, retained state, bus condition, and returned consequences — not a global clock.
 
-## Phase I
+## Energy / reinjection
 
-Build and instrument the minimum cell path needed to measure:
+- **CENTER:** local differential reference.
+- **V_BUS:** shared energy / readiness / reinjection rail.
+- CENTER is not V_BUS.
+- Inductive collapse is routed toward V_BUS.
+- Recovered energy is measured; CELL_V1 does not assume free energy or 100% recovery.
 
-1. CENTER stability during switching;
-2. ternary differential response;
-3. different response to an identical probe after different prior magnetic writes;
-4. energy into the winding path versus energy recovered to V_BUS;
-5. whether reinjected/lattice state measurably changes the next event.
+## First validation sequence
 
-## Success evidence
+1. Establish a stable CENTER.
+2. Demonstrate one opposed analog differential around CENTER.
+3. Add the role-appropriate nucleus and measure retained-state bias.
+4. Apply identical probes after different prior writes and check for repeatable state-dependent response.
+5. Route inductive return to V_BUS without corrupting CENTER.
+6. Show the returned bus / lattice consequence measurably changes the next event.
+7. Add the common two-round-toroid body interface.
+8. Couple a second compatible cell / path.
+9. Only after that, expand toward three axes, motor field, flower scale, or higher-mind nuclei.
+
+## Evidence required
 
 - oscilloscope traces;
-- filled `cell-v1/LOG.md`;
-- measured differential values;
-- measured retention / decay behavior;
-- measured energy accounting;
-- repeatable parts and wiring record.
+- measured current and voltage;
+- exact core material and winding record;
+- hysteresis / retention / decay measurements;
+- input versus recovered energy accounting;
+- repeatable A/B comparisons;
+- explicit failure / stop conditions.
 
-## Stop condition
+## What is established versus new
 
-If an identical probe after different prior writes produces no repeatable state-dependent difference, the retained-state premise fails and the architecture is revised before scaling.
+**Established pieces:** differential analog circuits, ferrite / magnetic hysteresis, toroidal magnetic structures, inductive energy recovery, DC-link buses, multi-winding magnetic field systems, threshold-driven switching, and regenerative motor concepts.
 
-## Do not claim
+**Proposed integration:** using those pieces as one recursive analog cell where live state, retained state, body differential coupling, action, and recovery participate in the same physical loop.
 
-Consciousness, feelings, free energy, 100% recovery, measured torque, measured efficiency, proven lattice intelligence, or a working full cell before the evidence exists.
+Do not claim consciousness, proven intelligence, proven lattice cognition, measured torque, measured efficiency, or a working full cell until the evidence exists.
