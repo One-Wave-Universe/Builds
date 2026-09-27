@@ -15,9 +15,9 @@ This is a **prototype / validation BOM**, not a claim that the final topology is
 - The common body differential interface is two **plain round toroids**.
 - **Motor-control nucleus = square figure-8 toroid.**
 - Sensor nucleus = round figure-8 toroid.
-- M4 nucleus = double triangle base-to-base.
 - Five-mind nucleus = double pentagon.
 - Six-mind nucleus = double hexagon.
+- **M4 routing layer = six pyramidal/wedge magnetic routes; not a separate nucleus. Tip-to-tip inside the cell, base-to-base between cells.**
 
 ## Minimum validation hardware
 
