@@ -34,6 +34,63 @@ next physical decision
 
 CENTER and V_BUS have different jobs. CENTER/(0) is the active balanced virtual-ground reference used to construct the physical ternary state. V_BUS is the energy/readiness/reinjection rail.
 
+## Magnetic center — the missing coupled-field test
+
+The motor-control build is not just "nucleus then outer toroids." The **square figure-8 nucleus sits in the coupling region of the two outer/body magnetic structures**, so the three magnetic elements must be characterized as one 3-D field problem.
+
+Use classical coil systems only as references:
+- a Helmholtz pair demonstrates how matched outer excitation can create a comparatively uniform central field;
+- anti-Helmholtz excitation demonstrates how reversing one side creates a central zero / gradient;
+- Maxwell three-coil arrangements demonstrate that a middle coil can materially reshape the field of an outer pair.
+
+CELL_V1 is not automatically any of those geometries. The present outer/body hardware is two plain round toroids and the middle is a hysteretic square figure-8 nucleus. Therefore **field shape, coupling and symmetry are measurements, not names**.
+
+Test both outer-pair modes where the winding arrangement permits:
+1. **common/additive excitation** — ask what field reaches the middle;
+2. **opposed/differential excitation** — ask what gradient / cancellation / asymmetry reaches the middle.
+
+Then repeat each test with the nucleus prepared in controlled negative, near-center and positive prior states. The critical result is whether the same outer/differential stimulus produces a reproducibly different response because of retained nucleus state.
+
+### Coupled state loop
+
+```text
+A/B/C signed differential around CENTER/(0)
+              +
+outer-pair common/opposed field
+              +
+square figure-8 nucleus prior hysteretic state
+              ↓
+      coupled 3-D magnetic state
+              ↓
+ threshold / body / actuator consequence
+              ↓
+ inductive collapse + protected V_BUS return
+              ↓
+retained nucleus state + new bus condition
+              ↓
+          next event
+```
+
+### Magnetic measurements
+
+Capture:
+- 3-D/axial field samples through the center and around the outer pair;
+- outer current and ampere-turns;
+- nucleus drive and sense-winding voltage/flux proxy;
+- additive versus opposed outer excitation;
+- major and minor hysteresis behavior;
+- remanence and coercive threshold;
+- saturation onset;
+- mutual coupling / induced voltage between each magnetic element;
+- threshold shift versus prior nucleus state;
+- retention/decay versus time;
+- heating and drift;
+- whether outer excitation disturbs or erases the nucleus state;
+- whether V_BUS recovery perturbs CENTER or the retained state.
+
+A Hall/gauss probe, current probe, sense winding, oscilloscope and DMM are instrumentation only; they do not become control elements.
+
+
 ## Established building blocks vs CELL_V1 experiment
 
 | CELL_V1 function | Established engineering basis | What CELL_V1 must prove |
@@ -75,8 +132,8 @@ Couple that axis to the square figure-8 motor-control nucleus. Sweep the differe
 ### V3 — retention
 Apply controlled writes in both directions, remove/reduce drive, then probe again. Quantify retention, decay, repeatability, and whether prior state changes the next threshold.
 
-### V4 — body pair
-Add the two plain round outer/body toroids and measure coupling from nucleus/state to the outer interface.
+### V4 — coupled outer pair + hysteretic middle
+Add the two plain round outer/body toroids. Characterize common/additive and opposed/differential outer excitation where physically supported. Map the center field, then repeat with controlled prior nucleus states. Measure whether the outer pair disturbs the nucleus and whether nucleus history changes the coupled response.
 
 ### V5 — return
 Add the protected inductive recovery path to V_BUS. Measure input energy, recovered energy, bus excursion, CENTER disturbance, and temperature. Do not claim net recovery efficiency until measured.
@@ -101,6 +158,8 @@ Only after V0–V6 pass, connect a second cell/opposed seat and measure whether 
 - input and returned energy
 - temperature vs run time
 - crosstalk between axes
+- center/outer field samples for common and opposed excitation
+- nucleus disturbance/retention after outer-field events
 
 ## Pass/fail principle
 
