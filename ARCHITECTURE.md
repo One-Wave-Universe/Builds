@@ -91,13 +91,13 @@ Pack / source replaces losses. No created energy and no fixed recovery percentag
 
 ## No hidden controller
 
-No comparator bank, op-amp controller, microcontroller state machine, software weight file, or global clock may substitute for the intended CELL_V1 physical control loop.
+No comparator bank, op-amp controller, microcontroller state machine, software weight file, resistor threshold ladder, resistor damping/bleed return, or global clock may substitute for the intended CELL_V1 physical control loop.
 
 Test instruments may observe the cell. They do not become the cell.
 
 ## Locked versus open
 
-**Locked:** common plain-round body pair, role-specific nuclei, motor-control square figure-8 nucleus, -/(0)/+ differential, CENTER distinct from V_BUS, threshold / hysteresis-driven events, reinjection into V_BUS, hardware-first control.
+**Locked:** common plain-round body pair, role-specific nuclei, motor-control square figure-8 nucleus, -/(0)/+ differential, CENTER distinct from V_BUS, threshold / hysteresis-driven events, reinjection into V_BUS, hardware-first control, and no designed resistor path for thresholding or energy return.
 
 **Open:** exact materials, winding turns, transistor topology, thermal fade, coupling coefficient, bus impedance, 3+3 winding implementation, field strength, torque, recovery fraction, retention time, scale-up behavior.
 
