@@ -11,9 +11,10 @@ CELL_V1 is a hardware-first analog control-cell family with a **common two-round
 - common outer/body interface for every cell role = **two plain round toroids**;
 - sensor nucleus = round figure-8;
 - **motor-control nucleus = square figure-8**;
+- M4 nucleus = dedicated two-pyramid / double-triangle core, base-to-base;
 - five-mind nucleus = double pentagon;
 - six-mind nucleus = double hexagon;
-- **M4 = the pyramidal routing/connection layer, not a nucleus:** tip-to-tip inside each cell; base-to-base between cells.
+- separate from the M4 nucleus, the general cluster-routing pyramids are tip-to-tip inside each cell and base-to-base between cells.
 
 The square figure-8 is motor-control nucleus only.
 
