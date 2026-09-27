@@ -173,3 +173,24 @@ Mechanism-level evidence is centralized in `PROVEN_PARTS_REFERENCES.md`.
 - **Reinjection:** inductive/DC-link return is established (R8). Useful shared CELL reinjection without disturbing CENTER/memory remains experimental.
 
 **Evidence rule:** never promote a mechanism-level reference into proof of the complete CELL loop.
+
+
+## Simultaneous old-down / new-up mirror loop
+
+The view/action loop is **simultaneous and bidirectional**, not a sequential pipeline.
+
+```text
+new VIEWS UP
+      ↑
+ mirror gate 3
+      ↕ CENTER
+ mirror gate 2
+      ↕ CENTER
+ mirror gate 1
+      ↓
+old ACTIONS DOWN
+```
+
+Every mirror gate oscillates around the same active CENTER/(0) reference. Three mirror gates complete one loop; one completed loop permits one FLIP. During that flip the old action state and incoming/new view state coexist physically. After settling, NEW becomes the OLD/action reference for the next loop.
+
+The intended nerve gate is a **continuous bidirectional wave-gated discrete MOSFET stage** operating within the CELL's ≤1 V normalized signal span. This describes the architecture, not a claim that an arbitrary MOSFET will switch correctly at ≤1 V gate drive; device and topology selection require measured transfer/on-resistance behavior at the actual available gate-source swing.
