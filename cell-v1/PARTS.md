@@ -65,3 +65,22 @@ Do not add higher-mind nuclei until the lower physical loop survives its measure
 - software weight memory.
 
 Test instruments may observe the cell. They do not become the cell.
+
+
+## Bidirectional nerve-gate requirement
+
+Each mirror gate requires a **bidirectional analog wave path** around CENTER/(0). The prototype target is discrete MOSFET/passive/magnetic gating, not an IC switch or digital gate.
+
+Electrical target: **CELL normalized signal span ≤1 V**, oscillating about CENTER at every gate step.
+
+Part-selection requirements:
+- bidirectional signal/current handling in the chosen topology;
+- usable conduction with the *actual* available gate-source overdrive;
+- low enough RDS(on) in that operating region;
+- matched/opposed behavior around CENTER;
+- low leakage relative to HOLD-band currents;
+- parasitic capacitance small enough not to dominate the wave/phase relation;
+- no assumption that datasheet VGS(th) means the device is fully ON;
+- characterize transfer curve and RDS(on) on the bench before locking the MOSFET.
+
+A back-to-back MOSFET arrangement is a candidate when true off-state blocking in both current directions is required; exact topology remains open until the nerve-gate current direction and body-diode behavior are measured.
