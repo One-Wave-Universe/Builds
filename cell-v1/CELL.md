@@ -57,6 +57,23 @@ Across these cell roles:
 - No second controller bypasses the local physical decision path.
 - Geometry does not by itself prove retention, computation, torque, or coupling performance.
 
+## Connected-cell hysteretic body-state layer
+
+Connected cells sit over a dedicated hysteretic magnetic layer that carries **body state / muscle memory** across the lattice.
+
+- local nucleus = local retained state;
+- hysteretic under-cell layer = connected-body / path / muscle memory;
+- V_BUS = returned energy / readiness;
+- CENTER = local differential reference.
+
+The hysteretic layer follows shared cell edges / lattice routes and is physically separate from V_BUS and CENTER.
+
+Repeated use may bias the shared path so the next action encounters a changed physical substrate rather than starting from zero.
+
+For the first flower, the target is one continuous or magnetically coupled hysteretic layer beneath the center motor cell and six sensor cells.
+
+Exact material, thickness, patterning, coercivity, and coupling are open until measured.
+
 ## Unified role-aware loop
 
 ```text
