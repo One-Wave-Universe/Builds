@@ -44,6 +44,27 @@ one differential
 
 Stop at the first failed premise.
 
+## Connect this build to the real world
+
+Every proposed mechanism must be tied to one of four things:
+
+1. an existing engineering mechanism or component;
+2. a known material behavior;
+3. a measurable physical quantity;
+4. a bench experiment that can falsify the idea.
+
+For every open item, outside builders should answer:
+
+- What is the closest existing device / topology / material?
+- What part can we actually buy or fabricate?
+- Which dimensions / turns / material properties matter first?
+- What instrument proves the claimed behavior?
+- What result would tell us to stop and redesign?
+- What simpler existing mechanism does the same job?
+- What part of CELL_V1 is genuinely new versus a recombination of known parts?
+
+Do not protect the architecture from evidence. If established engineering does the job better, use it.
+
 ## Evidence
 
 - scope traces;
