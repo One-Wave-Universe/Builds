@@ -2,11 +2,12 @@
 
 **Status:** Current Build-repo geometry authority for cell-role magnetic cores.
 
-CELL_V1 now has three clearly separated geometry functions:
+CELL_V1 has four geometry functions that must stay separate:
 
-1. **Common body differential layer:** two plain round toroids, identical across all cell types.
+1. **Common body differential layer:** two plain round toroids, one FIELD-side and one VOID-side.
 2. **Specialized nucleus layer:** geometry changes by cell role.
-3. **M4 routing layer:** six tapered pyramidal/wedge routes that connect tip-to-tip within a cell and base-to-base between neighboring cells.
+3. **M4 nucleus:** a dedicated two-pyramid / double-triangle toroidal brain structure.
+4. **Cluster-routing pyramids:** six tapered A+/B+/C+/A-/B-/C- wedge routes that meet tip-to-tip inside a cell and base-to-base between neighboring cells.
 
 ## Universal body differential pair
 
@@ -32,13 +33,15 @@ The common outer/body toroids are **not figure-8 toroids**.
 | --- | --- | --- | --- |
 | Sensor cell | Round figure-8 toroid | Two plain round toroids | planar / 2D |
 | Motor-control cell | Square figure-8 toroid | Two plain round toroids | planar / 2D |
+| M4 cell | Two-pyramid / double-triangle toroidal nucleus | Two plain round toroids | planar / 2D |
 | Five-mind cell | Double pentagon toroidal geometry | Two plain round toroids | planar / 2D |
 | Six-mind cell | Double hexagon toroidal geometry | Two plain round toroids | planar / 2D |
 
 ## Nucleus specialization
 
 - **Sensor nucleus:** round figure-8 for simple binary / differential sensing.
-- **Motor-control nucleus:** square figure-8 for grid / lattice connection.
+- **Motor-control nucleus:** square figure-8 for local binary/differential motor-control.
+- **M4 nucleus:** dedicated two-pyramid / double-triangle toroidal brain.
 - **Five-mind nucleus:** double pentagon.
 - **Six-mind nucleus:** double hexagon.
 
@@ -58,9 +61,13 @@ Do not:
 - claim field strength, hysteresis, coupling, torque, retention, or efficiency without measurement.
 
 
-## M4 routing definition
+## Two pyramid systems
 
-M4 is the CELL lattice routing geometry, not a brain core.
+### M4 brain
+The M4 cell has its own dedicated two-pyramid / double-triangle toroidal nucleus.
+
+### Cluster routing
+The general lattice separately uses six routing pyramids:
 
 ```text
 inside one cell:
@@ -72,6 +79,6 @@ between cells:
 wedge BASE <-> BASE neighboring wedge
 ```
 
-The pyramid network routes physical state/consequence between local differential processing and neighboring cells.
+The routing network carries physical state/consequence between local differential processing and neighboring cells.
 
-Do not recreate M4 as a separate double-triangle nucleus.
+Do not collapse the M4 brain and the cluster-routing pyramid network into one structure.
