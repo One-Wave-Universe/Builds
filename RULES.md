@@ -63,3 +63,16 @@ If it was decided, it is here. Do not drop it. Do not make him say it again.
 28. Same windings may throw. No second controller required in Phase I.
 29. No drum. No hear. No weight file. No 99% recovery. No Standard Model in Builds. No op-amp. No LM339. **No designed resistors in the CELL control, threshold, CENTER, or reinjection architecture; no resistor ladders, bleed paths, damping returns, or dump loads as part of the intended mechanism.**
 30. Three-vortex / tension-skin analogy lives in Science C-317. Grant buys ferrite and FETs.
+
+
+## Pyramid / toroid wiring lock
+39. **Inside one cell, opposed pyramid/wedge sectors meet tip-to-tip through the cell center relation.**
+40. **Between neighboring cells, wedge bases meet base-to-base across the shared hex face.**
+41. A+/A−, B+/B−, and C+/C− remain three independent mirrored differentials.
+42. **FIELD and VOID are the two mirrored sides of the body architecture.** Every cell participates in both sides.
+43. The cell/body interface uses **exactly two plain round toroids total**: one toroid couples the local cell into the FIELD side of the body, and one toroid couples it into the VOID side.
+44. Each toroid carries separate A, B, and C coupling windings. Do not electrically short A/B/C together on the toroid.
+45. Wedge windings and toroid windings must be brought out as separate labeled leads for polarity, coupling, and phase tests before any permanent series/parallel connection is locked.
+46. Each mirror relation is referenced against the same active CENTER relation at every stage; CENTER is a reference/coupling relation, not the main winding-current return.
+47. FIELD and VOID are both active. Both can receive state, express action, and return consequence.
+48. Each body side gets mirrored V_BUS ingress and mirrored reinjection/egress. Neither FIELD nor VOID is input-only or return-only.
