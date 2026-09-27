@@ -1,41 +1,34 @@
-# Square figure-8 nucleus
+# Square figure-8 motor-control nucleus
 
-**The square figure-8 toroidal structure is the CELL_V1 nucleus: the brain-side structure on the lattice bus / vagus-nerve side of the cell.**
+The **square figure-8 toroidal structure is the motor-control-cell nucleus** where the brain-side magnetic element must align to the grid / lattice connection.
 
-It is the central retained-state / magnetic brain-side structure that sits on the lattice-bus / vagus-nerve side of the architecture. It is not the outer motor-field shell and it is not interchangeable with CENTER or V_BUS.
+It is **not** the universal CELL_V1 nucleus.
 
-## Relationship to the rest of the cell
+## Role
 
-- **Nucleus / brain side:** one square figure-8 toroidal structure coupled to the lattice bus on the vagus-nerve side.
-- **Gate structure:** three mirrored differential gate pairs resolve the local ternary lean around − / (0) / +.
-- **Outer shell:** two round figure-8 toroidal structures surround the nucleus and form the larger coupled electrical / magnetic field structure.
-- **Motor windings:** the two outer round figure-8 structures carry six windings total, organized as two mirrored groups of three.
-- **Bus / reinjection:** recovered inductive energy returns through the cell's reinjection path to V_BUS. CENTER remains the local lean reference and is not the recovery bus.
+- **Sensor cell:** uses a **round figure-8 toroid nucleus**.
+- **Motor-control cell:** uses this **square figure-8 toroid nucleus** for grid / lattice connection.
+- **M4 cell:** uses a **double-triangle nucleus** and **two plain round outer toroids**.
+- **Five-mind cell:** uses a **double-pentagon nucleus**.
+- **Six-mind cell:** uses a **double-hexagon nucleus**.
 
-The nucleus participates in retained-state bias and the next threshold decision. The outer two figure-8 structures turn the resolved ternary lean into the larger 3+3 differential motor-field response.
+## Relationship to the bus and reference
 
-```
-            outer round figure-8
-            3 windings / side
-                  ╲
-        mirrored gates + ternary lean
-                  │
-        square figure-8 nucleus
-                  │
-        retained state / hysteresis
-                  │
-        reinjection → V_BUS
-                  ╱
-            outer round figure-8
-            3 windings / side
-```
+The square figure-8 nucleus may couple to the lattice / bus-side structure, but:
 
-This file defines the **proposed CELL_V1 architecture**. Magnetic coupling, winding geometry, field strength, efficiency, and retention depth remain bench quantities until measured.
+- it is not CENTER;
+- it is not V_BUS;
+- CENTER remains the local lean reference;
+- V_BUS remains the shared energy / readiness / reinjection rail.
+
+## Dimensional rule
+
+The square figure-8 hardware is planar / 2D. Its magnetic field is 3D.
 
 ## Do not drift
 
-- Do not call the square figure-8 the bus.
-- Do not put the square figure-8 on CENTER and collapse CENTER into V_BUS.
-- Do not describe the six outer windings as six independent motors.
-- Do not split the nucleus, gates, motor windings, memory, and reinjection into unrelated controllers.
+- Do not assign the square figure-8 nucleus to the sensor cell.
+- Do not assign it to the M4 cell.
+- Do not call the M4 outer round toroids figure-8s.
+- Do not collapse CENTER, V_BUS, and the nucleus into one object.
 - Do not claim measured performance until the bench log contains it.
