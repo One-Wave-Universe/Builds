@@ -345,6 +345,35 @@ The layer should:
 
 This is now a core architecture requirement. Exact material and fabrication remain open.
 
+## Phase-I body-state layer scope
+
+For the current build, use **one connected domain-wall hysteretic body-state layer** under the cell lattice.
+
+Current simple motor scope:
+- wheel;
+- propeller / rotor-style motion;
+- other simple repeated motor paths that do not require independent articulated substructures.
+
+Do **not** add nested body-state layers yet.
+
+Nested muscle-memory layers are reserved for later articulated movement where local habits need to exist at multiple physical scales, for example:
+
+```text
+finger
+-> hand
+-> limb
+-> body
+```
+
+The higher layer should preserve lower-level history rather than replace it.
+
+Current rule:
+- one layer first;
+- test whether multiple simple motor routes can coexist without destructive interference;
+- add a second / nested layer only when more complex movement requires physically separate retained coordination or measured cross-coupling makes one layer insufficient.
+
+This keeps the first hardware simple while preserving the long-term nested body-memory architecture.
+
 # 11. Best current prior-art anchors
 
 These are comparison targets, not proof.
