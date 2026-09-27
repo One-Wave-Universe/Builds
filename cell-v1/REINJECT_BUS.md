@@ -37,6 +37,10 @@ Cell-0 is still one pair at 9 V. This +1 V rail is the analog-brain / lattice bu
 
 ## Recovery
 
+**Architecture rule:** there is no intentional resistor dump / bleed / damping branch in the CELL reinjection path. Recoverable inductive energy is steered toward V_BUS. Copper loss, core loss, transistor loss, imperfect coupling, radiation, and useful mechanical work remain real losses / outputs and must be measured rather than represented by a designed resistor return.
+
+Closest established precedent to investigate: **non-dissipative flyback / regenerative clamp networks and DC-link energy recovery**. These are precedent classes only; CELL's self-gating and state-coupled use remain unproven.
+
 Drive off. Field collapses. Current wants to keep going. Steered to the cap:
 
 1. Drive MOSFET off
@@ -96,6 +100,12 @@ Hypothesis until measured:
 - Prior path history measurably biases a later traversal
 - Reinjection does not unintentionally erase/corrupt the path state
 - Bus condition provides useful local coordination without being confused with stored muscle memory
+
+## Failure tests added from independent review
+
+1. **CENTER-corruption test:** heavily load V_BUS during a controlled inductive return and measure whether CENTER/(0) shifts outside its allowed band.
+2. **Recovery-isolation test:** repeat identical writes with return enabled and disabled; determine whether reinjection perturbs or erases retained nucleus state.
+3. **Bus-ripple test:** measure V_BUS ripple, return peak, and next-event bias to distinguish useful returned consequence from simple supply noise.
 
 ## Hard parts
 
