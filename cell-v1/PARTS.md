@@ -84,3 +84,73 @@ Part-selection requirements:
 - characterize transfer curve and RDS(on) on the bench before locking the MOSFET.
 
 A back-to-back MOSFET arrangement is a candidate when true off-state blocking in both current directions is required; exact topology remains open until the nerve-gate current direction and body-diode behavior are measured.
+
+
+## A/B/C differential cell — physical build skeleton
+
+A/B/C are **three physical winding/power axes**, not the four action states. The established power-stage skeleton is three discrete half-bridges (six power MOSFETs total):
+
+```text
+                         MAIN ENERGY / V_BUS
+                                |
+                +---------------+---------------+
+                |               |               |
+              QAH             QBH             QCH
+          A high MOSFET    B high MOSFET    C high MOSFET
+                |               |               |
+                A               B               C
+                |               |               |
+           A winding       B winding       C winding
+                |               |               |
+              QAL             QBL             QCL
+           A low MOSFET     B low MOSFET     C low MOSFET
+                |               |               |
+                +---------------+---------------+
+                                |
+                         RETURN / V_BUS
+```
+
+The three phase/axis midpoints A, B and C feed the CELL winding/actuator geometry. Their magnetic vector sum is the proven physical precedent for a rotating field. The exact CELL winding placement on the square figure-8 nucleus and common body toroids remains experimental.
+
+### What drives the six MOSFET gates
+
+The power MOSFETs are **not the decision-maker**. Gate intent comes from the CELL's analog process:
+
+```text
+new VIEWS UP
+      ^
+      | bidirectional wave around CENTER
+mirror gate 3
+      <-> CENTER/(0)
+mirror gate 2
+      <-> CENTER/(0)
+mirror gate 1
+      | bidirectional wave around CENTER
+      v
+old ACTIONS DOWN
+      |
+analog nerve-gate / gate-bias translation
+      |
+A/B/C six-MOSFET power stage
+      |
+windings / actuator / load
+      |
+back-EMF + hysteretic consequence + reinjection
+      |
+next VIEWS UP
+```
+
+**Three mirror gates = one complete loop = one FLIP.** Old actions down and new views up coexist during the loop. Every mirror-gate relation oscillates around CENTER/(0).
+
+### <=1 V nerve signal boundary
+
+The CELL nerve/wave signal target is <=1 V normalized span. That is a **signal/state domain**, not permission to connect it blindly to six power-MOSFET gates. Datasheet VGS(th) marks channel onset, not guaranteed low RDS(on). The build therefore requires either power devices characterized for the actual available VGS or a discrete analog gate-bias/translation stage that supplies the required gate-source swing without inserting a digital/IC decision controller.
+
+### Memory through the actuator loop
+
+Memory is the history dependence of the same analog process at multiple persistence scales:
+- short: live winding current, charge, phase, flux and back-EMF;
+- mid: local nucleus/core hysteresis and remanence;
+- long: the two hysteretic lattice sheets / etched path network connecting the body grid.
+
+The actuator is part of the loop: load changes current/flux/back-EMF, so physical action returns a changed view. V_BUS carries shared energy/reinjection; retained history belongs to the hysteretic process/path, not bus voltage alone.
