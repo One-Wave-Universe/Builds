@@ -62,20 +62,35 @@ Any cell may draw bus first, external supply second. Only losses get replaced by
 If you recover 40%, say 40%. Never 100%. Never more than in.
 CELL_V1 does not assume energy creation.
 
-## Memory and return interact, but are not assumed identical
+## Reinjection and muscle memory — exact split
 
-The hysteretic nucleus and the inductive return path participate in the same physical event, but they are **not automatically the same energy path or the same state variable**.
+Reinjection is part of the same physical action→consequence process, but **V_BUS itself is not the long-term muscle-memory store**.
+
+Current architecture:
+
+- **local nucleus / local hysteretic path** = local retained state;
+- **under-hex hysteresis lattice / shared edge magnetic traces** = group / muscle memory;
+- **V_BUS + local cap** = returned energy, readiness, and short echo;
+- **reinjection path** = carries consequence / recoverable energy back into the continuing loop, where the next event encounters the already-biased hysteretic path.
+
+So the process is unified, but the retained habit lives in the hysteretic path, not in bus voltage alone.
 
 A drive event can:
-- change magnetic state in the nucleus;
+- change magnetic state in the local nucleus / path;
+- deepen or weaken a shared hysteretic lattice trace;
 - store energy in inductive fields;
 - perform useful mechanical / field work;
-- dissipate heat and magnetic loss;
-- return part of the remaining inductive energy to V_BUS.
+- return part of the remaining inductive energy to V_BUS;
+- feed the next event through a path whose hysteretic state may already be biased by prior use.
 
-The retained part is tested through remanence / later threshold bias. The recovered part is tested through rail energy accounting. CELL_V1 must measure whether reinjection preserves, perturbs, strengthens, or erases the retained state.
+Measure:
+- remanence / threshold bias in the local nucleus;
+- Br / path bias in the lattice trace;
+- returned energy at V_BUS;
+- bus readiness / short echo;
+- next-event bias after repeated use.
 
-Do not infer memory depth from recovered energy alone.
+Recovered energy alone is not memory depth, but reinjection is part of the closed process that revisits and uses the stored hysteretic path.
 
 ## Bus voltage is lattice state
 
