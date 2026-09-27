@@ -1,86 +1,102 @@
 # THE BUILD
 
-1.00 V hex cell. Letters are edges. Two figure-8s. Bus under. This page is the whole thing.
+This is the compact current CELL_V1 build map.
 
----
+## One sentence
+
+A hardware-first analog cell uses a common pair of plain round body toroids for differential connection, a role-specific magnetic nucleus for retained local state, a live -/(0)/+ differential around CENTER, and a shared V_BUS for measured inductive return and readiness — with no global clock and no software controller replacing the physical loop.
+
+## Common body interface
+
+Every cell role uses **two plain round outer/body toroids**.
+
+Those two round toroids are the common body / lattice differential interface so sensor, motor-control, M4, five-mind, and six-mind cells remain physically compatible.
+
+They are **not figure-8 toroids**.
+
+## Role-specific nuclei
+
+- Sensor -> round figure-8 nucleus.
+- Motor-control -> **square figure-8 nucleus**.
+- M4 -> double triangle, base-to-base.
+- Five-mind -> double pentagon.
+- Six-mind -> double hexagon.
+
+The square figure-8 is **motor-control-cell specific**.
 
 ## Volt
 
-Cell **1.00 V**. Home **0.50 V**. HOLD wobble **0.45–0.55 V**, live not off. 9 V is never the architecture.
+- normalized axis: **1.00 V**
+- CENTER: **0.50 V**
+- HOLD band: **0.45–0.55 V**
+- HOLD is live, not OFF.
 
----
+## Differential
 
-## Shape
+Three opposed axes where used:
 
-Point-up hex. Six letters **are the six edges**, clockwise A+ B+ C+ A- B- C-. Not the points.
+```text
+A+ <-> A-
+B+ <-> B-
+C+ <-> C-
+```
 
-A flower is seven hexes. Neighbors share a **side**. Middle A+ *is* neighbor A- on the same copper, same bus, same square. Corners cannot connect a flower. Connected cells are the distributed intelligence.
+Local state:
 
-Hex is a slice. Seven hexes is still a slice.
+```text
+DOWN / HOLD / UP = - / (0) / +
+```
 
----
+No clock. Physical thresholds, hysteresis, returned state, and bus condition drive events.
 
-## Differential side
+## Motor-control cell
 
-Three leans into one home. Ternary: DOWN / HOLD / UP.
+```text
+plain round body toroid
+        |
+square figure-8 motor-control nucleus
+        |
+A/B/C live differential
+        |
+- / (0) / +
+        |
+plain round body toroid
+        |
+motor / field consequence
+        |
+V_BUS return
+```
 
-**Round figure-8 toroid.** That is the ternary. Two round windows, shared middle. Not a square.
+## Reinjection
 
-DC is void. AC is field rotation. AC and mirrored DC. RC is what remains and goes up with them.
-
----
-
-## Lattice and bus
-
-Same six edges. 1 V bus on those edges.
-
-**Square figure-8.** Lattice and bus, one metal. All leftover current goes through that square onto the bus. That current is the write. The bus feeds every lean. Pack only pays loss. If the bus is still falling, stop pushing.
-
-Cap on the bus = last kick only. Not a diary.
-
-Home is not the bus. Never one pour. No comparators. All analog.
-
----
-
-## Loop
-
-New views up → last action down → new state → repeat.
-New views **are** last actions plus what came back up.
-FLIP is the last move, both ways on the same gate.
-Off dumps to the bus.
-
----
-
-## Gates
-
-Three axes, bidirectional. The band is the core, not a comparator.
-Two agrees → push. One voice waits. Fight holds. Gap waits.
-Same windings may throw. No extra controller in Phase I.
-
----
-
-## Parts
-
-Logic-level N-FETs (2N7000 only as seeing-aid), 10 k loads, 100 k gates to 0 V, 100 nF on pack, **one round figure-8 toroid on the pair**, **one square figure-8 on the lattice/bus**, 30 AWG, Schottky, copper for edges, DMM. No LM339. No op-amp. No EMI bead.
-
----
+- CENTER is the local differential reference.
+- V_BUS is the shared energy / readiness / reinjection rail.
+- CENTER != V_BUS.
+- Inductive collapse returns toward V_BUS.
+- Supply replaces losses.
+- Measure recovery; never assume 100%.
 
 ## Phase I
 
-1. See a lean against 0.50 on the round toroid.
-2. See the square take the collapse, not the home.
-3. Kick moves bus, not CENTER.
-4. Second lean feels live bus vs empty bus.
-5. Raw energy fraction.
+1. Stable CENTER.
+2. One visible opposed differential.
+3. State-bearing magnetic nucleus.
+4. Identical probe after different writes gives repeatably different response.
+5. Inductive kick reaches V_BUS without moving CENTER.
+6. Returned bus state changes the next physical event.
+7. Add the common two-round-toroid body interface.
+8. Couple a second compatible path / cell.
 
----
+Stop at the first failed premise and revise before scaling.
 
 ## Out
 
-Drum. Hear. Weight file. 99%. Comparators. Standard Model in this repo.
+No software state controller in the core cell. No comparator controller. No op-amp brain. No weight-file memory. No global clock. No free-energy claim.
 
----
+## Read next
 
-## Also
-
-`RULES.md` `cell-v1/CELL.md` `cell-v1/MEMORY.md` `cell-v1/DC_AC_RC.md` `cell-v1/FLOWER.md`
+`RULES.md`  
+`cell-v1/CELL.md`  
+`cell-v1/NUCLEUS_TOROID_TYPES.md`  
+`cell-v1/CORES.md`  
+`GRANT_CELL.md`
