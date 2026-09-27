@@ -35,6 +35,12 @@ If it was decided, it is here. Do not drop it. Do not make him say it again.
 32c. The **common outer/body round-toroid differential pair is the shared interconnect layer** across cell types. Nucleus geometry is the specialization layer.
 32d. Local nucleus memory, hysteretic body-state/muscle-memory layer, and V_BUS readiness/echo are distinct physical roles that interact in one continuing loop.
 
+## Phase-I body-state layering
+35. **Phase I uses one dedicated domain-wall hysteretic body-state / muscle-memory layer** beneath the connected cells.
+36. That single layer is sufficient for the first simple motor targets such as **wheel and propeller / rotor-style motion**.
+37. **Nested muscle-memory layers are deferred** until articulated movement requires multiple scales of retained coordination, such as finger -> hand -> limb -> body.
+38. Do not add extra body-state layers in Phase I unless one shared domain-wall layer fails because of measured interference / cross-coupling.
+
 ## Up
 33. DC, AC, and RC go up, as field and void.
 34. **DC is void.** **AC is field rotation.** **AC and mirrored DC.** RC is the remainder and goes up with them. Not a third rail.
