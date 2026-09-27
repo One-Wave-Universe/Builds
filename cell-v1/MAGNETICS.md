@@ -2,9 +2,9 @@
 
 This file must agree with `CELL.md`. References R1–R8 are defined in `PROVEN_PARTS_REFERENCES.md`.
 
-## 1. Motor-control nucleus — square figure-8 core with twisted bifilar winding
+## 1. Motor-control nucleus — one-piece square two-aperture figure-8 core
 
-One planar **square figure-8 magnetic nucleus with a twisted bifilar winding pair** is the motor-control nucleus. The figure-8 geometry is retained; bifilar describes the two conductors wound together, not a replacement core geometry.
+One planar **one-piece square two-aperture figure-8 magnetic nucleus** is the motor-control nucleus. It is one continuous hysteretic magnetic body with two square windows and shared magnetic legs. This is **transfluxor-like in magnetic principle**: multiple apertures create distinct flux paths with portions in common. The CELL geometry and semantics remain experimental.
 
 Proposed CELL role:
 - receive coupled continuous analog differential/alternating bias from BC–DC and TC–AC;
@@ -116,7 +116,7 @@ Characterize:
 
 ## Anti-drift
 
-- motor nucleus = **one planar square figure-8 toroid**;
+- motor nucleus = **one planar, one-piece square two-aperture figure-8 hysteretic core**;
 - outer/body interface = **two plain round toroids**;
 - no outer figure-8 pair;
 - BC–DC → TC–AC → QC–RC is the nested view stack;
@@ -128,9 +128,9 @@ Characterize:
 - no IC/chip, MCU, PWM/FOC, MTJ, or software state controller is used as the CELL decision mechanism.
 
 
-### Twisted-bifilar Field / Void winding — locked build hypothesis
+### Field / Void winding on the one-piece core — build hypothesis
 
-Use one closely coupled insulated wire pair, twisted together before winding, as the **Field (F)** and **Void (V)** conductors on the square figure-8 nucleus. Bifilar construction is selected because the two conductors follow nearly the same magnetic path and therefore have high mutual coupling / low leakage relative to separated windings.
+Use paired **Field (F)** and **Void (V)** windings on the one-piece two-aperture nucleus. A twisted-bifilar implementation remains a candidate where tight coupling is wanted, but **bifilar construction is not what defines the nucleus**. The defining element is the one-piece multi-aperture hysteretic magnetic body and its shared flux paths.
 
 Mark the starts **F·** and **V·** (dot convention) before winding. Keep equal turn count and the same physical twist/winding path. Do not infer polarity from wire color after construction; verify it with a low-energy induced-voltage polarity test.
 
@@ -153,7 +153,7 @@ This is the physical basis for testing Field/Void as an opposed read/write pair.
 
 ### Figure-8 lobe relation
 
-The square figure-8 has two lobes joined by a crossover/shared central region. Wind/route the pair so the lobe magnetic senses are deliberately known. The first prototype must expose four test leads (F start/finish, V start/finish) so series-aiding and series-opposing configurations can be swapped without rewinding.
+The one-piece square figure-8 has two square apertures/lobes formed in one continuous magnetic body with shared magnetic leg(s). Wind/route the pair so the lobe magnetic senses are deliberately known. The first prototype must expose four test leads (F start/finish, V start/finish) so series-aiding and series-opposing configurations can be swapped without rewinding.
 
 Test both lobe configurations:
 1. **counter-lobe:** flux sense in lobe 1 opposes lobe 2 at the shared/crossover relation;
@@ -186,3 +186,37 @@ OLD actions DOWN
 ```
 
 Every gate remains an oscillating differential around CENTER/(0); old-down and new-up coexist.
+
+
+### Historical transfluxor precedent — old state + new excitation
+
+The closest established magnetic precedent currently identified is the **transfluxor / multi-aperture magnetic core** described by Rajchman and Lo (1956) and subsequent transfluxor hardware.
+
+Established precedent:
+- one hysteretic magnetic body can contain two or more apertures;
+- the apertures create several closed magnetic flux paths with **shared legs / common portions**;
+- a prior setting establishes retained magnetic condition / coupling state;
+- later excitation acts on that already-conditioned magnetic circuit rather than on an erased blank core;
+- controlled flux transfer among legs can change the retained condition;
+- historical transfluxors demonstrated both switched states and **intermediate continuously set transmission levels**.
+
+CELL mapping — **hypothesis, not historical claim**:
+
+```text
+OLD retained magnetic condition
+          +
+NEW incoming Field/Void excitation
+          |
+          v
+shared flux legs of the one-piece two-aperture nucleus
+          |
+          v
+history-dependent threshold / flux redistribution
+          |
+          v
+NEXT retained magnetic condition + induced return
+```
+
+This is the physical precedent for the CELL statement that **old and new states can participate in the same transition**. Do not claim that historical transfluxors implement CELL's four actions, four views, ternary CENTER, BC-DC/TC-AC/QC-RC meanings, or three-mirror recursion. Those mappings must be demonstrated.
+
+Bench discriminator: prepare two different controlled prior magnetic histories, then apply the **same** new excitation. If the measured flux/induced-voltage trajectory differs reproducibly beyond noise and drift, the nucleus is physically combining present drive with retained history. Map that measured history dependence to CELL semantics only after the result exists.
