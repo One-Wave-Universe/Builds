@@ -1,115 +1,90 @@
-# FULL BUILD — sit this tonight
+# FULL BUILD — current validation path
 
-Repo: https://github.com/One-Wave-Universe/Builds
+This file is the interview-readable build sequence. It intentionally separates **what is locked**, **what is a prototype aid**, and **what still requires measurement**.
 
-This is the one packet. Architecture volts **1.00 / 0.50 / 0.45–0.55**.
-Bench parts may run at 9 V headroom. You still write 1 V numbers.
+## Locked architecture
 
-Simulator: `algorithms/full_cell.py`
+- hardware-first analog control;
+- no global clock;
+- CENTER distinct from V_BUS;
+- DOWN / HOLD / UP around - / (0) / +;
+- common outer/body interface = **two plain round toroids for every cell role**;
+- sensor nucleus = round figure-8;
+- **motor-control nucleus = square figure-8**;
+- M4 nucleus = double triangle base-to-base;
+- five-mind nucleus = double pentagon;
+- six-mind nucleus = double hexagon.
 
-```
-python3 algorithms/full_cell.py
-```
+## First target: motor-control cell
 
-That file is a model. Empty `cell-v1/LOG.md` still means 0% hardware.
+The first coherent motor-control validation path is:
 
----
-
-## Sentence
-
-A hex sandwich. Three differentials lean off CENTER. Square-ferrite figure-8 holds flux on the home. Leftover current all gates to one V_BUS that feeds everyone. Two-of-three current-sum permits PUSH. Fight holds. Gap waits. Same windings can later turn a shaft.
-
-## Laws
-
-- Event, not clock.
-- Home is not the bus. Never one pour.
-- HOLD wobble 0.45–0.55 is live, not off.
-- Leftover kick → Schottky → bus. Pack only pays loss.
-- If the bus is still falling, SEND-UP. Stop pushing.
-- Two agrees → PUSH. One voice waits. Fight holds.
-- Never both directions ON.
-- Actuator = those windings. No extra controller in Phase I.
-
-## BOM — Cell-0 (exists-parts)
-
-| Qty | Part | Job |
-| --- | --- | --- |
-| 1 | 400-point breadboard | Body |
-| 1 | Rechargeable 9 V (map as 1.00) | Pack |
-| 2 | 2N7000 or BS170 | Seeing-aid pair |
-| 2 | 10 kΩ 1% | Drain loads R1 R2 |
-| 2 | 100 kΩ 1% | Gate to 0 V R3 R4 |
-| 1 | 100 nF C0G | Across pack |
-| 1 | Square-loop / magamp toroid (NOT EMI bead) | Home memory |
-| 1 m | 30 AWG magnet wire | 10–20 turns through the core |
-| 1 | 1N5819 Schottky | Kick to bus |
-| 1 | 10 nF C0G | Local catch |
-| 1 | 1 µF film or X7R | Bus reservoir |
-| 1 | DMM | Lean meter |
-
-Later: second pair of logic-level N-FETs back-to-back for bidirectional gates, Permalloy foil on edges, 40 mm hex PCB.
-
-## Breadboard rows
-
-- Red rail = pack + (call it 1.00 even if dirty 9 V)
-- Blue rail = 0
-- Row 15 = CENTER / home only
-- Q1 ~row 5, Q2 ~row 8, sources to 15
-- Magnet wire 15 through the core back to 15
-- Row 22 = BUS. Diode from kick node to 22. Cap 22 to blue
-- **Never jumper 15 to 22**
-
-## Netlist
-
-```
-VTOP V_TOP 0 DC 9
-R1 V_TOP DB 10k
-R2 V_TOP DC 10k
-R3 GB 0 100k
-R4 GC 0 100k
-C1 V_TOP 0 100n
-MQ1 DB GB CENTER 2N7000
-MQ2 DC GC CENTER 2N7000
-D1 KICK BUS 1N5819
-CBUS BUS 0 1u
-* core on CENTER; not a DC element
-* CENTER is not 0 and is not BUS
+```text
+stable CENTER
+    ↓
+one opposed analog differential
+    ↓
+square figure-8 motor-control nucleus
+    ↓
+retained-state write / probe test
+    ↓
+common two-round-toroid body interface
+    ↓
+field / actuator coupling
+    ↓
+inductive return
+    ↓
+V_BUS
+    ↓
+effect on next event
 ```
 
-## Phase I order (stop at the first fail)
+The square figure-8 is **not** the generic nucleus. It is the motor-control-cell nucleus.
 
-1. Middle 0.50 exists and is quiet under switching.
-2. One lean visible against that middle. D = DB − DC.
-3. Leftover remanence on the core after you let go. Sign matches last D.
-4. Kick moves row 22. Row 15 does not take that charge.
-5. Second lean drinks a live bus differently than an empty bus.
-6. Write the energy fraction you got. Do not write 99.
+## Evidence gate
 
-Nothing past 5 matters until 5 works.
+Before calling the first cell path successful, obtain:
 
-## Permit
+1. stable CENTER under the tested switching event;
+2. repeatable negative / balanced / positive differential;
+3. prior-write-dependent response to an identical probe;
+4. retention / decay curve;
+5. inductive return to V_BUS without corrupting CENTER;
+6. measured energy accounting;
+7. repeatable coupling through the common plain-round body pair;
+8. same result over repeated trials.
 
-Each axis: DOWN / HOLD / UP from its volts vs 0.45–0.55.
+## Stop rules
 
-- two UP, zero DOWN → PUSH+
-- two DOWN, zero UP → PUSH−
-- mixed committed → HOLD
-- two in the gap → WAIT
-- bus falling while you ask the pack → SEND-UP
+Stop and revise if:
 
-Phase I permit is you watching two meters. LM339 later.
+- prior-write response cannot be separated from noise / thermal drift;
+- CENTER instability creates the apparent ternary state;
+- V_BUS return destabilizes the differential;
+- common body coupling is not repeatable;
+- energy accounting does not close within measurement error.
 
-## Geometry lock
+## Build order
 
-Point-up hex. Letters are **edges**, clockwise A+ B+ C+ A− B− C−.
-Flower = seven hexes. Neighbors share a **side**. Center A+ *is* neighbor A− on the same copper.
-Do not start at seven hexes.
+```text
+one differential
+-> motor-control square figure-8 nucleus
+-> retained-state test
+-> V_BUS return
+-> common two-round-toroid body interface
+-> second compatible path / cell
+-> full A/B/C
+-> actuator / motor test
+-> flower
+-> M4 / higher nuclei
+```
 
-## What this is not
+## Established constituent technologies
 
-Not a drummer. Not a proton. Not a weight file as the memory.
-Not software backprop. Memory is the lean in the path plus remanence in the 8 plus skin on the bus edges.
+The build deliberately starts from familiar engineering pieces: differential analog circuits, magnetic hysteresis, ferrite / toroidal cores, inductive energy storage, regenerative return paths, DC-link buses, and multi-winding magnetic systems.
 
-## Grant sentence
+The proposed part is their integration into this particular recursive, state-bearing control loop.
 
-One-volt hex. One home. Three leans. Leftover current is the blood. History in the home and in the under-mesh. Coherence instead of a timer. Phase I is steps 1–5.
+## Not claimed yet
+
+No measured torque, efficiency, intelligence, recovery percentage, higher-mind function, or full-cell success until the bench evidence exists.
