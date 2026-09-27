@@ -54,6 +54,27 @@ This replaces the obsolete description of “two outer round figure-8 toroidal s
 
 Where A/B/C electromagnetic projection is used, the established comparison is the 120-degree stator geometry of a synchro (**R2**) and rotating-field machinery (**R3**). Those references establish electromagnetic projection/rotation, not the exact toroid geometry.
 
+## 2A. Hex differential magnetic sectors — six windings / three mirrors
+
+The local hex differential is built around **six tapered triangular/pyramidal magnetic sectors**, each carrying a round winding. Clockwise sector identities are **A+, B+, C+, A−, B−, C−**. Opposed sectors are the three local magnetic/electrical mirrors.
+
+```text
+A+ <-> A-
+B+ <-> B-
+C+ <-> C-
+```
+
+The tapered tips converge toward the local center region (**tip-to-tip relation**); the broad bases face the six hex boundaries and meet neighboring cell faces **base-to-base** in the flower/lattice. Windings remain individually accessible during characterization.
+
+Electrically, A/B/C each use an independent **bidirectional center gate** referenced to the same active CENTER/(0) virtual-ground bus. The discrete switch candidate is a **back-to-back MOSFET pair per differential** so both current directions can be controlled. CENTER is a shared reference, not permission to hard-short the A/B/C signal branches together.
+
+Characterize one opposed pair first, then all three: winding polarity, L/R, mutual inductance, center leakage/cross-coupling, field distribution, induced return, gate voltage/current margin, CENTER disturbance, and response under reversed excitation. After the three pairs behave predictably, test whether A/B/C can support the intended three-mirror one-loop/one-FLIP relation.
+
+### First flower role geometry
+
+The first flower uses one **square two-aperture motor/control nucleus** in the center cell and six **round two-aperture sensor nuclei** in the surrounding cells. Both are one-piece hysteretic multi-aperture cores; their geometry differs by role. The later M4 double-triangle nucleus is outside this first-flower build stage.
+
+
 ## 3. A/B/C and four actions are different layers
 
 - **Four actions down:** Inward / Outward / Across / Over.
@@ -117,6 +138,8 @@ Characterize:
 ## Anti-drift
 
 - motor nucleus = **one planar, one-piece square two-aperture figure-8 hysteretic core**;
+- sensor nucleus = **one planar, one-piece round two-aperture figure-8 hysteretic core**;
+- local hex differential = **six tapered magnetic sectors + six round windings + three opposed A/B/C mirrors referenced to shared CENTER/(0)**;
 - outer/body interface = **two plain round toroids**;
 - no outer figure-8 pair;
 - BC–DC → TC–AC → QC–RC is the nested view stack;
