@@ -1,16 +1,20 @@
 # The cell
 
-CELL_V1 is one coupled physical state machine.
+CELL_V1 is one coupled physical state machine, but **its magnetic nucleus geometry depends on the cell role**.
 
-## Core topology
+## Role-specific core topology
 
-- **Nucleus / brain side:** one square figure-8 toroidal structure on the lattice-bus / vagus-nerve side.
-- **Gate layer:** three mirrored differential axes A, B, C resolve one local ternary lean around − / (0) / +.
-- **Outer field shell:** two round figure-8 toroidal structures form one combined outer electrical / magnetic field.
-- **Motor field:** six windings total, arranged as two mirrored groups of three.
+- **Sensor cell:** planar **round figure-8 toroid nucleus**.
+- **Motor-control cell:** planar **square figure-8 toroid nucleus** for grid / lattice connection.
+- **M4 cell nucleus:** **two triangular toroidal loops base-to-base**.
+- **M4 outer field pair:** **two plain round toroids**, not round figure-8 toroids.
+- **Five-mind nucleus:** **double pentagon** toroidal geometry.
+- **Six-mind nucleus:** **double hexagon** toroidal geometry.
 - **Energy / readiness:** V_BUS carries reinjection and lattice readiness. CENTER remains the local lean reference.
 
-All analog. No global clock. No second controller bypasses the ternary decision.
+All present core hardware is planar / 2D. The magnetic fields are 3D.
+
+All analog. No global clock. No second controller bypasses the local physical decision path.
 
 ## Seats
 
@@ -19,25 +23,37 @@ All analog. No global clock. No second controller bypasses the ternary decision.
                  ________
                 /        \
            C-  /          \  B+
-              |  NUCLEUS   |
+              |   BRAIN    |
            B-  \          /  C+
                 \________/
                     A-
 ```
 
-The six edge seats are three mirrored axes, not six independent gates.
+The six edge seats are three mirrored axes where that interface is used, not six independent gates.
 
 ## Whole-cell loop
 
+```text
 sensor / neighbor consequence
-→ square figure-8 nucleus
-→ three mirrored gate pairs
-→ DOWN / HOLD / UP
-→ outer mirrored 3+3 winding field
-→ motor / field action
+→ role-specific nucleus
+→ local differential / threshold resolution
+→ DOWN / HOLD / UP where applicable
+→ role-specific field / motor action
 → collapse / inductive return
 → V_BUS
-→ next nucleus / gate decision
+→ next physical decision
+```
+
+For the M4 cell specifically:
+
+```text
+double-triangle nucleus
+→ local M4 resolution / compression
+→ two plain round outer toroids
+→ mirrored winding / field response
+→ collapse / return
+→ V_BUS
+```
 
 CENTER stays off the recovery bus. The flower connects neighboring cells on the edge axes while V_BUS provides the shared energy/readiness layer.
 
