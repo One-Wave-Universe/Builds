@@ -17,7 +17,8 @@ This is a **prototype / validation BOM**, not a claim that the final topology is
 - Sensor nucleus = round figure-8 toroid.
 - Five-mind nucleus = double pentagon.
 - Six-mind nucleus = double hexagon.
-- **M4 routing layer = six pyramidal/wedge magnetic routes; not a separate nucleus. Tip-to-tip inside the cell, base-to-base between cells.**
+- **M4 nucleus = two triangular/pyramidal toroidal loops base-to-base.**
+- **Cluster-routing pyramids = separate six pyramidal/wedge magnetic routes. Tip-to-tip inside the cell, base-to-base between cells.**
 
 ## Minimum validation hardware
 
