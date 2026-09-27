@@ -20,7 +20,7 @@ If it was decided, it is here. Do not drop it. Do not make him say it again.
 11. Geometry is **cell-role specific**. Do not force one nucleus shape onto every cell.
 12. **Sensor-cell nucleus:** one planar **round figure-8 toroid** for the simple binary / differential sensing brain.
 13. **Motor-control-cell nucleus:** one planar **square figure-8 toroid** where the nucleus must align to the grid / lattice connection.
-14. **Common body differential interface for every cell:** two **plain round toroids**. This outer/body pair is shared across sensor, motor-control, M4, five-mind, and six-mind cells so all cell types can connect through the same body/lattice differential language.
+14. **Common body differential interface for every cell:** two **plain round toroids**. This outer/body pair is shared across sensor, motor-control, five-mind, and six-mind cells so all cell types can connect through the same body/lattice differential language.
 15. The common outer/body round toroids are **not figure-8 toroids**.
 16. **M4 cell nucleus:** two triangular toroidal loops arranged **base-to-base** (double-triangle / planar pyramid form).
 17. **Five-mind nucleus:** **double pentagon** toroidal geometry.
