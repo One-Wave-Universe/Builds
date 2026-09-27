@@ -19,9 +19,11 @@ three opposed A/B/C differential axes
         ↓
 square figure-8 motor-control nucleus
         ↓
-threshold + hysteretic retained-state influence
+threshold + local nucleus hysteresis
         ↓
 two plain round outer/body toroids
+        ↓
+etched hysteretic lattice paths / distributed muscle memory
         ↓
 field / actuator / load consequence
         ↓
@@ -103,7 +105,8 @@ A Hall/gauss probe, current probe, sense winding, oscilloscope and DMM are instr
 | Threshold switching | analog/magnetic threshold behavior | repeatable threshold-driven transition without a global clock |
 | Outer magnetic field / actuator coupling | wound magnetic actuators and motor windings | two-round-toroid body interface produces useful measurable coupling |
 | Inductive return | flyback, regenerative drives, DC-link energy recovery | recovered energy can return to V_BUS without corrupting CENTER or destabilizing state |
-| Shared bus | conventional DC buses / reservoirs | bus condition can participate in the next local state without runaway feedback |
+| Etched hysteretic lattice paths | patterned magnetic/domain-wall paths provide physical precedent | repeated traversal can write/retain a measurable path bias without unacceptable crosstalk |
+| Shared V_BUS | conventional DC buses / reservoirs | carries energy/readiness/reinjection while remaining distinct from stored path memory |
 | Multi-cell scaling | networked/distributed control is established broadly | CELL_V1 neighbor coupling and lattice behavior remain unproven |
 
 The novelty claim is therefore the **integration**, not invention of each underlying component.
@@ -116,7 +119,8 @@ The novelty claim is therefore the **integration**, not invention of each underl
 4. **Nucleus → outer/body pair** — is coupling strong and selective enough to influence the body/actuator path?
 5. **Return → V_BUS** — can inductive energy be recovered while keeping CENTER separate and avoiding unstable positive feedback?
 6. **Thermal/component drift** — do the three states remain distinguishable across realistic component and temperature variation?
-7. **Second-cell coupling** — only after one cell passes: does an adjacent cell see the intended opposed differential consequence?
+7. **Etched path → later traversal** — after controlled writes, does the same later stimulus follow a measurably history-dependent response, beyond noise/drift?
+8. **Second-cell coupling** — only after one cell passes: does an adjacent cell see the intended opposed differential consequence?
 
 ## First validation sequence
 
@@ -141,8 +145,11 @@ Add the protected inductive recovery path to V_BUS. Measure input energy, recove
 ### V6 — three axes
 Replicate the validated differential path for A/B/C and test interaction/crosstalk. The axes operate in parallel; they are not three sequential voltage levels.
 
-### V7 — second cell
-Only after V0–V6 pass, connect a second cell/opposed seat and measure whether the intended neighbor consequence survives loading and coupling.
+### V7 — etched-path muscle memory
+Add one deliberately simple writable hysteretic path test coupon before a full lattice. Apply controlled traversals in both directions, return energy through the protected V_BUS path, then apply an identical probe. Measure coercive/write threshold, retained path-state proxy, next-response shift, decay, thermal drift, neighboring-path crosstalk, and whether reinjection reinforces, erases, reverses, or leaves the path unchanged.
+
+### V8 — second cell
+Only after V0–V7 pass, connect a second cell/opposed seat and measure whether the intended neighbor consequence survives loading and coupling.
 
 ## Bench traces to bring back
 
@@ -154,7 +161,10 @@ Only after V0–V6 pass, connect a second cell/opposed seat and measure whether 
 - outer-pair sense/flux proxy
 - threshold entry/exit values
 - prior-state-dependent threshold shift
-- retention/decay vs time
+- nucleus retention/decay vs time
+- etched-path retained-state proxy and write/erase threshold
+- identical-probe response after different path histories
+- path-to-path crosstalk
 - input and returned energy
 - temperature vs run time
 - crosstalk between axes
@@ -185,4 +195,6 @@ If three repetitions fail for the same reason, change the experimental angle rat
 
 The motor-control cell is the immediate validation target. Sensor, M4, five-mind and six-mind nucleus geometries remain later role-specific extensions. Do not let those later layers block validation of the first physical cell.
 
-No measured claim is made for retention, torque, coupling, reinjection efficiency, lattice behavior, or higher cognition until the corresponding experiment exists.
+**Memory lock:** local nucleus hysteresis is local retained state; etched hysteretic lattice paths are the distributed muscle-memory layer; V_BUS is the energy/readiness/reinjection rail and is not itself the stored muscle memory.
+
+No measured claim is made for useful retention, etched-path memory, torque, coupling, reinjection efficiency, lattice behavior, or higher cognition until the corresponding experiment exists.
