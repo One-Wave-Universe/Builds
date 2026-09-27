@@ -10,7 +10,14 @@ Three leans. Ternary is **DOWN / HOLD / UP** around **− / (0) / +**. **All ana
 
 ## Cell-role geometry map
 
-CELL_V1 is no longer allowed to assume one universal nucleus geometry. The electrical state-machine rules remain common, but the magnetic nucleus / outer-core shape depends on the cell's role.
+CELL_V1 uses one **common outer/body differential interface** across cell types, while the **nucleus geometry changes by role**.
+
+### Common body differential interface — all cells
+- **Outer/body pair:** two **plain round toroids**.
+- This pair is shared across sensor, motor-control, M4, five-mind, and six-mind cells.
+- Purpose: preserve one common physical differential / body-state / lattice connection language so mixed cell types can connect directly without adapter geometries.
+- The common round toroids are **not figure-8 toroids**.
+- Nucleus geometry is the specialization layer inside that common body interface.
 
 ### Sensor cell
 - **Nucleus:** one planar **round figure-8 toroid**.
@@ -24,9 +31,8 @@ CELL_V1 is no longer allowed to assume one universal nucleus geometry. The elect
 
 ### M4 cell
 - **Nucleus:** **two triangular toroidal loops base-to-base** — the planar double-triangle / pyramid nucleus.
-- **Outer field pair:** two **plain round toroids**.
-- The M4 outer pair is explicitly **not** a round figure-8 pair.
-- The existing mirrored 3+3 winding / motor-field concept may be mapped onto the two round outer toroids, subject to bench validation.
+- **Outer/body pair:** the same two **plain round toroids** used by every other cell type.
+- The existing mirrored 3+3 winding / motor-field concept may be mapped onto the common round-toroid pair, subject to bench validation.
 
 ### Five-mind cell
 - **Nucleus:** **double pentagon** toroidal geometry.
@@ -40,6 +46,7 @@ The present core / winding hardware is **2D / planar**. The resulting magnetic f
 ## Shared electrical / state-machine rules
 
 Across these cell roles:
+- the **two plain round outer/body toroids remain common** so every cell type speaks the same body differential / interconnect geometry;
 - A+↔A−, B+↔B−, C+↔C− remain three mirrored spatial axes / edge-seat pairs where that interface is used.
 - DOWN / HOLD / UP remain the local ternary around CENTER.
 - Threshold crossings, hysteresis, retained state, bus condition, and neighbor state drive transitions.
@@ -139,7 +146,9 @@ HOLD is live readiness around center, not a clocked idle.
 - **Sensor nucleus = round figure-8 toroid.**
 - **Motor-control nucleus = square figure-8 toroid for grid/lattice connection.**
 - **M4 nucleus = two triangular toroidal loops base-to-base.**
-- **M4 outer pair = two plain round toroids, not figure-8 toroids.**
+- **Every cell type uses the same two plain round outer/body toroids.**
+- **The common outer/body pair is not figure-8.**
+- Nucleus geometry changes by cell role; outer/body differential geometry does not.
 - **Five-mind nucleus = double pentagon.**
 - **Six-mind nucleus = double hexagon.**
 - Current core hardware geometry is planar / 2D; magnetic fields are 3D.
