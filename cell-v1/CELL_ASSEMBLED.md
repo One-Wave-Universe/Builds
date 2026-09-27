@@ -16,9 +16,10 @@ One-page integration authority beneath `CELL.md`.
 
 - Sensor cell -> round figure-8 nucleus.
 - Motor-control cell -> **square figure-8 nucleus**.
-- M4 -> double triangle, base-to-base.
 - Five-mind -> double pentagon.
 - Six-mind -> double hexagon.
+
+M4 is not in this nucleus list. **M4 is the pyramidal routing/connection layer** linking the six A/B/C wedge routes inside and between cells.
 
 The **square figure-8 nucleus belongs to the motor-control cell**. Do not make it generic.
 
