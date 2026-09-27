@@ -1,102 +1,104 @@
-# Proposed architecture
+# Proposed CELL_V1 architecture
 
-Physical analog cell. State is the settled loop after an event — hysteresis. Not a weight file. Not a simulation of a cap.
+Physical analog cell family. State is carried by the settled physical loop after an event — differential bias, magnetic history, bus condition, and returned consequence. Not a weight file.
 
-Science stays in One-Wave-Science. Fiction stays in Mythos-and-Stories. No drum. No hear yet.
+Science stays in One-Wave-Science. Build claims stay here.
 
-Start drawing: `cell-v1/THE_CELL.md`
+## Common body shell
 
----
+Every cell role uses the same **two plain round outer/body toroids** as its body differential / interconnect layer.
 
-## The object
+That common shell lets sensor, motor-control, M4, five-mind, and six-mind cells connect through one shared physical language.
 
-Two faces, both powered.
+The common outer/body toroids are **not figure-8 toroids**.
 
-**Top — ternary.** Point-up hex. Edge-center ports. Clockwise `A+ → B+ → C+ → A- → B- → C-`. Three differentials star to one CENTER. HOLD wobble `0.45–0.55`. Commit ±1 ±2 ±3.
+## Nucleus specialization
 
-**Between — square ferrite figure-8 per axis.** Two squares, one magnetic loop, + window / − window. Three figure-8s so axes can oppose. Not an EMI bead.
+- Sensor cell -> round figure-8 toroid nucleus.
+- Motor-control cell -> **square figure-8 toroid nucleus**.
+- M4 cell -> two triangular toroidal loops base-to-base.
+- Five-mind cell -> double pentagon nucleus.
+- Six-mind cell -> double hexagon nucleus.
 
-**Bottom — bus-side lattice.** Reinjection. Mirror of the top trit. Every leftover current from all three diffs gates onto V_BUS. The bus is fed by everything and feeds everything. Pack only on ask. Still falling while asking → send up → PASS.
+The square figure-8 nucleus is **motor-control specific**.
 
-Hysteresis is the **whole loop settled** (top + figure-8s + gates + rail), not three separate widgets.
+Current hardware geometry is planar / 2D. Magnetic fields are 3D.
 
----
+## Differential state
 
-## Three nodes (never shorted)
+Where the A/B/C interface is used:
 
-| Name | Job |
-| --- | --- |
-| V_TOP | Quiet analog headroom for the pairs. From the pack. Cell-0: 9 V. |
-| CENTER | Lean home. Mid of the pairs. Allowed to move a little. |
-| V_BUS | Energy home. Living rail. Pulses, sag, ask, redline. |
-
-1 V map = lean bands across the pair. Not the pack voltage.
-
----
-
-## Lean
-
-`D = V(+) − V(-)` per letter. Direction, magnitude, hardness (Iss / write depth).
-
-```
-Idiff = Iss · tanh(Vd / (2 · n · Vt))
+```text
+A+ <-> A-
+B+ <-> B-
+C+ <-> C-
 ```
 
-DOWN / HOLD / UP. HOLD is live tail, not off.
-DC = stand. AC = shove. RC = leftover in the settled loop.
+The local state is:
 
-No clock. Crossing a named band *is* the event. Path busy until CENTER is home and the bus kick has settled.
-
----
-
-## Two-of-three → metal
-
-Each axis: HOLD / GAP / IN + sign.
-Gated ±Iss into SUM. One unit = one Iss. Trip 1.5, release 1.2.
-GAP OR inhibits at the trip (walking third).
-PERMIT_UP / PERMIT_DOWN unlock PUSH/FLIP on heading axes only. PULL and PASS always allowed.
-Comparators on V_TOP. Buffer PERMIT off SUM.
-
-Law: agree → reinforce. oppose → HOLD. one voice → wait.
-
----
-
-## Energy
-
-Return walks the figure-8 then the gate then V_BUS. Memory and recovery are one path.
-
-```
-E_in  = ∫ V I dt
-E_rec = ½ C (V²_after − V²_before)
+```text
+DOWN / HOLD / UP = - / (0) / +
 ```
 
-Never claim 100%. Pack is makeup for loss.
+HOLD is active balance, not OFF.
 
----
+CENTER is the local differential reference. V_BUS is the shared energy / readiness / reinjection rail. They are not the same node.
 
-## Flower
+No global clock. Physical thresholds, hysteresis, returned state, and bus condition drive transitions.
 
-Seven sandwiches. Shared bottom edge + V_BUS. CENTER stays local. Twelve mirrors from tiling.
+## Motor-control cell
 
----
+```text
+common plain-round body toroid
+        ↕
+square figure-8 motor-control nucleus
+        ↕
+live A/B/C differential
+        ↕
+- / (0) / +
+        ↕
+common plain-round body toroid
+        ↕
+motor / field consequence
+        ↕
+V_BUS return
+```
 
-## Addressing vs body
+A candidate mirrored 3+3 winding implementation may live on the common round-toroid body pair, but that remains a bench variable until measured.
 
-Rabbit Hopping names a place. It does not hold the lean. Zer0 may *name* a settle. The body is the hysteresis.
+## Energy / reinjection
 
----
+Inductive collapse is routed toward V_BUS.
 
-## Locked vs open
+```text
+E_in  = integral V(t) I(t) dt
+E_rec = 1/2 C (V_after^2 - V_before^2)
+```
 
-**Locked:** sandwich, hex seats, three diffs, figure-8 per axis, settled hysteresis, two-of-three current-sum, PERMIT gating, V_TOP / CENTER / V_BUS, bus fed-by/feeds-all, leftover current gated, no clock, no weight file, no created energy.
+Pack / source replaces losses. No created energy and no fixed recovery percentage.
 
-**Open:** exact Iss transistors, fade with heat, sync vs Schottky first on a given board, how hard three figure-8s talk in a flat hex.
+## First validation sequence
 
-**Hypothesis:** flower computes, ring is under-loop, inverted stack is a split.
+1. stable CENTER;
+2. one opposed differential;
+3. motor-control square figure-8 nucleus;
+4. identical-probe / different-prior-write retained-state test;
+5. return one inductive event to V_BUS without corrupting CENTER;
+6. show returned state affects the next event;
+7. add common two-round-toroid body interface;
+8. couple a second compatible path / cell;
+9. only then expand to three axes, motor actuation, flower scale, or higher nuclei.
 
----
+## No hidden controller
 
-## Files
+No comparator bank, op-amp controller, microcontroller state machine, software weight file, or global clock may substitute for the intended CELL_V1 physical control loop.
 
-`cell-v1/THE_CELL.md` `HYSTERESIS.md` `SQUARE_FERRITE.md` `BUS_LATTICE.md` `TWO_OF_THREE.md` `PERMIT_DRIVE.md` `TOP_RAIL.md` `REFERENCE.md` `CELL0.md` `BREADBOARD.md` `cad/`
-`GRANT_CELL.md` `GRANT.md`
+Test instruments may observe the cell. They do not become the cell.
+
+## Locked versus open
+
+**Locked:** common plain-round body pair, role-specific nuclei, motor-control square figure-8 nucleus, -/(0)/+ differential, CENTER distinct from V_BUS, threshold / hysteresis-driven events, reinjection into V_BUS, hardware-first control.
+
+**Open:** exact materials, winding turns, transistor topology, thermal fade, coupling coefficient, bus impedance, 3+3 winding implementation, field strength, torque, recovery fraction, retention time, scale-up behavior.
+
+Do not promote open engineering variables into claims.
