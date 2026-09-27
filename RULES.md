@@ -20,15 +20,17 @@ If it was decided, it is here. Do not drop it. Do not make him say it again.
 11. Geometry is **cell-role specific**. Do not force one nucleus shape onto every cell.
 12. **Sensor-cell nucleus:** one planar **round figure-8 toroid** for the simple binary / differential sensing brain.
 13. **Motor-control-cell nucleus:** one planar **square figure-8 toroid** where the nucleus must align to the grid / lattice connection.
-14. **M4 cell outer field:** two **plain round toroids**, not round figure-8 toroids.
-15. **M4 cell nucleus:** two triangular toroidal loops arranged **base-to-base** (double-triangle / planar pyramid form).
-16. **Five-mind nucleus:** **double pentagon** toroidal geometry.
-17. **Six-mind nucleus:** **double hexagon** toroidal geometry.
-18. Current core hardware stays **2D / planar**; its magnetic field is still 3D. **No comparators. All analog.**
+14. **Common body differential interface for every cell:** two **plain round toroids**. This outer/body pair is shared across sensor, motor-control, M4, five-mind, and six-mind cells so all cell types can connect through the same body/lattice differential language.
+15. The common outer/body round toroids are **not figure-8 toroids**.
+16. **M4 cell nucleus:** two triangular toroidal loops arranged **base-to-base** (double-triangle / planar pyramid form).
+17. **Five-mind nucleus:** **double pentagon** toroidal geometry.
+18. **Six-mind nucleus:** **double hexagon** toroidal geometry.
+18b. Current core hardware stays **2D / planar**; its magnetic field is still 3D. **No comparators. All analog.**
 
 ## Memory
 31. Retained magnetic history belongs to the active nucleus / path for that cell role; do not assign memory by shape name alone.
-32. Grid / lattice coupling, local retained state, and group memory stay distinct physical roles even when they share magnetic coupling.
+32. The **common outer/body round-toroid differential pair is the shared interconnect layer** across cell types. Nucleus geometry is the specialization layer.
+32b. Grid / lattice coupling, local retained state, and group memory stay distinct physical roles even when they share magnetic coupling.
 
 ## Up
 33. DC, AC, and RC go up, as field and void.
