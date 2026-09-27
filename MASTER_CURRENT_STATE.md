@@ -142,6 +142,20 @@ Each A/B/C differential has a bidirectional center-gate candidate referencing sh
 
 ---
 
+## 3.3 FIELD / VOID body-side rule
+
+FIELD and VOID are the **two mirrored sides of the body architecture**.
+
+Each CELL participates in both sides through exactly **two plain round body toroids total**:
+- one FIELD-side toroid;
+- one VOID-side toroid.
+
+Each toroid carries separate A/B/C coupling windings.
+
+FIELD and VOID are both active information/action sides. Neither is assigned permanently as input-only or output-only.
+
+Both sides have mirrored V_BUS ingress and reinjection return while CENTER remains the shared local balance/reference relation.
+
 # 4. Cell-role geometry
 
 ## Common body differential interface — all cells
