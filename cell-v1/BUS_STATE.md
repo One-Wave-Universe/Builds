@@ -1,5 +1,7 @@
 # V_BUS state
 
+**Anti-drift:** V_BUS is not the muscle-memory store. Distributed muscle memory resides in the retained hysteretic state of the etched lattice paths. V_BUS reports/carries the present energy condition through that physical network.
+
 V_BUS is the shared **energy / readiness / reinjection rail**. It is not the ternary reference. CENTER/(0) is the active virtual-ground reference for −/(0)/+; V_BUS carries energy state and may influence later thresholds only through measured physical coupling.
 
 ---
