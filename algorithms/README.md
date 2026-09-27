@@ -9,6 +9,7 @@ For presentation and current human-readable architecture, read in this order:
 3. **`thresholds.md`** — normalized commitment / hysteresis bands.
 4. **`IMPLEMENTATION_STATUS.md`** — what is and is not implemented.
 5. **`LEAN_INTO_ZER0.md`** — boundary between Zer0 description and physical CELL_V1 memory.
+6. **`../cell-v1/PRIOR_ART_AND_TEST_TARGETS.md`** — established mechanism classes and falsification targets that may inform physical implementation.
 
 ### Canon warning
 
