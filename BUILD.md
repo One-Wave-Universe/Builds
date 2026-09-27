@@ -25,7 +25,8 @@ The square figure-8 is motor-control nucleus only.
 - DOWN / HOLD / UP = - / (0) / +;
 - HOLD is live;
 - no global clock;
-- no hidden software / comparator / op-amp controller.
+- no hidden software / comparator / op-amp controller;
+- no designed resistor ladder, bleed, damping, or dump path in the intended CELL mechanism.
 
 ## First motor-control build
 
