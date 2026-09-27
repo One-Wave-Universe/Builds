@@ -292,8 +292,8 @@ Physical memory is not a software receipt.
 Current architecture separates three interacting physical roles:
 
 1. **Local retained state** — hysteresis / remanence in the role-specific nucleus or local active path.
-2. **Muscle memory / group memory** — the hysteretic under-hex lattice / shared magnetic edge traces. Repeated use can leave the preferred path already biased for the next action.
-3. **Reinjection / V_BUS** — returned energy, readiness, and short echo. Reinjection carries consequence back into the continuing loop, but bus voltage alone is not the long-term memory store.
+2. **Muscle memory / group memory** — a dedicated hysteretic body-state layer laid beneath the connected cells and following the shared lattice / edge routes. Repeated use can leave the preferred path already biased for the next action.
+3. **Reinjection / V_BUS** — a separate power/recovery layer carrying returned energy, readiness, and short echo. Reinjection carries consequence back into the continuing loop, but bus voltage alone is not the long-term memory store.
 
 So the process is one loop, but the storage roles are not identical.
 
@@ -321,6 +321,29 @@ Measure separately:
 Those are separate measurements of one continuing physical process.
 
 ---
+
+## Dedicated hysteretic body-state layer
+
+The connected cell lattice requires its own physical hysteresis layer beneath the cells.
+
+```text
+cell nuclei / A-B-C / CENTER
+          ↓ coupling
+shared hysteretic body-state layer
+          ↓
+V_BUS power/reinjection layer (separate)
+```
+
+The layer should:
+- span connected cells / flowers;
+- follow shared edge and motor-route geometry;
+- retain path history as Br / hysteretic bias;
+- be writable by repeated action;
+- influence later traversal;
+- remain separate from CENTER and V_BUS electrically;
+- support distributed body state and muscle memory.
+
+This is now a core architecture requirement. Exact material and fabrication remain open.
 
 # 11. Best current prior-art anchors
 
