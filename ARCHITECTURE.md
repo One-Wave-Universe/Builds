@@ -8,7 +8,7 @@ Science stays in One-Wave-Science. Build claims stay here.
 
 Every cell role uses the same **two plain round outer/body toroids** as its body differential / interconnect layer.
 
-That common shell lets sensor, motor-control, M4, five-mind, and six-mind cells connect through one shared physical language.
+That common shell lets sensor, motor-control, five-mind, and six-mind cells connect through one shared physical language.
 
 The common outer/body toroids are **not figure-8 toroids**.
 
@@ -16,9 +16,19 @@ The common outer/body toroids are **not figure-8 toroids**.
 
 - Sensor cell -> round figure-8 toroid nucleus.
 - Motor-control cell -> **square figure-8 toroid nucleus**.
-- M4 cell -> two triangular toroidal loops base-to-base.
 - Five-mind cell -> double pentagon nucleus.
 - Six-mind cell -> double hexagon nucleus.
+
+## M4 routing layer
+
+M4 is **not a nucleus or separate cell type**.
+
+M4 is the pyramidal routing/connection structure of the CELL lattice:
+- inside a cell, opposed wedges meet **tip-to-tip** through the local center relation;
+- between neighboring cells, wedge bases meet **base-to-base** across the shared hex face;
+- the six wedge routes carry A+/B+/C+/A-/B-/C- connectivity between local differential resolution and neighboring cells.
+
+M4 therefore provides the physical cell-routing geometry through which one cell's consequence can become part of the neighboring cell's next physical state.
 
 The square figure-8 nucleus is **motor-control specific**.
 
@@ -97,7 +107,7 @@ Test instruments may observe the cell. They do not become the cell.
 
 ## Locked versus open
 
-**Locked:** common plain-round body pair, role-specific nuclei, motor-control square figure-8 nucleus, -/(0)/+ differential, CENTER distinct from V_BUS, threshold / hysteresis-driven events, reinjection into V_BUS, hardware-first control, and no designed resistor path for thresholding or energy return.
+**Locked:** common plain-round body pair, role-specific nuclei, M4 pyramidal routing geometry, motor-control square figure-8 nucleus, -/(0)/+ differential, CENTER distinct from V_BUS, threshold / hysteresis-driven events, reinjection into V_BUS, hardware-first control, and no designed resistor path for thresholding or energy return.
 
 **Open:** exact materials, winding turns, transistor topology, thermal fade, coupling coefficient, bus impedance, 3+3 winding implementation, field strength, torque, recovery fraction, retention time, scale-up behavior.
 
