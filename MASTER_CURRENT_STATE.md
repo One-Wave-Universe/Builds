@@ -1,0 +1,715 @@
+# CELL_V1 + ALGORYTHM-ZER0 — MASTER CURRENT STATE
+
+**Status:** current master handoff for build, review, presentation, and next experiments.
+
+This file is intended to be read first.
+
+It does **not** claim that CELL_V1 is proven or that Algorythm-Zer0 is fully implemented.
+
+Its job is to hold the current architecture together, preserve what is actually locked, identify what is still open, and define the smallest useful next tests.
+
+---
+
+# 1. Current project split
+
+There are two related but distinct systems:
+
+## CELL_V1
+The proposed **physical analog body / control cell**.
+
+CELL_V1 is where:
+- differential state exists physically;
+- CENTER/(0) exists physically;
+- hysteresis / retained state must exist physically;
+- action returns as consequence;
+- inductive energy may return to V_BUS;
+- sensor / motor / higher-role nuclei are physically different;
+- no software value is allowed to pretend it is the body's retained memory.
+
+## Algorythm-Zer0
+The proposed **recursive state-description / routing / rebase grammar**.
+
+Zer0 currently defines:
+- how state is organized;
+- how lower context is retained at higher levels;
+- how Field and Void counter-check;
+- how views move up and actions move down;
+- how a completed cycle produces a new reference.
+
+Zer0 is **not currently the physical controller**.
+
+That distinction is critical.
+
+---
+
+# 2. Does Algorythm-Zer0 have a part to play yet?
+
+**Yes — but not yet as the final runtime controller.**
+
+Its useful role **right now** is:
+
+1. **Experiment structure**  
+   Zer0 defines the sequence that a complete physical test should eventually demonstrate:
+   
+   ```text
+   REFERENCE
+   -> CHOICE / POLARITY
+   -> MOVE
+   -> VIEWS UP / ACTIONS DOWN
+   -> STATE / SCALE
+   -> RESOLVE / REBASE
+   -> NEW REFERENCE
+   ```
+
+2. **Traceability / provenance**  
+   Every higher level should retain the lower-level state that produced it.
+
+3. **Test oracle**  
+   Zer0 can define what counts as a complete cycle without becoming the mechanism that performs the cycle.
+
+4. **Measurement organization**  
+   Physical measurements can be tagged against X/Y/Z/T and level 1..6 to see whether the physical system actually supports the intended recursive structure.
+
+5. **Interface contract**  
+   Zer0 can specify what information must survive between lower body loops and higher processing layers.
+
+6. **Presentation / explanation**  
+   It gives a coherent language for explaining why the architecture is nested, recursive, and reference-updating rather than a simple flat state machine.
+
+7. **Implementation falsification**  
+   If a proposed hardware mechanism cannot preserve lower-level context, support HOLD, return consequence, and produce a bounded next reference, it does not satisfy Zer0.
+
+## What Zer0 must NOT do yet
+
+Do not use Zer0 as:
+
+- software memory for CELL_V1;
+- a 1,296-entry lookup table;
+- a hidden digital controller;
+- a pretense that X/Y/Z/T already map cleanly to hardware;
+- proof that the current vocabulary is correct;
+- proof that the physical cell implements recursion.
+
+The correct current statement is:
+
+> **Zer0 is useful today as a recursive specification, test structure, and interface contract. It becomes part of runtime only after a real physical or analog mechanism can execute at least one complete recursive cycle without hidden digital arbitration.**
+
+---
+
+# 3. CELL_V1 physical lock
+
+## 3.1 Normalized local state
+
+- normalized axis span: **1.00 V**
+- CENTER: **0.50 / 50**
+- HOLD: **0.45–0.55 / 45–55**
+- ternary state: **DOWN / HOLD / UP**
+- signed relation: **- / (0) / +**
+- HOLD is active balance, not OFF
+
+CENTER/(0) is the active local virtual-ground reference.
+
+CENTER is not V_BUS.
+
+---
+
+## 3.2 Six-sector local geometry
+
+The current basic cell is a point-up hex containing six tapered triangular / pyramidal magnetic sectors:
+
+```text
+A+ B+ C+ A- B- C-
+```
+
+Opposed mirrors:
+
+```text
+A+ <-> A-
+B+ <-> B-
+C+ <-> C-
+```
+
+Current physical intent:
+
+- one winding per sector;
+- narrow tips converge toward the local center region;
+- broad sector faces form the six cell faces;
+- local opposed pairs interact tip-to-tip through the center relation;
+- neighboring cells meet base-to-base;
+- A/B/C remain three distinct differential axes.
+
+Each A/B/C differential has a bidirectional center-gate candidate referencing shared CENTER/(0).
+
+---
+
+# 4. Cell-role geometry
+
+## Common body differential interface — all cells
+
+Every cell role uses:
+
+```text
+two plain round outer/body toroids
+```
+
+These are:
+- common across cell roles;
+- the shared body / lattice differential interface;
+- **not** figure-8 toroids.
+
+## Specialized nuclei
+
+| Cell role | Current nucleus |
+| --- | --- |
+| Sensor | one-piece round two-aperture figure-8 hysteretic core |
+| Motor-control | one-piece square two-aperture figure-8 hysteretic core |
+| M4 | two triangular toroidal loops base-to-base |
+| Five-mind | double pentagon |
+| Six-mind | double hexagon |
+
+The square figure-8 is **motor-control only**.
+
+The geometry is currently planar / 2D; resulting magnetic fields are 3D.
+
+---
+
+# 5. First flower
+
+Current first seven-cell flower:
+
+- center: one motor-control cell;
+- ring: six sensor cells;
+- cells connect base-to-base at matching hex faces;
+- each retains its own six-sector / three-mirror local geometry;
+- M4 is later and is not required for the first flower.
+
+---
+
+# 6. Core state rules
+
+Current local decision rules:
+
+```text
+two agree -> push
+one voice -> wait
+opposition -> HOLD
+gap -> wait
+```
+
+A/B/C are axes.
+
+They are **not** voltage levels.
+
+The seven bands describe expression/compression strength around CENTER.
+
+CHOICE / PIVOT / FLIP remain separate from the seven bands.
+
+POINT / PATH / FIELD are also separate scale concepts.
+
+---
+
+# 7. Seven-band normalized scale
+
+| Range | State | Meaning |
+| --- | --- | --- |
+| 90–100 | +3 | extreme expression / danger |
+| 75–85 | +2 | strong expression |
+| 60–70 | +1 | moderate expression |
+| 45–55 | 0 | active middle / stable oscillating region |
+| 30–40 | -1 | moderate compression |
+| 15–25 | -2 | strong compression |
+| 0–10 | -3 | extreme compression / danger |
+
+The unnamed gaps are intentional hysteresis / anti-chatter transition regions.
+
+These are normalized bands, not final device voltages.
+
+Do not implement them as a comparator ladder by default.
+
+---
+
+# 8. Hard control constraints
+
+The current intended CELL mechanism does **not** use:
+
+- global clock;
+- timing-based commutation as the state authority;
+- microcontroller state machine;
+- FPGA;
+- DSP controller;
+- op-amp brain;
+- comparator bank;
+- LM339;
+- software weight memory;
+- resistor threshold ladders;
+- resistor bleed paths;
+- resistor damping returns;
+- resistor dump loads as the intended energy return.
+
+The target is discrete analog / magnetic / transistor-level / physical-state control.
+
+Test instruments and computers may observe, simulate, log, and compare.
+
+They must not become the hidden decision-maker.
+
+---
+
+# 9. Reinjection / V_BUS
+
+V_BUS is the shared energy / readiness / reinjection rail.
+
+CENTER is separate.
+
+Recoverable inductive energy is steered toward V_BUS.
+
+Current established basis:
+
+- inductive energy storage;
+- capacitive energy storage;
+- controlled steering of inductive collapse;
+- magnetic hysteresis / remanence.
+
+Current hypotheses:
+
+- return can stay sufficiently isolated from CENTER;
+- returned energy can be shared usefully;
+- return does not erase retained nucleus state;
+- bus condition can provide useful local coordination;
+- returned consequence can affect the next physical event.
+
+No free-energy claim.
+
+No fixed recovery percentage.
+
+No designed resistor loss-return path.
+
+---
+
+# 10. Memory
+
+Physical memory is not a software receipt.
+
+Candidate persistence scales:
+
+- short: live current / charge / phase / flux / back-EMF;
+- medium: nucleus hysteresis / remanence;
+- longer: future lattice / path hysteresis if that mechanism is validated.
+
+Important distinction:
+
+- retained magnetic state;
+- recoverable inductive energy;
+- V_BUS voltage;
+- returned consequence
+
+are related but are **not automatically the same variable**.
+
+They must be measured separately.
+
+---
+
+# 11. Best current prior-art anchors
+
+These are comparison targets, not proof.
+
+## Multi-aperture magnetic cores / transfluxors
+Useful for:
+- history-dependent shared magnetic paths;
+- write / probe separation;
+- old-state + new-excitation interaction.
+
+Especially relevant to the one-piece two-aperture nuclei.
+
+## Magnetic majority / current-summing logic
+Useful for investigating:
+- physical two-of-three coherence;
+- cancellation around HOLD;
+- asynchronous threshold crossing;
+- no central digital vote.
+
+This is a candidate precedent only.
+
+## Non-dissipative flyback / regenerative DC-link return
+Useful for:
+- V_BUS energy return;
+- avoiding intentional resistor dumps;
+- separating energy recovery from retained magnetic state.
+
+## Multiphase / reluctance / flux-summing magnetic geometry
+Useful for:
+- comparing six-sector A/B/C geometry;
+- coupling;
+- leakage;
+- rotating field behavior;
+- manufacturability.
+
+## Adaptive-reference / moving-equilibrium / attractor systems
+Useful only as comparison to Zer0's moving reference.
+
+Do not rename Zer0 by analogy.
+
+---
+
+# 12. Highest-value physical tests
+
+## Test A — retained-history nucleus test
+
+1. apply controlled positive write;
+2. remove drive;
+3. apply fixed probe;
+4. record response;
+5. apply equal negative write;
+6. apply same fixed probe;
+7. compare.
+
+Pass:
+- repeatable state-dependent difference beyond noise / drift.
+
+Fail:
+- no reliable difference.
+
+---
+
+## Test B — moving-reference boundedness
+
+Apply repeated same-direction events.
+
+Measure:
+- reference offset;
+- saturation margin;
+- repeatability;
+- reversal response;
+- decay.
+
+Pass candidate:
+- useful bounded new reference.
+
+Fail:
+- monotonic walk into saturation with no release / rebase mechanism.
+
+---
+
+## Test C — physical triadic coherence
+
+Test A/B/C combinations:
+
+- 2 aligned / 1 opposed;
+- 1 aligned / 2 opposed;
+- balanced opposition;
+- near-HOLD combinations.
+
+Measure:
+
+- summed current / flux;
+- CENTER motion;
+- threshold crossing;
+- chatter;
+- history dependence;
+- mismatch sensitivity.
+
+Do not assume magnetic majority behavior until measured.
+
+---
+
+## Test D — V_BUS / CENTER isolation
+
+During inductive return:
+
+- measure V_BUS;
+- measure CENTER simultaneously;
+- vary bus load;
+- compare nucleus state before / after return.
+
+Fail:
+- return corrupts CENTER or erases retained state beyond acceptable repeatability.
+
+---
+
+## Test E — six-sector mismatch
+
+Perturb one sector thermally or magnetically.
+
+Measure:
+- opposed sector;
+- neighboring axes;
+- CENTER;
+- V_BUS;
+- next lean.
+
+This shows whether the geometry contains error or spreads it.
+
+---
+
+# 13. Algorythm-Zer0 current canon
+
+Four simultaneous branches:
+
+```text
+X = CONTROL
+Y = STRUCTURE / ROTATION
+Z = DEPTH
+T = TIME / CHANGE
+```
+
+Six cumulative levels:
+
+```text
+L1 = REFERENCE
+L2 = POLARITY / CHOICE
+L3 = MOVE
+L4 = VIEWS UP / ACTIONS DOWN
+L5 = STATE / SCALE
+L6 = RECURSE / RESOLVE / RETURN
+```
+
+Inclusion rule:
+
+```text
+L1 ⊂ L2 ⊂ L3 ⊂ L4 ⊂ L5 ⊂ L6
+```
+
+Cross-mirror rule:
+
+```text
+F1 <-> V6
+F2 <-> V5
+F3 <-> V4
+F4 <-> V3
+F5 <-> V2
+F6 <-> V1
+```
+
+Moving reference:
+
+```text
+(0)t
+-> interaction
+-> consequence
+-> resolve
+-> (0)t+1
+```
+
+The four branches describe one event, not four separate programs.
+
+---
+
+# 14. Zer0's practical role right now
+
+## Use it now for:
+
+### A. Experiment records
+
+Each physical test can record:
+
+```text
+X: what action/control relation occurred?
+Y: what geometry/orientation/path was active?
+Z: what magnitude/depth/relationship was expressed?
+T: what changed, persisted, decayed, or rebased?
+```
+
+This does not make Zer0 the controller.
+
+It makes Zer0 the **structured description of what the controller physically did**.
+
+### B. Recursive test design
+
+A test should progressively ask:
+
+```text
+What was the reference?
+What choice appeared?
+What move occurred?
+What came back?
+What state/scale resulted?
+What became the next reference?
+```
+
+### C. Detecting architecture drift
+
+If a proposed implementation:
+- discards prior context;
+- cannot distinguish HOLD from no signal;
+- requires hidden digital arbitration;
+- cannot show returned consequence;
+- cannot create a bounded next reference;
+
+then it is not implementing the intended recursive structure.
+
+### D. Future body-to-cortex interface
+
+If CELL hardware works, Zer0 may later become a useful common grammar for translating:
+
+```text
+physical body state
+<-> compressed recursive state
+<-> higher sensory / cortical processing
+```
+
+That mapping does **not** exist yet.
+
+---
+
+# 15. Zer0 is not yet allowed to claim
+
+- end-to-end implementation;
+- hardware execution of all X/Y/Z/T branches;
+- physical realization of the full six levels;
+- proven advantage over standard control systems;
+- proven completeness of the 168-term vocabulary;
+- proven usefulness of every primitive;
+- proven 1,296-address physical map.
+
+The address space is conceptual until a real need for those coordinates is demonstrated.
+
+---
+
+# 16. Known Zer0 repo conflict
+
+The newer human-readable canon and the older machine-readable JSON do not fully agree.
+
+Current presentation authority:
+
+1. `algorithms/ALGORITHM_ZERO_PRESENTATION.md`
+2. `algorithms/FOUR_BRANCHES_AND_UNIVERSAL_RULES.md`
+3. `algorithms/thresholds.md`
+4. `algorithms/IMPLEMENTATION_STATUS.md`
+5. `algorithms/LEAN_INTO_ZER0.md`
+
+`algorithm_zero_locked_canon.json` must not be treated as final authority until reconciled term-by-term.
+
+---
+
+# 17. DC / AC / RC status
+
+Current project shorthand still needs technical reconciliation.
+
+Current working use:
+
+- DC = void / sustained bias / return-side relation;
+- AC = field rotation / changing opposed lean;
+- RC = remainder / returned consequence / views-up-actions-down relation.
+
+Important:
+
+**RC does not currently mean “resistor-capacitor implementation.”**
+
+There is no locked resistor-based relaxation path in CELL.
+
+The terminology may eventually need to change if established electrical terms describe the actual mechanisms better.
+
+---
+
+# 18. What is locked vs open
+
+## Locked for current architecture
+
+- hardware-first analog control target;
+- CENTER != V_BUS;
+- active ternary -/(0)/+;
+- HOLD is live;
+- six-sector A/B/C local geometry;
+- common two plain-round body toroids;
+- role-specific nuclei;
+- square figure-8 is motor-control only;
+- no global clock;
+- no hidden digital controller;
+- no designed resistor-based control / threshold / return path;
+- thresholds / hysteresis matter;
+- physical memory must remain physical;
+- reinjection returns toward V_BUS;
+- measure before claiming.
+
+## Open
+
+- exact core materials;
+- exact MOSFET topology;
+- gate translation method;
+- exact turns and winding gauge;
+- exact six-sector field geometry;
+- exact common-toroid winding pattern;
+- exact physical threshold mechanism;
+- actual retention time;
+- actual recovery fraction;
+- actual torque / field strength;
+- actual multi-cell coupling;
+- exact Zer0-to-hardware mapping;
+- whether all six Zer0 levels are physically necessary;
+- whether all four branches remain orthogonal in a working system.
+
+---
+
+# 19. Immediate next build question
+
+The highest-value next question is not:
+
+> “How do we build the whole android?”
+
+It is:
+
+> **Can one physical CELL loop create a repeatable, bounded, history-dependent next state around CENTER, return recoverable energy to V_BUS without corrupting CENTER, and preserve enough context that Zer0 can accurately describe one complete recursive cycle?**
+
+If yes, scale.
+
+If no, find which premise failed.
+
+---
+
+# 20. Required review attitude
+
+Question everything.
+
+Do not defend terminology for its own sake.
+
+Do not erase distinctions before understanding them.
+
+Use existing engineering wherever it truly matches.
+
+Use prior art to reduce invention burden.
+
+Prefer a smaller physical mechanism that works.
+
+Treat every unmeasured performance claim as open.
+
+Keep:
+
+```text
+change one thing
+-> test
+-> compare with goal
+-> check drift
+-> after three failed repeats, change angle
+```
+
+---
+
+# 21. Master source references
+
+Current repo authorities:
+
+- `RULES.md`
+- `BUILD.md`
+- `ARCHITECTURE.md`
+- `cell-v1/CELL.md`
+- `cell-v1/REINJECT_BUS.md`
+- `cell-v1/PARTS.md`
+- `cell-v1/BREADBOARD.md`
+- `cell-v1/PRIOR_ART_AND_TEST_TARGETS.md`
+- `algorithms/README.md`
+- `algorithms/ALGORITHM_ZERO_PRESENTATION.md`
+- `algorithms/IMPLEMENTATION_STATUS.md`
+- `algorithms/FOUR_BRANCHES_AND_UNIVERSAL_RULES.md`
+- `algorithms/LEAN_INTO_ZER0.md`
+- `algorithms/thresholds.md`
+
+---
+
+**MASTER STATUS**
+
+- CELL_V1: proposed physical architecture, not yet validated
+- Zer0: useful specification / experiment grammar now; runtime implementation unresolved
+- Reinjection: established mechanism class, CELL behavior still to measure
+- Magnetic memory: plausible mechanism class, CELL mapping still to measure
+- Triadic coherence: candidate physical mechanism, not yet proven
+- Six-sector geometry: current build lock, physical advantage still to test
+- Higher-role nuclei: architecture map only until lower cell passes
