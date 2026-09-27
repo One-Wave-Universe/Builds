@@ -4,7 +4,7 @@
 
 **1 volt normalized axis.** CENTER **0.50 / 50.** HOLD band **0.45–0.55 / 45–55.** Seven-band scale locked below.
 
-Letters **are the six edges:** A+ B+ C+ A− B− C−. Flowers share sides. Opposed edges form three mirrored axes.
+The basic cell is a **hexagon containing six tapered triangular / pyramidal magnetic sectors**, clockwise **A+ B+ C+ A− B− C−**. Each sector carries one round winding. The six narrow sector tips converge on the local center region; the six broad sector bases are the six hex faces. Opposed sectors form the three mirrors **A+↔A−, B+↔B−, C+↔C−**. Within a cell the geometry is tip-to-tip through the center relation; neighboring cells tile **base-to-base** at matching hex faces.
 
 Three leans. Ternary is **DOWN / HOLD / UP** around **− / (0) / +**. **CENTER / (0) is the shared active virtual-ground reference used to construct the physical ternary state; it is balanced/confirmed, not OFF.** The − and + states are signed differential leans away from that shared reference. **All analog. No global clock.**
 
@@ -20,9 +20,9 @@ CELL_V1 uses one **common outer/body differential interface** across cell types,
 - Nucleus geometry is the specialization layer inside that common body interface.
 
 ### Sensor cell
-- **Nucleus:** one planar **round figure-8 toroid**.
-- Purpose: simplest local binary / differential sensing brain.
-- This is the figure-8 role currently retained for the sensor cell.
+- **Nucleus:** one planar **one-piece round two-aperture figure-8 hysteretic magnetic core**.
+- Purpose: local sensor-state/history element using the same shared-flux-path / two-aperture mechanism class as the motor nucleus, with round geometry for the sensor role.
+- In the first flower, six of these sensor cells surround one motor/control cell.
 
 ### Motor-control cell
 - **Nucleus:** one planar **one-piece square two-aperture figure-8 hysteretic magnetic core**.
@@ -63,7 +63,7 @@ Across these cell roles:
 sensor / neighbor consequence
         ↓
 role-specific nucleus
-(round figure-8 sensor
+(one-piece round two-aperture figure-8 sensor
  one-piece square two-aperture figure-8 motor-control
  double-triangle M4
  double-pentagon five-mind
@@ -81,6 +81,43 @@ V_BUS reinjection + lattice consequence
         ↓
 next physical decision
 ```
+
+## Six-sector / three-mirror physical build — current prototype lock
+
+The hex differential is a magnetic/electrical structure, not a flat six-trace diagram.
+
+- **6 tapered triangular/pyramidal magnetic sectors:** A+, B+, C+, A−, B−, C−.
+- **6 round windings:** one winding on/around each magnetic sector; bring both leads of every winding out for polarity and coupling tests.
+- **3 opposed mirrors:** A+↔A−, B+↔B−, C+↔C−.
+- **Tip-to-tip local relation:** opposed tapered cores point toward the center region.
+- **Base-to-base lattice relation:** broad magnetic/structural faces align with neighboring hex-cell faces when cells tile into a flower.
+- **Shared virtual-ground bus:** all three differential center branches reference the same active CENTER/(0) virtual-ground bus. This is the electrical ternary reference; it does not require the six magnetic tips to be electrically shorted together.
+- **Bidirectional center gate per differential:** A, B and C each get an independently gated bidirectional branch at the differential center. The discrete implementation target is a back-to-back MOSFET pair (or measured equivalent) per differential so the branch can control current in both directions without relying on a single MOSFET body diode.
+- **Keep A/B/C distinct:** the three gated differential branches share the CENTER reference but are not hard-shorted into one signal path.
+
+Prototype topology shorthand:
+
+```text
+A+ core/winding <-> [A bidirectional center gate] <-> A- core/winding
+                                  |
+B+ core/winding <-> [B bidirectional center gate] <-> B- core/winding
+                                  |
+C+ core/winding <-> [C bidirectional center gate] <-> C- core/winding
+                                  |
+                         shared CENTER/(0)
+                       active virtual-ground bus
+```
+
+This is the current physical candidate for mapping the **three A/B/C mirrors** into the three-mirror loop. The first bench build must expose every winding and gate node so winding sense, cross-coupling, CENTER stability and the one-loop/one-FLIP mapping can be measured rather than hidden in the assembly.
+
+### First-flower geometry
+
+The first seven-cell flower is:
+- **center:** one motor/control cell with the one-piece square two-aperture figure-8 hysteretic nucleus;
+- **ring:** six local sensor cells, each with a one-piece round two-aperture figure-8 hysteretic nucleus;
+- **intercell connection:** matching hex faces meet base-to-base while each cell retains its own six-sector / three-mirror local differential geometry;
+- **later M4:** the double-triangle / triangular-toroidal nucleus is a later compression/expression layer and is not required to build the first flower.
+
 
 ## Locked seven-band differential scale
 
@@ -144,7 +181,7 @@ HOLD is live readiness around center, not a clocked idle.
 
 ## Hard anti-drift rules
 
-- **Sensor nucleus = round figure-8 toroid.**
+- **Sensor nucleus = one-piece round two-aperture figure-8 hysteretic magnetic core.**
 - **Motor-control nucleus = one-piece square two-aperture figure-8 hysteretic magnetic core for grid/lattice connection.**
 - **M4 nucleus = two triangular toroidal loops base-to-base.**
 - **Every cell type uses the same two plain round outer/body toroids.**
