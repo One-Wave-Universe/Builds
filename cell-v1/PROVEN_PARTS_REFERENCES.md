@@ -68,3 +68,18 @@ Established mechanism used here: winding current cannot change instantaneously; 
 ## Hard rule
 
 A reference proves only the mechanism stated beside it. Do not cite a resolver as proof of CELL cognition, a domain-wall paper as proof of muscle memory, or a motor inverter as proof of CELL control. The complete architecture remains a testable integration hypothesis.
+
+
+## R9 — Six discrete MOSFETs / three half-bridges for A/B/C
+Texas Instruments, *Power Block MOSFETs in Different Motor-drive Topologies* and *Three-Phase vs Three-Single Half-Bridge Gate Drivers*.
+https://www.ti.com/document-viewer/lit/html/SSZT955/GUID-064DDA53-B0F0-4EDC-909D-7D601DA643B2
+https://www.ti.com/lit/an/slvafz0/slvafz0.pdf
+
+Established mechanism used here: a three-phase motor power stage uses three half-bridges, six MOSFETs total, with one high-side and one low-side MOSFET per A/B/C phase. CELL_V1 adopts this as the **A/B/C power projection skeleton only**. Conventional PWM, MCU, gate-driver IC and FOC control are not adopted as the CELL decision mechanism.
+
+## R10 — MOSFET threshold is not the fully-ON gate voltage
+onsemi, *Shielded Gate PowerTrench MOSFET Datasheet Explanation* (AN-4163) and *Power MOSFET Basics* (AN-9010).
+https://www.onsemi.com/download/application-notes/pdf/an-4163.pdf
+https://www.onsemi.com/pub/Collateral/AN-9010.pdf
+
+Established mechanism used here: MOSFET drain current begins around threshold, while useful on-resistance depends on actual VGS, drain current and temperature. Therefore CELL's <=1 V analog nerve/wave signal must not be assumed to drive an arbitrary A/B/C power MOSFET directly. The nerve stage may require a discrete translation/amplification mechanism while preserving the analog CELL decision; exact topology is a bench target.
