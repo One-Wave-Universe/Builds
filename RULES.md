@@ -22,7 +22,7 @@ If it was decided, it is here. Do not drop it. Do not make him say it again.
 13. **Motor-control-cell nucleus:** one planar **square figure-8 toroid** where the nucleus must align to the grid / lattice connection.
 14. **Common body differential interface for every cell:** two **plain round toroids**. This outer/body pair is shared across sensor, motor-control, five-mind, and six-mind cells so all cell types can connect through the same body/lattice differential language.
 15. The common outer/body round toroids are **not figure-8 toroids**.
-16. **M4 cell nucleus:** two triangular toroidal loops arranged **base-to-base** (double-triangle / planar pyramid form).
+16. **M4 cell nucleus:** two triangular/pyramidal toroidal loops arranged **base-to-base** (double-triangle / double-pyramid form). This is distinct from the cluster-routing pyramids.
 17. **Five-mind nucleus:** **double pentagon** toroidal geometry.
 18. **Six-mind nucleus:** **double hexagon** toroidal geometry.
 18b. Current core hardware stays **2D / planar**; its magnetic field is still 3D. **No comparators. All analog.**
@@ -76,3 +76,7 @@ If it was decided, it is here. Do not drop it. Do not make him say it again.
 46. Each mirror relation is referenced against the same active CENTER relation at every stage; CENTER is a reference/coupling relation, not the main winding-current return.
 47. FIELD and VOID are both active. Both can receive state, express action, and return consequence.
 48. Each body side gets mirrored V_BUS ingress and mirrored reinjection/egress. Neither FIELD nor VOID is input-only or return-only.
+
+49. **Do not collapse the two pyramid systems.** The M4 cell has its own two-pyramid nucleus, while the general cell-cluster lattice uses six pyramidal/wedge routes for A+/B+/C+/A-/B-/C- connectivity.
+50. **Cluster routing pyramids:** tip-to-tip inside each cell, base-to-base between neighboring cells.
+51. **M4 pyramids:** the dedicated two-pyramid M4 nucleus; not the same structure as the six routing wedges.
