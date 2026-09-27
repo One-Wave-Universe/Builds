@@ -779,6 +779,7 @@ Current repo authorities:
 - `ARCHITECTURE.md`
 - `cell-v1/CELL.md`
 - `cell-v1/REINJECT_BUS.md`
+- `REAL_WORLD_BUILD_HANDOFF.md` — current builder/engineer handoff for connecting every mechanism to real parts, materials, measurements, and falsifiable tests
 - `cell-v1/PARTS.md`
 - `cell-v1/BREADBOARD.md`
 - `cell-v1/PRIOR_ART_AND_TEST_TARGETS.md`
