@@ -177,10 +177,15 @@ These are:
 | --- | --- |
 | Sensor | one-piece round two-aperture figure-8 hysteretic core |
 | Motor-control | one-piece square two-aperture figure-8 hysteretic core |
+| M4 | dedicated two-pyramid / double-triangle nucleus |
 | Five-mind | double pentagon |
 | Six-mind | double hexagon |
 
-**M4 is not another nucleus type.** M4 is the cell-to-cell pyramidal routing layer: the six tapered wedges form the local routes, meet tip-to-tip inside one cell, and meet base-to-base across neighboring cell faces.
+There are **two distinct pyramid systems**:
+1. **M4 nucleus:** two dedicated triangular/pyramidal toroidal loops base-to-base.
+2. **Cluster-routing pyramids:** six tapered A+/B+/C+/A-/B-/C- wedges; opposed tips meet tip-to-tip inside a cell and wedge bases meet base-to-base between neighboring cells.
+
+Do not merge these two structures.
 
 The square figure-8 is **motor-control only**.
 
@@ -196,7 +201,8 @@ Current first seven-cell flower:
 - ring: six sensor cells;
 - cells connect base-to-base at matching hex faces;
 - each retains its own six-sector / three-mirror local geometry;
-- M4 is the pyramid routing layer already present in the first flower connections; it is not a separate later brain.
+- the first flower already uses the general six-wedge pyramid-routing lattice;
+- an M4 cell, when introduced, also has its own separate two-pyramid nucleus.
 
 ---
 
