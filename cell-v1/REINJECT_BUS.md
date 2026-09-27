@@ -1,6 +1,6 @@
 # Reinjection bus
 
-A shared DC bus that spans the whole lattice. Every cell draws from it. Every cell returns to it. Collapsing fields are steered back to it instead of dumped as heat. Recovered energy is available to any other cell that needs it.
+A shared DC bus that spans the whole lattice. Cells may draw from it and may return recoverable inductive energy to it. The return path must be deliberately steered and protected; losses remain losses. Any sharing of recovered energy between cells is a system-level behavior to measure, not assume.
 
 Not just efficiency. Circulatory. Blood does not belong to one organ. Same here.
 
@@ -58,22 +58,20 @@ Any cell may draw bus first, external supply second. Only losses get replaced by
 If you recover 40%, say 40%. Never 100%. Never more than in.
 CELL_V1 does not assume energy creation.
 
-## Memory and return are the same path
+## Memory and return interact, but are not assumed identical
 
-The return goes through the same state-bearing magnetic element that just took the write. The path that wrote is the path the energy comes home on. Return is conditioned by the write.
+The hysteretic nucleus and the inductive return path participate in the same physical event, but they are **not automatically the same energy path or the same state variable**.
 
-- The cell keeps direction, phase, magnitude of that use
-- Every write deepens the lean
-- Every return walks the same lean
-- Memory and recovery are one process, not two boxes
+A drive event can:
+- change magnetic state in the nucleus;
+- store energy in inductive fields;
+- perform useful mechanical / field work;
+- dissipate heat and magnetic loss;
+- return part of the remaining inductive energy to V_BUS.
 
-Write depth is how hard the lean sits:
+The retained part is tested through remanence / later threshold bias. The recovered part is tested through rail energy accounting. CELL_V1 must measure whether reinjection preserves, perturbs, strengthens, or erases the retained state.
 
-- Shallow — low current, partial alignment, fades
-- Deep — high current, consolidated
-- Saturated — protected, decades
-
-Same core. Same path. Different write energy.
+Do not infer memory depth from recovered energy alone.
 
 ## Bus voltage is lattice state
 
@@ -86,7 +84,7 @@ Not just power. Every cell can feel it. No central controller.
 
 ## Proven / ordinary bench / hypothesis
 
-Proven: ½LI², ½CV², steering of collapse, hysteresis, deeper alignment with repeat write.
+Established basis: ½LI², ½CV², controlled steering/clamping of inductive collapse, and magnetic hysteresis/remanence. How repeated writes affect this selected nucleus and whether that produces useful CELL_V1 state must be measured.
 
 Ordinary bench: half-bridge, synchronous steering, cap sizing, sense the rail.
 
