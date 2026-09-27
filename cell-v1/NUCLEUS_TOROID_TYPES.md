@@ -2,10 +2,11 @@
 
 **Status:** Current Build-repo geometry authority for cell-role magnetic cores.
 
-CELL_V1 now has two clearly separated geometry layers:
+CELL_V1 now has three clearly separated geometry functions:
 
 1. **Common body differential layer:** two plain round toroids, identical across all cell types.
 2. **Specialized nucleus layer:** geometry changes by cell role.
+3. **M4 routing layer:** six tapered pyramidal/wedge routes that connect tip-to-tip within a cell and base-to-base between neighboring cells.
 
 ## Universal body differential pair
 
@@ -18,7 +19,6 @@ plain round toroid  <->  role-specific nucleus  <->  plain round toroid
 This common geometry is shared by:
 - sensor cells;
 - motor-control cells;
-- M4 cells;
 - five-mind cells;
 - six-mind cells.
 
@@ -32,7 +32,6 @@ The common outer/body toroids are **not figure-8 toroids**.
 | --- | --- | --- | --- |
 | Sensor cell | Round figure-8 toroid | Two plain round toroids | planar / 2D |
 | Motor-control cell | Square figure-8 toroid | Two plain round toroids | planar / 2D |
-| M4 cell | Two triangular toroidal loops base-to-base | Two plain round toroids | planar / 2D |
 | Five-mind cell | Double pentagon toroidal geometry | Two plain round toroids | planar / 2D |
 | Six-mind cell | Double hexagon toroidal geometry | Two plain round toroids | planar / 2D |
 
@@ -40,7 +39,6 @@ The common outer/body toroids are **not figure-8 toroids**.
 
 - **Sensor nucleus:** round figure-8 for simple binary / differential sensing.
 - **Motor-control nucleus:** square figure-8 for grid / lattice connection.
-- **M4 nucleus:** double triangle, base-to-base.
 - **Five-mind nucleus:** double pentagon.
 - **Six-mind nucleus:** double hexagon.
 
@@ -58,3 +56,22 @@ Do not:
 - confuse nucleus specialization with the shared body interconnect layer;
 - confuse nucleus geometry with CENTER or V_BUS;
 - claim field strength, hysteresis, coupling, torque, retention, or efficiency without measurement.
+
+
+## M4 routing definition
+
+M4 is the CELL lattice routing geometry, not a brain core.
+
+```text
+inside one cell:
+A+ tip <-> tip A-
+B+ tip <-> tip B-
+C+ tip <-> tip C-
+
+between cells:
+wedge BASE <-> BASE neighboring wedge
+```
+
+The pyramid network routes physical state/consequence between local differential processing and neighboring cells.
+
+Do not recreate M4 as a separate double-triangle nucleus.
