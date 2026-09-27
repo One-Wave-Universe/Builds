@@ -2,7 +2,12 @@
 
 Hysteresis is the **history dependence of the physical magnetic/state loop**. It is not software memory and it is not three isolated core memories.
 
-For the current motor-control cell, the retained magnetic candidate is the **planar square figure-8 nucleus** inside the field/coupling region of the two plain round outer/body toroids.
+For the current motor-control cell there are **two scales of the same history-dependent process**:
+
+- **local nucleus hysteresis:** the planar square figure-8 nucleus can retain local magnetic state;
+- **distributed muscle memory:** the **etched hysteretic lattice paths** retain the history of the physical routes repeatedly traversed by cell/body current and field activity.
+
+The lattice-memory layer and the muscle-memory layer are therefore the **same physical path layer**. V_BUS travels through/supports this network as the energy/readiness/reinjection rail, but instantaneous V_BUS voltage is not the stored muscle memory.
 
 ## Physical basis
 
@@ -41,6 +46,17 @@ next physical decision
 ```
 
 CENTER/(0) is the active virtual-ground ternary reference. V_BUS is the separate energy/readiness/reinjection rail.
+
+## Etched-path muscle memory
+
+The intended distributed memory is not a separate register written after an action. **The process path is the memory:** traversal changes the hysteretic state of the etched path, and that retained path state can bias a later traversal.
+
+Research precedent exists for magnetic domain-wall/path devices in patterned soft magnetic structures, including Permalloy nanostripes; that supports the physical plausibility of writable magnetic paths, but it does not validate CELL_V1's proposed etched lattice geometry. The exact film/laminate material, thickness, path width, coercivity and write mechanism remain bench-design variables.
+
+Required path experiment:
+**same present stimulus + different controlled path histories -> measurably different later path response.**
+
+Measure path-local coercive threshold, remanence/domain state proxy, write current/field, repeatability, neighboring-path crosstalk, thermal drift, decay, and whether reinjection disturbs or reinforces the written path.
 
 ## What counts as memory
 
@@ -89,4 +105,6 @@ If that does not happen, do not call the nucleus a memory element.
 - Do not restore the obsolete “three independent cores” description.
 - CENTER/(0) is not V_BUS.
 - Hysteresis is physical history dependence, not a software table.
+- Etched hysteretic lattice paths = distributed muscle-memory layer.
+- V_BUS voltage = instantaneous energy/readiness condition, not the stored muscle memory.
 - Do not claim decades of retention, learning, habit, consolidation, or useful memory without measurements.
