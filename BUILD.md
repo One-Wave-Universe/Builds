@@ -1,43 +1,79 @@
-# Build (maximized packet)
+# Build packet
 
 Repo: https://github.com/One-Wave-Universe/Builds
 
 ## Sentence
 
-A hex sandwich whose three differentials lean off CENTER, whose square-ferrite figure-8s hold flux linkage, whose leftover current all gates to one V_BUS that feeds everyone, whose next similar move rides a minor loop so energy use falls with habit, whose two-of-three current-sum permits PUSH/FLIP on the heading windings — the same windings that can turn a shaft.
+CELL_V1 is a hardware-first analog control-cell family with a **common two-round-toroid body differential shell**, a **role-specific magnetic nucleus**, live -/(0)/+ state around CENTER, and measured inductive return to V_BUS.
 
-## Stack
+## Geometry lock
 
-1. V_TOP from pack → three pairs
-2. CENTER star (lean home)
-3. Figure-8 square ferrite per axis (λ = NΦ, remanence)
-4. Half-bridges + steer gates
-5. V_BUS lattice (circulation, ask, send-up)
-6. PERMIT from SUM (1.5 / 1.2, GAP wait)
+- common outer/body interface for every cell role = **two plain round toroids**;
+- sensor nucleus = round figure-8;
+- **motor-control nucleus = square figure-8**;
+- M4 nucleus = double triangle base-to-base;
+- five-mind nucleus = double pentagon;
+- six-mind nucleus = double hexagon.
 
-## Laws
+The square figure-8 is motor-control nucleus only.
 
-- Event, not clock
-- Agree / oppose / wait
-- Hysteresis = settled whole loop
-- Minor loop = cheap habit; major loop = FLIP
-- Leftover current to bus; burned heat stays heat
-- Three nodes never shorted
-- Actuator = those windings
+## Shared electrical rules
 
-## Cell-0 (exists-parts)
+- CENTER = local differential reference;
+- V_BUS = shared energy / readiness / reinjection rail;
+- CENTER != V_BUS;
+- DOWN / HOLD / UP = - / (0) / +;
+- HOLD is live;
+- no global clock;
+- no hidden software / comparator / op-amp controller.
 
-9 V, two 2N7000, 10k/100k, 100 nF, one figure-8 or one square ferrite, breadboard. See D. See Br leftover. Then one diode onto a BUS row.
+## First motor-control build
 
-`cell-v1/CELL0.md` `BREADBOARD.md` `cad/cell0_schematic.svg`
+```text
+one differential
+-> square figure-8 motor-control nucleus
+-> retained-state write / probe test
+-> V_BUS recovery
+-> common two-round-toroid body interface
+-> second compatible path
+-> full A/B/C
+-> actuator test
+```
 
-## Full cell files
+Stop at the first failed premise.
 
-`THE_CELL.md` `HYSTERESIS.md` `HYSTERESIS_LOOP.md` `FLUX_LINKAGE.md` `ENERGY_LEARN.md` `SQUARE_FERRITE.md` `BUS_LATTICE.md` `TWO_OF_THREE.md` `PERMIT_DRIVE.md` `TOP_RAIL.md` `ACTUATORS.md` `LOCK.md` `GRANT_CELL.md` `ARCHITECTURE.md`
+## Evidence
+
+- scope traces;
+- current / voltage measurements;
+- exact core material and winding record;
+- retained-state A/B tests;
+- retention / decay;
+- CENTER stability;
+- input versus recovered energy;
+- thermal drift;
+- coupling between two compatible paths.
 
 ## Maximize without lying
 
-Do: name the object, the three nodes, the loop, the sum, the bus, the minor-loop thrift, the same-winding actuator.
-Don't: feelings, 99% recovery, measured D, cosmology, drum, a fourth repo.
+Say:
+- most pieces are established engineering technologies;
+- the novelty is the proposed integration and recursive physical loop;
+- the build is explicitly falsifiable;
+- exact performance is not claimed before measurement.
 
-Phase I when funded: pair → bus → second axis drinks live vs dead rail → energy fraction said raw.
+Do not claim:
+- free energy;
+- fixed recovery percentage;
+- measured torque or efficiency without data;
+- proven intelligence / consciousness;
+- a full working cell before the hardware log proves it.
+
+## Read next
+
+`RULES.md`  
+`cell-v1/CELL.md`  
+`cell-v1/NUCLEUS_TOROID_TYPES.md`  
+`cell-v1/CELL_ASSEMBLED.md`  
+`GRANT_CELL.md`  
+`FULL_BUILD.md`
