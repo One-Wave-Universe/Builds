@@ -6,7 +6,7 @@
 
 Letters **are the six edges:** A+ B+ C+ A− B− C−. Flowers share sides. Opposed edges form three mirrored axes.
 
-Three leans. Ternary is **DOWN / HOLD / UP** around **− / (0) / +**. **All analog. No global clock.**
+Three leans. Ternary is **DOWN / HOLD / UP** around **− / (0) / +**. **CENTER / (0) is the shared active virtual-ground reference used to construct the physical ternary state; it is balanced/confirmed, not OFF.** The − and + states are signed differential leans away from that shared reference. **All analog. No global clock.**
 
 ## Cell-role geometry map
 
@@ -52,6 +52,7 @@ Across these cell roles:
 - Threshold crossings, hysteresis, retained state, bus condition, and neighbor state drive transitions.
 - V_BUS remains the shared energy / readiness / reinjection rail.
 - CENTER remains the local lean reference and is not V_BUS.
+- CENTER / (0) is the shared active virtual-ground reference for the physical ternary − / (0) / +; (0) means balanced/confirmed rather than OFF.
 - No global clock.
 - No second controller bypasses the local physical decision path.
 - Geometry does not by itself prove retention, computation, torque, or coupling performance.
