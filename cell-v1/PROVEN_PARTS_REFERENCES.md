@@ -83,3 +83,36 @@ https://www.onsemi.com/download/application-notes/pdf/an-4163.pdf
 https://www.onsemi.com/pub/Collateral/AN-9010.pdf
 
 Established mechanism used here: MOSFET drain current begins around threshold, while useful on-resistance depends on actual VGS, drain current and temperature. Therefore CELL's <=1 V analog nerve/wave signal must not be assumed to drive an arbitrary A/B/C power MOSFET directly. The nerve stage may require a discrete translation/amplification mechanism while preserving the analog CELL decision; exact topology is a bench target.
+
+
+## R11 — Transfluxor: one-piece multi-aperture hysteretic core with shared flux paths
+J. A. Rajchman and A. W. Lo, *The Transfluxor*, Proceedings of the IRE, 1956, pp. 321–332. Historical scan:
+https://www.bitsavers.org/pdf/afips/1956-02_%2309.pdf
+
+Established mechanism used here: a core made from magnetic material with a nearly rectangular hysteresis loop can contain two or more apertures, creating multiple distinct flux paths through the legs of one magnetic body. Controlled transfer of flux from leg to leg provides switching/storage behavior. The authors report that the prior setting can determine subsequent AC transmission and that intermediate settings can produce a continuous range of output levels.
+
+CELL use: closest identified precedent for the **one-piece square two-aperture figure-8 nucleus** and for a retained OLD magnetic condition physically affecting response to NEW excitation. Historical transfluxors do not establish CELL semantics or geometry dimensions.
+
+## R12 — Transfluxor shared-path magnetic switch
+W. J. Mahoney, *Transfluxor Magnetic Switch*, US3376427A.
+https://patents.google.com/patent/US3376427A/en
+
+Established mechanism used here: a hysteretic core with a central aperture and coupling aperture defines at least two closed magnetic paths with portions in common; saturation state in the common portions controls coupling between windings. This is direct precedent for shared magnetic legs coupling the two apertures of one body.
+
+## R13 — Double-aperture transfluxor common read/write circuitry
+IBM, *Transfluxor Memory Employing Common Read-Write Circuits*, US3328785A.
+https://patents.google.com/patent/US3328785A/en
+
+Established mechanism used here: a double-apertured magnetic core supports retained magnetic state, threshold-dependent switching and common read/write circuitry. Coincident sub-threshold currents can jointly produce a switching condition. CELL cites this as precedent for physical combination of retained magnetic condition and applied excitation, not as proof of CELL's three-mirror gate or ternary interpretation.
+
+## R14 — Multi-aperture / square-loop magnetic storage and continuous setting context
+Historical technical literature describes transfluxors as square-loop hysteretic magnetic cores with multiple apertures and flux-transfer paths; related implementations used the storage property to retain adjusted transmission characteristics. These references establish a magnetic history-dependent mechanism without software state.
+
+### Evidence-map addition
+
+| CELL block | Established precedent | CELL-specific claim |
+|---|---|---|
+| one-piece two-aperture nucleus | transfluxor multi-aperture hysteretic core (R11-R13) | square-window dimensions and CELL winding layout |
+| shared magnetic legs | closed flux paths with common portions (R11,R12) | Field/Void semantic assignment |
+| OLD + NEW physical interaction | retained setting/history changes later transmission/switching; coincident excitation can cross threshold (R11,R13) | old ACTIONS DOWN + new VIEWS UP and three-mirror recursion |
+| analog/intermediate retained setting | continuous intermediate transfluxor transmission setting reported by Rajchman/Lo (R11) | CELL ternary CENTER and seven-band scale |
