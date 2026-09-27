@@ -1,6 +1,6 @@
 # V_BUS state
 
-The bus is a reference. It is the lattice-wide number that talks to the pack and to the operator field.
+V_BUS is the shared **energy / readiness / reinjection rail**. It is not the ternary reference. CENTER/(0) is the active virtual-ground reference for −/(0)/+; V_BUS carries energy state and may influence later thresholds only through measured physical coupling.
 
 ---
 
@@ -12,7 +12,7 @@ V_BUS in band. Loop feeds from return. Pack idle or trickle.
 
 ## Ask (refill)
 
-Rail sags → ask the pack to refill the loop. Comparator. Pack is makeup for loss, not the default source.
+Rail sag may request makeup energy from the source. The exact sensing/threshold hardware is an implementation detail and must not become a hidden controller that bypasses the cell's local physical decision path. External supply replaces losses; recovered energy does not create energy.
 
 ---
 
