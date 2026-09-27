@@ -8,60 +8,71 @@ Letters **are the six edges:** A+ B+ C+ A− B− C−. Flowers share sides. Opp
 
 Three leans. Ternary is **DOWN / HOLD / UP** around **− / (0) / +**. **All analog. No global clock.**
 
-## One cell, four coupled layers
+## Cell-role geometry map
 
-1. **Square figure-8 toroidal nucleus — brain side**
-   - The square figure-8 toroidal structure is the cell nucleus.
-   - It is the brain-side retained-state structure coupled to the lattice-bus / vagus-nerve side.
-   - It is not CENTER and it is not V_BUS.
-   - Its magnetic history biases the next physical state.
+CELL_V1 is no longer allowed to assume one universal nucleus geometry. The electrical state-machine rules remain common, but the magnetic nucleus / outer-core shape depends on the cell's role.
 
-2. **Three mirrored differential axes around the nucleus**
-   - A+↔A−, B+↔B−, C+↔C− are three spatial axes / edge-seat pairs, not three voltage levels.
-   - Each axis is one opposed differential bias loop across the two sides of the cell around the nucleus.
-   - Each axis can be live on both sides while its net lean resolves DOWN / HOLD / UP around CENTER.
-   - The cell-level action is formed from the coupled A/B/C leans; A, B, and C are not a promotion ladder.
-   - CHOICE → PIVOT → FLIP is the voltage-gated depth ladder inside the differential behavior, not A → B → C.
-   - Threshold crossings, hysteresis, retained state, bus condition, and neighbor state drive transitions.
+### Sensor cell
+- **Nucleus:** one planar **round figure-8 toroid**.
+- Purpose: simplest local binary / differential sensing brain.
+- This is the figure-8 role currently retained for the sensor cell.
 
-3. **Two outer round figure-8 toroidal structures — motor-field shell**
-   - The two outer round figure-8 toroidal structures form one combined outer electrical / magnetic field.
-   - They carry **six windings total**, organized as **two mirrored groups of three**.
-   - The 3+3 winding system amplifies the cell's resolved − / (0) / + lean into a larger differential bias for motor control.
-   - The six windings are not six independent motors or six independent gates.
+### Motor-control cell
+- **Nucleus:** one planar **square figure-8 toroid**.
+- Purpose: motor-control brain with clean grid / lattice alignment and connection.
+- Do not generalize this square nucleus to the sensor cell or M4 cell.
 
-4. **Lattice bus / vagus-nerve side**
-   - V_BUS is the shared energy / readiness / reinjection rail across the lattice.
-   - CENTER is the local lean reference and stays distinct from V_BUS.
-   - Collapse energy returns to V_BUS; it is never dumped onto CENTER.
-   - Neighbor coupling and returned consequences feed the next cell decision.
+### M4 cell
+- **Nucleus:** **two triangular toroidal loops base-to-base** — the planar double-triangle / pyramid nucleus.
+- **Outer field pair:** two **plain round toroids**.
+- The M4 outer pair is explicitly **not** a round figure-8 pair.
+- The existing mirrored 3+3 winding / motor-field concept may be mapped onto the two round outer toroids, subject to bench validation.
 
-## Unified loop
+### Five-mind cell
+- **Nucleus:** **double pentagon** toroidal geometry.
 
-```
-neighbor / sensor consequence
+### Six-mind cell
+- **Nucleus:** **double hexagon** toroidal geometry.
+
+### Dimensional rule
+The present core / winding hardware is **2D / planar**. The resulting magnetic field is inherently **3D** and must be simulated and measured as such.
+
+## Shared electrical / state-machine rules
+
+Across these cell roles:
+- A+↔A−, B+↔B−, C+↔C− remain three mirrored spatial axes / edge-seat pairs where that interface is used.
+- DOWN / HOLD / UP remain the local ternary around CENTER.
+- Threshold crossings, hysteresis, retained state, bus condition, and neighbor state drive transitions.
+- V_BUS remains the shared energy / readiness / reinjection rail.
+- CENTER remains the local lean reference and is not V_BUS.
+- No global clock.
+- No second controller bypasses the local physical decision path.
+- Geometry does not by itself prove retention, computation, torque, or coupling performance.
+
+## Unified role-aware loop
+
+```text
+sensor / neighbor consequence
         ↓
-square figure-8 nucleus
-(retained-state bias)
+role-specific nucleus
+(round figure-8 sensor
+ square figure-8 motor-control
+ double-triangle M4
+ double-pentagon five-mind
+ double-hexagon six-mind)
         ↓
-three mirrored gate pairs
-(A, B, C differential)
+local differential / threshold resolution
         ↓
-− / (0) / + ternary lean
+DOWN / HOLD / UP where applicable
         ↓
-two outer round figure-8s
-6 windings = mirrored 3 + 3
-        ↓
-combined motor / field action
+role-specific field / actuator coupling
         ↓
 collapse / inductive return
         ↓
 V_BUS reinjection + lattice consequence
         ↓
-next nucleus / gate decision
+next physical decision
 ```
-
-No subsystem bypasses the ternary decision. Nucleus, gates, outer windings, reinjection, bus, and neighbor coupling are one coupled physical state machine.
 
 ## Locked seven-band differential scale
 
@@ -125,9 +136,14 @@ HOLD is live readiness around center, not a clocked idle.
 
 ## Hard anti-drift rules
 
-- Square figure-8 = **nucleus / brain side**, not the bus itself.
-- Two outer round figure-8s = **combined outer field shell**.
-- Six outer windings = **mirrored 3+3**.
+- **Sensor nucleus = round figure-8 toroid.**
+- **Motor-control nucleus = square figure-8 toroid for grid/lattice connection.**
+- **M4 nucleus = two triangular toroidal loops base-to-base.**
+- **M4 outer pair = two plain round toroids, not figure-8 toroids.**
+- **Five-mind nucleus = double pentagon.**
+- **Six-mind nucleus = double hexagon.**
+- Current core hardware geometry is planar / 2D; magnetic fields are 3D.
+- Any mirrored 3+3 winding mapping on the M4 outer pair remains a bench-tested implementation detail.
 - A/B/C are axes, **not voltage levels**.
 - The seven voltage bands are EXPRESS ↔ COMPRESS strength bands, not CHOICE/PIVOT/FLIP.
 - POINT/PATH/FIELD are scale states and must not be collapsed into A/B/C.
