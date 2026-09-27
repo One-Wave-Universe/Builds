@@ -139,3 +139,26 @@ Do not call bus voltage muscle memory.
 Do not move this memory into software.
 
 The hysteretic body-state layer is a dedicated physical substrate under the connected cells.
+
+
+## Phase-I scope
+
+The first connected-body build uses **one domain-wall hysteretic layer**.
+
+That one layer is the target for simple repeated motor behaviors such as:
+- wheel motion;
+- propeller / rotor motion;
+- other single-scale motor habits.
+
+Do not stack multiple hysteretic body-state layers in the first build.
+
+Nested muscle-memory layers are a later extension for articulated movement, where memory must exist at multiple physical scales, for example:
+
+```text
+finger-local trace
+-> hand coordination trace
+-> limb trace
+-> body trace
+```
+
+The rule is **one layer until complexity or measured interference proves another layer is needed**.
