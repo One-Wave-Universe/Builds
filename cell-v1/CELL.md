@@ -74,6 +74,18 @@ For the first flower, the target is one continuous or magnetically coupled hyste
 
 Exact material, thickness, patterning, coercivity, and coupling are open until measured.
 
+### Phase-I body-memory scale
+
+For the first wheel / propeller-style motor work, the connected cells use **one shared domain-wall hysteretic body-state layer**.
+
+Nested hysteretic layers are not part of Phase I.
+
+They are reserved for later articulated movement where separate local and larger-scale motor habits must coexist, such as finger -> hand -> limb -> body.
+
+Add another layer only when:
+- the movement requires a separate physical memory scale; or
+- measured cross-coupling shows one layer cannot preserve independent motor habits.
+
 ## Unified role-aware loop
 
 ```text
