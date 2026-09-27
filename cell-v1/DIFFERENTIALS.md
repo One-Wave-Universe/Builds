@@ -43,7 +43,7 @@ Same for B and C. Three differentials. Six seats. Three numbers.
 
 A/B/C are geometric axes, not sequential voltage levels. The two sides of each axis form one opposed bias loop around the nucleus. Both sides may remain electrically active; the state is the signed imbalance between them.
 
-Cell-0 is exactly this: one pair, read D, CENTER in the middle. That is the whole first drawing.
+Cell-0 is exactly this: one pair, read D, CENTER in the middle. CENTER / (0) is the shared active virtual-ground reference that makes the axis physically ternary: negative lean / balanced reference / positive lean. The middle is not OFF; it is the balanced/confirmed state of the opposed channel. That is the whole first drawing.
 
 ---
 
