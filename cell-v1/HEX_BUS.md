@@ -1,9 +1,10 @@
 # Hex bus architecture
 
-Two different buses live on the same tiling. Do not merge them.
+Three shared structures live on the same tiling, plus local CENTER. Do not merge them.
 
 1. **Axis bus** — signal / lean. Three directions. A, B, C. Mirrors at opposite edges.
-2. **Power bus** — shared DC rail. Every cell draws and returns. Not CENTER.
+2. **Hysteretic body-state layer** — shared physical history / muscle-memory paths under the connected cells.
+3. **Power bus** — shared DC rail. Every cell draws and returns. Not CENTER.
 
 ---
 
@@ -83,13 +84,16 @@ Hex-tile compute papers already share power on the edges of the tile and keep IO
 - Volume: stack flowers; run V_BUS as vias at edge-centers (same seats as the signal ports, different layer).
 - Do not run V_BUS down the same winding as A+.
 
-Three metal kinds, minimum:
+Four physical layers / functions, minimum:
 
 | Layer | Carries |
 | --- | --- |
-| AXIS | A, B, C ports |
-| BUS | V_BUS / return |
+| AXIS | A, B, C ports / live lean |
+| HYST | body-state / muscle-memory path bias |
+| BUS | V_BUS / energy return / readiness |
 | REF | CENTER, local only |
+
+**HYST and BUS are separate.** They may be physically adjacent and coupled, but V_BUS metal is not the muscle-memory store.
 
 ---
 
@@ -104,4 +108,4 @@ Three metal kinds, minimum:
 
 ## Proposal sentence
 
-The interconnect is a hex lattice with three bidirectional axes and a fourth, shared DC rail. Axes carry leans. The rail carries recovered energy and lattice readiness. References stay local. The flower’s twelve mirrors are the tiling, not extra wire.
+The interconnect is a hex lattice with three bidirectional axes, a dedicated hysteretic body-state layer, and a shared DC reinjection rail. Axes carry leans. The hysteretic layer carries muscle-memory / body-state path bias. V_BUS carries recovered energy and readiness. CENTER stays local. The flower’s mirrors come from the tiling, not an extra controller.
