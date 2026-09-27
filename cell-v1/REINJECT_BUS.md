@@ -33,8 +33,6 @@ Per axis:
 - DC-link cap — local reservoir
 - Return — cap feeds the main bus
 
-Cell-0 is still one pair at 9 V. This +1 V rail is the analog-brain / lattice bus layer. Do not mash the two supplies into one node.
-
 ## Recovery
 
 **Architecture rule:** there is no intentional resistor dump / bleed / damping branch in the CELL reinjection path. Recoverable inductive energy is steered toward V_BUS. Copper loss, core loss, transistor loss, imperfect coupling, radiation, and useful mechanical work remain real losses / outputs and must be measured rather than represented by a designed resistor return.
@@ -145,6 +143,6 @@ Nothing above 4 matters until 4 works.
 
 ## Cell-0 hook
 
-`CELL0.md` pair first (9 V, DB/DC, CENTER, core).
-After T5: leftover drain and kick to this bus, not to CENTER.
-Shared bus later. Shared CENTER never.
+CELL0.md starts with the local differential / CENTER relation at the current normalized architecture scale.
+After the local event, recoverable inductive energy returns to V_BUS, not CENTER.
+Shared V_BUS may scale across cells; CENTER remains a local reference relation.
