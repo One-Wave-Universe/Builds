@@ -14,7 +14,7 @@ CELL_V1 uses one **common outer/body differential interface** across cell types,
 
 ### Common body differential interface — all cells
 - **Outer/body pair:** two **plain round toroids**.
-- This pair is shared across sensor, motor-control, M4, five-mind, and six-mind cells.
+- This pair is shared across sensor, motor-control, five-mind, and six-mind cells.
 - Purpose: preserve one common physical differential / body-state / lattice connection language so mixed cell types can connect directly without adapter geometries.
 - The common round toroids are **not figure-8 toroids**.
 - Nucleus geometry is the specialization layer inside that common body interface.
@@ -29,10 +29,14 @@ CELL_V1 uses one **common outer/body differential interface** across cell types,
 - Purpose: motor-control brain with clean grid / lattice alignment and connection.
 - Do not generalize this square nucleus to the sensor cell or M4 cell.
 
-### M4 cell
-- **Nucleus:** **two triangular toroidal loops base-to-base** — the planar double-triangle / pyramid nucleus.
-- **Outer/body pair:** the same two **plain round toroids** used by every other cell type.
-- The existing mirrored 3+3 winding / motor-field concept may be mapped onto the common round-toroid pair, subject to bench validation.
+### M4 routing layer
+M4 is **not a separate nucleus or cell role**.
+
+M4 is the six-pyramid routing/connection geometry:
+- the six tapered wedge sectors route A+/B+/C+/A-/B-/C-;
+- opposed wedges meet **tip-to-tip inside the same cell**;
+- wedge bases meet **base-to-base between neighboring cells**;
+- this routing layer carries the physical consequence/state coupling from one cell into the next while local differential resolution remains referenced around CENTER.
 
 ### Five-mind cell
 - **Nucleus:** **double pentagon** toroidal geometry.
@@ -94,7 +98,7 @@ sensor / neighbor consequence
 role-specific nucleus
 (one-piece round two-aperture figure-8 sensor
  one-piece square two-aperture figure-8 motor-control
- double-triangle M4
+ M4 pyramid routing through the six wedges
  double-pentagon five-mind
  double-hexagon six-mind)
         ↓
@@ -145,7 +149,7 @@ The first seven-cell flower is:
 - **center:** one motor/control cell with the one-piece square two-aperture figure-8 hysteretic nucleus;
 - **ring:** six local sensor cells, each with a one-piece round two-aperture figure-8 hysteretic nucleus;
 - **intercell connection:** matching hex faces meet base-to-base while each cell retains its own six-sector / three-mirror local differential geometry;
-- **later M4:** the double-triangle / triangular-toroidal nucleus is a later compression/expression layer and is not required to build the first flower.
+- **M4 routing:** the pyramid connection network is already part of the first flower because it is how the cells route into one another.
 
 
 ## Locked seven-band differential scale
@@ -212,7 +216,6 @@ HOLD is live readiness around center, not a clocked idle.
 
 - **Sensor nucleus = one-piece round two-aperture figure-8 hysteretic magnetic core.**
 - **Motor-control nucleus = one-piece square two-aperture figure-8 hysteretic magnetic core for grid/lattice connection.**
-- **M4 nucleus = two triangular toroidal loops base-to-base.**
 - **Every cell type uses the same two plain round outer/body toroids.**
 - **The common outer/body pair is not figure-8.**
 - Nucleus geometry changes by cell role; outer/body differential geometry does not.
