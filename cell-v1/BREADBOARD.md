@@ -1,40 +1,65 @@
-# Breadboard — row by row (400-point)
+# Breadboard — minimum validation fixture
 
-Left block columns A–E, right F–J. Numbered 1–30.
+This fixture is only for proving the first electrical / magnetic relations. It is **not** the final CELL_V1 geometry.
 
 ## Rails
 
-- Top red: **1.00 V** (or 9 V seeing-aid — still *call* it the pack, not the map)
-- Bottom blue: **0 V**
-- Row 15 A–J reserved **CENTER 0.50 only**. Do not jumper row 15 to blue.
+- V_TOP / test supply = bench headroom.
+- CENTER = local differential reference.
+- V_BUS = separate recovery / readiness rail.
+- Never short CENTER to V_BUS.
 
-## Pair (leans)
+## First differential
 
-| Row | What |
-| --- | --- |
-| 5 | Q1 TO-92, facing you S-G-D on 5C 5D 5E |
-| 8 | Q2 same on 8H 8I 8J |
-| 3 red → 5E | 10 k drain Q1 |
-| 3 red → 8J | 10 k drain Q2 |
-| 5D → blue | 100 k |
-| 8I → blue | 100 k |
-| 5C → 15C | Q1 source to CENTER |
-| 8H → 15H | Q2 source to CENTER |
-| 1 red–blue | 100 nF |
+Build one opposed FET pair and measure both sides relative to CENTER.
 
-Meter: 5E vs 15 = one side. 8J vs 15 = other side. Lean = difference.
+Required observation:
 
-## Figure-8 / toroid
+```text
+D = V(+) - V(-)
+```
 
-Magnet wire: leave 15F, through toroid (or two toroids as 8), back to 15G. That is CENTER in iron. Not to blue.
+The first goal is simply to establish a repeatable negative / balanced / positive differential around CENTER.
 
-## Bus row (after you see leftover on the core)
+## Nucleus fixture
 
-| Row | What |
-| --- | --- |
-| 22 | BUS |
-| kick node → 1N5819 → 22 | steer |
-| 22 to blue | 1 µF |
-| optional 10 nF | at the diode anode to blue |
+Choose the nucleus for the role being tested.
 
-Row 22 is not row 15.
+For the **motor-control-cell prototype**, use the **square figure-8 nucleus**.
+
+For a later sensor-cell prototype, use the round figure-8 nucleus instead.
+
+Do not treat the nucleus fixture as the common body toroid pair.
+
+## Retained-state test
+
+1. Apply a controlled write in one direction.
+2. Remove the write.
+3. Apply a fixed probe.
+4. Record response.
+5. Apply equal write in the opposite direction.
+6. Apply the same fixed probe.
+7. Compare responses.
+
+If the responses are not repeatably distinguishable beyond noise / drift, stop and revise the retained-state premise.
+
+## V_BUS recovery fixture
+
+After retained-state discrimination works:
+
+- steer one inductive collapse toward V_BUS;
+- measure V_BUS rise;
+- verify CENTER remains stable;
+- record input and recovered energy.
+
+## Common body interface
+
+Only after the local nucleus / differential loop passes, add the **two plain round toroids** that form the common body differential interface shared by all cell roles.
+
+The common round toroids are not figure-8s.
+
+## Rule
+
+Change one thing -> test -> compare -> record.
+
+Do not add the next layer until the present relation is measurable.
