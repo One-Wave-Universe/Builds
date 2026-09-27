@@ -19,16 +19,18 @@ The common outer/body toroids are **not figure-8 toroids**.
 - Five-mind cell -> double pentagon nucleus.
 - Six-mind cell -> double hexagon nucleus.
 
-## M4 routing layer
+## Two distinct pyramid systems
 
-M4 is **not a nucleus or separate cell type**.
+### M4 nucleus
+The M4 cell has a dedicated **two-pyramid / double-triangle toroidal nucleus** arranged base-to-base.
 
-M4 is the pyramidal routing/connection structure of the CELL lattice:
+### Cluster-routing pyramids
+Separately, the general CELL lattice uses six tapered pyramidal/wedge routes:
 - inside a cell, opposed wedges meet **tip-to-tip** through the local center relation;
 - between neighboring cells, wedge bases meet **base-to-base** across the shared hex face;
-- the six wedge routes carry A+/B+/C+/A-/B-/C- connectivity between local differential resolution and neighboring cells.
+- the six routes carry A+/B+/C+/A-/B-/C- connectivity between local differential resolution and neighboring cells.
 
-M4 therefore provides the physical cell-routing geometry through which one cell's consequence can become part of the neighboring cell's next physical state.
+The M4 nucleus and cluster-routing pyramids are separate structures.
 
 The square figure-8 nucleus is **motor-control specific**.
 
