@@ -285,26 +285,40 @@ No designed resistor loss-return path.
 
 ---
 
-# 10. Memory
+# 10. Memory — local state, muscle memory, and reinjection
 
 Physical memory is not a software receipt.
 
-Candidate persistence scales:
+Current architecture separates three interacting physical roles:
 
-- short: live current / charge / phase / flux / back-EMF;
-- medium: nucleus hysteresis / remanence;
-- longer: future lattice / path hysteresis if that mechanism is validated.
+1. **Local retained state** — hysteresis / remanence in the role-specific nucleus or local active path.
+2. **Muscle memory / group memory** — the hysteretic under-hex lattice / shared magnetic edge traces. Repeated use can leave the preferred path already biased for the next action.
+3. **Reinjection / V_BUS** — returned energy, readiness, and short echo. Reinjection carries consequence back into the continuing loop, but bus voltage alone is not the long-term memory store.
 
-Important distinction:
+So the process is one loop, but the storage roles are not identical.
 
-- retained magnetic state;
-- recoverable inductive energy;
-- V_BUS voltage;
-- returned consequence
+Canonical shorthand:
 
-are related but are **not automatically the same variable**.
+```text
+ACTION
+-> local magnetic / actuator event
+-> consequence + inductive collapse
+-> reinjection to V_BUS
+-> shared hysteretic lattice/path already carries prior-use bias
+-> next traversal sees that changed path
+-> next action
+```
 
-They must be measured separately.
+This is the muscle-memory idea: **the settled hysteretic path means the next event does not start from zero.**
+
+Measure separately:
+- local nucleus remanence / threshold bias;
+- lattice Br / path bias;
+- returned energy;
+- V_BUS readiness / short echo;
+- next-action bias after repeated use.
+
+Those are separate measurements of one continuing physical process.
 
 ---
 
@@ -708,8 +722,9 @@ Current repo authorities:
 
 - CELL_V1: proposed physical architecture, not yet validated
 - Zer0: useful specification / experiment grammar now; runtime implementation unresolved
-- Reinjection: established mechanism class, CELL behavior still to measure
-- Magnetic memory: plausible mechanism class, CELL mapping still to measure
+- Reinjection: consequence/energy return path in the same closed process; not the long-term memory store by itself
+- Local memory: role-specific nucleus / local hysteretic path
+- Muscle memory: hysteretic lattice / shared edge magnetic traces; repeated-use bias to validate
 - Triadic coherence: candidate physical mechanism, not yet proven
 - Six-sector geometry: current build lock, physical advantage still to test
 - Higher-role nuclei: architecture map only until lower cell passes
