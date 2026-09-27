@@ -13,7 +13,7 @@ If it was decided, it is here. Do not drop it. Do not make him say it again.
 6. The six letters **are the six edges**, not the six points.
 7. Order around the sides: A+ B+ C+ A- B- C-.
 8. Flowers share a **side**. Middle A+ *is* neighbor A- on the same copper.
-9. Shared side = shared bus = shared square figure-8. That is how cells connect. Corners cannot connect a flower.
+9. Shared side carries the compatible body/lattice connection. The **common two plain round outer/body toroids** are the shared differential interface across cell roles. The **square figure-8 is motor-control nucleus only**. Corners cannot connect a flower.
 10. Hex is a slice. Seven hexes is the flower slice. Not a volume yet.
 
 ## Faces
