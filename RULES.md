@@ -52,5 +52,5 @@ If it was decided, it is here. Do not drop it. Do not make him say it again.
 
 ## Scope
 28. Same windings may throw. No second controller required in Phase I.
-29. No drum. No hear. No weight file. No 99% recovery. No Standard Model in Builds. No op-amp. No LM339.
+29. No drum. No hear. No weight file. No 99% recovery. No Standard Model in Builds. No op-amp. No LM339. **No designed resistors in the CELL control, threshold, CENTER, or reinjection architecture; no resistor ladders, bleed paths, damping returns, or dump loads as part of the intended mechanism.**
 30. Three-vortex / tension-skin analogy lives in Science C-317. Grant buys ferrite and FETs.
