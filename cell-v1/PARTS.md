@@ -25,7 +25,7 @@ This is a **prototype / validation BOM**, not a claim that the final topology is
 | --- | --- | --- |
 | Logic-level MOSFETs / matched FET pair | create and steer opposed analog differential | exact part open |
 | Capacitors | local decoupling and V_BUS reservoir | required |
-| Plain round ferrite toroids, pair | common body differential interface | geometry locked, material open |
+| Plain round ferrite toroids, pair | FIELD/VOID body differential interface | geometry locked, material open |
 | Square figure-8 ferrite assembly | motor-control-cell nucleus | geometry locked, material open |
 | Round figure-8 ferrite assembly | sensor-cell nucleus | separate sensor role |
 | Magnet wire | drive / sense / coupling windings | turns and gauge open |
@@ -155,6 +155,6 @@ The CELL nerve/wave signal target is <=1 V normalized span. That is a **signal/s
 Memory is the history dependence of the same analog process at multiple persistence scales:
 - short: live winding current, charge, phase, flux and back-EMF;
 - mid: local nucleus/core hysteresis and remanence;
-- long: the two hysteretic lattice sheets / etched path network connecting the body grid.
+- long: the single Phase-I domain-wall hysteretic body-state layer / connected path network beneath the body grid.
 
 The actuator is part of the loop: load changes current/flux/back-EMF, so physical action returns a changed view. V_BUS carries shared energy/reinjection; retained history belongs to the hysteretic process/path, not bus voltage alone.
