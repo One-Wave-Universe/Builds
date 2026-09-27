@@ -151,6 +151,52 @@ The first seven-cell flower is:
 - **intercell connection:** matching hex faces meet base-to-base while each cell retains its own six-sector / three-mirror local differential geometry;
 - **M4 routing:** the pyramid connection network is already part of the first flower because it is how the cells route into one another.
 
+### First-flower role-specific hardware build lock
+
+The seven-cell flower requires **two distinct physical cell builds**, not one generic cell copied seven times.
+
+#### Six surrounding sensor cells
+- Each sensor cell receives its local physical sensor input(s) and resolves them through its A/B/C mirrored differential structure.
+- **Nucleus:** one planar one-piece **round two-aperture figure-8 hysteretic core** for local retained sensor state/history.
+- **Broad wedge/base faces:** the intercell interfaces. Each shared face uses a **bidirectional threshold-driven nerve gate/coupling path** so neighboring cells can influence and compare against one another without hard-shorting their local states together.
+- **Narrow wedge tips:** remain intra-cell. The A/B/C tip relations **cross-reference one another bidirectionally** as part of the local three-differential resolution. They are **not dedicated wires to the main brain**.
+- **Body reference/write:** the cell is biased/written by the shared connected-body state through the common body/lattice interface and hysteretic body-state layer. Higher layers therefore receive compressed consequence rather than individually commanding each triangle/wedge.
+- The exact sensor technologies assigned to A/B/C are role/application dependent and remain open until selected and measured.
+
+#### Center motor/control cell
+- The center cell consumes the distributed state/consequence arriving from the six surrounding sensor cells through the same nerve-gated base-to-base interfaces.
+- **Nucleus:** one planar one-piece **square two-aperture figure-8 hysteretic core** for retained motor/control state.
+- Its A/B/C wedges are **control differentials**, not copies of the surrounding environmental sensor front ends.
+- Its narrow tips use the same **bidirectional intra-cell cross-reference** rule as the sensor cells.
+- Its broad bases use the same **bidirectional nerve-gated neighbor** rule so the center participates in distributed local comparison with the ring.
+- The resolved local control lean drives a **separate actuator power stage**. Signal/comparison nerve gates are not assumed to carry actuator current.
+- Actuator consequence returns into the same physical state/body/reinjection loop; no software or second controller bypasses this path.
+
+Canonical first-flower information/power split:
+
+```text
+six SENSOR CELLS
+physical sensing -> A/B/C local differential
+                -> round figure-8 retained local state
+                -> bidirectional nerve-gated shared faces
+                              <->
+                    CENTER MOTOR/CONTROL CELL
+                    A/B/C control differential
+                    <-> square figure-8 retained state
+                    -> separate actuator power stage
+                    -> actuator consequence
+                    -> V_BUS/body-state return
+
+within EACH cell:
+A/B/C narrow tips <-> cross-reference bidirectionally
+between CELLS:
+broad bases <-> bidirectional nerve gates <-> broad bases
+whole connected body:
+shared body-state/hysteretic layer writes/biases local cells
+```
+
+**Anti-drift:** base-to-base is distributed peer-cell intelligence; tip-to-tip/cross-tip behavior is local intra-cell comparison. Do not reinterpret the tips as direct main-brain command/reference wires.
+
 
 ## Locked seven-band differential scale
 
