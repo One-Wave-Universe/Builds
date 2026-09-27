@@ -75,3 +75,50 @@ Do not say:
 > “Algorythm-Zer0 is already running the android.”
 
 It is not yet demonstrated.
+
+
+## Physical precedents worth testing — not canon replacements
+
+Independent review identified several useful precedent classes:
+
+- **multi-aperture hysteretic cores / transfluxors** for history-dependent shared magnetic paths;
+- **magnetic majority / current-summing elements** for physical two-of-three coherence;
+- **coupled oscillators / asynchronous threshold systems** for non-clocked consensus;
+- **adaptive-reference / moving-equilibrium systems** for comparison with Zer0's rebase idea;
+- **non-dissipative inductive recovery** for V_BUS return.
+
+These are not one-to-one matches and must not rename Zer0 by analogy.
+
+## Smallest physical Zer0 experiment
+
+The first physical implementation attempt should test only one recursive cycle:
+
+```text
+REFERENCE
+-> opposed CHOICE with HOLD
+-> one MOVE
+-> returned consequence
+-> STATE / SCALE classification
+-> RESOLVE
+-> bounded NEW REFERENCE
+```
+
+Required observations:
+
+1. the next reference depends on the prior physical cycle;
+2. the next reference remains bounded rather than drifting blindly to saturation;
+3. HOLD is a stable physical outcome, not missing data;
+4. lower-level state remains inferable after higher-level resolution;
+5. no software variable, comparator bank, or op-amp state machine performs the hidden decision.
+
+### Failure tests
+
+- **Runaway rebase:** repeated same-sign events push reference monotonically into saturation.
+- **Context loss:** final resolved state cannot be traced back to lower-level state.
+- **False HOLD:** HOLD appears only because drive disappears.
+- **Hidden arbiter:** result requires an external digital or IC decision element.
+- **Mismatch domination:** component tolerance determines the state more strongly than the intended input.
+
+## RC terminology warning
+
+Do not assume project **RC** means a resistor-capacitor relaxation path. The current project use is a broader remainder / returned-consequence role and still requires reconciliation with standard engineering terminology. No resistor-based relaxation path is part of the locked CELL architecture.
