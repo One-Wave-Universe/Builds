@@ -1,6 +1,14 @@
 # Cores
 
-CELL_V1 uses **role-specific nucleus geometry**. Do not mash sensor, motor-control, M4, five-mind, and six-mind cores together.
+CELL_V1 uses a **common outer/body differential pair** plus **role-specific nucleus geometry**. Do not mash those two layers together.
+
+## Common outer/body toroids — all cell types
+
+Every cell type uses the same two **plain round toroids** as its outer/body differential interface.
+
+This common pair is shared by sensor, motor-control, M4, five-mind, and six-mind cells so they can all connect through one physical body/lattice differential language.
+
+The common outer/body toroids are **not figure-8 toroids**. The specialization happens in the nucleus.
 
 ## Sensor-cell nucleus
 
@@ -24,11 +32,9 @@ This is the current planar double-triangle / pyramid nucleus form.
 
 ### M4 outer toroids
 
-The M4 cell uses **two plain round toroids** as the outer field pair.
+The M4 cell uses the same **two plain round outer/body toroids** as every other cell type.
 
-They are **not round figure-8 toroids**.
-
-Where the existing mirrored 3+3 winding / motor-field concept is used, those windings map onto the two round outer toroids and remain bench quantities until measured.
+Where the existing mirrored 3+3 winding / motor-field concept is used, those windings map onto this common pair and remain bench quantities until measured.
 
 ## Five-mind nucleus
 
@@ -46,7 +52,7 @@ Do not turn the present core hardware into speculative 3D solids just because th
 
 ## Coupling rule
 
-Role-specific nucleus, differential paths, field / actuator coupling, V_BUS reinjection, and neighboring lattice state must close one physical loop.
+Common outer/body round-toroid interface, role-specific nucleus, differential paths, field / actuator coupling, V_BUS reinjection, and neighboring lattice state must close one physical loop.
 
 Magnetic isolation, coupling coefficients, material choice, winding turns, field strength, retention depth, and motor torque remain bench quantities until measured.
 
