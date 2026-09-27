@@ -164,3 +164,39 @@ HOLD is live readiness around center, not a clocked idle.
 - Do not claim measured retention, coupling, recovery, torque, or efficiency until bench data exists.
 
 This file is the CELL_V1 authority. Detail files must agree with it.
+
+
+## Three-mirror-gate oscillating loop — locked
+
+A complete local state transition is **three mirrored gates = one complete loop = one FLIP**.
+
+At **every gate**, the physical signal remains a **bidirectional oscillation around CENTER/(0)**. CENTER is the reference at each step; it is not visited only at the beginning or end.
+
+During the same loop:
+
+- the **old state expresses ACTIONS DOWN**;
+- the **new state returns VIEWS UP**;
+- both directions coexist as opposed wave information around CENTER;
+- each mirror gate compares/couples the two directions physically;
+- completion of the third mirror gate permits one FLIP;
+- the settled new state becomes the old/action side of the next loop while the next views are already propagating upward.
+
+This is not a sequential read-old / erase / calculate / write-new machine.
+
+Canonical shorthand:
+
+```text
+NEW VIEWS UP  ↑
+              │
+       MIRROR GATE 3
+              ↕  CENTER/(0)
+       MIRROR GATE 2
+              ↕  CENTER/(0)
+       MIRROR GATE 1
+              │
+OLD ACTIONS DOWN ↓
+
+3 mirror gates = 1 loop = 1 flip
+```
+
+The nerve/interconnect implementation target is a **bidirectional wave gate** built from discrete MOSFET/passive/magnetic elements. The normalized CELL electrical span remains **1 V or less** around its CENTER reference. Exact MOSFET technology, gate topology, usable VGS, on-resistance and threshold margin are **not locked** until a real device is selected and measured; MOSFET datasheet threshold voltage alone must not be treated as a guaranteed low-resistance ON voltage.
