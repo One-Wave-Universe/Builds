@@ -11,6 +11,8 @@ This fixture is only for proving the first electrical / magnetic relations. It i
 
 ## First differential
 
+**No resistor bias ladder is part of this fixture or architecture.** Establish the differential with the selected discrete device / magnetic topology and expose all relevant nodes so CENTER formation is measurable rather than imposed by a resistor network.
+
 Build one opposed FET pair and measure both sides relative to CENTER.
 
 Required observation:
@@ -63,3 +65,32 @@ The common round toroids are not figure-8s.
 Change one thing -> test -> compare -> record.
 
 Do not add the next layer until the present relation is measurable.
+
+
+## Added falsification tests
+
+### Moving-reference boundedness
+Apply repeated equal-direction write events. Measure whether the effective next-cycle reference:
+- approaches a bounded repeatable offset; or
+- walks monotonically into hard saturation.
+
+Monotonic runaway without a physical release / rebase mechanism is a fail for the moving-reference implementation candidate.
+
+### Triadic coherence candidate
+When three A/B/C contributions are available, test a **physical-summing candidate** rather than a digital majority gate:
+- 2 aligned / 1 opposed;
+- 1 aligned / 2 opposed;
+- balanced opposition;
+- all near HOLD.
+
+Measure summed flux/current, CENTER motion, threshold crossing, chatter, and retained-state dependence. Magnetic-majority behavior is a **candidate precedent**, not a locked CELL mechanism.
+
+### Sector mismatch
+Perturb one sector thermally or magnetically and measure:
+- its opposed partner;
+- both neighboring axes;
+- CENTER;
+- V_BUS;
+- next-cycle lean.
+
+This directly measures whether the six-sector geometry contains mismatch or spreads it through the cell.
