@@ -92,8 +92,10 @@ Hypothesis until measured:
 
 - Return stays off V0 / CENTER
 - Shared bus couples cells usefully
-- Write depth gives the hardness range we want
-- Bus voltage is enough local coordination
+- Etched path state is writable and retained with the useful range we want
+- Prior path history measurably biases a later traversal
+- Reinjection does not unintentionally erase/corrupt the path state
+- Bus condition provides useful local coordination without being confused with stored muscle memory
 
 ## Hard parts
 
