@@ -713,3 +713,289 @@ Current repo authorities:
 - Triadic coherence: candidate physical mechanism, not yet proven
 - Six-sector geometry: current build lock, physical advantage still to test
 - Higher-role nuclei: architecture map only until lower cell passes
+
+
+---
+
+# 22. What validation looks like
+
+Passing these tests validates the **Phase-I premises** of CELL_V1. It does **not** by itself prove the full cell, flower, higher nuclei, intelligence, or complete Zer0 runtime.
+
+The tests are run in order. A failed prerequisite stops scale-up until the failure is understood.
+
+## Test A — retained-history nucleus
+
+**Question:** Does prior physical state measurably change the response to the same later probe?
+
+**Method:**
+1. apply a controlled write in one direction;
+2. remove the write;
+3. apply a fixed probe;
+4. record response;
+5. apply an equal write in the opposite direction;
+6. apply the same probe;
+7. compare repeated trials.
+
+**Measure:**
+- write current / voltage;
+- probe response;
+- remanence / inferred retained bias;
+- thermal drift;
+- repeatability;
+- decay with time.
+
+**Pass criterion:** a repeatable prior-state-dependent difference that remains separable from noise, drift, and measurement error.
+
+**Fail criterion:** nominally different prior writes produce no repeatable difference.
+
+**Fallbacks to test, one at a time:**
+- different hysteretic material;
+- different write amplitude / duration within safe limits;
+- different turn count;
+- different aperture / flux-path geometry.
+
+Do not add software memory to rescue a failed physical-memory test.
+
+## Test B — bounded moving reference
+
+**Question:** Can the physical state influence the next reference without drifting blindly into saturation?
+
+**Method:** repeat equal-direction events, then reverse and release.
+
+**Measure:**
+- cycle-to-cycle CENTER / effective reference shift;
+- saturation margin;
+- reversal response;
+- relaxation / decay;
+- hysteresis-loop displacement;
+- repeatability.
+
+**Pass criterion:** the next reference is measurably history-dependent **and bounded** over the tested operating range.
+
+**Fail criterion:** the reference walks monotonically into saturation or becomes irrecoverable without an external hidden controller.
+
+**Fallbacks to investigate:**
+- different coercivity / loop shape;
+- alternate physical release / rebasing path;
+- separate magnetic path for retained bias;
+- geometry changes that reduce accumulation.
+
+A reset winding or other release mechanism is a **candidate experiment**, not locked architecture.
+
+## Test C — physical triadic coherence
+
+**Question:** Can A/B/C produce stable physical agreement / opposition outcomes without a digital arbiter?
+
+Test:
+- 2 aligned / 1 opposed;
+- 1 aligned / 2 opposed;
+- balanced opposition;
+- one active / two near HOLD;
+- all near HOLD;
+- polarity-reversed equivalents.
+
+**Measure:**
+- summed current / flux;
+- threshold crossing;
+- CENTER motion;
+- chatter;
+- switching latency;
+- history dependence;
+- mismatch sensitivity.
+
+**Pass criterion:** equivalent input relations resolve reproducibly, with HOLD physically distinguishable from OFF / missing signal.
+
+**Fail criterion:** component mismatch or uncontrolled cross-coupling dominates the intended relation.
+
+**Candidate precedents:** magnetic majority / current-summing systems, parametron-style analog summation, saturable magnetic thresholds.
+
+These precedents do not prove the CELL geometry performs the function automatically.
+
+## Test D — V_BUS / CENTER isolation and reinjection
+
+**Question:** Can recoverable inductive energy return toward V_BUS without corrupting CENTER or erasing retained state?
+
+**Method:**
+- perform the same controlled drive / collapse event with return enabled and disabled;
+- vary V_BUS loading within the safe test range;
+- measure CENTER simultaneously;
+- compare nucleus state before and after return.
+
+**Measure:**
+- E_in;
+- E_rec;
+- peak flyback voltage;
+- V_BUS ripple;
+- CENTER disturbance;
+- return timing;
+- retained-state change.
+
+**Pass criterion:** measurable recovery with CENTER remaining within the allowed operating band and retained-state behavior remaining repeatable.
+
+**Fail criterion:** return repeatedly corrupts CENTER, destabilizes the local differential, or erases / dominates the retained state.
+
+**Fallbacks to investigate:**
+- different steering topology;
+- greater magnetic / electrical isolation;
+- local reservoir changes;
+- separate return path geometry.
+
+No resistor dump / bleed / damping path is introduced as the intended solution.
+
+## Test E — six-sector mismatch and cross-coupling
+
+**Question:** Does the A/B/C geometry preserve usable opposed-axis behavior under real mismatch?
+
+**Method:** perturb one sector thermally, magnetically, geometrically, or by controlled winding variation.
+
+**Measure:**
+- opposed partner response;
+- neighboring-axis response;
+- coupling matrix;
+- leakage flux;
+- CENTER shift;
+- next-cycle lean;
+- temperature dependence.
+
+**Pass criterion:** intended axis relation remains distinguishable and repeatable under measured mismatch.
+
+**Fail criterion:** all sectors collapse into uncontrolled common coupling or CENTER becomes dominated by one sector.
+
+**Fallbacks to investigate:**
+- revised taper / spacing;
+- alternate flux guides;
+- increased magnetic isolation;
+- simpler geometry if it produces the same required function.
+
+## Phase-I validation statement
+
+If Tests A through E pass their measured criteria, the correct conclusion is:
+
+> **The five Phase-I CELL_V1 premises survived bench validation in the tested configuration.**
+
+Do **not** replace that with:
+
+> “The whole CELL_V1 architecture is proven.”
+
+The next scale step must add only one new claim at a time.
+
+---
+
+# 23. Candidate physical mechanisms for currently locked functions
+
+These are **implementation candidates**, not new locks.
+
+## CENTER distinct from V_BUS
+
+Required function:
+- CENTER remains the local differential reference;
+- V_BUS carries shared energy / readiness / reinjection;
+- return events must not redefine CENTER unintentionally.
+
+Candidate mechanisms:
+- physically separate conductors / rails;
+- separate magnetic paths with measured coupling;
+- local magnetic or transistor-level isolation;
+- a dedicated physical buffer stage only if direct isolation fails.
+
+Do not claim a specific square-loop isolation mechanism until it is built and measured.
+
+## HOLD is live
+
+Required function:
+- current / field activity may remain present;
+- no directional commit occurs inside the HOLD band.
+
+Candidate mechanisms:
+- coercive / hysteretic threshold;
+- saturable magnetic threshold;
+- opposed-current cancellation;
+- paired physical thresholds creating a dead zone.
+
+HOLD must not be defined merely as “drive disappeared.”
+
+## Active ternary - / (0) / +
+
+Required function:
+- negative lean;
+- live balanced HOLD;
+- positive lean.
+
+Candidate mechanisms:
+- opposed current / flux paths around CENTER;
+- dual physical thresholds around CENTER;
+- magnetic threshold plus bidirectional steering;
+- transistor-level current steering whose bias is set by the physical state rather than a resistor ladder.
+
+## No global clock
+
+Required function:
+- transitions occur from physical state / threshold / consequence.
+
+Candidate mechanisms:
+- hysteretic threshold crossing;
+- asynchronous magnetic switching;
+- passive propagation / delay;
+- physical ring / propagation structures if sequencing is later proven necessary.
+
+A delay line is a candidate fallback, not a current lock.
+
+## No designed resistor path
+
+Required function:
+- control thresholds and reinjection are not implemented by resistor ladders or resistor dump branches.
+
+Candidate mechanisms:
+- magnetic threshold;
+- semiconductor junction threshold;
+- diode steering;
+- self-driven synchronous switching;
+- inductive / capacitive / magnetic state.
+
+Bench protection may use external current-limited equipment, but that protection does not become the architecture.
+
+---
+
+# 24. First bench target — corrected
+
+The smallest useful first build is **one hysteretic multi-aperture / figure-8 nucleus under write-and-probe measurement**.
+
+Do not lock arbitrary turn counts, pulse widths, currents, or pass percentages before the actual core material and safe operating region are known.
+
+Minimum functions required:
+
+- one controlled write winding / path;
+- one probe / sense path;
+- reversible write polarity;
+- externally current-limited drive for safe characterization;
+- oscilloscope measurement;
+- repeated identical-probe comparison after opposite prior writes.
+
+The first experiment is Test A.
+
+Its purpose is not to prove the whole cell.
+
+Its purpose is to answer one question:
+
+> **Does this chosen physical nucleus retain enough measurable state that prior write history changes the response to the same later probe?**
+
+If no, change material / geometry / winding conditions before building the full hex.
+
+If yes, proceed to bounded-reference and triadic tests.
+
+---
+
+# 25. Prior-art interpretation guardrails
+
+Verified historical mechanism classes worth studying include multi-aperture magnetic cores / transfluxors and parametron majority-style analog summation.
+
+Use them as mechanism precedents only.
+
+Do not infer from their existence that:
+- CELL's semantics are already solved;
+- HOLD has already been demonstrated in CELL;
+- the six-sector geometry is validated;
+- Zer0 is implemented;
+- reinjection and memory are the same state variable.
+
+Higher-role nucleus shapes remain project hypotheses until they have their own physical validation.
