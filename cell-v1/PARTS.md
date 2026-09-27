@@ -4,6 +4,9 @@ This is a **prototype / validation BOM**, not a claim that the final topology is
 
 ## Architecture constraints
 
+- **No designed resistors in the CELL control, threshold, CENTER, or reinjection architecture.**
+- Do not create a resistor-based bias ladder, dead band, damping path, bleed path, or loss-return path.
+- Real copper/core/device losses are measured as losses; they are not intentionally created as the return mechanism.
 - Core CELL_V1 control is analog and threshold / hysteresis driven.
 - No LM339 or op-amp controller is part of the architecture.
 - No global clock.
@@ -21,7 +24,6 @@ This is a **prototype / validation BOM**, not a claim that the final topology is
 | Part class | Purpose | Status |
 | --- | --- | --- |
 | Logic-level MOSFETs / matched FET pair | create and steer opposed analog differential | exact part open |
-| Precision resistors / bias network | establish stable differential test conditions | bench aid |
 | Capacitors | local decoupling and V_BUS reservoir | required |
 | Plain round ferrite toroids, pair | common body differential interface | geometry locked, material open |
 | Square figure-8 ferrite assembly | motor-control-cell nucleus | geometry locked, material open |
@@ -58,6 +60,8 @@ Do not add higher-mind nuclei until the lower physical loop survives its measure
 
 ## Not in the BOM as control logic
 
+- resistor threshold ladders;
+- resistor damping / bleed / dump returns;
 - LM339 comparator bank;
 - op-amp decision controller;
 - microcontroller state machine;
