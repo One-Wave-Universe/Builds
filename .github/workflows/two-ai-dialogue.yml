@@ -1,0 +1,26 @@
+name: Two AI Dialogue v0
+on:
+  push:
+    paths: ['two-ai-dialogue/**','.github/workflows/two-ai-dialogue.yml']
+  pull_request:
+    paths: ['two-ai-dialogue/**']
+permissions: {contents: read}
+jobs:
+  deterministic-loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replay twice
+        run: |
+          python3 two-ai-dialogue/loop.py two-ai-dialogue/fixtures/question.json > /tmp/a
+          python3 two-ai-dialogue/loop.py two-ai-dialogue/fixtures/question.json > /tmp/b
+          cmp /tmp/a /tmp/b
+          python3 - <<'PY'
+          import json
+          x=json.load(open('/tmp/a'))
+          assert x['status']=='COMPLETE'
+          assert [t['actor'] for t in x['turns']]==['CHATGPT','GEMINI','CHATGPT','GEMINI']
+          assert not x['unresolved']
+          print('TWO_AI_DIALOGUE_LOOP_OK')
+          PY
