@@ -213,6 +213,29 @@
       ],
       "receipts": [],
       "blockers": []
+    },
+    {
+      "id": "J-001",
+      "lane": "digital",
+      "title": "Jetson FIELD-GPU / VOID-CPU Loop Router",
+      "state": "EXECUTING",
+      "depends": [
+        "W-010"
+      ],
+      "acceptance": [
+        "bounded FIELD→VOID loop",
+        "HOLD",
+        "JSONL receipts",
+        "CPU reference backend",
+        "GPU parity fixture"
+      ],
+      "receipts": [
+        "reference runtime committed: jetson-brain/loop_router.py"
+      ],
+      "blockers": [
+        "W-010 semantics integration",
+        "Jetson GPU adapter not yet executed"
+      ]
     }
   ]
 }
