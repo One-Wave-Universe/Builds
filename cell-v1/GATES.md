@@ -39,3 +39,11 @@ Same silicon both directions. Body diodes cancelled (back-to-back) or isolated-b
 Never both directions ON at once in a hard-conduction sense. GAP is the transition / inhibit region. A live opposed differential may still have both sides biased on around CENTER; "not both ON" here means do not command a destructive shoot-through path.
 
 Views up on the 8. Collapse still to V_BUS.
+
+## 2026-09-27 lock — local gate memory and loss correction
+- Each active mirror/loss gate has **local hysteresis**; the transition depends on present differential plus prior gate state.
+- Gate-local hysteresis is the fast/local memory scale and is not the shared under-cell muscle-memory layer.
+- Crossing a selected loss threshold enables a bidirectional return/correction path that opposes the excursion and drives the ternary oscillation back toward the live body-state balance reference.
+- Compression is toward wedge tip; expression is toward wedge base. Hardware transfer remains bidirectional.
+- Back-to-back MOSFETs are a candidate for controlled bidirectional connection points; exact device/topology is not locked.
+- Base-to-base cell boundaries are shared bidirectional differential interfaces. A dedicated extra boundary MOSFET gate is **OPEN / BENCH**, not canonical.
