@@ -20,9 +20,13 @@ def generate(key,model,prompt):
     body={"contents":[{"role":"user","parts":[{"text":prompt}]}],"generationConfig":{"temperature":0.2,"maxOutputTokens":1200}}
     return call(BASE+"/"+model+":generateContent",key,body)
 
-def gemini(question,previous=""):
+def gemini(question,previous="",evidence=None):
     key=os.environ["GEMINI_API_KEY"]
+    evidence_text = "(none supplied)"
+    if evidence:
+        evidence_text=json.dumps(evidence,ensure_ascii=False)
     prompt=("Original question:\n"+question+"\n\nPrevious visible answer:\n"+(previous or "(none)")+
+      "\n\nREPOSITORY EVIDENCE PACK (these and only these repository files count as actually read):\n"+evidence_text+
       "\n\nGive the next concise answer. Correct omissions/errors and move toward a finished answer. "
       "Do not expose hidden chain-of-thought. Give conclusions, objections, evidence needs, and unresolved items.")
     errors=[]
@@ -52,7 +56,11 @@ def gemini(question,previous=""):
 if __name__=="__main__":
     x=json.loads(Path(sys.argv[1]).read_text())
     try:
-        turn=gemini(x["question"])
+        evidence=None
+        ep=x.get("evidence_pack")
+        if ep:
+            evidence=json.loads(Path(ep).read_text())
+        turn=gemini(x["question"],x.get("previous_visible_answer",""),evidence)
         out={"schema":"one-wave-gemini-receipt/v1","request_id":x["id"],"status":"COMPLETE","turn":turn}
     except Exception as e:
         out={"schema":"one-wave-gemini-receipt/v1","request_id":x["id"],"status":"HOLD","error":str(e)}
