@@ -1,0 +1,1 @@
+{"mode":"parse","artifact":{"command":"status"},"required":["command","target"]}
