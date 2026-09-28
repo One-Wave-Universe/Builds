@@ -5,8 +5,12 @@ from pathlib import Path
 def normalize_turn(actor,payload):
     if not isinstance(payload,dict): raise ValueError("turn payload must be object")
     return {"actor":actor,"answer":str(payload.get("answer","")),
-            "settled":list(payload.get("settled",[])),
+            "settled":list(payload.get("settled",payload.get("agreements",[]))),
             "unresolved":list(payload.get("unresolved",[])),
+            "objections":list(payload.get("objections",[])),
+            "proposed_resolution":payload.get("proposed_resolution"),
+            "proposed_next_action":payload.get("proposed_next_action"),
+            "accept_previous":bool(payload.get("accept_previous",False)),
             "complete":bool(payload.get("complete",False))}
 
 def run(question, adapters, max_turns=8):
@@ -19,9 +23,22 @@ def run(question, adapters, max_turns=8):
         turn=normalize_turn(actor,payload); history.append(turn)
         settled=list(dict.fromkeys(settled+turn["settled"]))
         unresolved=turn["unresolved"]
-        if turn["complete"] and not unresolved and len(history)>=2 and history[-2]["complete"]:
-            break
-    status="COMPLETE" if len(history)>=2 and history[-1]["complete"] and history[-2]["complete"] and not unresolved else "HOLD"
+        if len(history)>=2 and turn["accept_previous"]:
+            prev=history[-2]
+            same_resolution=bool(prev.get("proposed_resolution") and turn.get("proposed_resolution") and prev["proposed_resolution"].strip()==turn["proposed_resolution"].strip())
+            same_action=bool(prev.get("proposed_next_action") and turn.get("proposed_next_action") and prev["proposed_next_action"].strip()==turn["proposed_next_action"].strip())
+            if same_resolution or same_action:
+                unresolved=[]
+                break
+    status="HOLD"
+    if len(history)>=2 and history[-1].get("accept_previous") and not unresolved:
+        prev,last=history[-2],history[-1]
+        if prev.get("proposed_resolution") and prev.get("proposed_resolution")==last.get("proposed_resolution"):
+            status="AGREED_RESOLUTION"
+        elif prev.get("proposed_next_action") and prev.get("proposed_next_action")==last.get("proposed_next_action"):
+            status="AGREED_NEXT_ACTION"
+    if status=="HOLD" and len(history)>=max_turns:
+        status="MAX_TURNS"
     return {"schema":"one-wave-two-ai-dialogue/v1","question":question,"status":status,
             "turns":history,"settled":settled,"unresolved":unresolved,
             "final":history[-1]["answer"] if history else ""}
