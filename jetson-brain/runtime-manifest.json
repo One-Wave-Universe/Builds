@@ -1,0 +1,51 @@
+{
+  "schema": "one-wave-jetson-brain/v1",
+  "mapping": {
+    "field": {
+      "preferred": "gpu",
+      "fallback": "cpu",
+      "roles": [
+        "parallel candidate expansion",
+        "sensory transforms",
+        "array/field computation"
+      ]
+    },
+    "void": {
+      "preferred": "cpu",
+      "roles": [
+        "validation",
+        "compression",
+        "control",
+        "recall/rebuild",
+        "routing"
+      ]
+    },
+    "router": {
+      "roles": [
+        "bounded cycle",
+        "HOLD",
+        "receipt",
+        "reentry"
+      ]
+    }
+  },
+  "cycle": [
+    "OBSERVE",
+    "FIELD",
+    "VOID",
+    "RESOLVE",
+    "EMIT_OR_HOLD",
+    "RECEIPT",
+    "REENTER"
+  ],
+  "limits": {
+    "max_cycles": 64,
+    "max_retries_per_item": 3
+  },
+  "source_tags": [
+    "real",
+    "simulated",
+    "test"
+  ],
+  "gpu_required": false
+}
