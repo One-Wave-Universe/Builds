@@ -33,19 +33,23 @@ jobs:
               assert x.get("actors")==["CHATGPT","GEMINI"]
               print("DIALOGUE_REQUEST_OK",x["id"])
           PY
-      - name: Gemini live smoke
+      - name: Select triggering request
+        id: request
         run: |
           REQUEST=$(git diff --name-only HEAD^ HEAD -- 'two-ai-dialogue/requests/*.json' | tail -1)
           if [ -z "$REQUEST" ]; then
             echo "No changed dialogue request found; refusing stale fallback"
             exit 2
           fi
+          echo "path=$REQUEST" >> "$GITHUB_OUTPUT"
           echo "Executing request: $REQUEST"
-          python3 two-ai-dialogue/gemini_adapter.py "$REQUEST" | tee gemini-receipt.json
+      - name: Gemini live peer
+        run: |
+          python3 two-ai-dialogue/gemini_adapter.py "${{ steps.request.outputs.path }}" | tee gemini-receipt.json
       - name: OpenAI live peer
         if: ${{ env.OPENAI_API_KEY != '' }}
         run: |
-          python3 two-ai-dialogue/openai_adapter.py "$REQUEST" | tee openai-receipt.json
+          python3 two-ai-dialogue/openai_adapter.py "${{ steps.request.outputs.path }}" | tee openai-receipt.json
       - uses: actions/upload-artifact@v4
         with:
           name: gemini-dialogue-receipt
