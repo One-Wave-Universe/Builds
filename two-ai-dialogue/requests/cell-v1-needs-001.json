@@ -1,0 +1,11 @@
+{
+  "id": "cell-v1-needs-001",
+  "question": "Review CELL_V1 as an engineering design, not as a proven biological or physics claim. Current architecture: one hexagonal cell with edge-center connections; three mirrored differential axes A/B/C; six triangular/pyramidal routing regions in three mirror pairs; FIELD and VOID are concurrent mirrored halves of one body; active ternary - / HOLD(0) / + around a shared moving virtual-ground/reference; threshold/hysteresis/state-driven gating with no clocked sequencing; gate/nucleus hysteresis as local memory; binary differential -> ternary balance/lean -> coupled recursive Field/Void state; M4 is a dedicated opposed pyramidal/tapered routing connection with tip-to-tip inside a cell and base-to-base between cells; center motor/control cell has a square two-aperture figure-8 hysteretic nucleus; six sensor cells use round two-aperture figure-8 hysteretic nuclei; two outer round toroids form a body differential interface FIELD outer <-> center nucleus <-> VOID outer; cluster/lattice shared body-state bus and hysteretic memory/reinjection are intended. Exact reinjection circuit, materials, dimensions, magnetic coupling, sensor implementation, MOSFET topology, and quantitative thresholds are not yet integrated/proven. Individual ingredients such as hysteresis, differential control, virtual references, inductive energy recovery, and coupled magnetic structures are established technologies, but the integrated CELL_V1 is not proven.\n\nQuestion: What does CELL_V1 most need next to become a buildable, falsifiable engineering prototype? Identify (1) missing specifications that prevent an engineer from wiring/building it, (2) the smallest physical experiment that would test its central claim without requiring the whole lattice, (3) measurements/instrumentation and pass/fail criteria, (4) likely failure modes or conceptual ambiguities, and (5) what should NOT be added yet because it would obscure the first proof. Be concrete and critical. Do not assume the architecture works.",
+  "actors": [
+    "CHATGPT",
+    "GEMINI"
+  ],
+  "max_turns": 4,
+  "route": "Bridge-Comand",
+  "purpose": "engineering critique and smallest falsifiable CELL_V1 build"
+}
