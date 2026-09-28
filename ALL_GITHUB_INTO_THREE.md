@@ -1,41 +1,43 @@
-# All One-Wave-Universe GitHub → three repos
+# All One-Wave-Universe GitHub → four homes
 
-No fourth bucket. No archive. No misc.
+Builds / Science / Mythos / Bridge-Comand.
+No fifth bucket. No archive. No misc.
 
-## This repo (Builds)
-Proposed blueprints, schematics, system architecture, algorithms, hardware packets, robots, gates, pipelines, animation tools.
+## Builds
+Proposed blueprints, schematics, system architecture, algorithms-as-spec, hardware packets, robots-as-bodies, gates, CAD.
 
-### Already here
-- This repository: `One-Wave-Universe/Builds`
+Keep here:
+- this repository `One-Wave-Universe/Builds`
+- `BUCKET-R2` robot / body (not the Jetson *pipe*)
+- `GCAC` millivolt ternary gate hardware
+- `Chats-Animatateo` / `Animation_Salvation` if they are *build tools* for bodies
+- `Virtual_Breadboard/`, `Hardware_Packets/`, `Android_Body/`, `CELL_V1_*`
+- GRAV_LAB *engineering benches*
+- `BOT_CODING_HANDBOOK.md`, `CURRENT_BUILD_ORDER.md`, architecture *implementation* roadmaps
 
-### Other account repos that belong here (keep the source repos; they are Builds-class)
-- `BUCKET-R2` — robot / Jetson build
-- `GCAC` — millivolt ternary gate hardware
-- `hive-pipe` — command pipeline (private)
-- `Chats-Animatateo` — animation builder tool
-- `Animation_Salvation` — animation tool
+Do **not** keep live command pipes here.
 
-### Folders still sitting in One-Wave-Science that belong here when copied
-- `Virtual_Breadboard/`
-- `Hardware_Packets/`
-- `Android_Body/`
-- `CELL_V1_*` build packets
-- `GRAV_LAB/` engineering benches (science math stays in Science)
-- Jetson access / terminal / tool guides used as build how-tos
-- `BOT_CODING_HANDBOOK.md`, `CURRENT_BUILD_ORDER.md`, `ARCHITECTURE_*` implementation roadmaps
+## Bridge-Comand
+https://github.com/One-Wave-Universe/Bridge-Comand
+
+Move / treat as already moved:
+- `hive-pipe` (was listed under Builds; authority is Bridge)
+- `One_Wave_Bench/` command and relay scripts
+- `Workshop/` terminal / AI adapter pieces
+- Jetson access / terminal / tool guides used as *how to talk to a machine*
+- ChatGPT terminal pull, DeepSeek bridges, gateway, mudl, receipts
 
 ## Science
-`One-Wave-Science` plus hypothesis/math/sim repos:
 - `One-Wave-Science`
 - `RABBIT-HOPPING`
 - `HEX-SPLIT`
 - `POINT-SPIN`
-- `GRAV-LAB`
+- `GRAV-LAB` (math / sim)
 - `Great-Galactic-Library`
 
 ## Mythos
 - `Mythos-and-Stories`
-- Fiction / books / musical-universe narrative still inside Science `Books/` and story folders
+- Fiction still parked inside Science `Books/` should migrate there
 
-## Connector limit (straight)
-GitHub file push here is per-file. `One-Wave-Science` is ~33MB with hundreds of blobs. This connector cannot git-mv the whole tree in one shot. The map is locked. Physical copy of remaining folders is local `git` (subtree or checkout + add remote), not another pretend zip.
+## Connector limit
+GitHub file push is per-file. Whole-tree `git mv` of Science is local git, not this connector. The map is locked.
