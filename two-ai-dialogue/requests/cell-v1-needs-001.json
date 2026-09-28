@@ -7,5 +7,6 @@
   ],
   "max_turns": 4,
   "route": "Bridge-Comand",
-  "purpose": "engineering critique and smallest falsifiable CELL_V1 build"
+  "purpose": "engineering critique and smallest falsifiable CELL_V1 build",
+  "attempt": 2
 }
