@@ -33,3 +33,8 @@ For deterministic development:
 `python3 two-ai-dialogue/loop.py two-ai-dialogue/fixtures/question.json`
 
 This v0 proves orchestration/state/replay. Live model transport is the next adapter job.
+
+
+## AI invocation
+
+Any authorized AI that receives a natural-language request such as **"run it by Gemini"** must follow [AI_INVOCATION_CONTRACT.md](AI_INVOCATION_CONTRACT.md). The human-facing contract is that routing, request creation, receipt retrieval, bounded follow-up, and return of the result are handled by the AI/control plane rather than manually relayed by the human.
