@@ -7,5 +7,6 @@
   ],
   "max_turns": 4,
   "route": "Bridge-Comand",
-  "completion": "resolve substantive omissions or return HOLD"
+  "completion": "resolve substantive omissions or return HOLD",
+  "attempt": 2
 }
