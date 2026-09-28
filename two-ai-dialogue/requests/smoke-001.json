@@ -1,0 +1,11 @@
+{
+  "id": "dialogue-smoke-001",
+  "question": "What is the smallest complete architecture needed to make this two-AI dialogue box genuinely useful for refining an engineering question into a finished answer?",
+  "actors": [
+    "CHATGPT",
+    "GEMINI"
+  ],
+  "max_turns": 4,
+  "route": "Bridge-Comand",
+  "completion": "resolve substantive omissions or return HOLD"
+}
