@@ -1,0 +1,65 @@
+{
+  "schema": "one-wave-peer-provider-registry/v1",
+  "providers": [
+    {
+      "id": "gemini",
+      "actor": "GEMINI",
+      "adapter": "two-ai-dialogue/gemini_adapter.py",
+      "secret": "GEMINI_API_KEY",
+      "health": "PROVEN",
+      "capabilities": [
+        "review",
+        "debate",
+        "adversary",
+        "next-action"
+      ],
+      "last_matching_run": "36496957876"
+    },
+    {
+      "id": "openai",
+      "actor": "CHATGPT",
+      "adapter": "two-ai-dialogue/openai_adapter.py",
+      "secret": "OPENAI_API_KEY",
+      "health": "HOLD",
+      "capabilities": [
+        "review",
+        "debate",
+        "adversary",
+        "next-action"
+      ],
+      "hold_reason": "HTTP 429 on bounded attempts; rerun when API quota/capacity permits",
+      "last_matching_run": "36496957876"
+    },
+    {
+      "id": "claude",
+      "actor": "CLAUDE",
+      "adapter": null,
+      "secret": null,
+      "health": "UNPROVEN",
+      "capabilities": []
+    },
+    {
+      "id": "deepseek",
+      "actor": "DEEPSEEK",
+      "adapter": null,
+      "secret": null,
+      "health": "UNPROVEN",
+      "capabilities": []
+    },
+    {
+      "id": "pi",
+      "actor": "PI",
+      "adapter": null,
+      "secret": null,
+      "health": "UNPROVEN",
+      "capabilities": []
+    }
+  ],
+  "rules": {
+    "completion_contract": "two-ai-dialogue/RESOLUTION_PROTOCOL.md",
+    "pathway_contract": "two-ai-dialogue/PEER_ADVICE_PATHWAYS.md",
+    "transport_authority": "One-Wave-Universe/Bridge-Comand",
+    "no_impersonation": true,
+    "matching_receipt_required": true
+  }
+}
