@@ -146,3 +146,13 @@ Nothing above 4 matters until 4 works.
 CELL0.md starts with the local differential / CENTER relation at the current normalized architecture scale.
 After the local event, recoverable inductive energy returns to V_BUS, not CENTER.
 Shared V_BUS may scale across cells; CENTER remains a local reference relation.
+
+## 2026-09-27 lock — reinjection writes through the muscle-memory path
+This supersedes any reading of this file in which reinjection is only a flyback-efficiency path.
+
+- The **loss-threshold / reinjection structures are physically above and coupled to the shared hysteretic body-state layer**.
+- When an excursion exceeds its selected loss threshold, recoverable remainder/consequence is gated into a return that opposes the excursion and pushes the live ternary state toward the current full-body-state balance.
+- The return/reinjection event revisits and may write/bias the hysteretic body path; that retained path is the distributed muscle memory.
+- V_BUS remains the energy reservoir/accounting rail. **V_BUS voltage alone is not the long-term memory.**
+- Gate-local hysteresis and body-layer hysteresis are separate memory scales.
+- The architecture hypothesis is that repeated physical traversal plus retained hysteretic bias can settle toward a repeatable lower-loss route. This is not a measured optimization claim until energy and retained-state measurements demonstrate it.
