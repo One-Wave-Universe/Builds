@@ -43,6 +43,19 @@ jobs:
           fi
           echo "path=$REQUEST" >> "$GITHUB_OUTPUT"
           echo "Executing request: $REQUEST"
+      - name: Build repository evidence pack when requested
+        run: |
+          REQUEST="${{ steps.request.outputs.path }}"
+          ROOT=$(python3 -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x.get("repo_read",{}).get("root",""))' "$REQUEST")
+          QUERY=$(python3 -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x.get("repo_read",{}).get("query",""))' "$REQUEST")
+          if [ -n "$ROOT" ] && [ -n "$QUERY" ]; then
+            python3 two-ai-dialogue/repo_reader.py --root "$ROOT" --query "$QUERY" --output repo-evidence.json
+            python3 - "$REQUEST" <<'PY'
+import json,sys
+p=sys.argv[1]; x=json.load(open(p)); x["evidence_pack"]="repo-evidence.json"
+open(p,"w").write(json.dumps(x))
+PY
+          fi
       - name: Gemini live peer
         run: |
           python3 two-ai-dialogue/gemini_adapter.py "${{ steps.request.outputs.path }}" | tee gemini-receipt.json
@@ -56,3 +69,4 @@ jobs:
           path: |
             gemini-receipt.json
             openai-receipt.json
+            repo-evidence.json
