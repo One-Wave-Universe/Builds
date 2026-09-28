@@ -16,6 +16,8 @@ jobs:
     timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - name: Validate dialogue requests
         run: |
           python3 - <<'PY'
@@ -33,7 +35,10 @@ jobs:
       - name: Gemini live smoke
         run: |
           REQUEST=$(git diff --name-only HEAD^ HEAD -- 'two-ai-dialogue/requests/*.json' | tail -1)
-          if [ -z "$REQUEST" ]; then REQUEST=two-ai-dialogue/requests/smoke-001.json; fi
+          if [ -z "$REQUEST" ]; then
+            echo "No changed dialogue request found; refusing stale fallback"
+            exit 2
+          fi
           echo "Executing request: $REQUEST"
           python3 two-ai-dialogue/gemini_adapter.py "$REQUEST" | tee gemini-receipt.json
       - uses: actions/upload-artifact@v4
