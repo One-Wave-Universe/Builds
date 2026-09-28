@@ -1,0 +1,25 @@
+name: Digital Cell L0
+on:
+  push:
+    paths:
+      - 'digital-cell/**'
+      - '.github/workflows/digital-cell-l0.yml'
+  pull_request:
+    paths:
+      - 'digital-cell/**'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: L0 deterministic fixtures
+        run: python3 -m unittest digital-cell/test_l0_cell.py -v
+      - name: Replay smoke test
+        run: |
+          python3 digital-cell/l0_cell.py digital-cell/fixtures/positive.json > /tmp/a
+          python3 digital-cell/l0_cell.py digital-cell/fixtures/positive.json > /tmp/b
+          cmp /tmp/a /tmp/b
+          cat /tmp/a
