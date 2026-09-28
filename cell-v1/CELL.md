@@ -426,3 +426,88 @@ V_BUS -> VOID side  -> local event -> VOID return  -> V_BUS
 ```
 
 Neither side is permanently input-only or return-only.
+
+## 2026-09-27 architecture lock — differential flow, gate memory, loss correction, reinjection
+
+This section supersedes older wording where it conflicts.
+
+### Dynamic balance reference
+- CENTER/(0) is the **current combined full-body-state balance reference** presented locally to A/B/C.
+- It is not a separately meaningful fixed midpoint source and it is not V_BUS.
+- The normalized 50 / 0.50 notation remains a **relative balanced coordinate** around the live body-state reference, not a requirement for an independently generated fixed 0.50 V rail.
+- A/B/C remain electrically distinct while all compare against the same live body-state relation.
+- Exact physical distribution/coupling that presents the shared body-state reference without collapsing A/B/C remains OPEN / BENCH.
+
+### Wedge meaning
+Each tapered sector is bidirectional hardware:
+```
+TIP <-> WEDGE <-> BASE
+```
+- **compression** = lean/transfer toward the narrow point;
+- **expression** = lean/transfer toward the broad base;
+- these words describe opposed differential tendency, not permanent current direction;
+- both tip and base interfaces remain capable of bidirectional consequence transfer.
+
+### Tip and base interfaces
+- Inside the cell, opposed wedge tips converge tip-to-tip through the local center/mirror-gate region.
+- Between cells, matching hex faces meet **flat base-to-flat base**.
+- A base-to-base boundary is a shared inter-cell differential/coupling interface, not a one-way output/input.
+- **Do not lock an extra MOSFET gate at every base-to-base boundary yet.** Whether the shared base interface itself supplies the required isolation/threshold behavior or requires a dedicated bidirectional gate is OPEN / BENCH.
+- Local mirror/crossing connection points require bidirectional controlled conduction; back-to-back MOSFETs remain a candidate, not a selected part/topology.
+
+### Gate-local hysteresis
+Every active local mirror/loss gate requires its **own local hysteresis / retained transition history**.
+- Purpose: prevent chatter, preserve prior lean/entry direction, and provide distinct enter/leave behavior around thresholds.
+- This fast/local gate memory is distinct from the slower distributed body/muscle-memory hysteresis layer.
+- Exact magnetic/electronic implementation, coercivity, retention time and coupling are OPEN / BENCH.
+
+### Loss-threshold correction
+The architecture does not intentionally drive harder into a loss excursion.
+- When a live A/B/C differential crosses the selected loss threshold, the loss gate steers the recoverable excess/consequence into the local reinjection path.
+- The return acts oppositely to the excursion and pushes the live ternary oscillation back toward the **current body-state balance**, not toward an unrelated fixed zero.
+- Hysteresis determines enter/release behavior so the correction does not chatter.
+- The physical target is:
+```
+difference -> useful action + remainder
+remainder above threshold -> gated return
+gated return -> oppose excursion -> settle toward live balance
+```
+
+### Reinjection / muscle-memory stack
+Reinjection is part of the distributed physical learning loop, while energy accounting remains conservative.
+The active loss-gate / reinjection structures sit **above and couple into** the shared hysteretic body-state layer:
+```
+TOP:      A/B/C wedges + local mirror gates
+          gate-local hysteresis
+          loss-threshold / ternary reinjection structures
+                         <-> vertical magnetic/state coupling
+UNDER:    shared hysteretic body-state / muscle-memory layer
+POWER:    V_BUS / feed / recoverable-energy reservoir
+```
+The shared hysteretic layer retains path consequence. Reinjection revisits and can write/bias that physical substrate. V_BUS supplies/receives energy but is not itself the long-term memory.
+
+Proposed recursive physical law:
+```
+current difference
+ -> action
+ -> thresholded remainder / loss consequence
+ -> reinjection correction toward balance
+ -> changed retained hysteretic path
+ -> bias on next difference
+```
+
+### Artery / vein functional naming
+These are functional names, not claims about a finalized schematic:
+- **artery/feed** = energy made available from the local/shared reservoir into the active cell loop;
+- **vein/return** = threshold-steered recoverable remainder/consequence returning through the local reinjection path;
+- the return must interact with the retained hysteretic path before/while rejoining the continuing energy loop so prior use can influence later traversal.
+
+### Required falsification measurements
+Measure rather than assume:
+1. gate-local hysteresis and separate enter/release thresholds;
+2. thresholded return opposing both + and - excursions;
+3. settling relative to a moving body-state reference;
+4. retained body-layer state before/after repeated reinjection;
+5. whether repeated traversal changes required input/loss for the same physical action;
+6. V_BUS energy in/returned and actual dissipative loss;
+7. base-to-base transfer with and without an additional dedicated boundary gate.
