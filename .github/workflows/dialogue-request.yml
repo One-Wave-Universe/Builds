@@ -44,7 +44,6 @@ jobs:
           echo "path=$REQUEST" >> "$GITHUB_OUTPUT"
           echo "Executing request: $REQUEST"
       - name: Checkout requested peer-review repository
-        if: ${{ contains(github.event.head_commit.message, 'repo-read:science') }}
         uses: actions/checkout@v4
         with:
           repository: One-Wave-Universe/One-Wave-Science
