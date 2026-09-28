@@ -1,5 +1,5 @@
 name: Dialogue Request
-on:
+'on':
   push:
     paths:
       - 'two-ai-dialogue/requests/**'
