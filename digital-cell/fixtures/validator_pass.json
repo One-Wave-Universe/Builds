@@ -1,0 +1,1 @@
+{"mode":"validate","candidate":{"artifact":"x","receipt":"r1"},"contract":{"required":["artifact"],"evidence":["receipt"],"forbidden":["fabricated"]}}
