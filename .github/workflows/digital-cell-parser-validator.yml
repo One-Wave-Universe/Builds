@@ -1,0 +1,26 @@
+name: Digital Cell Parser Validator
+on:
+  push:
+    paths:
+      - 'digital-cell/**'
+      - '.github/workflows/digital-cell-parser-validator.yml'
+  pull_request:
+    paths: ['digital-cell/**']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: L0 plus Parser Validator tests
+        run: |
+          python3 -m unittest digital-cell/test_l0_cell.py -v
+          python3 -m unittest digital-cell/test_parser_validator.py -v
+      - name: Parser deterministic replay
+        run: |
+          python3 digital-cell/parser_validator.py digital-cell/fixtures/parser_missing.json > /tmp/a
+          python3 digital-cell/parser_validator.py digital-cell/fixtures/parser_missing.json > /tmp/b
+          cmp /tmp/a /tmp/b
+          cat /tmp/a
