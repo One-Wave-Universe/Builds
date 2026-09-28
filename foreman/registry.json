@@ -1,0 +1,203 @@
+{
+  "schema": "one-wave-foreman/v1",
+  "project": "One-Wave",
+  "updated": "2026-09-28",
+  "lanes": [
+    {
+      "id": "cell",
+      "name": "CELL / Analog Build",
+      "repo": "One-Wave-Universe/Builds",
+      "canon": [
+        "cell-v1/CELL_V1_2026-09-28_CORRECTION.md",
+        "maps/CELL_V1_CONCEPT_MAP.md"
+      ],
+      "goal": "Use digital/reference tests to constrain and validate the physical CELL."
+    },
+    {
+      "id": "digital",
+      "name": "Digital Brain",
+      "repo": "One-Wave-Universe/Builds",
+      "canon": [
+        "maps/DIGITAL_CELL_TWO_STATE_BRAIN_LADDER.md",
+        "maps/SENSORY_CORTEX_DC_AC_RC_PROGRAM.md"
+      ],
+      "goal": "Build digital CELL→worker→brain reference ladder and analog comparison twin."
+    },
+    {
+      "id": "senses",
+      "name": "Senses / Cortex",
+      "repo": "One-Wave-Universe/Builds",
+      "canon": [
+        "maps/SENSORY_CORTEX_DC_AC_RC_PROGRAM.md",
+        "maps/ANDROID_CELL_TO_CORTEX_MAP.md"
+      ],
+      "goal": "Real Jetson hearing/vision plus simulated dreamscape adapters."
+    },
+    {
+      "id": "animator",
+      "name": "Animator",
+      "repo": "One-Wave-Universe/Builds",
+      "canon": [
+        "maps/ANIMATOR_PRODUCT_MAP.md"
+      ],
+      "goal": "Deliver the frame-by-frame desktop animation acceptance path."
+    },
+    {
+      "id": "science",
+      "name": "Science / 24→1",
+      "repo": "One-Wave-Universe/One-Wave-Science",
+      "canon": [
+        "chapters/05_Simulation_Engine.md",
+        "sims/24-1-sandbox/GOLD_STANDARD.md"
+      ],
+      "goal": "Modular visual + scientific simulations with gold validation."
+    },
+    {
+      "id": "bridge",
+      "name": "Bridges / Jetson",
+      "repo": "One-Wave-Universe/Bridge-Comand",
+      "canon": [],
+      "goal": "Keep machine/worker routes healthy with matching execution receipts."
+    }
+  ],
+  "jobs": [
+    {
+      "id": "W-010",
+      "lane": "digital",
+      "title": "L0 Digital Cell",
+      "state": "PRIMED",
+      "issue": 6,
+      "depends": [],
+      "acceptance": [
+        "explicit FIELD/VOID",
+        "ternary HOLD",
+        "deterministic replay",
+        "JSON/JSONL receipts"
+      ],
+      "receipts": [],
+      "blockers": []
+    },
+    {
+      "id": "W-011-012",
+      "lane": "digital",
+      "title": "Parser + Validator Cells",
+      "state": "IDLE",
+      "issue": 7,
+      "depends": [
+        "W-010"
+      ],
+      "acceptance": [
+        "parser receipt",
+        "PASS/HOLD/REJECT",
+        "no fabricated evidence"
+      ],
+      "receipts": [],
+      "blockers": [
+        "W-010"
+      ]
+    },
+    {
+      "id": "W-103",
+      "lane": "senses",
+      "title": "Jetson audio capture/replay",
+      "state": "PRIMED",
+      "issue": 3,
+      "depends": [],
+      "acceptance": [
+        "timestamped PCM",
+        "checksum",
+        "deterministic replay",
+        "latency/drop receipt"
+      ],
+      "receipts": [],
+      "blockers": []
+    },
+    {
+      "id": "W-104",
+      "lane": "senses",
+      "title": "Jetson camera capture/replay",
+      "state": "PRIMED",
+      "issue": 4,
+      "depends": [],
+      "acceptance": [
+        "timestamped frames",
+        "checksum",
+        "deterministic replay",
+        "latency/drop receipt"
+      ],
+      "receipts": [],
+      "blockers": []
+    },
+    {
+      "id": "W-305",
+      "lane": "senses",
+      "title": "Dreamscape sensory adapter",
+      "state": "IDLE",
+      "issue": 5,
+      "depends": [
+        "W-004"
+      ],
+      "acceptance": [
+        "SOURCE simulated",
+        "seeded replay",
+        "ground truth separate",
+        "closed loop"
+      ],
+      "receipts": [],
+      "blockers": [
+        "W-004 sensory schema"
+      ]
+    },
+    {
+      "id": "S-24-1",
+      "lane": "science",
+      "title": "24→1 sandbox migration",
+      "state": "EXECUTING",
+      "depends": [],
+      "acceptance": [
+        "common module contract",
+        "2D visual",
+        "3D when meaningful",
+        "headless validation",
+        "gold receipts"
+      ],
+      "receipts": [
+        "Builds coordination map; Science wrapper committed"
+      ],
+      "blockers": []
+    },
+    {
+      "id": "C-DTWIN",
+      "lane": "cell",
+      "title": "Digital↔Analog CELL comparison harness",
+      "state": "IDLE",
+      "depends": [
+        "W-010"
+      ],
+      "acceptance": [
+        "same stimulus schema",
+        "digital trace",
+        "bench trace",
+        "difference receipt",
+        "parameter/version provenance"
+      ],
+      "receipts": [],
+      "blockers": [
+        "W-010",
+        "physical bench trace adapter"
+      ]
+    },
+    {
+      "id": "A-ACCEPT",
+      "lane": "animator",
+      "title": "Animator acceptance fixture",
+      "state": "IDLE",
+      "depends": [],
+      "acceptance": [
+        "install/open/build/save/reopen/play/export"
+      ],
+      "receipts": [],
+      "blockers": []
+    }
+  ]
+}
