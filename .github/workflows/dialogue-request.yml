@@ -43,12 +43,20 @@ jobs:
           fi
           echo "path=$REQUEST" >> "$GITHUB_OUTPUT"
           echo "Executing request: $REQUEST"
+      - name: Checkout requested peer-review repository
+        if: ${{ contains(github.event.head_commit.message, 'repo-read:science') }}
+        uses: actions/checkout@v4
+        with:
+          repository: One-Wave-Universe/One-Wave-Science
+          path: peer-repo
+          fetch-depth: 1
       - name: Build repository evidence pack when requested
         run: |
           REQUEST="${{ steps.request.outputs.path }}"
           ROOT=$(python3 -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x.get("repo_read",{}).get("root",""))' "$REQUEST")
           QUERY=$(python3 -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x.get("repo_read",{}).get("query",""))' "$REQUEST")
           if [ -n "$ROOT" ] && [ -n "$QUERY" ]; then
+            test -d "$ROOT" || { echo "Requested repo root unavailable: $ROOT"; exit 3; }
             python3 two-ai-dialogue/repo_reader.py --root "$ROOT" --query "$QUERY" --output repo-evidence.json
             python3 - "$REQUEST" <<'PY'
 import json,sys
