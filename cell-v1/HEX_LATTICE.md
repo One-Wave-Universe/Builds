@@ -162,3 +162,20 @@ finger-local trace
 ```
 
 The rule is **one layer until complexity or measured interference proves another layer is needed**.
+
+## 2026-09-27 stack lock — active reinjection above retained body memory
+The Phase-I vertical relationship is:
+```
+A/B/C wedge differential hardware
+local bidirectional mirror/loss gates
+LOCAL GATE HYSTERESIS
+LOSS-THRESHOLD / TERNARY REINJECTION LAYER
+          <-> coupling / write / read consequence
+SHARED HYSTERETIC BODY-STATE / MUSCLE-MEMORY LAYER
+V_BUS / FEED / RECOVERABLE-ENERGY LAYER
+```
+Do not merge the two hysteresis scales:
+- local gate hysteresis remembers transition/lean history and suppresses chatter;
+- the under-cell shared hysteresis layer retains distributed path/body history.
+
+Reinjection is coupled to and revisits the shared hysteretic path; V_BUS performs energy accounting and reservoir duty but is not itself the retained muscle memory.
