@@ -10,6 +10,7 @@ permissions:
 
 env:
   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 jobs:
   validate-request:
     runs-on: ubuntu-latest
@@ -41,7 +42,13 @@ jobs:
           fi
           echo "Executing request: $REQUEST"
           python3 two-ai-dialogue/gemini_adapter.py "$REQUEST" | tee gemini-receipt.json
+      - name: OpenAI live peer
+        if: ${{ env.OPENAI_API_KEY != '' }}
+        run: |
+          python3 two-ai-dialogue/openai_adapter.py "$REQUEST" | tee openai-receipt.json
       - uses: actions/upload-artifact@v4
         with:
           name: gemini-dialogue-receipt
-          path: gemini-receipt.json
+          path: |
+            gemini-receipt.json
+            openai-receipt.json
