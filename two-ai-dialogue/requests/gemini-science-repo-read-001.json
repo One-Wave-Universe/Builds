@@ -1,0 +1,15 @@
+{
+  "id": "gemini-science-repo-read-001",
+  "actors": [
+    "CHATGPT",
+    "GEMINI"
+  ],
+  "max_turns": 4,
+  "question": "Read the supplied actual One-Wave-Science repository evidence before answering. Where would you attack the science first to make it stronger? Identify the highest-leverage falsifiable target, biggest confound, best conventional/null comparison, exact next repo job, and what would weaken or kill the target claim. Cite the repository paths you actually inspected. If the evidence pack is insufficient, name the exact additional paths or search terms needed rather than guessing.",
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "G-767 G-766 octave log2 x0 assumption transformation controls null residual CERN CMS LIGO GWOSC GOLD_STANDARD README"
+  },
+  "purpose": "Grounded Gemini science review from actual repository evidence"
+}
