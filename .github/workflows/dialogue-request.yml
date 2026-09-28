@@ -7,6 +7,9 @@ on:
       - '.github/workflows/dialogue-request.yml'
 permissions:
   contents: read
+
+env:
+  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 jobs:
   validate-request:
     runs-on: ubuntu-latest
@@ -27,3 +30,10 @@ jobs:
               assert x.get("actors")==["CHATGPT","GEMINI"]
               print("DIALOGUE_REQUEST_OK",x["id"])
           PY
+      - name: Gemini live smoke
+        run: |
+          python3 two-ai-dialogue/gemini_adapter.py two-ai-dialogue/requests/smoke-001.json | tee gemini-receipt.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gemini-dialogue-receipt
+          path: gemini-receipt.json
