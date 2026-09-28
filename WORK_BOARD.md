@@ -9,6 +9,35 @@ This board organizes executable work. Detailed scientific simulation work remain
 - [ ] W-004 Universal Sensory State schema
 - [ ] W-005 DCACRC-IR v0 grammar/schema
 
+## P0B — digital CELL / state-machine brain ladder
+See `maps/DIGITAL_CELL_TWO_STATE_BRAIN_LADDER.md`.
+- [ ] W-010 L0 Digital Cell reference + fixtures
+- [ ] W-011 L1 Parser Cell
+- [ ] W-012 L2 Validator Cell
+- [ ] W-013 L3 Chooser Cell
+- [ ] W-014 L4 bounded Controller Cell
+- [ ] W-015 common Field/Void state + receipt schema
+
+## P1B — workers and reconstruction
+- [ ] W-110 L5 Worker Cell
+- [ ] W-111 L6 Recursive Worker
+- [ ] W-112 L8 Recall/Rebuild Worker
+- [ ] W-113 L9 crucial permanent-reference store + versioning
+- [ ] W-114 corruption/missing-source/rebuild test suite
+
+## P2B — internal Field/Void cognition
+- [ ] W-210 L7 structured Field/Void dialogue worker
+- [ ] W-211 disagreement/resolution fixtures
+- [ ] W-212 memory promotion validator
+- [ ] W-213 DCACRC-IR mapping for parser/validator/chooser/controller
+
+## P3B — brain integration
+- [ ] W-310 L10 Multi-Worker Brain
+- [ ] W-311 worker permission/arbitration layer
+- [ ] W-312 L11 embodied brain + sensory interfaces
+- [ ] W-313 L12 full digital reference brain
+- [ ] W-314 waking/dream source-switch and replay validation
+
 ## P1 — runnable reference work
 - [ ] W-101 DCACRC-IR Python interpreter
 - [ ] W-102 DCACRC trace/visual debugger
