@@ -1,5 +1,4 @@
 name: Dialogue Request
-name: Dialogue Request
 on:
   push:
     paths:
@@ -73,7 +72,7 @@ PY
           python3 two-ai-dialogue/openai_adapter.py "${{ steps.request.outputs.path }}" | tee openai-receipt.json
       - uses: actions/upload-artifact@v4
         with:
-          name: gemini-dialogue-receipt
+          name: peer-dialogue-receipts
           path: |
             gemini-receipt.json
             openai-receipt.json
