@@ -38,3 +38,16 @@ This v0 proves orchestration/state/replay. Live model transport is the next adap
 ## AI invocation
 
 Any authorized AI that receives a natural-language request such as **"run it by Gemini"** must follow [AI_INVOCATION_CONTRACT.md](AI_INVOCATION_CONTRACT.md). The human-facing contract is that routing, request creation, receipt retrieval, bounded follow-up, and return of the result are handled by the AI/control plane rather than manually relayed by the human.
+
+
+## Continue or extend the live peer system
+
+Before changing provider routing or claiming live dialogue, read:
+
+- `CONTINUATION_STATUS.md` — exact proven/HOLD state and work remaining when quota returns.
+- `PEER_ADVICE_PATHWAYS.md` — canonical instructions for adding Claude, DeepSeek, Pi, local models, or future peer AIs.
+- `provider-registry.json` — machine-readable provider health/adapter/credential registry.
+- `RESOLUTION_PROTOCOL.md` — terminal agreement rules.
+- `AI_INVOCATION_CONTRACT.md` — natural-language human invocation contract.
+
+An AI picking up this project MUST inspect the provider registry and matching receipts before selecting a pathway. Never substitute an unproven provider, stale receipt, or green workflow for actual inference evidence.
