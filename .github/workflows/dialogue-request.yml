@@ -1,0 +1,29 @@
+name: Dialogue Request
+on:
+  push:
+    paths:
+      - 'two-ai-dialogue/requests/**'
+      - 'two-ai-dialogue/loop.py'
+      - '.github/workflows/dialogue-request.yml'
+permissions:
+  contents: read
+jobs:
+  validate-request:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate dialogue requests
+        run: |
+          python3 - <<'PY'
+          import json, glob
+          paths=glob.glob("two-ai-dialogue/requests/*.json")
+          assert paths, "no dialogue request"
+          for p in paths:
+              x=json.load(open(p))
+              assert x.get("id"), "request id required"
+              assert x.get("question"), "question required"
+              assert 2 <= int(x.get("max_turns", 4)) <= 20
+              assert x.get("actors")==["CHATGPT","GEMINI"]
+              print("DIALOGUE_REQUEST_OK",x["id"])
+          PY
