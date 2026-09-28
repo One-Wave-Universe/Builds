@@ -4,6 +4,8 @@ body{margin:0;background:#111;color:#eee;font:14px system-ui}#box{position:fixed
 <script>
 let stopped=false; const feed=document.querySelector('#feed'),state=document.querySelector('#state');
 function add(actor,text,meta=''){let d=document.createElement('div');d.className='turn';d.innerHTML='<b>'+actor+'</b><div></div><div class="meta"></div>';d.children[1].textContent=text;d.children[2].textContent=meta;feed.append(d);feed.scrollTop=feed.scrollHeight}
-document.querySelector('#run').onclick=()=>{stopped=false;feed.innerHTML='';state.textContent='READY';add('SYSTEM','Visual shell ready. The next adapter job connects authenticated ChatGPT and Gemini endpoints; no API keys belong in this page.','bounded dialogue / receipt required')};
+document.querySelector('#run').onclick=()=>{stopped=false;feed.innerHTML='';state.textContent='READY';add('SYSTEM','Dialogue controller ready. Submit through the authenticated adapter service; no API keys belong in this page.','bounded dialogue / receipt required')};
 document.querySelector('#stop').onclick=()=>{stopped=true;state.textContent='STOPPED';add('SYSTEM','Loop stopped by user.')};
+async function runLive(){const q=document.querySelector('#q').value.trim();if(!q)return;stopped=false;feed.innerHTML='';state.textContent='RUNNING';try{const r=await fetch('/v1/dialogue',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,max_turns:8})});const x=await r.json();for(const t of (x.turns||[]))add(t.actor,t.answer,'settled: '+(t.settled||[]).join(', ')+' | unresolved: '+(t.unresolved||[]).join(', '));state.textContent=x.status||'HOLD';if(x.final)add('FINAL',x.final)}catch(e){state.textContent='HOLD';add('SYSTEM','Live adapter unavailable: '+e.message)}}
+document.querySelector('#run').onclick=runLive;
 </script></body></html>
