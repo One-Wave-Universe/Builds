@@ -14,6 +14,7 @@ jobs:
     timeout-minutes: 5
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
     steps:
       - name: Checkout Builds
         uses: actions/checkout@v4
@@ -30,7 +31,8 @@ jobs:
           import json,sys
           x=json.load(open(sys.argv[1]))
           assert x.get("id") and x.get("question")
-          assert x.get("actors")==["CHATGPT","GEMINI"]
+          peer=x.get("peer","gemini").lower()
+          assert peer in ("gemini","grok","both"), "peer must be gemini|grok|both"
           rr=x.get("repo_read") or {}
           assert rr.get("repository")=="One-Wave-Universe/One-Wave-Science"
           assert rr.get("root")=="peer-repo"
@@ -65,16 +67,27 @@ jobs:
           for f in e["files"]: print("READABLE_PATH",f["path"])
           PY
 
-      - name: Ask Gemini from evidence
+      - name: Ask selected peer(s) from identical evidence
         run: |
           set -euo pipefail
-          test -n "${GEMINI_API_KEY:-}"
-          python3 two-ai-dialogue/gemini_adapter.py "${{ steps.request.outputs.path }}" | tee gemini-receipt.json
-          python3 - <<'PY'
-          import json
-          r=json.load(open("gemini-receipt.json"))
-          assert r["status"]=="COMPLETE"
-          print("GEMINI_RECEIPT_OK",r["request_id"],r["turn"]["model"])
+          REQUEST="${{ steps.request.outputs.path }}"
+          PEER="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("peer","gemini").lower())' "$REQUEST")"
+          if [ "$PEER" = "gemini" ] || [ "$PEER" = "both" ]; then
+            test -n "${GEMINI_API_KEY:-}" || { echo "GEMINI_API_KEY missing"; exit 3; }
+            python3 two-ai-dialogue/gemini_adapter.py "$REQUEST" | tee gemini-receipt.json
+          fi
+          if [ "$PEER" = "grok" ] || [ "$PEER" = "both" ]; then
+            test -n "${XAI_API_KEY:-}" || { echo "XAI_API_KEY missing"; exit 4; }
+            python3 two-ai-dialogue/grok_adapter.py "$REQUEST" | tee grok-receipt.json
+          fi
+          python3 - "$PEER" <<'PY'
+          import json,os,sys
+          peer=sys.argv[1]
+          wanted=["gemini"] if peer=="gemini" else ["grok"] if peer=="grok" else ["gemini","grok"]
+          for p in wanted:
+              r=json.load(open(p+"-receipt.json"))
+              assert r["status"]=="COMPLETE",r
+              print(p.upper()+"_RECEIPT_OK",r["request_id"],r["turn"]["model"])
           PY
 
       - name: Upload evidence and receipt
@@ -86,3 +99,4 @@ jobs:
           path: |
             repo-evidence.json
             gemini-receipt.json
+            grok-receipt.json
