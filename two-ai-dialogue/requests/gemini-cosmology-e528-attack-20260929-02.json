@@ -1,0 +1,20 @@
+{
+  "id": "gemini-cosmology-e528-attack-20260929-02",
+  "peer": "gemini",
+  "research": false,
+  "question": "REFERENCE ORDER IS MANDATORY:\n1. Use the checked-out One-Wave-Science repository as the project lens first.\n2. Define the exact E-528 claim/test from the repository.\n3. Then use the external metadata packet below as measurement/provenance context.\n4. Answer the bounded falsification question. Do not invent unseen external evidence.\n\nTARGET:\nNodes/E-528_Static_Redshift_Transport.md.\nHard constraint: no cosmological scale factor / no metric expansion.\nTransport:\ndE_gamma/dl=-kappa_gamma E_gamma\n1+z=exp(integral kappa_gamma dl)\ndN_gamma/dl=0 for a pure redshifting channel.\n\nE-528 itself says it must survive:\nfrequency dependence/independence, image blurring, line broadening, energy conservation, redshift-correlated transient-duration behavior without metric time stretching, gravitational/compression dependence, and one coefficient across paths.\n\nEXTERNAL METADATA PACKET (consulted only after repo lens):\nPantheonPlusSH0ES/DataRelease:\n- Pantheon+_Data includes light-curve photometry, redshifts, updated metadata, calibration products, SALT2 model products, distance/covariance products, cosmology likelihoods/chains, and simulations.\n- Pantheon+SH0ES distance table/covariance uses N=1701 rows/columns.\n- Available fields include zHD, zCMB, zHEL and uncertainties; standardized magnitude; SALT2 x1 stretch/x1ERR; mB; peak MJD/PKMJDERR; fit chi-square/probability; host coordinates/mass; peculiar velocity; bias corrections.\n- Full statistical+systematic covariance is supplied and the release warns not to fit cosmology using diagonal errors alone.\n\nQUESTION:\nChoose ONE strongest public-data falsification attack on E-528 now.\nReturn:\nA. exact E-528 claim under test;\nB. why this attack is stronger than the other E-528 failure tests;\nC. exact Pantheon+ fields/products needed and any additional public observable that is strictly necessary;\nD. a frozen E-528 prediction/equation before held-out data;\nE. conventional/null prediction;\nF. test statistic/model comparison;\nG. explicit result that falsifies or forces revision;\nH. whether one physically motivated extra parameter could save the model, and what must be frozen in advance;\nI. exact One-Wave repo paths actually used.\n\nKeep ESTABLISHED external facts, repo-derived statements, and HYPOTHESIS separate. Do not rescue E-528 after seeing the result.",
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "E-528 Static Redshift Transport no expansion transient duration supernova Pantheon time dilation redshift covariance Book5 supernova cosmology"
+  },
+  "source_class": "real",
+  "execution_class": "reference-plus-metadata",
+  "acceptance": [
+    "Repo lens first",
+    "One attack only",
+    "Pantheon+ metadata used",
+    "Explicit falsification/revision condition",
+    "No external web grounding required"
+  ]
+}
