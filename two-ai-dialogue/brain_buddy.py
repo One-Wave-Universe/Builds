@@ -31,7 +31,7 @@ def base_request(a, dialogue=False):
       "execution_class":"reference-only",
     }
     if dialogue:
-        x["actors"]=["CHATGPT","GEMINI"]
+        x["actors"]=["GEMINI","CHATGPT"]
         x["max_turns"]=a.max_turns
     else:
         x["peer"]="gemini"
