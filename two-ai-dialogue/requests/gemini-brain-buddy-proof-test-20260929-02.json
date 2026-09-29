@@ -1,0 +1,19 @@
+{
+  "id": "gemini-brain-buddy-proof-test-20260929-02",
+  "peer": "gemini",
+  "question": "Reference the One-Wave-Science repository first. Given the current One-Wave canon, evidence rules, proof index, verification material, and science test map, choose ONE highest-value scientific proof or falsification test to do next that does not depend on new hardware. Prefer a calculation/data-first or mathematics-first test with a clear pass/fail against a conventional/null baseline, focused on a central One-Wave claim, with any prediction or equation frozen before held-out evidence. Return: exact One-Wave claim under test; conventional/null baseline; smallest evidence or dataset needed; frozen equation or prediction; pass/fail statistic or mathematical criterion; what would falsify or force revision; and exact repository paths actually used. Do not rank alternatives. Do not change definitions after seeing the result. Separate established mathematics, repo-derived claims, hypotheses, and unverified assumptions.",
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "AI_CANONICAL_START_HERE evidence reference law proof index verification matrix science test map G-728 mathematics cosmology dimensional 1(0)1 falsification null baseline"
+  },
+  "source_class": "real",
+  "execution_class": "reference-only",
+  "acceptance": [
+    "Gemini identifies exact One-Wave-Science paths actually used",
+    "One test only",
+    "Clear falsification or revision condition",
+    "Distinguishes established mathematics from One-Wave hypotheses",
+    "No local-machine dependency"
+  ]
+}
