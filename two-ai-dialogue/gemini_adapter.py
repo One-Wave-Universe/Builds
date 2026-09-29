@@ -22,10 +22,12 @@ def generate(key,model,prompt):
 
 def gemini(question,previous="",evidence=None):
     key=os.environ["GEMINI_API_KEY"]
+    lens_path=Path("two-ai-dialogue/ONE_WAVE_LENS.md")
+    lens_text=lens_path.read_text() if lens_path.exists() else ""
     evidence_text = "(none supplied)"
     if evidence:
         evidence_text=json.dumps(evidence,ensure_ascii=False)
-    prompt=("Original question:\n"+question+"\n\nPrevious visible answer:\n"+(previous or "(none)")+
+    prompt=("MANDATORY ONE-WAVE INTERPRETATION LENS (method/ontology contract, NOT proof):\n"+lens_text+"\n\nOriginal question:\n"+question+"\n\nPrevious visible answer:\n"+(previous or "(none)")+
       "\n\nREPOSITORY EVIDENCE PACK (these and only these repository files count as actually read):\n"+evidence_text+
       "\n\nGive the next concise answer. Correct omissions/errors and move toward a finished answer. "
       "Do not expose hidden chain-of-thought. Give conclusions, objections, evidence needs, and unresolved items.")
