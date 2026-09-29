@@ -12,5 +12,6 @@
     "root": "peer-repo",
     "query": "physics engine lattice primitive sandbox GOLD_STANDARD D-412 D-413 D-415 G-766 G-767 solver dispersion energy conservation convergence controls null CERN CMS LIGO GWOSC Miniverse simulation"
   },
-  "purpose": "Grok grounded plan for One-Wave falsification and executable physics engine"
+  "purpose": "Grok grounded plan for One-Wave falsification and executable physics engine",
+  "attempt": 1
 }
