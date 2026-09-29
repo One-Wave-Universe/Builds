@@ -1,0 +1,88 @@
+name: Grounded Brain Buddy Dialogue
+
+on:
+  push:
+    paths:
+      - "two-ai-dialogue/dialogue-requests/**"
+
+permissions:
+  contents: read
+
+jobs:
+  dialogue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - name: Checkout Builds
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Select request
+        id: request
+        shell: bash
+        run: |
+          set -euo pipefail
+          REQUEST="$(git diff --name-only HEAD^ HEAD -- 'two-ai-dialogue/dialogue-requests/*.json' | tail -n1)"
+          test -n "$REQUEST"
+          python3 - "$REQUEST" <<'PY'
+          import json,sys
+          x=json.load(open(sys.argv[1]))
+          assert x.get("id") and x.get("question")
+          assert x.get("actors",["CHATGPT","GEMINI"])==["CHATGPT","GEMINI"]
+          rr=x.get("repo_read") or {}
+          assert rr.get("repository")=="One-Wave-Universe/One-Wave-Science"
+          assert rr.get("root")=="peer-repo"
+          assert rr.get("query")
+          assert 2 <= int(x.get("max_turns",4)) <= 8
+          print("DIALOGUE_REQUEST_OK",x["id"])
+          PY
+          echo "path=$REQUEST" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout Science
+        uses: actions/checkout@v4
+        with:
+          repository: One-Wave-Universe/One-Wave-Science
+          path: peer-repo
+          fetch-depth: 1
+
+      - name: Build shared evidence pack
+        shell: bash
+        run: |
+          set -euo pipefail
+          REQUEST="${{ steps.request.outputs.path }}"
+          QUERY="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["repo_read"]["query"])' "$REQUEST")"
+          python3 two-ai-dialogue/repo_reader.py --root peer-repo --query "$QUERY" --output repo-evidence.json
+          python3 - "$REQUEST" <<'PY'
+          import json,sys
+          p=sys.argv[1]; x=json.load(open(p)); x["evidence_pack"]="repo-evidence.json"
+          open(p,"w").write(json.dumps(x))
+          PY
+
+      - name: Run bounded back-and-forth
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${GEMINI_API_KEY:-}" || { echo "::error::GEMINI_API_KEY missing"; exit 3; }
+          test -n "${OPENAI_API_KEY:-}" || { echo "::error::OPENAI_API_KEY missing"; exit 4; }
+          python3 two-ai-dialogue/grounded_dialogue_runner.py "${{ steps.request.outputs.path }}" | tee dialogue-receipt.json
+          python3 - <<'PY'
+          import json
+          x=json.load(open("dialogue-receipt.json"))
+          assert x["turns"],x
+          assert x["id"],x
+          print("DIALOGUE_RECEIPT",x["id"],x["status"],len(x["turns"]))
+          PY
+
+      - name: Upload dialogue evidence and receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: grounded-brain-buddy-dialogue
+          if-no-files-found: warn
+          path: |
+            repo-evidence.json
+            dialogue-receipt.json
