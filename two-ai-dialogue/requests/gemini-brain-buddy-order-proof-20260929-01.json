@@ -1,0 +1,20 @@
+{
+  "id": "gemini-brain-buddy-order-proof-20260929-01",
+  "peer": "gemini",
+  "research": true,
+  "question": "Reference the current One-Wave-Science repository first. Define the exact One-Wave claim/test from repo evidence before using outside evidence. Then consult metadata, then use CERN Open Data, GWOSC/LIGO, spectroscopy, or other relevant external wave-domain research only as needed. What is the single best next proof test for the octave/spectral recurrence idea, and what result would force revision? Keep repository claims, metadata, and external evidence explicitly separated, and identify exact repo paths and outside sources actually used.",
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "G-766 G-767 octave spectral recurrence CERN GWOSC metadata wave data null ensemble falsification"
+  },
+  "source_class": "real",
+  "execution_class": "reference-plus-research",
+  "acceptance": [
+    "Repo evidence first",
+    "Claim/test explicitly defined before outside evidence",
+    "Metadata consulted before external wave data",
+    "External wave-domain evidence kept separate from repo interpretation",
+    "One bounded answer with revision condition"
+  ]
+}
