@@ -13,7 +13,10 @@
         "adversary",
         "next-action"
       ],
-      "last_matching_run": "36496957876"
+      "last_matching_run": "36585092067",
+      "canonical_route": "Grounded Peer Dialogue",
+      "program": "two-ai-dialogue/brain_buddy.py",
+      "skill": "skills/gemini-brain-buddy/SKILL.md"
     },
     {
       "id": "openai",
