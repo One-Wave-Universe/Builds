@@ -1,0 +1,18 @@
+{
+  "id": "gemini-brain-buddy-research-smoke-20260929-01",
+  "peer": "gemini",
+  "research": true,
+  "question": "Reference the current One-Wave-Science repository first, then do external research as needed. What is the single best next proof test for the claimed octave/spectral recurrence idea, and what specific result would force revision? Keep repo claims separate from established external evidence and identify both repo paths and outside sources actually used.",
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "G-766 G-767 spectral recurrence octave emergence null ensemble CERN measured spectrum falsification revision"
+  },
+  "source_class": "real",
+  "execution_class": "reference-plus-research",
+  "acceptance": [
+    "Repo evidence is consulted before external research",
+    "Gemini returns one bounded answer",
+    "Receipt records external research sources when grounding succeeds"
+  ]
+}
