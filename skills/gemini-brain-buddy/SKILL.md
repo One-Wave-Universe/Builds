@@ -12,10 +12,12 @@ For any request equivalent to "ask Gemini", "run it by Gemini", "have Gemini rev
 1. Use the Builds repository as the invocation/control plane.
 2. Create one request under `two-ai-dialogue/requests/`.
 3. Set `repo_read.repository` to `One-Wave-Universe/One-Wave-Science`, `root` to `peer-repo`, and provide a bounded query.
-4. Let `.github/workflows/grounded-peer-dialogue.yml` checkout Science, build `repo-evidence.json`, call Gemini through the repository `GEMINI_API_KEY`, and emit a matching receipt.
-5. Retrieve the exact workflow run and require `one-wave-gemini-receipt/v1` with the same request ID and `status=COMPLETE`.
-6. Treat only paths in the evidence pack as actually read by Gemini.
-7. Return the answer plus important unresolved items to the originating conversation.
+4. Let `.github/workflows/grounded-peer-dialogue.yml` checkout Science and build `repo-evidence.json` first.
+5. Gemini then performs external research/grounding when `research: true`, keeping outside sources separate from repository claims.
+6. Gemini answers the originating AI's bounded question and the receipt records repo evidence plus external research sources.
+7. Retrieve the exact workflow run and require `one-wave-gemini-receipt/v1` with the same request ID and `status=COMPLETE`.
+8. Treat only paths in the evidence pack as repository files actually read by Gemini.
+9. Return Gemini's answer, the repository paths used, important external research sources, and unresolved items to the originating conversation.
 
 ## Proven route
 
@@ -45,6 +47,14 @@ If the Grounded Peer Dialogue route fails:
 3. preserve the same request ID through bounded failover where possible;
 4. never fall back to Desktop Commander merely because it exists;
 5. never claim a queued workflow is a Gemini answer.
+
+## Default interaction
+
+The default is **not** a debate. It is:
+
+`ORIGIN AI QUESTION -> REFERENCE ONE-WAVE-SCIENCE -> EXTERNAL RESEARCH -> GEMINI ANSWER -> RECEIPT -> ORIGIN AI`
+
+Use back-and-forth only when the user explicitly asks for dialogue, debate, iteration, or follow-up.
 
 ## Back-and-forth
 
