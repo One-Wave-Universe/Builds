@@ -25,9 +25,9 @@ def invoke(adapter, packet):
 
 def run(req):
     rid=req["id"]; question=req["question"]; max_turns=max(2,min(int(req.get("max_turns",4)),8))
-    peer_order=req.get("actors",["CHATGPT","GEMINI"])
-    if peer_order!=["CHATGPT","GEMINI"]:
-        raise ValueError("actors must be [CHATGPT,GEMINI] for v1")
+    peer_order=req.get("actors",["GEMINI","CHATGPT"])
+    if peer_order not in (["GEMINI","CHATGPT"],["CHATGPT","GEMINI"]):
+        raise ValueError("actors must alternate GEMINI/CHATGPT or CHATGPT/GEMINI")
     evidence=req.get("evidence_pack","repo-evidence.json")
     history=[]; previous=""; settled=[]; unresolved=[question]
     adapters={"CHATGPT":"openai_adapter.py","GEMINI":"gemini_adapter.py"}
@@ -46,7 +46,10 @@ def run(req):
         receipt=invoke(adapters[actor],packet)
         if receipt.get("status")!="COMPLETE":
             return {"schema":"one-wave-grounded-dialogue/v1","id":rid,"status":"HOLD",
-                    "turns":history,"blocker":{"actor":actor,"receipt":receipt}}
+                    "turns":history,
+                    "last_successful_actor": history[-1]["actor"] if history else None,
+                    "last_successful_answer": history[-1]["answer"] if history else "",
+                    "blocker":{"actor":actor,"receipt":receipt}}
         turn=receipt["turn"]
         visible={"turn":n+1,"actor":actor,"answer":turn.get("answer",""),
                  "provider":turn.get("provider"),"model":turn.get("model"),
