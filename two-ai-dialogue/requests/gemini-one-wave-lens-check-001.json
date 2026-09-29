@@ -1,0 +1,15 @@
+{
+  "id": "gemini-one-wave-lens-check-001",
+  "actors": [
+    "CHATGPT",
+    "GEMINI"
+  ],
+  "max_turns": 4,
+  "question": "Using the mandatory One-Wave lens and actual repository evidence, restate the correct bottom-up scientific program starting at the lattice. Do not use particles as One-Wave primitives. Identify the first rung, its falsification test, what observable boundary eventually permits comparison to conventional particle-language physics, and explicitly flag any inspected repo language that violates or blurs the particle-free ontology.",
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "lattice primitive excitation field wave stable structure particle quark proton electron mass G-766 G-767 D-412 D-413 D-415 assumptions transformations"
+  },
+  "purpose": "Verify mandatory particle-free One-Wave lens"
+}
