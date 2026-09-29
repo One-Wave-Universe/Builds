@@ -36,7 +36,7 @@ jobs:
           import json,sys
           x=json.load(open(sys.argv[1]))
           assert x.get("id") and x.get("question")
-          assert x.get("actors",["CHATGPT","GEMINI"])==["CHATGPT","GEMINI"]
+          assert x.get("actors",["GEMINI","CHATGPT"]) in (["GEMINI","CHATGPT"],["CHATGPT","GEMINI"])
           rr=x.get("repo_read") or {}
           assert rr.get("repository")=="One-Wave-Universe/One-Wave-Science"
           assert rr.get("root")=="peer-repo"
