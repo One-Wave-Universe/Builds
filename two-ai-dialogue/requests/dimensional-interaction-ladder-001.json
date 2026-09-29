@@ -1,0 +1,18 @@
+{
+  "id": "dimensional-interaction-ladder-001",
+  "peer": "gemini",
+  "question": "Reference the One-Wave-Science repository first, then adversarially evaluate the dimensional interaction proposal 3-1(0)1-6, 6-1(0)1-12, 12-1(0)1-24. The numbers 3,6,12,24 are proposed as meaningful interaction counts for successive 1D,2D,3D,4D spatial organization, with 1(0)1 as the invariant reference/interaction boundary. Determine from repo canon what 1(0)1 and these counts mean; test whether 3→6→12→24 is derived rather than assumed; derive or falsify each doubling; compare with known geometry/topology only where structurally justified; identify the smallest missing lemma; give counterexamples where standard dimension/adjacency breaks the interpretation; separate proven, consistent-but-unproven, contradicted, and ambiguous; recommend one data-independent next proof attack. Do not rescue the hypothesis by changing definitions.",
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "1(0)1 dimensional dimensions 1D 2D 3D 4D 3 6 12 24 field void spatial geometry topology cosmology"
+  },
+  "source_class": "real",
+  "execution_class": "reference-only",
+  "acceptance": [
+    "Gemini cites/identifies repo paths used",
+    "Distinguishes repo claims from established mathematics",
+    "Explicitly attacks first 3 and each doubling",
+    "No Jetson/local-machine dependency"
+  ]
+}
