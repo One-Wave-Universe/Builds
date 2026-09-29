@@ -1,0 +1,20 @@
+{
+  "id": "gemini-cosmology-e528-attack-20260929-01",
+  "peer": "gemini",
+  "research": true,
+  "question": "Reference One-Wave-Science first and use its current canon as the project lens, not as proof.\n\nCOSMOLOGY TARGET:\nAttack Nodes/E-528_Static_Redshift_Transport.md. Its hard constraint is no metric expansion and its transport law is:\ndE_gamma/dl = -kappa_gamma E_gamma\n1+z = exp(integral kappa_gamma dl)\nwith dN_gamma/dl=0 for a pure redshifting channel.\n\nREPO FAILURE TESTS ALREADY NAMED BY E-528:\n- frequency dependence/independence\n- angular-image blurring\n- spectral-line broadening\n- energy conservation\n- redshift-correlated transient-duration behavior without metric time stretching\n- gravitational/compression dependence\n- consistency with one coefficient across different paths\n\nMETADATA ANCHOR CONSULTED AFTER THE REPO:\nPantheon+ public release metadata includes light-curve photometry, redshifts, updated metadata, calibration products, SALT2 model products, distances/covariance, cosmology likelihoods/chains, and simulations. The distance table uses N=1701 covariance rows/columns and includes zHD/zCMB/zHEL, standardized magnitude, SALT2 x1 stretch and uncertainty, peak MJD, fit chi-square/probability, host properties, and systematic covariance. Treat this as metadata/provenance, not proof.\n\nTASK:\nChoose the single strongest falsification attack on E-528 now. Prefer a test that can be run from public data without new hardware. Determine whether the best attack is supernova time dilation, distance-redshift/covariance, surface-brightness, spectral broadening, or something else, but choose ONE.\n\nFor the chosen attack return:\n1. exact E-528 claim under test;\n2. conventional/null prediction;\n3. exact observable and public dataset needed;\n4. frozen One-Wave prediction or equation before looking at held-out data;\n5. statistic/model comparison;\n6. what result would falsify or force revision of E-528;\n7. whether any version could survive by adding one physically motivated parameter, and what parameter would have to be frozen;\n8. exact One-Wave repo paths actually used;\n9. external metadata/research sources actually used.\n\nKeep ESTABLISHED external evidence, repository-derived claims, and HYPOTHESIS separate. Do not rescue E-528 by changing definitions after seeing the data.",
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "E-528 Static Redshift Transport no expansion supernova time dilation redshift Pantheon distance covariance transient duration spectral broadening surface brightness cosmology"
+  },
+  "source_class": "real",
+  "execution_class": "reference-plus-research",
+  "acceptance": [
+    "Repo lens used before outside evidence",
+    "One cosmology attack only",
+    "Explicit falsification/revision condition",
+    "External metadata/research sources named",
+    "No new hardware required"
+  ]
+}
