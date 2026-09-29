@@ -7,17 +7,26 @@ description: Use the proven GitHub-hosted Grounded Peer Dialogue route to ask Ge
 
 ## Baseline-zero route
 
+Mandatory evidence order:
+
+`ONE-WAVE REPO LENS -> CLAIM/TEST DEFINITION -> METADATA -> CERN/GWOSC/OTHER EXTERNAL WAVE DATA -> GEMINI INTERPRETATION -> VALIDATE BACK AGAINST REPO`
+
+The repo lens always comes first. Metadata is second. External measured data is third. No external source may silently redefine the One-Wave claim under test.
+
 For any request equivalent to "ask Gemini", "run it by Gemini", "have Gemini review this", or "have a dialogue with Gemini":
 
 1. Use the Builds repository as the invocation/control plane.
 2. Create one request under `two-ai-dialogue/requests/`.
 3. Set `repo_read.repository` to `One-Wave-Universe/One-Wave-Science`, `root` to `peer-repo`, and provide a bounded query.
 4. Let `.github/workflows/grounded-peer-dialogue.yml` checkout Science and build `repo-evidence.json` first.
-5. Gemini then performs external research/grounding when `research: true`, keeping outside sources separate from repository claims.
-6. Gemini answers the originating AI's bounded question and the receipt records repo evidence plus external research sources.
-7. Retrieve the exact workflow run and require `one-wave-gemini-receipt/v1` with the same request ID and `status=COMPLETE`.
-8. Treat only paths in the evidence pack as repository files actually read by Gemini.
-9. Return Gemini's answer, the repository paths used, important external research sources, and unresolved items to the originating conversation.
+5. Before any bulk/external data, identify the exact One-Wave claim/test from the repo evidence pack.
+6. Query bounded metadata next.
+7. Only then consult CERN Open Data, GWOSC, LIGO, spectroscopy, or other external wave-domain data needed for the test.
+8. Gemini performs external research/grounding with provider material kept separate from repo claims.
+9. Gemini answers the originating AI's bounded question and the receipt records repo evidence, metadata used, external data/research sources, and unresolved gaps.
+10. Retrieve the exact workflow run and require `one-wave-gemini-receipt/v1` with the same request ID and `status=COMPLETE`.
+11. Treat only paths in the evidence pack as repository files actually read by Gemini.
+12. Return Gemini's answer, repository paths used, metadata consulted, external data/research sources, and unresolved items to the originating conversation.
 
 ## Proven route
 
