@@ -10,11 +10,11 @@ import argparse, hashlib, json, pathlib, subprocess
 TEXT_EXT={".md",".txt",".json",".jsonl",".py",".yml",".yaml",".toml",".csv"}
 PRIORITY=("README","CANON","CORRECTION","CONTRACT","GOLD","ASSUMPT","TRANSFORM","CONTROL","NULL","G-767","G-766")
 
-def git(*a):
-    return subprocess.check_output(["git",*a],text=True).strip()
+def git_at(root,*a):
+    return subprocess.check_output(["git","-C",root,*a],text=True).strip()
 
 def tracked(root):
-    out=git("ls-files",root).splitlines()
+    out=git_at(root,"ls-files").splitlines()
     return [p for p in out if pathlib.Path(p).suffix.lower() in TEXT_EXT]
 
 def score(path, terms):
@@ -28,7 +28,7 @@ def pack(root, query, max_files=18, max_chars=90000):
     ranked=sorted(paths,key=lambda p:(-score(p,terms),p))
     selected=[]; total=0
     for p in ranked:
-        try: raw=pathlib.Path(p).read_text(errors="replace")
+        try: raw=(pathlib.Path(root)/p).read_text(errors="replace")
         except OSError: continue
         hit=score(p,terms)+sum(raw.lower().count(t.lower()) for t in terms[:12])
         if hit<=0 and selected: continue
@@ -37,7 +37,7 @@ def pack(root, query, max_files=18, max_chars=90000):
         selected.append({"path":p,"sha256":hashlib.sha256(raw.encode()).hexdigest(),"content":raw})
         total+=len(raw)
         if len(selected)>=max_files: break
-    return {"schema":"one-wave-repo-evidence/v1","repo_root":root,"commit":git("rev-parse","HEAD"),"query":query,
+    return {"schema":"one-wave-repo-evidence/v1","repo_root":root,"commit":git_at(root,"rev-parse","HEAD"),"query":query,
             "files":selected,"limits":{"max_files":max_files,"max_chars":max_chars},
             "instruction":"Cite inspected repository paths. If evidence is insufficient, name exact additional paths/search terms needed; do not infer unseen repository contents."}
 
