@@ -4,7 +4,9 @@ Status: canonical route authority for One-Wave Gemini collaboration.
 
 ## Route
 
-`ORIGIN AI -> Builds request -> GitHub Grounded Peer Dialogue -> checkout One-Wave-Science -> bounded repo evidence pack -> Gemini API -> matching receipt -> ORIGIN AI`
+`ORIGIN AI -> Builds request -> checkout One-Wave-Science -> bounded repo evidence pack -> define claim/test -> metadata -> CERN/GWOSC/other external wave data -> Gemini API -> validate against repo -> matching receipt -> ORIGIN AI`
+
+The order is mandatory: **repo lens first, metadata second, external measured wave data third**.
 
 This is the default Gemini Brain Buddy route.
 
