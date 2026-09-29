@@ -28,7 +28,8 @@ def base_request(a, dialogue=False):
         "query":a.query.strip() or q,
       },
       "source_class":"real",
-      "execution_class":"reference-only",
+      "execution_class":"reference-plus-research",
+      "research":True,
     }
     if dialogue:
         x["actors"]=["GEMINI","CHATGPT"]
