@@ -17,7 +17,7 @@ class BrainBuddyTests(unittest.TestCase):
         self.assertEqual(x["repo_read"]["root"],"peer-repo")
     def test_dialogue_contract(self):
         x=m.base_request(A(),True)
-        self.assertEqual(x["actors"],["CHATGPT","GEMINI"])
+        self.assertEqual(x["actors"],["GEMINI","CHATGPT"])
         self.assertEqual(x["max_turns"],4)
     def test_receipt_id_gate(self):
         with tempfile.TemporaryDirectory() as d:
