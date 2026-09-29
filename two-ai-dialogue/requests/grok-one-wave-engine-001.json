@@ -1,0 +1,16 @@
+{
+  "id": "grok-one-wave-engine-001",
+  "peer": "grok",
+  "actors": [
+    "CHATGPT",
+    "GROK"
+  ],
+  "max_turns": 6,
+  "question": "Read the mandatory One-Wave lens and the supplied actual One-Wave-Science repository evidence before answering.\n\nWe want to do two connected things: (A) build a rigorous falsification program that can progressively establish or reject the One-Wave lattice hypothesis, and (B) get the One-Wave physics engine running as an executable scientific instrument rather than a visual demo.\n\nOne-Wave has no fundamental particles. Work bottom-up from lattice/base state -> propagation -> coupling/interference -> stable dynamic structures -> structure-structure interactions -> scale/compression -> observables.\n\nFrom the repository as it exists now:\n1. What is the shortest scientifically defensible path to start testing One-Wave from the lattice upward?\n2. What exact mathematical/solver pieces are missing before the physics engine is trustworthy?\n3. Which existing simulator/module should become the first authoritative executable engine core, and which existing pieces should be controls or visualization only?\n4. Give an implementation order for the engine with falsification gates at each rung.\n5. Specify the smallest first executable job: exact inputs, equations/operations, outputs, numerical diagnostics, controls/nulls, pass/fail/kill criteria, and receipt we should save.\n6. Explain how CERN/CMS, LIGO/GWOSC or other existing repository data should enter later without tuning the lattice after seeing the data.\n7. Identify repo contradictions, speculative bridges, or premature higher-level mechanisms that should be held out until lower lattice rungs pass.\n8. End with one concrete repo job that a worker can implement immediately.\n\nDo not call simulation success proof of nature. Do not insert particle ontology. Separate mathematical validation, simulation evidence, external empirical evidence, and unresolved hypothesis. Cite the repository paths you actually inspected.",
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "physics engine lattice primitive sandbox GOLD_STANDARD D-412 D-413 D-415 G-766 G-767 solver dispersion energy conservation convergence controls null CERN CMS LIGO GWOSC Miniverse simulation"
+  },
+  "purpose": "Grok grounded plan for One-Wave falsification and executable physics engine"
+}
