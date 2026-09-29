@@ -1,0 +1,88 @@
+name: Grounded Peer Dialogue
+
+on:
+  push:
+    paths:
+      - "two-ai-dialogue/requests/**"
+
+permissions:
+  contents: read
+
+jobs:
+  grounded-peer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    steps:
+      - name: Checkout Builds
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Select request
+        id: request
+        run: |
+          set -euo pipefail
+          REQUEST="$(git diff --name-only HEAD^ HEAD -- 'two-ai-dialogue/requests/*.json' | tail -n 1)"
+          test -n "$REQUEST"
+          python3 - "$REQUEST" <<'PY'
+          import json,sys
+          x=json.load(open(sys.argv[1]))
+          assert x.get("id") and x.get("question")
+          assert x.get("actors")==["CHATGPT","GEMINI"]
+          rr=x.get("repo_read") or {}
+          assert rr.get("repository")=="One-Wave-Universe/One-Wave-Science"
+          assert rr.get("root")=="peer-repo"
+          assert rr.get("query")
+          print("REQUEST_OK",x["id"])
+          PY
+          echo "path=$REQUEST" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout Science
+        uses: actions/checkout@v4
+        with:
+          repository: One-Wave-Universe/One-Wave-Science
+          path: peer-repo
+          fetch-depth: 1
+
+      - name: Build evidence
+        run: |
+          set -euo pipefail
+          REQUEST="${{ steps.request.outputs.path }}"
+          QUERY="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["repo_read"]["query"])' "$REQUEST")"
+          python3 two-ai-dialogue/repo_reader.py --root peer-repo --query "$QUERY" --output repo-evidence.json
+          python3 - "$REQUEST" <<'PY'
+          import json,sys
+          p=sys.argv[1]; x=json.load(open(p)); x["evidence_pack"]="repo-evidence.json"
+          open(p,"w").write(json.dumps(x))
+          PY
+          python3 - <<'PY'
+          import json
+          e=json.load(open("repo-evidence.json"))
+          assert e["commit"] and e["files"]
+          print("EVIDENCE_OK",e["commit"],len(e["files"]))
+          for f in e["files"]: print("READABLE_PATH",f["path"])
+          PY
+
+      - name: Ask Gemini from evidence
+        run: |
+          set -euo pipefail
+          test -n "${GEMINI_API_KEY:-}"
+          python3 two-ai-dialogue/gemini_adapter.py "${{ steps.request.outputs.path }}" | tee gemini-receipt.json
+          python3 - <<'PY'
+          import json
+          r=json.load(open("gemini-receipt.json"))
+          assert r["status"]=="COMPLETE"
+          print("GEMINI_RECEIPT_OK",r["request_id"],r["turn"]["model"])
+          PY
+
+      - name: Upload evidence and receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: grounded-peer-review
+          if-no-files-found: warn
+          path: |
+            repo-evidence.json
+            gemini-receipt.json
