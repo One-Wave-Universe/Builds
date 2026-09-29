@@ -13,42 +13,61 @@ def models(key):
     ms=[m["name"] for m in x.get("models",[]) if "generateContent" in m.get("supportedGenerationMethods",[])]
     def rank(n):
         s=n.lower()
-        return (0 if "flash-lite" in s else 1 if "flash" in s else 2 if "pro" in s else 3, n)
+        return (0 if "flash-lite" in s else 1 if "flash" in s else 2 if "pro" in s else 3,n)
     return sorted(ms,key=rank)
 
-def generate(key,model,prompt):
-    body={"contents":[{"role":"user","parts":[{"text":prompt}]}],"generationConfig":{"temperature":0.2,"maxOutputTokens":1200}}
+def generate(key,model,prompt,research=True):
+    body={"contents":[{"role":"user","parts":[{"text":prompt}]}],
+          "generationConfig":{"temperature":0.2,"maxOutputTokens":1400}}
+    if research:
+        body["tools"]=[{"google_search":{}}]
     return call(BASE+"/"+model+":generateContent",key,body)
 
-def gemini(question,previous="",evidence=None):
+def source_list(raw):
+    out=[];seen=set()
+    for cand in raw.get("candidates",[]):
+        gm=cand.get("groundingMetadata") or {}
+        for chunk in gm.get("groundingChunks",[]) or []:
+            web=chunk.get("web") or {}
+            uri=web.get("uri")
+            if uri and uri not in seen:
+                seen.add(uri)
+                out.append({"title":web.get("title"),"uri":uri})
+    return out
+
+def gemini(question,previous="",evidence=None,research=True):
     key=os.environ["GEMINI_API_KEY"]
     lens_path=Path("two-ai-dialogue/ONE_WAVE_LENS.md")
     lens_text=lens_path.read_text() if lens_path.exists() else ""
-    evidence_text = "(none supplied)"
-    if evidence:
-        evidence_text=json.dumps(evidence,ensure_ascii=False)
-    prompt=("MANDATORY ONE-WAVE INTERPRETATION LENS (method/ontology contract, NOT proof):\n"+lens_text+"\n\nOriginal question:\n"+question+"\n\nPrevious visible answer:\n"+(previous or "(none)")+
-      "\n\nREPOSITORY EVIDENCE PACK (these and only these repository files count as actually read):\n"+evidence_text+
-      "\n\nGive the next concise answer. Correct omissions/errors and move toward a finished answer. "
-      "Do not expose hidden chain-of-thought. Give conclusions, objections, evidence needs, and unresolved items.")
+    evidence_text=json.dumps(evidence,ensure_ascii=False) if evidence else "(none supplied)"
+    prompt=("MANDATORY ORDER:\n"
+            "1. Read the supplied One-Wave repository evidence first and treat it as project reference, not proof.\n"
+            "2. Then perform external research when enabled. Keep outside sources separate from repo claims.\n"
+            "3. Answer the original question and identify exact repo paths plus important external sources used.\n\n"
+            "ONE-WAVE INTERPRETATION LENS:\n"+lens_text+
+            "\n\nOriginal question:\n"+question+
+            "\n\nPrevious visible answer:\n"+(previous or "(none)")+
+            "\n\nREPOSITORY EVIDENCE PACK:\n"+evidence_text+
+            "\n\nDo not expose hidden chain-of-thought. Give conclusions, objections, evidence needs, and unresolved items.")
     errors=[]
     for model in models(key)[:12]:
         for attempt in range(4):
             try:
-                x=generate(key,model,prompt)
-                parts=x.get("candidates",[{}])[0].get("content",{}).get("parts",[])
+                raw=generate(key,model,prompt,research)
+                parts=raw.get("candidates",[{}])[0].get("content",{}).get("parts",[])
                 answer="".join(p.get("text","") for p in parts).strip()
                 if answer:
-                    return {"actor":"GEMINI","answer":answer,"provider":"google","model":model.split("/",1)[-1],
-                            "response_id":x.get("responseId"),"attempt":attempt+1,"fallback_errors":errors}
+                    return {"actor":"GEMINI","answer":answer,"provider":"google",
+                            "model":model.split("/",1)[-1],"response_id":raw.get("responseId"),
+                            "attempt":attempt+1,"fallback_errors":errors,
+                            "research_enabled":bool(research),"research_sources":source_list(raw)}
                 errors.append({"model":model,"attempt":attempt+1,"error":"empty response"})
                 break
             except urllib.error.HTTPError as e:
                 code=e.code
                 errors.append({"model":model,"attempt":attempt+1,"http":code})
-                if code in (408,429) or 500 <= code < 600:
-                    time.sleep(min(8,2**attempt)+random.random())
-                    continue
+                if code in (408,429) or 500<=code<600:
+                    time.sleep(min(8,2**attempt)+random.random());continue
                 break
             except Exception as e:
                 errors.append({"model":model,"attempt":attempt+1,"error":type(e).__name__})
@@ -59,10 +78,9 @@ if __name__=="__main__":
     x=json.loads(Path(sys.argv[1]).read_text())
     try:
         evidence=None
-        ep=x.get("evidence_pack")
-        if ep:
-            evidence=json.loads(Path(ep).read_text())
-        turn=gemini(x["question"],x.get("previous_visible_answer",""),evidence)
+        if x.get("evidence_pack"):
+            evidence=json.loads(Path(x["evidence_pack"]).read_text())
+        turn=gemini(x["question"],x.get("previous_visible_answer",""),evidence,bool(x.get("research",True)))
         out={"schema":"one-wave-gemini-receipt/v1","request_id":x["id"],"status":"COMPLETE","turn":turn}
     except Exception as e:
         out={"schema":"one-wave-gemini-receipt/v1","request_id":x["id"],"status":"HOLD","error":str(e)}
