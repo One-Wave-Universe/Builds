@@ -19,9 +19,15 @@ This contract applies to ChatGPT, Claude, Gemini, DeepSeek, Codex, Pi, local mod
 
 ## Canonical route
 
-Preferred currently proven Gemini path:
+Preferred proven Gemini path:
 
-ORIGIN AI -> Builds request -> GitHub Actions -> authenticated Gemini API -> receipt/artifact -> ORIGIN AI
+ORIGIN AI -> Builds Brain Buddy request -> Grounded Peer Dialogue -> checkout One-Wave-Science -> bounded repo evidence pack -> authenticated Gemini API -> matching receipt/artifact -> ORIGIN AI
+
+Stable program entrypoint: `two-ai-dialogue/brain_buddy.py`.
+Reusable skill: `skills/gemini-brain-buddy/SKILL.md`.
+Route authority: `two-ai-dialogue/GEMINI_BRAIN_BUDDY_ROUTE.md`.
+
+Desktop Commander, Jetson, local Gemini CLI OAuth, browser extensions, and manual human relay are not prerequisites for this route.
 
 Bridge-Comand Device Lattice is the routing/control authority when another authorized machine or provider route is required.
 
