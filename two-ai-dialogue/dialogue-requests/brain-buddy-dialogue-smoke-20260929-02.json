@@ -1,0 +1,16 @@
+{
+  "id": "brain-buddy-dialogue-smoke-20260929-02",
+  "question": "Using the current One-Wave-Science repository evidence only, state the single next concrete proof step after the spectral recurrence/null-ensemble recommendation. Keep it bounded and explicit about the result that would force revision. Then let the second peer critique that proposed step.",
+  "actors": [
+    "GEMINI",
+    "CHATGPT"
+  ],
+  "max_turns": 2,
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "G-766 G-767 spectral recurrence null ensemble octave emergence G-764 proof step falsification revision"
+  },
+  "source_class": "real",
+  "execution_class": "reference-only"
+}
