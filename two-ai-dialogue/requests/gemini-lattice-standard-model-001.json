@@ -1,0 +1,15 @@
+{
+  "id": "gemini-lattice-standard-model-001",
+  "actors": [
+    "CHATGPT",
+    "GEMINI"
+  ],
+  "max_turns": 6,
+  "question": "Read the supplied actual One-Wave-Science repository evidence first. Starting with the project's lattice hypothesis, how could we build a rigorous research program aimed at open problems not resolved by the Standard Model rather than assuming One-Wave is correct?\n\nIdentify:\n1. Which specific Standard Model limitations/open questions are realistically addressable by a lattice-first model, and which are not yet connected.\n2. The minimum mathematical definition the One-Wave lattice needs before it can make nontrivial predictions.\n3. The first predictions that must differ quantitatively from conventional Standard Model/QFT or standard lattice/null models.\n4. A bottom-up proof/evidence ladder: lattice primitive -> excitations/dispersion -> stable structures -> interaction behavior -> observables, with a falsification gate at every level.\n5. Existing public datasets in this repository (CERN/CMS, LIGO/GWOSC, etc.) that can test the earliest levels without fitting after seeing the answer.\n6. Controls/nulls, frozen parameters, held-out tests, dimensional/unit checks and numerical convergence required to distinguish physical structure from transform/sampling artifacts.\n7. The single smallest next simulation or analysis job we should implement now, exact inputs/outputs/metric/pass-fail rule, and what result would kill or weaken the lattice hypothesis.\n8. What additional repository files/evidence you need before making stronger claims.\n\nBe aggressive about falsification. Do not call mathematical consistency, simulation success, octave alignment, or agreement between AIs proof of nature. Separate Standard Model facts, project hypotheses, simulation evidence, and empirical evidence. Cite the repository paths you actually inspected.",
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "lattice primitive dispersion G-766 G-767 Standard Model QFT CERN CMS LIGO GWOSC assumptions transformations controls nulls GOLD_STANDARD Miniverse field excitation stable structure interaction mass charge spin particle quark proton electron"
+  },
+  "purpose": "Grounded lattice-first research program against unresolved physics questions"
+}
