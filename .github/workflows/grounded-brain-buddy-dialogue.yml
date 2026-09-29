@@ -21,6 +21,10 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Test Brain Buddy program
+        shell: bash
+        run: python3 -m unittest two-ai-dialogue/tests/test_brain_buddy.py -v
+
       - name: Select request
         id: request
         shell: bash
