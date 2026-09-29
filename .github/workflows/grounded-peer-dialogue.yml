@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 5
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+      XAI_API_KEY: ${{ secrets.GROK_API_KEY }}
     steps:
       - name: Checkout Builds
         uses: actions/checkout@v4
