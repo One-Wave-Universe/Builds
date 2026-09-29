@@ -42,8 +42,11 @@ def gemini(question,previous="",evidence=None,research=True):
     evidence_text=json.dumps(evidence,ensure_ascii=False) if evidence else "(none supplied)"
     prompt=("MANDATORY ORDER:\n"
             "1. Read the supplied One-Wave repository evidence first and treat it as project reference, not proof.\n"
-            "2. Then perform external research when enabled. Keep outside sources separate from repo claims.\n"
-            "3. Answer the original question and identify exact repo paths plus important external sources used.\n\n"
+            "2. From that repo evidence, state the exact claim/test being evaluated before using outside evidence.\n"
+            "3. Consult metadata next. Metadata is provenance/availability evidence, not proof.\n"
+            "4. Only then consult CERN Open Data, GWOSC/LIGO, spectroscopy, or other external wave-domain data/research when enabled.\n"
+            "5. Keep external provider material separate from One-Wave interpretations.\n"
+            "6. Answer the original question and identify exact repo paths plus important metadata and external sources used.\n\n"
             "ONE-WAVE INTERPRETATION LENS:\n"+lens_text+
             "\n\nOriginal question:\n"+question+
             "\n\nPrevious visible answer:\n"+(previous or "(none)")+
