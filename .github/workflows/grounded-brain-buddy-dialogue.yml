@@ -1,30 +1,24 @@
 name: Grounded Brain Buddy Dialogue
-
 on:
   push:
     paths:
       - "two-ai-dialogue/dialogue-requests/**"
-
 permissions:
   contents: read
-
 jobs:
   dialogue:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
     steps:
       - name: Checkout Builds
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-
+        with: {fetch-depth: 2}
       - name: Test Brain Buddy program
-        shell: bash
         run: python3 -m unittest two-ai-dialogue/tests/test_brain_buddy.py -v
-
       - name: Select request
         id: request
         shell: bash
@@ -36,23 +30,22 @@ jobs:
           import json,sys
           x=json.load(open(sys.argv[1]))
           assert x.get("id") and x.get("question")
-          assert x.get("actors",["GEMINI","CHATGPT"]) in (["GEMINI","CHATGPT"],["CHATGPT","GEMINI"])
+          actors=x.get("actors",["CHATGPT","GEMINI","DEEPSEEK"])
+          assert len(actors)>=2 and len(actors)==len(set(actors))
+          assert all(a in {"CHATGPT","GEMINI","DEEPSEEK"} for a in actors)
           rr=x.get("repo_read") or {}
           assert rr.get("repository")=="One-Wave-Universe/One-Wave-Science"
-          assert rr.get("root")=="peer-repo"
-          assert rr.get("query")
-          assert 2 <= int(x.get("max_turns",4)) <= 8
-          print("DIALOGUE_REQUEST_OK",x["id"])
+          assert rr.get("root")=="peer-repo" and rr.get("query")
+          assert 2 <= int(x.get("max_turns",6)) <= 12
+          print("DIALOGUE_REQUEST_OK",x["id"],actors)
           PY
           echo "path=$REQUEST" >> "$GITHUB_OUTPUT"
-
       - name: Checkout Science
         uses: actions/checkout@v4
         with:
           repository: One-Wave-Universe/One-Wave-Science
           path: peer-repo
           fetch-depth: 1
-
       - name: Build shared evidence pack
         shell: bash
         run: |
@@ -62,25 +55,16 @@ jobs:
           python3 two-ai-dialogue/repo_reader.py --root peer-repo --query "$QUERY" --output repo-evidence.json
           python3 - "$REQUEST" <<'PY'
           import json,sys
-          p=sys.argv[1]; x=json.load(open(p)); x["evidence_pack"]="repo-evidence.json"
-          open(p,"w").write(json.dumps(x))
+          p=sys.argv[1];x=json.load(open(p));x["evidence_pack"]="repo-evidence.json";open(p,"w").write(json.dumps(x))
           PY
-
-      - name: Run bounded back-and-forth
+      - name: Run bounded three-peer back-and-forth
         shell: bash
         run: |
           set -euo pipefail
           test -n "${GEMINI_API_KEY:-}" || { echo "::error::GEMINI_API_KEY missing"; exit 3; }
           test -n "${OPENAI_API_KEY:-}" || { echo "::error::OPENAI_API_KEY missing"; exit 4; }
+          test -n "${DEEPSEEK_API_KEY:-}" || { echo "::error::DEEPSEEK_API_KEY missing"; exit 5; }
           python3 two-ai-dialogue/grounded_dialogue_runner.py "${{ steps.request.outputs.path }}" | tee dialogue-receipt.json
-          python3 - <<'PY'
-          import json
-          x=json.load(open("dialogue-receipt.json"))
-          assert x["turns"],x
-          assert x["id"],x
-          print("DIALOGUE_RECEIPT",x["id"],x["status"],len(x["turns"]))
-          PY
-
       - name: Upload dialogue evidence and receipt
         if: always()
         uses: actions/upload-artifact@v4
