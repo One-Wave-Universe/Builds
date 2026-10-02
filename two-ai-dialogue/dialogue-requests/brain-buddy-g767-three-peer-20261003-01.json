@@ -1,0 +1,15 @@
+{
+  "id": "brain-buddy-g767-three-peer-20261003-01",
+  "question": "Using the shared One-Wave Science evidence, evaluate G-767 against CERN CMS record 700. Preserve measured invariant-mass values and provenance, focus on the required density-preserving null rather than the insufficient log-uniform null, do not tune x0 on evaluation data, distinguish supported findings from hypothesis, identify falsification conditions, and converge on the next smallest experiment.",
+  "actors": [
+    "CHATGPT",
+    "GEMINI",
+    "DEEPSEEK"
+  ],
+  "max_turns": 6,
+  "repo_read": {
+    "repository": "One-Wave-Universe/One-Wave-Science",
+    "root": "peer-repo",
+    "query": "G-767 spectral lattice phase CERN CMS record 700 density-preserving null open data wave pipeline provenance invariant mass"
+  }
+}
