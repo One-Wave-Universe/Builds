@@ -6,8 +6,21 @@
   "status": "RUNNING",
   "actors": {
     "GEMINI": {
-      "status": "REFERENCING",
-      "cycles": 0
+      "status": "READING",
+      "cycles": 0,
+      "segments_read": 0,
+      "segments_total": 5,
+      "file_count": 197,
+      "metadata_sources": [
+        {
+          "provider": "CERN Open Data",
+          "sha256": "511921f32dbe41d2e5334a08f63b1996faa38bb14fddd02b8e3e815730a4cb89"
+        },
+        {
+          "provider": "GWOSC/LIGO/Virgo/KAGRA",
+          "sha256": "4011d08ba2945bbfe7f243b7a64fc3219d8910af76969eb266e65573ffe084a6"
+        }
+      ]
     },
     "GPT": {
       "status": "REFERENCING",
