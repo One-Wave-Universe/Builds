@@ -1,0 +1,13 @@
+{
+  "id": "gpt-indexed-guarded-source-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "actors": [
+    "GPT"
+  ],
+  "cycles": 1,
+  "max_model_calls": 28,
+  "reference_mode": "indexed",
+  "internal_dialogue": true,
+  "question": "Read digital-cell/l0_cell.py using get_repository_file, exactly once. Then answer in under 1200 characters: identify one implemented behavior and one missing physical-memory validation. Cite the inspected path and supplied canonical instructions. Report only actual evidence. After the tool result, use its completed audit and advance to the answer; do not request that identical file again. Do not clone repositories.",
+  "metadata_queries": []
+}
