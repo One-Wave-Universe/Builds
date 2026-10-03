@@ -14,3 +14,7 @@ Locked as the proposal:
 - Cell-0 netlist (`cell-v1/CELL0.md`)
 - Assembled map (`cell-v1/CELL_ASSEMBLED.md`)
 - Rabbit addressing (`algorithms/rabbit_hopping.py`)
+
+Open, not locked:
+
+- Shared Helmholtz field as common magnetic weather (`cell-v1/HELMHOLTZ.md`). Uniform bias volume only. Not path memory, not CENTER, not V_BUS, not RC.

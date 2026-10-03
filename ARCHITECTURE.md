@@ -48,6 +48,14 @@ Current interpretation:
 - the dedicated domain-wall layer under connected cells carries longer-lived shared body-state / muscle-memory history;
 - the exact field shape, coupling, and whether a distinct spherical structure is needed remain open to measurement.
 
+## Shared Helmholtz field
+
+Candidate common magnetic weather for one flower, and for the two opposed flowers if they share a volume. See `cell-v1/HELMHOLTZ.md`.
+
+A Helmholtz pair is the implementation candidate: two matched coils, spacing near one radius, approximately uniform B in the volume where the cells sit.
+
+It does not replace the local FIELD/VOID toroids, the figure-8 nuclei, CENTER, V_BUS, or the hysteretic path layer. Uniform bias and path memory stay separate. Not locked until measured.
+
 ## Differential state
 
 Where the A/B/C interface is used:
@@ -113,6 +121,8 @@ Pack / source replaces losses. No created energy and no fixed recovery percentag
 8. couple a second compatible path / cell;
 9. only then expand to three axes, motor actuation, flower scale, or higher nuclei.
 
+Helmholtz is after a flower has a log. It does not jump this sequence.
+
 ## No hidden controller
 
 No comparator bank, op-amp controller, microcontroller state machine, software weight file, resistor threshold ladder, resistor damping/bleed return, or global clock may substitute for the intended CELL_V1 physical control loop.
@@ -123,6 +133,6 @@ Test instruments may observe the cell. They do not become the cell.
 
 **Locked:** common plain-round body pair, role-specific nuclei including the M4 two-pyramid nucleus, separate six-wedge cluster-routing geometry, motor-control square figure-8 nucleus, -/(0)/+ differential, CENTER distinct from V_BUS, threshold / hysteresis-driven events, reinjection into V_BUS, hardware-first control, and no designed resistor path for thresholding or energy return.
 
-**Open:** exact materials, winding turns, transistor topology, thermal fade, coupling coefficient, bus impedance, 3+3 winding implementation, field strength, torque, recovery fraction, retention time, scale-up behavior.
+**Open:** exact materials, winding turns, transistor topology, thermal fade, coupling coefficient, bus impedance, 3+3 winding implementation, field strength, torque, recovery fraction, retention time, scale-up behavior, and the shared Helmholtz weather (`cell-v1/HELMHOLTZ.md`).
 
 Do not promote open engineering variables into claims.
