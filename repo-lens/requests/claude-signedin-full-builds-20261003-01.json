@@ -1,0 +1,23 @@
+{
+  "id": "claude-signedin-full-builds-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "question": "Read every repository piece. Verify one implemented cell-build artifact and one unproven physical-memory gap using actual file paths. Read the attached CERN and GWOSC metadata and the actual GPT/Gemini peer answers. Correct any unsupported claims and give the next useful software verification step. Answer in at most 1500 characters; do not claim physical validation or tests you did not execute.",
+  "actors": [
+    "CLAUDE"
+  ],
+  "cycles": 1,
+  "max_model_calls": 16,
+  "peer_request_ids": [
+    "council-independent-jetson-pieces-20261003-01"
+  ],
+  "metadata_queries": [
+    {
+      "url": "https://opendata.cern.ch/api/records/?q=CMS&size=1",
+      "purpose": "Read provider-native CERN CMS metadata; preserve provenance and distinguish metadata from physical proof."
+    },
+    {
+      "url": "https://gwosc.org/api/v2/runs",
+      "purpose": "Read GWOSC observing-run metadata; preserve provenance."
+    }
+  ]
+}
