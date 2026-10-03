@@ -51,6 +51,55 @@ class Gates(unittest.TestCase):
     def test_optional_flag_must_be_boolean(self):
         x=self.req();x['include_mythos']='yes'
         with self.assertRaises(runner.GateError):runner.validate(x)
+    def test_index_preserves_every_path_and_avoids_repeated_bulk_data(self):
+        repo=runner.OWNER+'/One-Wave-Science'
+        files=[{'repository':repo,'path':'data.csv','git_blob':'a','bytes':2000000,'kind':'text','text':'1,2\n'*500000},{'repository':repo,'path':'AI_CANONICAL_START_HERE.md','git_blob':'b','bytes':15,'kind':'text','text':'CANON_REQUIRED'}]
+        context,seeded=runner.indexed_context(files,{'repository_commits':{repo:'head'}})
+        text=''.join(file['text'] for file in context)
+        self.assertIn('data.csv',text);self.assertIn('CANON_REQUIRED',text)
+        self.assertLess(len(text),len(files[0]['text'])//100)
+        self.assertEqual(seeded,[repo+'/AI_CANONICAL_START_HERE.md'])
+    def test_source_tool_returns_exact_verified_source(self):
+        repo=runner.OWNER+'/Builds';file={'repository':repo,'path':'actual.py','git_blob':'sha','sha256':'hash','bytes':16,'kind':'text','text':'EXACT_FULL_SOURCE'}
+        asks=[]
+        def ask(prompt,stage):
+            asks.append((prompt,stage))
+            answer=json.dumps({'lens_tool':{'name':'get_repository_file','arguments':{'repository':repo,'path':'actual.py'}}}) if len(asks)==1 else 'actual.py verified'
+            return {'answer':answer}
+        audits=[]
+        runner.lens_exchange('GPT','question',ask,[],[],audits.append,[file],{'repository_commits':{repo:'pinned'}})
+        self.assertIn('EXACT_FULL_SOURCE',asks[1][0])
+        self.assertEqual(audits[0]['commit'],'pinned')
+    def test_source_tool_cannot_escape_verified_snapshot(self):
+        def ask(*args):return {'answer':json.dumps({'lens_tool':{'name':'get_repository_file','arguments':{'repository':'other/repo','path':'../../secret'}}})}
+        with self.assertRaisesRegex(runner.GateError,'outside current verified'):runner.lens_exchange('GPT','q',ask,[],[],files=[],evidence={})
+    def test_metadata_tool_rejects_private_url_before_call(self):
+        def ask(*args):return {'answer':json.dumps({'lens_tool':{'name':'query_metadata','arguments':{'url':'https://127.0.0.1/secrets','purpose':'test'}}})}
+        with patch.object(runner,'jetson') as route:
+            with self.assertRaises(runner.GateError):runner.lens_exchange('GPT','q',ask,[],[])
+            route.assert_not_called()
+    def test_each_adapter_can_query_metadata_as_a_real_tool(self):
+        for actor in runner.PROVIDERS:
+            with self.subTest(actor=actor):
+                answers=iter([json.dumps({'lens_tool':{'name':'query_metadata','arguments':{'url':'https://gwosc.org/api/v2/runs','purpose':'read runs'}}}),'provider data read','final answer'])
+                prompts=[];sources=[];audit=[]
+                def ask(prompt,stage):prompts.append(prompt);return {'answer':next(answers)}
+                value={'provider':'GWOSC','sha256':'real-receipt','source_record':{'preserved':123}}
+                with patch.object(runner,'jetson',return_value=value) as route:runner.lens_exchange(actor,'question',ask,[],sources,audit.append)
+                route.assert_called_once_with('/metadata',{'url':'https://gwosc.org/api/v2/runs','purpose':'read runs'})
+                self.assertIn('preserved',prompts[1]);self.assertEqual(sources,[value])
+    def test_peer_tool_returns_only_actual_completed_other_actor(self):
+        peers=[{'actor':'GEMINI','cycle':1,'status':'COMPLETE','answer':'REAL_PEER_ANSWER','response_id':'peer-id'},{'actor':'GPT','cycle':1,'status':'COMPLETE','answer':'own'},{'actor':'GROK','status':'HOLD','answer':'not complete'}]
+        answers=iter([json.dumps({'lens_tool':{'name':'get_peer_responses','arguments':{}}}),'peer read','final'])
+        prompts=[]
+        def ask(prompt,stage):prompts.append(prompt);return {'answer':next(answers)}
+        runner.lens_exchange('GPT','q',ask,lambda:peers,[])
+        self.assertIn('REAL_PEER_ANSWER',prompts[1]);self.assertNotIn('not complete',prompts[1])
+    def test_tool_requests_have_a_finite_stop(self):
+        def ask(prompt,stage):return {'answer':'read' if stage=='tool-result' else json.dumps({'lens_tool':{'name':'get_peer_responses','arguments':{}}})}
+        with self.assertRaisesRegex(runner.GateError,'request limit'):runner.lens_exchange('GPT','q',ask,[],[])
+    def test_unknown_tool_is_not_executed(self):
+        with self.assertRaisesRegex(runner.GateError,'Unregistered'):runner.lens_request(json.dumps({'lens_tool':{'name':'shell','arguments':{'cmd':'rm'}}}))
     def test_foreign_repository(self):
         x=self.req(); x["repository"]="someone/other"
         with self.assertRaises(runner.GateError): runner.validate(x)

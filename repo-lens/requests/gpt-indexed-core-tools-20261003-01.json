@@ -1,0 +1,26 @@
+{
+  "id": "gpt-indexed-core-tools-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "question": "Use the indexed full-repository check. Before answering, use get_repository_file to read One-Wave-Universe/Builds digital-cell/l0_cell.py. Use query_metadata to retrieve https://gwosc.org/api/v2/runs with an explicit purpose, and get_peer_responses to read actual Claude/GPT/Gemini replies. Cite the exact fetched source path, identify one implemented software artifact and one unproven physical-memory gap using the supplied canonical instructions, correct the strongest unsupported peer claim, and identify the available Bridge-Comand terminal route. Keep the final answer under 1800 characters. Do not claim physical proof or tests you did not execute. Do not clone repositories.",
+  "actors": [
+    "GPT"
+  ],
+  "cycles": 1,
+  "max_model_calls": 24,
+  "reference_mode": "indexed",
+  "include_mythos": false,
+  "peer_request_ids": [
+    "claude-signedin-full-builds-20261003-01",
+    "council-independent-jetson-pieces-20261003-01"
+  ],
+  "metadata_queries": [
+    {
+      "url": "https://opendata.cern.ch/api/records/?q=CMS&size=1",
+      "purpose": "Preserve CERN source metadata and provenance."
+    },
+    {
+      "url": "https://gwosc.org/api/v2/runs",
+      "purpose": "Preserve GWOSC run metadata and provenance."
+    }
+  ]
+}

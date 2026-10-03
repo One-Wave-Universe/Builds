@@ -17,3 +17,11 @@ Large repositories may require many model calls. A budget smaller than the full 
 ## Connection evidence — 2026-10-03
 
 Claude subscription sign-in is verified on Jetson. `claude-signedin-full-builds-20261003-01` completed five source segments and synthesis through the real signed-in route with CERN/GWOSC metadata and actual GPT/Gemini peer responses; response ID `c9223643-9e81-4771-8da3-ad7780e4461f`. That v1 run verified Builds only. It is not a claim that the new three-repository v2 contract has completed. DeepSeek's full scan remains blocked at the browser relay, and Grok authentication remains unverified. Each slot reports its own status.
+
+## Lower-token indexed reference
+
+Set `reference_mode: "indexed"` to verify every tracked blob and hash in all required repositories while supplying the full file index, canonical/root instructions and Bridge-Comand route documents to each model. Exact source is fetched from the same pinned in-memory snapshot using `get_repository_file`. Models also have `query_metadata` (registered HTTPS data APIs executed on Jetson) and `get_peer_responses` (actual completed peer turns). These are bounded host tools, not local shell or repository-copy access. Tool data is delivered in complete segments and tool use is recorded. Eight tool requests per synthesis is the limit; model-call budgets remain enforced. Unknown tools and off-snapshot file requests fail.
+
+Indexed reference is a complete repository byte/hash check, not exhaustive model reading of every file. Receipts explicitly record mode, seeded and fetched model-source paths, the supplied segment count, and the comparable full-source segment count. File-content claims require a delivered source citation. Full mode remains the default and is available as `reference_mode: "full"`. Mythos remains optional.
+
+Partial progress is retained on HOLD so a provider quota failure does not erase the verified file counts and number of completed reference segments. No scheduled retries were added. Claude subscription sign-in and its Builds-only response succeeded; its subsequent three-core-repository full-text run hit the session usage limit, confirmed locally by the official client.
