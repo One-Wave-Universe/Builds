@@ -11,7 +11,7 @@
       "error": "Gemini call failed: HTTP 429 from generativelanguage.googleapis.com; HTTP 429 from generativelanguage.googleapis.com; HTTP 404 from generativelanguage.googleapis.com"
     },
     "GPT": {
-      "status": "COMPLETE",
+      "status": "REFERENCING",
       "cycles": 1
     },
     "DEEPSEEK": {
