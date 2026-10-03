@@ -30,7 +30,7 @@ def request_json(url, body=None, headers=None, method=None):
             err=json.loads(e.read(32000)).get("error",{})
             candidate=err.get("code") if isinstance(err,dict) else ""
             if isinstance(candidate,str) and re.fullmatch(r"[a-zA-Z0-9_-]{1,80}",candidate): code=" ("+candidate+")"
-            safe={"Provider usage limit reached","DeepSeek output incomplete","No visible DeepSeek answer","System instruction too long","Metadata purpose required","Metadata exceeds byte budget; no partial data returned","Unregistered metadata URL","JSONDecodeError","TimeoutError","URLError","Grok authenticated route not configured","Claude client failed; check local sign-in and plan limits","CLAUDE client failed; check local sign-in and plan limits"}
+            safe={"GPT client failed; check local sign-in and plan limits","GPT turn incomplete","GPT returned no visible answer","Prompt must be 1..240000 characters","Request size outside limit","Unknown actor","GPT client not installed","Provider usage limit reached","DeepSeek output incomplete","No visible DeepSeek answer","System instruction too long","Metadata purpose required","Metadata exceeds byte budget; no partial data returned","Unregistered metadata URL","JSONDecodeError","TimeoutError","URLError","Grok authenticated route not configured","Claude client failed; check local sign-in and plan limits","CLAUDE client failed; check local sign-in and plan limits"}
             if isinstance(err,str) and err in safe:code=" ("+err+")"
         except Exception: pass
         raise GateError("HTTP %s from %s%s" % (e.code, urllib.parse.urlparse(url).netloc,code)) from None
