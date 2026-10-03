@@ -1,0 +1,15 @@
+{
+  "id": "gpt-deepseek-council-transport-20261003-02",
+  "repository": "One-Wave-Universe/Builds",
+  "question": "Inspect Builds/digital-cell/l0_cell.py. Name its defined functions and methods, their inputs, and return values. Fetch the file once during synthesis, reuse the exact source, and cite its path. Report source inspection only; no tests executed.",
+  "actors": [
+    "GPT",
+    "DEEPSEEK"
+  ],
+  "lead_actor": "GPT",
+  "workflow": "answer_then_council",
+  "reference_mode": "indexed",
+  "internal_dialogue": true,
+  "max_model_calls": 128,
+  "metadata_queries": []
+}
