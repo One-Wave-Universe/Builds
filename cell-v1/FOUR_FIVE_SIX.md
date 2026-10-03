@@ -83,7 +83,7 @@ On the iron, six is also the hex: six wedges, six windings, tip-to-tip inside, b
 - 4/4 = views up / actions down.
 - 5/5 = state / scale.
 - 6 = nested recursion, and the hex that carries it.
-- Seven bands are strength, not an eighth structure.
+- 7 = the two systems combined. Six sensor cells plus one motor-control cell. See `cell-v1/SEVEN.md`. Not seven bands.
 - Lattice DC returns the action into the shared hysteresis layer. The view that comes back is what the next loop calls old.
 
 Same iron. No interpreter beside it.
