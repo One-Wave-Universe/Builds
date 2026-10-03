@@ -63,7 +63,8 @@
         "One-Wave-Universe/Builds": "b0e8cb7e8779ac19e327b86d2b9ef9341cec57a9",
         "One-Wave-Universe/One-Wave-Science": "9dc26998d6bc901299cae55748df7efd79a3c887"
       },
-      "metadata_sources": []
+      "metadata_sources": [],
+      "model_calls": 1
     }
   },
   "turns": [
