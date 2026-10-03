@@ -13,7 +13,7 @@
     "GPT": {
       "status": "READING",
       "cycles": 0,
-      "segments_read": 4,
+      "segments_read": 5,
       "segments_total": 5,
       "file_count": 197,
       "metadata_sources": [
@@ -26,7 +26,7 @@
           "sha256": "4011d08ba2945bbfe7f243b7a64fc3219d8910af76969eb266e65573ffe084a6"
         }
       ],
-      "model_calls": 4
+      "model_calls": 5
     },
     "DEEPSEEK": {
       "status": "HOLD",
