@@ -46,12 +46,12 @@ def packet(repo,question,actors,cycles,metadata,refs):
     if not actors or len(set(actors))!=len(actors) or any(a not in ACTORS for a in actors):raise ValueError('Choose valid AI slots')
     if not 1<=cycles<=6:raise ValueError('Cycles must be 1–6')
     queries=[{'url':'https://opendata.cern.ch/api/records/?q=CMS&size=1','purpose':'Read CERN source metadata and preserve provenance.'},{'url':'https://gwosc.org/api/v2/runs','purpose':'Read GWOSC observing-run metadata and preserve provenance.'}] if metadata else []
-    return {'id':'native-'+str(uuid.uuid4()),'repository':OWNER+'/'+repo,'question':question,'actors':actors,'cycles':cycles,'max_model_calls':256,'metadata_queries':queries,'lens_reference':[{k:r[k] for k in ('repository','branch','commit')} for r in refs]}
+    return {'id':'native-'+str(uuid.uuid4()),'repository':OWNER+'/'+repo,'question':question,'actors':actors,'workflow':'answer_then_council','lead_actor':actors[0],'reference_mode':'indexed','internal_dialogue':True,'max_model_calls':128,'metadata_queries':queries,'lens_reference':[{k:r[k] for k in ('repository','branch','commit')} for r in refs]}
 
 def prepare(repo,question,actors,cycles,metadata):
     # Validate before any source request, then establish fresh references.
     packet(repo,question,actors,cycles,metadata,[])
-    refs=[reference(r) for r in dict.fromkeys((repo,'Bridge-Comand'))]
+    refs=[reference(r) for r in dict.fromkeys((repo,'Builds','One-Wave-Science','Bridge-Comand'))]
     p=packet(repo,question,actors,cycles,metadata,refs)
     query=urllib.parse.urlencode({'filename':'repo-lens/requests/'+p['id']+'.json','value':json.dumps(p,indent=2),'message':'Repo Lens native: '+p['id']})
     return {'packet':p,'context':refs,'submission_url':'https://github.com/'+OWNER+'/Builds/new/'+BRANCH+'?'+query}
@@ -67,12 +67,14 @@ def display(x):
     for actor,v in x.get('actors',{}).items():
         line=f"{actor}: {v.get('display_status',v.get('status'))} · {v.get('cycles',0)} cycles"
         if 'segments_total' in v:line+=f" · {v.get('segments_read',0)}/{v['segments_total']} pieces"
+        if v.get('activity'):line+=' · '+v['activity']
         lines.extend([line,v.get('error','')])
     for t in x.get('turns',[]):
         r=t.get('reference',{})
         lines.extend(['',f"{t['actor']} · cycle {t['cycle']} · {t['status']}",t.get('answer',''),f"{r.get('repository')} @ {r.get('commit')}",f"{r.get('file_count',0)} files · {t.get('segments_read',0)} pieces read",r.get('coverage','')])
         if t.get('peer_cycles_seen'):lines.append('Actual peers read: '+', '.join(f"{p['actor']} {p['cycle']}" for p in t['peer_cycles_seen']))
         for source in t.get('metadata_sources',[]):lines.append(f"{source['provider']} · {source['bytes']} bytes · SHA-256 {source['sha256']}")
+    if x.get('consensus'):lines.extend(['','Council decision: '+x['consensus']['status'],'Missing votes: '+', '.join(x['consensus'].get('missing_votes',[]))])
     lines.extend(['',x.get('stop_reason','Only real completed receipts count.')]);return '\n'.join(lines)
 
 class App:
@@ -86,19 +88,18 @@ class App:
         except (OSError,ValueError):settings={}
         frame=ttk.Frame(root,padding=20);frame.pack(fill='both',expand=True)
         ttk.Label(frame,text='REPO LENS · Linux desktop',font=('sans',21,'bold')).pack(anchor='w')
-        ttk.Label(frame,text='GitHub reference · independent AI slots · no repository copies, timers or automatic retries').pack(anchor='w',pady=10)
+        ttk.Label(frame,text='Ask one AI · it references GitHub, then hands its answer to the council').pack(anchor='w',pady=10)
         tabs=ttk.Notebook(frame);tabs.pack(fill='both',expand=True)
         form=ttk.Frame(tabs,padding=16);output=ttk.Frame(tabs,padding=16);proof=ttk.Frame(tabs,padding=16)
         tabs.add(form,text='Question');tabs.add(output,text='Results');tabs.add(proof,text='Source and metadata')
         self.repo=tk.StringVar(value=settings.get('repo','Builds'));ttk.Label(form,text='Repository · full backend scan').pack(anchor='w')
         ttk.Combobox(form,textvariable=self.repo,values=REPOS,state='readonly').pack(fill='x',pady=8)
         self.question=tk.Text(form,height=7,wrap='word',background='#203039',foreground='#ffffff',insertbackground='white');self.question.pack(fill='both',expand=True);self.question.insert('1.0',settings.get('question',''))
-        slotbar=ttk.Frame(form);slotbar.pack(fill='x',pady=12);self.slots={}
-        for actor in ACTORS:
-            value=tk.BooleanVar(value=settings.get('actors',{}).get(actor,actor=='GPT'));self.slots[actor]=value;ttk.Checkbutton(slotbar,text=actor,variable=value).pack(side='left',padx=8)
-        options=ttk.Frame(form);options.pack(fill='x')
-        self.cycles=tk.StringVar(value=str(settings.get('cycles',1)));ttk.Label(options,text='Cycles per AI').pack(side='left');ttk.Spinbox(options,from_=1,to=6,textvariable=self.cycles,width=5).pack(side='left',padx=12)
-        self.metadata=tk.BooleanVar(value=settings.get('metadata',True));ttk.Checkbutton(options,text='Shared Jetson CERN + LIGO metadata',variable=self.metadata).pack(side='left')
+        ttk.Label(form,text='Ask this AI first').pack(anchor='w',pady=(12,0))
+        self.lead=tk.StringVar(value=settings.get('lead','GPT'));ttk.Combobox(form,textvariable=self.lead,values=ACTORS,state='readonly').pack(fill='x',pady=8)
+        self.slots={actor:tk.BooleanVar(value=True) for actor in ACTORS}
+        self.cycles=tk.StringVar(value='1');self.metadata=tk.BooleanVar(value=False)
+        ttk.Label(form,text='The lead answers first. Council members review when finished.\nMetadata is available when needed. Limited members park; no timers.').pack(anchor='w',pady=8)
         self.prepare_button=ttk.Button(form,text='Reference and prepare',command=self.prepare);self.prepare_button.pack(fill='x',pady=12)
         ttk.Button(form,text='Submit prepared question on GitHub',command=lambda:self.open(self.submission)).pack(fill='x')
         ttk.Label(form,text='Questions and answers are public. GitHub opens its signed-in commit screen.\nPreparing alone does not start a run. Claude has no shell or filesystem tools through this app.').pack(anchor='w',pady=10)
@@ -133,14 +134,14 @@ class App:
     def prepare(self):
         try:n=int(self.cycles.get())
         except ValueError:self.notice.set('Cycles must be 1–6');return
-        args=(self.repo.get(),self.question.get('1.0','end'),[a for a,v in self.slots.items() if v.get()],n,self.metadata.get());self.task('prepare',lambda:prepare(*args))
+        args=(self.repo.get(),self.question.get('1.0','end'),[self.lead.get()]+[a for a in ACTORS if a!=self.lead.get()],1,False);self.task('prepare',lambda:prepare(*args))
     def read(self):id=self.id.get().strip();self.task('read',lambda:result(id))
     def open(self,url):
         if not url:self.notice.set('No prepared submission or execution link yet.');return
         if not url.startswith('https://github.com/One-Wave-Universe/'):self.notice.set('Unregistered link');return
         webbrowser.open(url)
     def close(self):
-        settings={'repo':self.repo.get(),'question':self.question.get('1.0','end').strip(),'request':self.id.get(),'cycles':self.cycles.get(),'metadata':self.metadata.get(),'actors':{a:v.get() for a,v in self.slots.items()}}
+        settings={'repo':self.repo.get(),'lead':self.lead.get(),'question':self.question.get('1.0','end').strip(),'request':self.id.get(),'cycles':self.cycles.get(),'metadata':self.metadata.get(),'actors':{a:v.get() for a,v in self.slots.items()}}
         try:SETTINGS.parent.mkdir(parents=True,exist_ok=True);SETTINGS.write_text(json.dumps(settings));SETTINGS.chmod(0o600)
         except OSError:pass
         self.root.destroy()

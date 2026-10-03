@@ -53,14 +53,14 @@ final class LensClient {
         if(actors.isEmpty()||!Arrays.asList(ACTORS).containsAll(actors)||new HashSet<>(actors).size()!=actors.size())throw new IOException("Choose valid AI slots");
         if(cycles<1||cycles>6)throw new IOException("Cycles must be 1–6");
         JSONArray refs=new JSONArray(), context=new JSONArray();
-        for(String name:new LinkedHashSet<>(Arrays.asList(repo,"Bridge-Comand"))) {
+        for(String name:new LinkedHashSet<>(Arrays.asList(repo,"Builds","One-Wave-Science","Bridge-Comand"))) {
             JSONObject r=reference(name);context.put(r);
             refs.put(new JSONObject().put("repository",r.getString("repository")).put("branch",r.getString("branch")).put("commit",r.getString("commit")));
         }
         String id="native-"+UUID.randomUUID();
         JSONArray queries=new JSONArray();
         if(metadata){queries.put(new JSONObject().put("url","https://opendata.cern.ch/api/records/?q=CMS&size=1").put("purpose","Read CERN source metadata and preserve provenance."));queries.put(new JSONObject().put("url","https://gwosc.org/api/v2/runs").put("purpose","Read GWOSC observing-run metadata and preserve provenance."));}
-        JSONObject packet=new JSONObject().put("id",id).put("repository",OWNER+"/"+repo).put("question",question).put("actors",new JSONArray(actors)).put("cycles",cycles).put("max_model_calls",256).put("metadata_queries",queries).put("lens_reference",refs);
+        JSONObject packet=new JSONObject().put("id",id).put("repository",OWNER+"/"+repo).put("question",question).put("actors",new JSONArray(actors)).put("workflow","answer_then_council").put("lead_actor",actors.get(0)).put("reference_mode","indexed").put("internal_dialogue",true).put("max_model_calls",128).put("metadata_queries",queries).put("lens_reference",refs);
         String url="https://github.com/"+OWNER+"/Builds/new/"+BRANCH+"?filename="+encode("repo-lens/requests/"+id+".json")+"&value="+encode(packet.toString(2))+"&message="+encode("Repo Lens native: "+id);
         return new JSONObject().put("packet",packet).put("context",context).put("submission_url",url);
     }
