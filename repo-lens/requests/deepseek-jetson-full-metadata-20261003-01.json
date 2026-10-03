@@ -1,0 +1,20 @@
+{
+  "id": "deepseek-jetson-full-metadata-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "question": "Verify the current build state using every repository file. Identify one implemented artifact and one remaining unproven gap, citing actual inspected file paths. Also state what the attached CERN CMS and GWOSC observing-run metadata describe; do not call metadata retrieval proof of One-Wave. End with your next useful verification step.",
+  "actors": [
+    "DEEPSEEK"
+  ],
+  "cycles": 1,
+  "max_model_calls": 64,
+  "metadata_queries": [
+    {
+      "url": "https://opendata.cern.ch/api/records/?q=CMS&size=1",
+      "purpose": "Inspect provider-native CERN CMS record metadata and provenance, without interpreting it as One-Wave proof."
+    },
+    {
+      "url": "https://gwosc.org/api/v2/runs",
+      "purpose": "Inspect GWOSC observing-run metadata and provenance."
+    }
+  ]
+}
