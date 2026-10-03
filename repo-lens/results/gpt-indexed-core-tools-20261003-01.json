@@ -3,7 +3,7 @@
   "id": "gpt-indexed-core-tools-20261003-01",
   "question": "Use the indexed full-repository check. Before answering, use get_repository_file to read One-Wave-Universe/Builds digital-cell/l0_cell.py. Use query_metadata to retrieve https://gwosc.org/api/v2/runs with an explicit purpose, and get_peer_responses to read actual Claude/GPT/Gemini replies. Cite the exact fetched source path, identify one implemented software artifact and one unproven physical-memory gap using the supplied canonical instructions, correct the strongest unsupported peer claim, and identify the available Bridge-Comand terminal route. Keep the final answer under 1800 characters. Do not claim physical proof or tests you did not execute. Do not clone repositories.",
   "repository": "One-Wave-Universe/Builds",
-  "status": "RUNNING",
+  "status": "HOLD",
   "actors": {
     "GPT": {
       "status": "HOLD",
@@ -117,5 +117,6 @@
     }
   },
   "turns": [],
-  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37137922990"
+  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37137922990",
+  "stop_reason": "Requested cycle limits reached for healthy slots. Blocked slots did not stop other workers."
 }
