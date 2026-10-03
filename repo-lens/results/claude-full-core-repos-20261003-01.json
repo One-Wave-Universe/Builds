@@ -6,32 +6,9 @@
   "status": "RUNNING",
   "actors": {
     "CLAUDE": {
-      "status": "READING",
+      "status": "HOLD",
       "cycles": 0,
-      "segments_read": 25,
-      "segments_total": 207,
-      "file_count": 1950,
-      "repository_file_counts": {
-        "One-Wave-Universe/Bridge-Comand": 55,
-        "One-Wave-Universe/Builds": 197,
-        "One-Wave-Universe/One-Wave-Science": 1698
-      },
-      "repository_commits": {
-        "One-Wave-Universe/Bridge-Comand": "f46375f3dbedccc6f6097b93ca3ff21d5ef194c3",
-        "One-Wave-Universe/Builds": "b0e8cb7e8779ac19e327b86d2b9ef9341cec57a9",
-        "One-Wave-Universe/One-Wave-Science": "9dc26998d6bc901299cae55748df7efd79a3c887"
-      },
-      "metadata_sources": [
-        {
-          "provider": "CERN Open Data",
-          "sha256": "cae34f8ff4e408903a64c624e35696c6d409d9314986f550f348bb4282404437"
-        },
-        {
-          "provider": "GWOSC/LIGO/Virgo/KAGRA",
-          "sha256": "4011d08ba2945bbfe7f243b7a64fc3219d8910af76969eb266e65573ffe084a6"
-        }
-      ],
-      "model_calls": 25
+      "error": "HTTP 400 from hopkins-vegas-careers-send.trycloudflare.com"
     }
   },
   "turns": [],
