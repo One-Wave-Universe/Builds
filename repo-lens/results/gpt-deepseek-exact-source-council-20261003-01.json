@@ -45,7 +45,7 @@
       "display_status": "COMPLETE"
     },
     "DEEPSEEK": {
-      "status": "READING",
+      "status": "REREFERENCING",
       "cycles": 0,
       "activity": "Council review",
       "reference_mode": "indexed",
@@ -64,7 +64,14 @@
         "One-Wave-Universe/One-Wave-Science": "9dc26998d6bc901299cae55748df7efd79a3c887"
       },
       "metadata_sources": [],
-      "model_calls": 3
+      "model_calls": 3,
+      "rereference_events": [
+        {
+          "reason": "confusion",
+          "detail": "Segment 3/65 supplies only a file index for One-Wave-Universe/Builds (commit b0e8cb7e); it does not include Builds/digital-cell/l0_cell.py, and no path or blob for that file appears in the supplied listing. The lead answer claims a retained, hash-verified source_text and commit b0e8cb7e, but the current segment provides no body, hash, or path evidence for l0_cell.py. The target body must be fetched via get_repository_file during synthesis before functions, inputs, or return values can be verified.",
+          "restart": true
+        }
+      ]
     }
   },
   "turns": [
