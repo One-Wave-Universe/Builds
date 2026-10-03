@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Repo Lens
+Comment=Repository reference and independent AI results
+Exec=repo-lens
+Terminal=false
+Categories=Development;

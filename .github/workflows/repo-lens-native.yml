@@ -1,0 +1,76 @@
+name: Build native Repo Lens
+on:
+  push:
+    branches: [feature/repo-lens-native-20261003]
+    paths: ['native-repo-lens/**', '.github/workflows/repo-lens-native.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Build actual APK and check Android lint
+        working-directory: native-repo-lens/android
+        run: gradle --no-daemon :app:assembleDebug :app:lintDebug
+      - name: Inspect installable package
+        run: |
+          mkdir -p native-artifacts
+          cp native-repo-lens/android/app/build/outputs/apk/debug/app-debug.apk native-artifacts/Repo-Lens-Android.apk
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose native-artifacts/Repo-Lens-Android.apk
+          sha256sum native-artifacts/Repo-Lens-Android.apk > native-artifacts/Android-SHA256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Repo-Lens-Android
+          path: native-artifacts/
+          if-no-files-found: error
+  linux:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare remote build tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y python3-tk python3-venv xvfb
+          /usr/bin/python3 -m venv /tmp/repo-lens-build
+          /tmp/repo-lens-build/bin/pip install pyinstaller==6.11.1
+      - name: Verify native contracts and compile standalone Linux program
+        run: |
+          /usr/bin/python3 -m unittest discover -s native-repo-lens/tests -v
+          /tmp/repo-lens-build/bin/pyinstaller --clean --noconfirm --onefile --windowed --name repo-lens native-repo-lens/linux/lens.py
+          xvfb-run -a dist/repo-lens --smoke
+      - name: Package native desktop installer
+        run: |
+          mkdir -p native-artifacts package/DEBIAN package/usr/bin package/usr/share/applications
+          cp dist/repo-lens package/usr/bin/repo-lens
+          chmod 755 package/usr/bin/repo-lens
+          cp native-repo-lens/linux/repo-lens.desktop package/usr/share/applications/
+          cat > package/DEBIAN/control <<'CONTROL'
+          Package: repo-lens
+          Version: 0.1.0
+          Section: devel
+          Priority: optional
+          Architecture: amd64
+          Maintainer: One-Wave Repo Lens
+          Depends: libc6 (>= 2.35), libx11-6, libxext6, libxft2, fontconfig
+          Description: Native GitHub reference and independent AI result client
+          CONTROL
+          dpkg-deb --build --root-owner-group package native-artifacts/Repo-Lens-Linux-amd64.deb
+          cp dist/repo-lens native-artifacts/repo-lens
+          cp native-repo-lens/README.md native-artifacts/README.md
+          sha256sum native-artifacts/repo-lens native-artifacts/Repo-Lens-Linux-amd64.deb > native-artifacts/Linux-SHA256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Repo-Lens-Linux
+          path: native-artifacts/
+          if-no-files-found: error
