@@ -1,0 +1,15 @@
+{
+  "schema": "repo-lens/v1",
+  "id": "deepseek-jetson-full-metadata-20261003-01",
+  "question": "Verify the current build state using every repository file. Identify one implemented artifact and one remaining unproven gap, citing actual inspected file paths. Also state what the attached CERN CMS and GWOSC observing-run metadata describe; do not call metadata retrieval proof of One-Wave. End with your next useful verification step.",
+  "repository": "One-Wave-Universe/Builds",
+  "status": "RUNNING",
+  "actors": {
+    "DEEPSEEK": {
+      "status": "QUEUED",
+      "cycles": 0
+    }
+  },
+  "turns": [],
+  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37121987175"
+}
