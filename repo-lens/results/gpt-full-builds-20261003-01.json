@@ -6,8 +6,9 @@
   "status": "RUNNING",
   "actors": {
     "GPT": {
-      "status": "REFERENCING",
-      "cycles": 0
+      "status": "HOLD",
+      "cycles": 0,
+      "error": "HTTP 429 from api.openai.com (credit_balance_exhausted)"
     }
   },
   "turns": [],
