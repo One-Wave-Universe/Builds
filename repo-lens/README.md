@@ -1,0 +1,11 @@
+# Repo Lens — remote Gemini connection
+
+An isolated new route, leaving Brain Buddy and main untouched. Model keys stay in GitHub Actions secrets. Repository references use GitHub HTTP reads, with no repository clone on a laptop. The workflow checks out only its own runner code on GitHub's disposable runner.
+
+Each logical cycle resolves main, reads the complete tree, fetches every tracked blob, verifies each Git blob hash, reads every UTF-8 text segment through the provider, checks all open issues and pull requests, then synthesizes a cited response. Binary bytes are verified and listed; their semantics are explicitly unverified. Truncated trees, submodules, unresolved LFS, unreadable files, stale commits, missing citations and insufficient call budgets stop the cycle. No excerpts are silently selected. Metadata is checked but text inside the open issues is not implementation authority.
+
+Put one JSON request in `repo-lens/requests/<id>.json` on the Repo Lens feature branch. Fields: id, repository (one of the four owned repositories), question, actors `["GEMINI"]`, cycles 1..6, max_model_calls 1..256 (per cycle). All questions and answers committed to this public repository are public. Results update the single `repo-lens/results/<id>.json` file. The workflow exits unsuccessfully for HOLD; a green run means the requested cycles completed, not scientific correctness.
+
+The app can prepare a GitHub new-file submission with the complete request prefilled. The owner commits it on GitHub. A connected GitHub agent can instead submit it using its authorized create-file tool. The Site does not possess a GitHub write token or copy model keys. Discovery must not pretend to submit a job.
+
+Large repositories may require many model calls. A budget smaller than the full scan's requirement causes HOLD before provider calls, and never partial approval. The full text is read in segments; the final answer uses the findings from every segment. A source citation is a structural requirement, not a proof that the answer is correct.

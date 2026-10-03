@@ -1,0 +1,42 @@
+name: Repo Lens full reference
+on:
+  push:
+    branches: ['feature/repo-lens-*']
+    paths: ['repo-lens/requests/**']
+permissions:
+  contents: write
+jobs:
+  reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    concurrency:
+      group: repo-lens-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Verify full reference gates
+        run: python3 -m unittest discover -s repo-lens -p test_runner.py -v
+      - name: Select exactly one new request
+        id: request
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os, subprocess
+          paths=subprocess.check_output(['git','diff','--name-only','--diff-filter=A','HEAD^','HEAD','--','repo-lens/requests/'],text=True).splitlines()
+          assert len(paths)==1, 'Submit exactly one new request per commit'
+          assert paths[0].endswith('.json')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('path='+paths[0]+'\n')
+          PY
+      - name: Run Gemini full repository cycle
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          REQUEST_PATH: ${{ steps.request.outputs.path }}
+        run: python3 repo-lens/runner.py "$REQUEST_PATH"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: repo-lens-result
+          path: repo-lens-result.json
