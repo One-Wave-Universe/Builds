@@ -1,36 +1,53 @@
-# Seven is two systems combined
+# Seven is the two systems combined
 
-7 is not seven bands. The band table is strength windows on an axis. It does not get to be the number seven.
+Figured from the cell, not from the band table.
 
-Seven is what you get when the two cell systems are combined.
+The two systems are FIELD and VOID. They are already the two choices, the two plain round body toroids, the two opposed flowers.
+
+Seven is what those two systems are when they are combined. Not a seventh choice. Not seven voltage bands.
+
+## Same seven, two counts
+
+Interface count, one cell:
 
 ```text
-system 1  six sensor cells, round figure-8 nuclei, the hex
-system 2  one motor-control cell, square figure-8 nucleus, the middle
-combined  one flower = 7
+FIELD system   TA_F  TB_F  TC_F     3
+VOID system    TA_V  TB_V  TC_V     3
+combined at    CENTER                1
+                              total  7
 ```
 
-Not one cell copied seven times. Two builds. One lattice.
+A, B, C are not shorted on either toroid. The seventh seat is the shared CENTER relation that lets the two systems be one cell. CENTER is not V_BUS.
 
-The ring keeps round figure-8 nuclei. The middle keeps the square figure-8. Faces meet base-to-base. Tips stay inside their own cell. Shared hysteresis layer under the flower is the muscle. Lattice DC is the reinjection loop. Helmholtz, if present, is only the weather.
+Spatial count, one flower:
 
-## Not the meaning of 7
+```text
+ring system     6 sensor cells, round figure-8 nuclei
+middle system   1 motor-control cell, square figure-8 nucleus
+combined        7
+```
 
-- Not the 0–100 expression/compression windows.
-- Not a seventh move.
-- Not a third choice beside FIELD and VOID.
-- Not six nested steps plus a spare.
-- Not two flowers. Two flowers are two sevens, opposite polarity, upper A+ meeting lower A−.
+Same structure. Six around, one in the middle. Two builds, not one cell copied seven times.
 
-The windows can stay as how hard a differential leans. Calling them "the 7" is the mash.
+Two flowers are two of these sevens, opposite polarity. Upper A+ meets lower A−. That is not an eighth. That is the other side.
+
+## What the band table actually was
+
+`CELL.md` called expression/compression a seven-band scale. That stole the number.
+
+Strength on an axis is still real: lean can be moderate, strong, or extreme on either side of a live middle, with gaps so it does not chatter. That is depth. It is not the 7.
+
+The ±1 / ±2 / ±3 windows stay a bench readout if a meter needs them. They do not name the architecture.
 
 ## Count
 
 ```text
-2 choices     FIELD / VOID
-3 moves       A / B / C
-4 and 4       views up / actions down
-5 and 5       state / scale
-6             nested recursion, and the hex
-7             the two systems combined: 6 + 1
+2   FIELD / VOID, the two systems
+3   A / B / C, the moves, the lean
+4   views up, 4 actions down
+5   states, 5 scale
+6   nested recursion, and the hex
+7   the two systems combined: 3+3+1 on the body, 6+1 in the flower
 ```
+
+Lattice DC returns through the combined body. The shared hysteresis layer is the muscle under that seven. Helmholtz is weather over it, not the seventh seat.
