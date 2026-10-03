@@ -45,9 +45,9 @@
       "display_status": "COMPLETE"
     },
     "DEEPSEEK": {
-      "status": "QUEUED",
+      "status": "REFERENCING",
       "cycles": 0,
-      "activity": "Waiting for lead answer"
+      "activity": "Council review"
     }
   },
   "turns": [
