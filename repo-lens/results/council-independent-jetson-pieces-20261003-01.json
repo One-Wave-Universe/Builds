@@ -8,7 +8,7 @@
     "GEMINI": {
       "status": "READING",
       "cycles": 0,
-      "segments_read": 0,
+      "segments_read": 1,
       "segments_total": 5,
       "file_count": 197,
       "metadata_sources": [
@@ -20,7 +20,8 @@
           "provider": "GWOSC/LIGO/Virgo/KAGRA",
           "sha256": "4011d08ba2945bbfe7f243b7a64fc3219d8910af76969eb266e65573ffe084a6"
         }
-      ]
+      ],
+      "model_calls": 1
     },
     "GPT": {
       "status": "READING",
