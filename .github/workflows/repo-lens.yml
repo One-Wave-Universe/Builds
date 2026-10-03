@@ -9,7 +9,7 @@ permissions:
 jobs:
   reference:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 180
     concurrency:
       group: repo-lens-${{ github.ref }}
       cancel-in-progress: false

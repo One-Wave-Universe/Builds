@@ -67,7 +67,7 @@ class Gates(unittest.TestCase):
     def test_metadata_is_read_by_every_requested_actor(self):
         scan=({'commit':'s'},[{'path':'all.md','git_blob':'s','text':'hello'}],{})
         x=self.req();x['metadata_queries']=[{'url':'https://gwosc.org/api/v2/runs','purpose':'test metadata'}]
-        source={'source_record':{'retained_field':123},'sha256':'hash','worker':'Jetson'}
+        source={'provider':'GWOSC','source_record':{'retained_field':123},'sha256':'hash','worker':'Jetson'}
         for actor in ['GEMINI','GPT','DEEPSEEK']:
             with patch.object(runner,'scan',return_value=scan),patch.object(runner,'jetson',return_value=source),patch.object(runner,'invoke',return_value={'answer':'all.md','model':'m'}) as model,patch.object(runner,'head',return_value='s'):
                 turn=runner.cycle(x,actor,[])
