@@ -9,9 +9,9 @@
   "phase": "ANSWERING",
   "actors": {
     "GEMINI": {
-      "status": "READING",
+      "status": "HOLD",
       "cycles": 0,
-      "activity": "Lead answer",
+      "activity": "Parked",
       "reference_mode": "indexed",
       "reference_segments_without_index": 207,
       "segments_read": 3,
@@ -28,7 +28,10 @@
         "One-Wave-Universe/One-Wave-Science": "9dc26998d6bc901299cae55748df7efd79a3c887"
       },
       "metadata_sources": [],
-      "model_calls": 3
+      "model_calls": 3,
+      "display_status": "Out to lunch",
+      "pause_reason": "usage_limit",
+      "error": "HTTP 429 from generativelanguage.googleapis.com"
     },
     "GPT": {
       "status": "QUEUED",
