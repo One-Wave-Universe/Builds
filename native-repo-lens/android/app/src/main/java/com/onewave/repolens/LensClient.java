@@ -70,6 +70,11 @@ final class LensClient {
         if(!x.optString("id").equals(id)||!(x.optString("schema").equals("repo-lens/v1")||x.optString("schema").equals("repo-lens/v2")))throw new IOException("Receipt identity mismatch");
         return x;
     }
+    static JSONObject latestResult() throws Exception {
+        JSONObject pointer=new JSONObject(get("https://raw.githubusercontent.com/"+OWNER+"/Builds/"+BRANCH+"/repo-lens/council-current.json"));
+        if(!pointer.optString("schema").equals("repo-lens/council-current-v1"))throw new IOException("Council pointer identity mismatch");
+        return result(pointer.optString("id"));
+    }
     static String display(JSONObject x) throws Exception {
         StringBuilder s=new StringBuilder(x.getString("id")+"\n"+x.getString("status")+"\n\n");
         JSONObject slots=x.optJSONObject("actors");

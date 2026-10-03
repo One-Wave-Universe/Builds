@@ -17,6 +17,15 @@ class Contracts(unittest.TestCase):
             for args in [('Other','q',['GPT'],1,True),('Builds','q',['CLAUDE','CLAUDE'],1,True),('Builds','q',['GPT'],0,True)]:
                 with self.assertRaises(ValueError):lens.prepare(*args)
             r.assert_not_called()
+    def test_latest_council_ignores_untrusted_pointer_url(self):
+        pointer={'schema':'repo-lens/council-current-v1','id':'current','result_url':'http://127.0.0.1/private'}
+        with patch.object(lens,'get',side_effect=[json.dumps(pointer),json.dumps({'id':'current','schema':'repo-lens/v2'})]) as read:
+            self.assertEqual(lens.latest_result()['id'],'current')
+            self.assertNotIn('127.0.0.1',read.call_args.args[0])
+    def test_latest_council_rejects_path_escape(self):
+        with patch.object(lens,'get',return_value=json.dumps({'schema':'repo-lens/council-current-v1','id':'../private'})) as read:
+            with self.assertRaises(ValueError):lens.latest_result()
+            self.assertEqual(read.call_count,1)
     def test_wrong_receipt_is_rejected(self):
         with patch.object(lens,'get',return_value=json.dumps({'id':'other','schema':'repo-lens/v1'})):
             with self.assertRaisesRegex(ValueError,'identity'):lens.result('request')

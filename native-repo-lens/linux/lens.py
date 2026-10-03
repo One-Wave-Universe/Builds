@@ -62,6 +62,11 @@ def result(id):
     if x.get('id')!=id or x.get('schema') not in {'repo-lens/v1','repo-lens/v2'}:raise ValueError('Receipt identity mismatch')
     return x
 
+def latest_result():
+    pointer=json.loads(get('https://raw.githubusercontent.com/'+OWNER+'/Builds/'+BRANCH+'/repo-lens/council-current.json'))
+    if pointer.get('schema')!='repo-lens/council-current-v1':raise ValueError('Council pointer identity mismatch')
+    return result(pointer.get('id',''))
+
 def display(x):
     lines=[x['id'],x['status'],'']
     for actor,v in x.get('actors',{}).items():
@@ -104,7 +109,7 @@ class App:
         ttk.Button(form,text='Submit prepared question on GitHub',command=lambda:self.open(self.submission)).pack(fill='x')
         ttk.Label(form,text='Questions and answers are public. GitHub opens its signed-in commit screen.\nPreparing alone does not start a run. Claude has no shell or filesystem tools through this app.').pack(anchor='w',pady=10)
         self.id=tk.StringVar(value=settings.get('request',DEFAULT_ID));ttk.Entry(output,textvariable=self.id).pack(fill='x')
-        self.read_button=ttk.Button(output,text='Read current result once',command=self.read);self.read_button.pack(fill='x',pady=8)
+        self.read_button=ttk.Button(output,text='Read latest council once',command=self.read);self.read_button.pack(fill='x',pady=8)
         ttk.Button(output,text='Open execution on GitHub',command=lambda:self.open(self.run_url)).pack(fill='x',pady=4)
         self.text=self.readonly(output);self.proof=self.readonly(proof)
         self.notice=tk.StringVar(value='Ready. Every network action is explicit; no scheduled polling.');ttk.Label(frame,textvariable=self.notice,wraplength=1000).pack(fill='x',pady=(12,0))
@@ -130,12 +135,12 @@ class App:
         if error:self.notice.set(error);return
         self.evidence=x;self.set_text(self.proof,json.dumps(x,indent=2,ensure_ascii=False))
         if kind=='prepare':self.id.set(x['packet']['id']);self.submission=x['submission_url'];self.notice.set('Reference complete for preparation. Submit on GitHub to start the full scan.')
-        else:self.run_url=x.get('run_url','');self.set_text(self.text,display(x));self.tabs.select(1);self.notice.set('Receipt read. No automatic polling.')
+        else:self.id.set(x['id']);self.run_url=x.get('run_url','');self.set_text(self.text,display(x));self.tabs.select(1);self.notice.set('Receipt read. No automatic polling.')
     def prepare(self):
         try:n=int(self.cycles.get())
         except ValueError:self.notice.set('Cycles must be 1–6');return
         args=(self.repo.get(),self.question.get('1.0','end'),[self.lead.get()]+[a for a in ACTORS if a!=self.lead.get()],1,False);self.task('prepare',lambda:prepare(*args))
-    def read(self):id=self.id.get().strip();self.task('read',lambda:result(id))
+    def read(self):self.task('read',latest_result)
     def open(self,url):
         if not url:self.notice.set('No prepared submission or execution link yet.');return
         if not url.startswith('https://github.com/One-Wave-Universe/'):self.notice.set('Unregistered link');return
