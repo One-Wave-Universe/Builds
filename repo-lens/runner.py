@@ -185,14 +185,14 @@ def cycle(req, actor, history):
     evidence,files,metadata=scan(req["repository"])
     sources=[jetson('/metadata',q) for q in req.get('metadata_queries',[])]
     metadata['Jetson_provider_metadata']=sources
-    chunks=chunks_for(files,metadata,6000 if actor=='DEEPSEEK' else CHUNK)
+    chunks=chunks_for(files,metadata,24000 if actor=='DEEPSEEK' else CHUNK)
     needed=len(chunks)+1
     if needed>req.get("max_model_calls",16): raise GateError("Full repository requires %d calls per cycle; request budget %d. Nothing was omitted."%(needed,req.get("max_model_calls",16)))
     findings=[]; calls=[]
     progress=getattr(history,'progress',lambda *args:None)
     def ask(prompt,stage):
         if len(calls)>=req.get('max_model_calls',16):raise GateError('Model call budget reached before complete synthesis; no partial approval')
-        if actor=='DEEPSEEK' and len(SYSTEM)+len(prompt)>10000:raise GateError('DeepSeek web packet exceeds measured input limit; no content silently omitted')
+        if actor=='DEEPSEEK' and len(SYSTEM)+len(prompt)>32000:raise GateError('DeepSeek web packet exceeds measured input limit; no content silently omitted')
         receipt=invoke(actor,SYSTEM,prompt)
         calls.append({**{k:v for k,v in receipt.items() if k!='answer'},'stage':stage})
         return receipt
