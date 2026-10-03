@@ -6,7 +6,7 @@
   "status": "RUNNING",
   "actors": {
     "GPT": {
-      "status": "READING",
+      "status": "HOLD",
       "cycles": 0,
       "reference_mode": "indexed",
       "reference_segments_without_index": 207,
@@ -112,7 +112,8 @@
           "name": "get_repository_file",
           "segments_read": 1
         }
-      ]
+      ],
+      "error": "Model call budget reached before complete synthesis; no partial approval"
     }
   },
   "turns": [],
