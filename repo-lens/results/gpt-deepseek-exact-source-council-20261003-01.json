@@ -50,7 +50,7 @@
       "activity": "Council review",
       "reference_mode": "indexed",
       "reference_segments_without_index": 1377,
-      "segments_read": 1,
+      "segments_read": 2,
       "segments_total": 65,
       "file_count": 1950,
       "repository_file_counts": {
