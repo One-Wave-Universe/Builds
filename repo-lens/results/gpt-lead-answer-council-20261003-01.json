@@ -9,9 +9,9 @@
   "phase": "ANSWERING",
   "actors": {
     "GPT": {
-      "status": "READING",
+      "status": "HOLD",
       "cycles": 0,
-      "activity": "Lead answer",
+      "activity": "Parked",
       "reference_mode": "indexed",
       "reference_segments_without_index": 207,
       "segments_read": 1,
@@ -34,8 +34,16 @@
           "reason": "confusion",
           "detail": "Malformed uncertainty signal; fresh source required before continuing",
           "restart": true
+        },
+        {
+          "reason": "confusion",
+          "detail": "Segment 2/10 includes Builds/README.md, One-Wave-Science/AI_CANONICAL_START_HERE.md and Bridge-Comand/BRIDGE_COMMAND_START_HERE.md, but no source for Builds/digital-cell/l0_cell.py. Its definitions, inputs and returns require the exact file\u2019s verified source, fetched once and reused during synthesis. No tests executed.",
+          "restart": false
         }
-      ]
+      ],
+      "display_status": "HOLD",
+      "pause_reason": "error",
+      "error": "Segment 2/10 includes Builds/README.md, One-Wave-Science/AI_CANONICAL_START_HERE.md and Bridge-Comand/BRIDGE_COMMAND_START_HERE.md, but no source for Builds/digital-cell/l0_cell.py. Its definitions, inputs and returns require the exact file\u2019s verified source, fetched once and reused during synthesis. No tests executed."
     },
     "GEMINI": {
       "status": "QUEUED",
