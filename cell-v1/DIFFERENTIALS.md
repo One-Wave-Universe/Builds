@@ -4,6 +4,26 @@ The cell is a difference. Not a single-ended pin. Not a drum.
 
 ---
 
+## The three differentials are the lean
+
+There is no fourth lean sitting on top of A, B, and C.
+
+The lean is the three differentials. Six seats, three signed numbers, one CENTER.
+
+```text
+DA = A+ − A−
+DB = B+ − B−
+DC = C+ − C−
+```
+
+Each is a live − / (0) / + around CENTER. HOLD on an axis is that differential inside the wobble, tail still on. The cell's lean is the set {DA, DB, DC}, not their average and not a separate pin.
+
+Local DC in `DC_AC_RC.md` is one of these committing. Lattice DC is the reinjection loop that later revisits the shared hysteresis layer. Neither replaces the three differentials as the lean.
+
+Cell One measures the first of the three. It does not invent a lean elsewhere.
+
+---
+
 ## One pair
 
 Two matched MOSFETs, shared tail.
@@ -18,7 +38,7 @@ Two matched MOSFETs, shared tail.
      DB        DC
 ```
 
-Lean:
+Lean on that first pair:
 
 ```
 D = DB − DC
@@ -105,9 +125,10 @@ A three-phase motor is three of these differences timed around the hex. The body
 - Not a single-ended ADC of one drain.
 - Not PWM duty as a replacement for Vd.
 - Not a speaker coil story.
+- Not a lean computed somewhere else and applied to the three axes.
 
 ---
 
 ## Proposal sentence
 
-The primitive is a subthreshold differential pair whose output is D = DB − DC. Three mirrored pairs are three axes. Memory is the lean of that difference. The next cell sees the opposite seat of the same difference.
+The primitive is a subthreshold differential pair whose output is D = DB − DC. Three mirrored pairs are three axes. Those three differentials are the lean. Memory is that lean, held in the path. The next cell sees the opposite seat of the same difference.
