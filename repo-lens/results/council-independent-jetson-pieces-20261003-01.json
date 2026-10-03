@@ -3,7 +3,7 @@
   "id": "council-independent-jetson-pieces-20261003-01",
   "question": "Verify the current build state using every repository file. Identify one implemented artifact and one remaining unproven gap, citing actual inspected file paths. Also state what the attached CERN CMS and GWOSC observing-run metadata describe; do not call metadata retrieval proof of One-Wave. End with your next useful verification step.",
   "repository": "One-Wave-Universe/Builds",
-  "status": "RUNNING",
+  "status": "PARTIAL",
   "actors": {
     "GEMINI": {
       "status": "HOLD",
@@ -7803,5 +7803,6 @@
       "cycle": 2
     }
   ],
-  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37123204993"
+  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37123204993",
+  "stop_reason": "Requested cycle limits reached for healthy slots. Blocked slots did not stop other workers."
 }
