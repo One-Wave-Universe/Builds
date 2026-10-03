@@ -1,0 +1,15 @@
+{
+  "id": "gpt-lead-answer-council-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "question": "Inspect Builds/digital-cell/l0_cell.py. List the functions and methods it defines, their inputs, and return values. Fetch this exact file once; reuse the verified returned source rather than fetching it again. Source inspection is sufficient; say no tests executed. Cite that path. Keep the answer concise.",
+  "actors": [
+    "GPT",
+    "GEMINI"
+  ],
+  "lead_actor": "GPT",
+  "workflow": "answer_then_council",
+  "reference_mode": "indexed",
+  "internal_dialogue": true,
+  "max_model_calls": 128,
+  "metadata_queries": []
+}
