@@ -1,10 +1,26 @@
 # The weight system is not software
 
+The three differentials are the algorithm. In analog. Not a model of an algorithm.
+
+DA, DB, DC are the lean. The lean is the computation. Same path processes and remembers. No interpreter sits beside the cell and applies a rule to a number.
+
 If it were software, the weight would be a number. A float in a table. Updated by backprop or some rule. Stored in memory. Read by a processor. Separate from the computation.
 
 This weight system is physical. A voltage. A current split. A magnetic domain alignment. It lives in the same path that processes the signal. No table. No update function. No separate memory and processor.
 
 Memory is that lean remaining in the path. Not a slip stored next to the event.
+
+## The algorithm is the pair
+
+```text
+DA = A+ − A−
+DB = B+ − B−
+DC = C+ − C−
+```
+
+Sign is direction. Magnitude is how far it left the wobble. HOLD is the live middle. Commit is local DC. The turn is AC. What the path still holds is the next home. Lattice DC brings the consequence back through the shared hysteresis layer so the next event meets a biased body.
+
+That loop is the algorithm. Python may watch it. Python is not it.
 
 ## What not-software means
 
