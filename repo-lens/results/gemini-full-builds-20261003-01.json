@@ -1,0 +1,15 @@
+{
+  "schema": "repo-lens/v1",
+  "id": "gemini-full-builds-20261003-01",
+  "question": "Check the complete Builds repository. Explain the current CELL_V1 build completeness, distinguish implemented or tested pieces from unproven memory and lattice claims, and cite actual repository paths for the next smallest verification. Do not propose physical breadboard changes.",
+  "repository": "One-Wave-Universe/Builds",
+  "status": "RUNNING",
+  "actors": {
+    "GEMINI": {
+      "status": "QUEUED",
+      "cycles": 0
+    }
+  },
+  "turns": [],
+  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37118732993"
+}
