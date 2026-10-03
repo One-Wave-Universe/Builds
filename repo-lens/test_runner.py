@@ -133,6 +133,10 @@ class Gates(unittest.TestCase):
             with self.subTest(reason=reason),patch.object(runner,'scan',side_effect=self.source),patch.object(runner,'invoke',return_value={'answer':json.dumps({'reference_issue':{'reason':reason,'detail':'uncertain repo fact'}})}) as model:
                 with self.assertRaises(runner.ReReferenceRequired) as caught:runner.cycle(self.req(),'GPT',[])
                 self.assertEqual(caught.exception.reason,reason);self.assertEqual(model.call_count,1)
+    def test_malformed_uncertainty_still_triggers_rereference(self):
+        with patch.object(runner,'scan',side_effect=self.source),patch.object(runner,'invoke',return_value={'answer':json.dumps({'reference_issue':True})}):
+            with self.assertRaises(runner.ReReferenceRequired) as caught:runner.cycle(self.req(),'GPT',[])
+        self.assertEqual(caught.exception.reason,'confusion')
     def test_explicit_rereference_tool_interrupts(self):
         def ask(*args):return {'answer':json.dumps({'lens_tool':{'name':'rereference','arguments':{'reason':'assumption','detail':'need current source'}}})}
         with self.assertRaises(runner.ReReferenceRequired) as caught:runner.lens_exchange('GPT','q',ask,[],[])

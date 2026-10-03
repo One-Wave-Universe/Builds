@@ -50,6 +50,8 @@ def validate(x):
     if not isinstance(x.get("include_mythos",False),bool):raise GateError("include_mythos must be boolean")
     if x.get("reference_mode","full") not in {"full","indexed"}:raise GateError("Reference mode must be full or indexed")
     if not isinstance(x.get('internal_dialogue',True),bool):raise GateError('internal_dialogue must be boolean')
+    if x.get('workflow','legacy_cycles') not in {'legacy_cycles','answer_then_council'}:raise GateError('Unknown question workflow')
+    if x.get('lead_actor',x['actors'][0]) not in x['actors']:raise GateError('Lead actor must have a council seat')
     queries=x.get('metadata_queries',[])
     limits=x.get('actor_cycles',{})
     if not isinstance(limits,dict) or any(a not in x['actors'] or not isinstance(n,int) or not 1<=n<=6 for a,n in limits.items()):raise GateError('Invalid actor cycle limits')
@@ -337,7 +339,7 @@ def cycle(req, actor, history):
         try:issue=json.loads(receipt['answer']).get('reference_issue')
         except (ValueError,AttributeError):issue=None
         if issue is not None:
-            if not isinstance(issue,dict) or set(issue)!={'reason','detail'} or issue['reason'] not in {'drift','assumption','confusion'} or not isinstance(issue['detail'],str) or not 1<=len(issue['detail'])<=2000:raise GateError('Invalid reference issue')
+            if not isinstance(issue,dict) or set(issue)!={'reason','detail'} or issue['reason'] not in {'drift','assumption','confusion'} or not isinstance(issue['detail'],str) or not 1<=len(issue['detail'])<=2000:raise ReReferenceRequired('confusion','Malformed uncertainty signal; fresh source required before continuing')
             raise ReReferenceRequired(issue['reason'],issue['detail'])
         return receipt
     progress(actor,{'status':'READING','reference_mode':mode,'reference_segments_without_index':baseline,'segments_read':0,'segments_total':len(chunks),'file_count':len(files),'repository_file_counts':{r['repository']:r['file_count'] for r in evidence['repositories']},'repository_commits':evidence['repository_commits'],'metadata_sources':[{'provider':s['provider'],'sha256':s['sha256']} for s in sources]})
@@ -401,9 +403,32 @@ def publish(result):
     body={"message":"Repo Lens result: "+result["id"],"branch":branch,"content":base64.b64encode(json.dumps(result,indent=2).encode()).decode()}
     if sha: body["sha"]=sha
     gh(repo+"/contents/"+path,body,"PUT")
+    current_path='repo-lens/council-current.json'
+    pointer={'schema':'repo-lens/council-current-v1','id':result['id'],'status':result['status'],'workflow':result.get('workflow','legacy_cycles'),'result_url':'https://raw.githubusercontent.com/'+repo+'/'+branch+'/'+path}
+    try:current_sha=gh(repo+'/contents/'+current_path+'?ref='+urllib.parse.quote(branch,safe=''))['sha']
+    except GateError as error:
+        if not str(error).startswith('HTTP 404 '):raise
+        current_sha=None
+    body={'message':'Update shared council question pointer','branch':branch,'content':base64.b64encode(json.dumps(pointer).encode()).decode()}
+    if current_sha:body['sha']=current_sha
+    gh(repo+'/contents/'+current_path,body,'PUT')
+
+def complete_question_stage(req,actor,history):
+    original=req['question'];events=[]
+    for attempt in range(2):
+        try:
+            turn=cycle(req,actor,history);turn['rereference_events']=events;return turn
+        except ReReferenceRequired as error:
+            events.append({'reason':error.reason,'detail':str(error),'restart':attempt==0})
+            if attempt==1:raise
+            getattr(history,'progress',lambda *args:None)(actor,{'status':'REREFERENCING','rereference_events':events})
+            req={**req,'question':original+'\nFresh reference required: '+json.dumps(events[-1])}
 
 def run(req):
     validate(req)
+    if req.get('workflow')=='answer_then_council':
+        from council import conduct
+        return conduct(req,complete_question_stage,publish,usage_limited)
     seed=prior_peer_turns(req)
     result={"schema":"repo-lens/v2","id":req["id"],"question":req["question"],"repository":req["repository"],"status":"RUNNING","actors":{a:{"status":"QUEUED","cycles":0} for a in req["actors"]},"turns":[],"run_url":"https://github.com/"+os.environ.get("GITHUB_REPOSITORY","One-Wave-Universe/Builds")+"/actions/runs/"+os.environ.get("GITHUB_RUN_ID","")}
     publish(result)

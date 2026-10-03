@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: Verify full reference gates
-        run: python3 -m unittest discover -s repo-lens -p test_runner.py -v
+        run: python3 -m unittest discover -s repo-lens -p 'test_*.py' -v
       - name: Select exactly one new request
         id: request
         shell: bash
