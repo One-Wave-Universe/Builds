@@ -4,6 +4,10 @@ from unittest.mock import patch
 import runner
 
 class Gates(unittest.TestCase):
+    def test_gemini_uses_current_text_routes_not_media_models(self):
+        names=['gemini-2.5-flash-lite','gemini-3.8-flash','gemini-3.5-flash-lite','gemini-3.5-flash-lite-tts','gemini-3.1-flash-lite-image','gemini-3.8-live','gemini-3.1-flash-lite']
+        models=[{'name':'models/'+name,'supportedGenerationMethods':['generateContent']} for name in names]
+        self.assertEqual(runner.gemini_text_models(models),['models/gemini-3.5-flash-lite','models/gemini-3.8-flash','models/gemini-3.1-flash-lite'])
     def test_allowlisted_route_failure_is_visible(self):
         e=urllib.error.HTTPError('https://route.trycloudflare.com/chat',400,'Bad',{},io.BytesIO(json.dumps({'error':'DeepSeek output incomplete'}).encode()))
         with patch.object(runner.urllib.request,'urlopen',side_effect=e):

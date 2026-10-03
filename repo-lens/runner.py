@@ -159,8 +159,7 @@ def gemini(system, prompt):
     base="https://generativelanguage.googleapis.com/v1beta/"
     h={"x-goog-api-key":key,"Content-Type":"application/json"}
     configured=os.environ.get("GEMINI_MODEL")
-    models=["models/"+configured] if configured else [m["name"] for m in request_json(base+"models?pageSize=1000",headers=h).get("models",[]) if "generateContent" in m.get("supportedGenerationMethods",[]) and ("flash-lite" in m["name"] or "flash" in m["name"]) and "image" not in m["name"] and "audio" not in m["name"]]
-    models=sorted(models,key=lambda n:(0 if "gemini-3.1-flash-lite" in n else 1 if "flash-lite" in n else 2,n))[:3]
+    models=["models/"+configured] if configured else gemini_text_models(request_json(base+"models?pageSize=1000",headers=h).get("models",[]))
     failures=[]
     for model in models:
         try:
@@ -171,8 +170,13 @@ def gemini(system, prompt):
             return {"provider":"google","model":model.removeprefix("models/"),"response_id":out.get("responseId"),"answer":answer}
         except GateError as e:
             if usage_limited(e):raise UsageLimit(str(e)) from None
-            failures.append(str(e))
+            failures.append(model+': '+str(e))
     raise GateError("Gemini call failed: "+"; ".join(failures))
+
+def gemini_text_models(models):
+    preferred=['models/gemini-3.5-flash-lite','models/gemini-3.8-flash','models/gemini-3.1-flash-lite']
+    available=[m['name'] for m in models if 'generateContent' in m.get('supportedGenerationMethods',[]) and re.fullmatch(r'models/gemini-\d+(?:\.\d+)?-flash(?:-lite)?(?:-preview(?:-[\w-]+)?)?',m.get('name',''))]
+    return sorted(available,key=lambda name:(preferred.index(name) if name in preferred else len(preferred),name))[:3]
 
 def gpt_api(system, prompt):
     key=os.environ.get("OPENAI_API_KEY")
