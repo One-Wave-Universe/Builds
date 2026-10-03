@@ -6,7 +6,7 @@
   "status": "RUNNING",
   "actors": {
     "GEMINI": {
-      "status": "QUEUED",
+      "status": "REFERENCING",
       "cycles": 0
     },
     "GPT": {
