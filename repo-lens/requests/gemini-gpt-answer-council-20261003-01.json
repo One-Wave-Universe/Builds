@@ -1,0 +1,15 @@
+{
+  "id": "gemini-gpt-answer-council-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "question": "Inspect the exact current Builds/digital-cell/l0_cell.py source. Name the functions and methods it defines and explain their inputs and return values. Distinguish executed tests from source inspection. Keep the answer concise. Council reviewer: fetch the same exact source independently and explicitly agree, revise, or abstain about this code-level answer.",
+  "actors": [
+    "GEMINI",
+    "GPT"
+  ],
+  "lead_actor": "GEMINI",
+  "workflow": "answer_then_council",
+  "reference_mode": "indexed",
+  "internal_dialogue": true,
+  "max_model_calls": 128,
+  "metadata_queries": []
+}
