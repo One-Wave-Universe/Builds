@@ -1,0 +1,15 @@
+{
+  "schema": "repo-lens/v1",
+  "id": "gpt-full-builds-20261003-01",
+  "question": "Check the complete Builds repository. Give the next smallest verification for CELL_V1, distinguish physical evidence from design claims, and cite actual inspected file paths. Do not propose physical breadboard changes.",
+  "repository": "One-Wave-Universe/Builds",
+  "status": "RUNNING",
+  "actors": {
+    "GPT": {
+      "status": "QUEUED",
+      "cycles": 0
+    }
+  },
+  "turns": [],
+  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37119183922"
+}
