@@ -1,0 +1,10 @@
+{
+  "id": "gpt-full-builds-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "question": "Check the complete Builds repository. Give the next smallest verification for CELL_V1, distinguish physical evidence from design claims, and cite actual inspected file paths. Do not propose physical breadboard changes.",
+  "actors": [
+    "GPT"
+  ],
+  "cycles": 1,
+  "max_model_calls": 16
+}
