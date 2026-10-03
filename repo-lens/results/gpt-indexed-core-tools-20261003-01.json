@@ -10,7 +10,7 @@
       "cycles": 0,
       "reference_mode": "indexed",
       "reference_segments_without_index": 207,
-      "segments_read": 7,
+      "segments_read": 8,
       "segments_total": 10,
       "file_count": 1950,
       "repository_file_counts": {
@@ -33,7 +33,7 @@
           "sha256": "4011d08ba2945bbfe7f243b7a64fc3219d8910af76969eb266e65573ffe084a6"
         }
       ],
-      "model_calls": 7
+      "model_calls": 8
     }
   },
   "turns": [],
