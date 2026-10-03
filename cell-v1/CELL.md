@@ -93,11 +93,14 @@ three A/B/C differential leans
 
 ## Complete two-flower body target — opposing polarity / RC rotation
 
-The **complete CELL_V1 body target is two opposing seven-cell flower halves**, not one seven-cell flower treated as the complete body.
+The **complete CELL_V1 body target is two opposing seven-cell flower halves sharing one center motor/control cell**, not two independent seven-cell flowers. There is **one center cell total**.
 
-### Each seven-cell flower half
-- **7 cells total:** one center cell surrounded by six cells.
-- **Every cell carries its own hysteretic transfluxor-class / two-aperture nucleus core**, with role-specific round/square geometry where specified elsewhere in this authority.
+### Shared-center two-flower geometry
+- Each flower half is a seven-position flower geometry: the **same shared center motor/control cell** plus six surrounding sensor cells belonging to that half.
+- Across the complete opposed assembly there is **one center motor/control cell total** and **twelve surrounding sensor cells** (six per polarity-mirrored half): **13 physical cells total**.
+- **The single center motor/control cell has one planar one-piece square two-aperture figure-8 transfluxor-class hysteretic nucleus.**
+- **Each of the twelve surrounding sensor cells has one planar one-piece round two-aperture figure-8 transfluxor-class hysteretic nucleus.**
+- Every physical cell carries its role-specific hysteretic transfluxor-class / two-aperture nucleus core: **one square nucleus in the single shared center cell; twelve round nuclei in the surrounding sensor cells**.
 - **Every cell carries the paired FIELD/VOID outer toroidal field structure**, targeted as six independently exposed windings per toroid and three A/B/C opposed differential leans.
 - Each cell therefore participates in its own local targeted opposed/Helmholtz-style magnetic-field interaction while remaining coupled to the flower's shared differential/body-state structure.
 - The seven cells connect through the base-to-base lattice interfaces and the shared hysteretic connected-body layer.
@@ -108,12 +111,13 @@ The second seven-cell flower half mirrors the first with **opposing magnetic/ele
 Target shorthand:
 
 ```text
-7-CELL FLOWER HALF 1                         7-CELL FLOWER HALF 2
+FLOWER HALF 1                                FLOWER HALF 2
+6 round-nucleus sensor cells                 6 round-nucleus sensor cells
 opposed polarity A                           opposed polarity B
-7 x local transfluxor-class nuclei    <->    7 x local transfluxor-class nuclei
-7 x local paired toroidal fields      <->    7 x local paired toroidal fields
              \                                  /
-              \---- balanced body relation ----/
+              \---- ONE SHARED CENTER CELL ----/
+                    square transfluxor nucleus
+                    balanced body relation
 ```
 
 The two halves are not redundant copies. Their opposed polarity is the target physical basis for the **counter-rotational relationship assigned to the RC loop**.
@@ -156,11 +160,11 @@ transfluxor-class hysteretic nucleus
     + balanced CENTER ternary
                 |
                 v
-SEVEN-CELL FLOWER HALF
+SIX SENSOR CELLS + SHARED CENTER
                 |
       opposed polarity / mirror
                 |
-SEVEN-CELL FLOWER HALF
+SIX SENSOR CELLS + SAME SHARED CENTER
                 |
                 v
 target QC/RC counter-rotation
