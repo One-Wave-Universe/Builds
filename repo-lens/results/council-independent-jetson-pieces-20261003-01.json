@@ -22,7 +22,7 @@
       "cycles": 0
     },
     "GROK": {
-      "status": "QUEUED",
+      "status": "REFERENCING",
       "cycles": 0
     }
   },
