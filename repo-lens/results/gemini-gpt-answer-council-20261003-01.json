@@ -9,9 +9,9 @@
   "phase": "ANSWERING",
   "actors": {
     "GEMINI": {
-      "status": "QUEUED",
+      "status": "REFERENCING",
       "cycles": 0,
-      "activity": "Answering"
+      "activity": "Lead answer"
     },
     "GPT": {
       "status": "QUEUED",
