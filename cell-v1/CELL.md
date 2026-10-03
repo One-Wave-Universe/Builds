@@ -90,6 +90,94 @@ three A/B/C differential leans
 - Do not use digital computation to close the cell's decision loop.
 - Do not claim the paired toroids have demonstrated Helmholtz field quality, nucleus retention, coupling, torque, or useful computation until measured.
 
+
+## Complete two-flower body target — opposing polarity / RC rotation
+
+The **complete CELL_V1 body target is two opposing seven-cell flower halves**, not one seven-cell flower treated as the complete body.
+
+### Each seven-cell flower half
+- **7 cells total:** one center cell surrounded by six cells.
+- **Every cell carries its own hysteretic transfluxor-class / two-aperture nucleus core**, with role-specific round/square geometry where specified elsewhere in this authority.
+- **Every cell carries the paired FIELD/VOID outer toroidal field structure**, targeted as six independently exposed windings per toroid and three A/B/C opposed differential leans.
+- Each cell therefore participates in its own local targeted opposed/Helmholtz-style magnetic-field interaction while remaining coupled to the flower's shared differential/body-state structure.
+- The seven cells connect through the base-to-base lattice interfaces and the shared hysteretic connected-body layer.
+
+### Opposing flower halves
+The second seven-cell flower half mirrors the first with **opposing magnetic/electrical polarity**.
+
+Target shorthand:
+
+```text
+7-CELL FLOWER HALF 1                         7-CELL FLOWER HALF 2
+opposed polarity A                           opposed polarity B
+7 x local transfluxor-class nuclei    <->    7 x local transfluxor-class nuclei
+7 x local paired toroidal fields      <->    7 x local paired toroidal fields
+             \                                  /
+              \---- balanced body relation ----/
+```
+
+The two halves are not redundant copies. Their opposed polarity is the target physical basis for the **counter-rotational relationship assigned to the RC loop**.
+
+### DC / AC / RC target mapping
+For the current CELL_V1 target:
+
+- **DC / BC:** reinjection, body consequence, strain/loss return, and refill/readiness through the energy/body loop.
+- **TC / AC:** the live three-axis A/B/C differential ternary around balanced CENTER.
+- **QC / RC:** the opposed/counter-rotational relationship targeted between the two polarity-mirrored seven-cell flower halves.
+
+The RC assignment is a **target mechanism**, not a measured result. Opposed polarity and geometry must be shown experimentally to produce the required counter-rotational field/state behavior.
+
+### Reinjection bus + connected-cell muscle memory
+The two flower halves participate in one continuing body-consequence loop:
+
+```text
+local analog difference / action
+        -> physical consequence
+        -> thresholded reinjection / return
+        -> V_BUS energy return / readiness
+        -> hysteretic connected-cell lattice
+        -> retained body / muscle-memory bias
+        -> changed physical condition presented to subsequent cell decisions
+```
+
+Keep the roles distinct:
+- **V_BUS / reinjection path:** carries recoverable energy and consequence; it is not the long-term memory.
+- **CENTER:** active balanced virtual-ground ternary reference; it is not V_BUS.
+- **local transfluxor-class nucleus:** local retained magnetic history/state.
+- **connected hysteretic lattice:** slower shared body/path/muscle-memory history spanning connected cells and both flower halves.
+
+### Complete target shorthand
+
+```text
+PER CELL
+transfluxor-class hysteretic nucleus
+    + paired six-winding toroids
+    + A/B/C differential leans
+    + balanced CENTER ternary
+                |
+                v
+SEVEN-CELL FLOWER HALF
+                |
+      opposed polarity / mirror
+                |
+SEVEN-CELL FLOWER HALF
+                |
+                v
+target QC/RC counter-rotation
+                |
+action / consequence / thresholded return
+                |
+                v
+V_BUS reinjection <-> hysteretic connected-cell lattice
+                |
+                v
+shared muscle-memory bias on next analog interaction
+```
+
+### Target/evidence boundary
+This section defines the **build target**. It does not claim that the two-flower assembly has already demonstrated a Helmholtz-quality field, counter-rotation, useful torque, stable inter-cell coupling, reinjection efficiency, or muscle-memory behavior. Those remain explicit bench/falsification measurements.
+
+
 ## Cell-role geometry map
 
 CELL_V1 uses one **common outer/body differential interface** across cell types, while the **nucleus geometry changes by role**.
