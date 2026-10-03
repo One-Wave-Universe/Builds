@@ -1,0 +1,11 @@
+{
+  "id": "two-ai-independent-builds-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "question": "Check the complete Builds repository. Determine the next smallest verification for the full analog CELL_V1 architecture, without treating software simulations as physical proof. Cite real inspected paths. If the opposing AI is busy or unavailable, choose useful verification or investigation of a specific unresolved dependency rather than waiting. Review any real peer response that arrives.",
+  "actors": [
+    "GEMINI",
+    "GPT"
+  ],
+  "cycles": 2,
+  "max_model_calls": 16
+}
