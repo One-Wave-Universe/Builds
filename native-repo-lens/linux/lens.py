@@ -59,13 +59,13 @@ def prepare(repo,question,actors,cycles,metadata):
 def result(id):
     if not re.fullmatch(r'[A-Za-z0-9_-]{1,80}',id):raise ValueError('Invalid request ID')
     x=json.loads(get('https://raw.githubusercontent.com/'+OWNER+'/Builds/'+BRANCH+'/repo-lens/results/'+id+'.json'))
-    if x.get('id')!=id or x.get('schema')!='repo-lens/v1':raise ValueError('Receipt identity mismatch')
+    if x.get('id')!=id or x.get('schema') not in {'repo-lens/v1','repo-lens/v2'}:raise ValueError('Receipt identity mismatch')
     return x
 
 def display(x):
     lines=[x['id'],x['status'],'']
     for actor,v in x.get('actors',{}).items():
-        line=f"{actor}: {v.get('status')} · {v.get('cycles',0)} cycles"
+        line=f"{actor}: {v.get('display_status',v.get('status'))} · {v.get('cycles',0)} cycles"
         if 'segments_total' in v:line+=f" · {v.get('segments_read',0)}/{v['segments_total']} pieces"
         lines.extend([line,v.get('error','')])
     for t in x.get('turns',[]):

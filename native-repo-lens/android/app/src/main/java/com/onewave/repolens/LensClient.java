@@ -67,13 +67,13 @@ final class LensClient {
     static JSONObject result(String id) throws Exception {
         if(!id.matches("[A-Za-z0-9_-]{1,80}"))throw new IOException("Invalid request ID");
         JSONObject x=new JSONObject(get("https://raw.githubusercontent.com/"+OWNER+"/Builds/"+BRANCH+"/repo-lens/results/"+id+".json"));
-        if(!x.optString("id").equals(id)||!x.optString("schema").equals("repo-lens/v1"))throw new IOException("Receipt identity mismatch");
+        if(!x.optString("id").equals(id)||!(x.optString("schema").equals("repo-lens/v1")||x.optString("schema").equals("repo-lens/v2")))throw new IOException("Receipt identity mismatch");
         return x;
     }
     static String display(JSONObject x) throws Exception {
         StringBuilder s=new StringBuilder(x.getString("id")+"\n"+x.getString("status")+"\n\n");
         JSONObject slots=x.optJSONObject("actors");
-        if(slots!=null)for(String a:ACTORS){JSONObject v=slots.optJSONObject(a);if(v!=null){s.append(a).append(": ").append(v.optString("status")).append(" · ").append(v.optInt("cycles")).append(" cycles");if(v.has("segments_total"))s.append(" · ").append(v.optInt("segments_read")).append('/').append(v.optInt("segments_total")).append(" pieces");if(v.has("error"))s.append("\n").append(v.getString("error"));s.append("\n");}}
+        if(slots!=null)for(String a:ACTORS){JSONObject v=slots.optJSONObject(a);if(v!=null){s.append(a).append(": ").append(v.optString("display_status",v.optString("status"))).append(" · ").append(v.optInt("cycles")).append(" cycles");if(v.has("segments_total"))s.append(" · ").append(v.optInt("segments_read")).append('/').append(v.optInt("segments_total")).append(" pieces");if(v.has("error"))s.append("\n").append(v.getString("error"));s.append("\n");}}
         JSONArray turns=x.optJSONArray("turns");
         if(turns!=null)for(int i=0;i<turns.length();i++){JSONObject t=turns.getJSONObject(i);s.append("\n").append(t.optString("actor")).append(" · cycle ").append(t.optInt("cycle")).append(" · ").append(t.optString("status")).append("\n").append(t.optString("answer")).append("\n");JSONObject r=t.optJSONObject("reference");if(r!=null)s.append(r.optString("repository")).append(" @ ").append(r.optString("commit")).append("\n").append(r.optInt("file_count")).append(" files · ").append(t.optInt("segments_read")).append(" pieces read\n").append(r.optString("coverage")).append("\n");}
         s.append("\n").append(x.optString("stop_reason","Only real completed receipts count."));return s.toString();
