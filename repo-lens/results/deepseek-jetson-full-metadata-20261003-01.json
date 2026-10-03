@@ -6,8 +6,9 @@
   "status": "RUNNING",
   "actors": {
     "DEEPSEEK": {
-      "status": "REFERENCING",
-      "cycles": 0
+      "status": "HOLD",
+      "cycles": 0,
+      "error": "TimeoutError"
     }
   },
   "turns": [],
