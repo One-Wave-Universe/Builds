@@ -8,6 +8,88 @@ The basic cell is a **hexagon containing six tapered triangular / pyramidal magn
 
 Three leans. Ternary is **DOWN / HOLD / UP** around **− / (0) / +**. **CENTER / (0) is the shared active virtual-ground reference used to construct the physical ternary state; it is balanced/confirmed, not OFF.** The − and + states are signed differential leans away from that shared reference. **All analog. No global clock.**
 
+## 2026-10-03 explicit analog magnetic architecture lock
+
+This section makes the intended CELL_V1 physical architecture explicit and supersedes looser wording where it conflicts.
+
+### Analog-only decision path
+- CELL_V1's decision/control path is **physical analog hardware**. Digital logic, software, ADC interpretation, PWM computation, or a clocked controller must not become the mechanism that decides the cell state.
+- Digital equipment may be used to **measure, log, simulate, or characterize** the bench system; it is not the decision element.
+
+### Hysteretic transfluxor-class nucleus
+- The local retained-state nucleus is a **one-piece two-aperture / figure-8 hysteretic magnetic core**, in the historical **transfluxor / multi-aperture magnetic-core mechanism class**.
+- The two apertures share magnetic material/flux paths so prior magnetization can alter the response to later excitation.
+- For the first flower: sensor nucleus = round two-aperture figure-8; motor/control nucleus = square two-aperture figure-8.
+- This identifies the intended physical mechanism class; exact material, coercivity, dimensions, winding count and transfer function remain bench quantities.
+
+### Two-toroid body-field pair: six windings on each toroid
+Each cell has exactly **two plain round outer/body toroids total**, mirrored as FIELD and VOID body sides.
+
+**Each outer toroid carries six independently exposed windings**, organized as three opposed differential channels:
+
+```text
+FIELD TOROID                         VOID TOROID
+A+_F winding   A-_F winding          A+_V winding   A-_V winding
+B+_F winding   B-_F winding          B+_V winding   B-_V winding
+C+_F winding   C-_F winding          C+_V winding   C-_V winding
+
+          three leans / three differentials on each mirrored body side
+                 A+ <-> A-    B+ <-> B-    C+ <-> C-
+```
+
+Thus the paired body-field structure is **2 toroids x 6 windings = 12 independently exposed body-toroid windings** before any experimentally justified series/parallel interconnection.
+
+The term **Helmholtz / opposed-field relation** in CELL documentation refers to this paired toroidal FIELD/VOID body-field arrangement. It must not be silently replaced by a conventional laboratory two-coil Helmholtz pair. Exact field uniformity, winding polarity, phase, coupling and whether the resulting field meets a formal Helmholtz condition remain measurement questions.
+
+### Three leans are the three differentials
+There is no separate computed lean:
+
+```text
+DA = A+ - A-
+DB = B+ - B-
+DC = C+ - C-
+LEAN = {DA, DB, DC}
+```
+
+A/B/C operate concurrently as three mirrored analog differential axes. Their continuous magnitude may occupy the seven strength bands, but their primitive ternary sign is negative / balanced / positive.
+
+### Balanced virtual ground is the ternary center
+The physical ternary is constructed around the **shared active CENTER virtual-ground relation**:
+
+```text
+negative lean  <->  CENTER / BALANCED  <->  positive lean
+      -                    (0)                    +
+```
+
+- **(0) means balanced differential, not OFF.**
+- CENTER is the live/common balance reference seen by A/B/C; it is not V_BUS.
+- Both opposed sides may remain electrically/magnetically active at (0).
+- The signed state is the imbalance about that reference.
+- The normalized 0.50/50 notation is a coordinate for balance, not proof that a fixed 0.50 V source must exist.
+
+### Hysteresis is part of the state machine
+Hysteresis is not an optional storage add-on. The intended analog loop uses retained magnetic history at the nucleus and local gates so the response to a present field depends on prior state. The connected under-cell hysteretic layer remains the slower body/muscle-memory path.
+
+Canonical physical shorthand:
+
+```text
+three A/B/C differential leans
+        <-> balanced CENTER ternary
+        <-> paired FIELD/VOID six-winding toroids
+        <-> hysteretic transfluxor-class nucleus
+        <-> local analog threshold/gating/action
+        <-> consequence + reinjection/body hysteresis
+        <-> next analog state
+```
+
+### Anti-drift
+- Do not reduce the body toroids to three windings each: **current lock is six independently exposed windings per toroid**.
+- Do not call A/B/C three voltage levels: they are **three differential lean axes**.
+- Do not call CENTER OFF: **CENTER/(0) is active balanced virtual ground and the ternary middle**.
+- Do not replace the transfluxor-class nucleus with software memory or a digital state register.
+- Do not use digital computation to close the cell's decision loop.
+- Do not claim the paired toroids have demonstrated Helmholtz field quality, nucleus retention, coupling, torque, or useful computation until measured.
+
 ## Cell-role geometry map
 
 CELL_V1 uses one **common outer/body differential interface** across cell types, while the **nucleus geometry changes by role**.
