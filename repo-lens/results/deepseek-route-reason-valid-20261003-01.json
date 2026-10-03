@@ -6,21 +6,9 @@
   "status": "RUNNING",
   "actors": {
     "DEEPSEEK": {
-      "status": "READING",
+      "status": "HOLD",
       "cycles": 0,
-      "segments_read": 0,
-      "segments_total": 30,
-      "file_count": 197,
-      "metadata_sources": [
-        {
-          "provider": "CERN Open Data",
-          "sha256": "cae34f8ff4e408903a64c624e35696c6d409d9314986f550f348bb4282404437"
-        },
-        {
-          "provider": "GWOSC/LIGO/Virgo/KAGRA",
-          "sha256": "4011d08ba2945bbfe7f243b7a64fc3219d8910af76969eb266e65573ffe084a6"
-        }
-      ]
+      "error": "HTTP 400 from hopkins-vegas-careers-send.trycloudflare.com (DeepSeek output incomplete)"
     }
   },
   "turns": [],
