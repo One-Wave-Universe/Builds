@@ -1,0 +1,13 @@
+{
+  "id": "gemini-current-core-connection-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "actors": [
+    "GEMINI"
+  ],
+  "cycles": 1,
+  "max_model_calls": 28,
+  "reference_mode": "indexed",
+  "internal_dialogue": false,
+  "question": "From the supplied canonical instructions and exact source tools, identify one implemented software artifact and one unproven physical-memory gap. Cite an inspected repository path. Do not assume an unproved science claim or claim commands executed. Keep the answer under 1000 characters. If a get_repository_file result is already supplied, use it without repeating that same request.",
+  "metadata_queries": []
+}
