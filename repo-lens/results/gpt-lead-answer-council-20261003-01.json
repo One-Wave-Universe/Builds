@@ -9,7 +9,7 @@
   "phase": "ANSWERING",
   "actors": {
     "GPT": {
-      "status": "READING",
+      "status": "REREFERENCING",
       "cycles": 0,
       "activity": "Lead answer",
       "reference_mode": "indexed",
@@ -28,7 +28,14 @@
         "One-Wave-Universe/One-Wave-Science": "9dc26998d6bc901299cae55748df7efd79a3c887"
       },
       "metadata_sources": [],
-      "model_calls": 2
+      "model_calls": 2,
+      "rereference_events": [
+        {
+          "reason": "confusion",
+          "detail": "Malformed uncertainty signal; fresh source required before continuing",
+          "restart": true
+        }
+      ]
     },
     "GEMINI": {
       "status": "QUEUED",
