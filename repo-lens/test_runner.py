@@ -141,6 +141,29 @@ class Gates(unittest.TestCase):
         with patch.dict(runner.os.environ,{'GEMINI_API_KEY':'test','GEMINI_MODEL':'test'}),patch.object(runner,'request_json',side_effect=runner.GateError('HTTP 429 from google')) as request:
             with self.assertRaises(runner.UsageLimit):runner.gemini('s','p')
         self.assertEqual(request.call_count,1)
+    def test_event_driven_private_notes_are_not_published(self):
+        import threading,copy
+        listening=threading.Event();snapshots=[];calls=[]
+        def publish(result):
+            snapshots.append(copy.deepcopy(result))
+            if result['actors'].get('GEMINI',{}).get('activity')=='Listening for a new peer response':listening.set()
+        def fake(req,actor,history):
+            private='PRIVATE WORK NOTE:' in req['question']
+            calls.append((actor,private))
+            if actor=='GPT' and not private:self.assertTrue(listening.wait(2))
+            return {'actor':actor,'answer':'PRIVATE_NOTE_TEXT' if private else 'public answer','reference':{},'status':'COMPLETE'}
+        x=self.req();x['actors']=['GPT','GEMINI']
+        with patch.object(runner,'cycle',side_effect=fake),patch.object(runner,'publish',side_effect=publish):result=runner.run(x)
+        self.assertEqual(len(result['turns']),2)
+        self.assertIn(('GEMINI',True),calls)
+        for actor in x['actors']:self.assertLessEqual(calls.count((actor,True)),1)
+        self.assertNotIn('PRIVATE_NOTE_TEXT',json.dumps(snapshots))
+        self.assertEqual(result['actors']['GEMINI']['internal_dialogue']['observation_passes'],1)
+    def test_no_peer_means_no_extra_model_work(self):
+        def fake(req,actor,history):return {'actor':actor,'answer':'public','reference':{},'status':'COMPLETE'}
+        with patch.object(runner,'cycle',side_effect=fake) as cycle,patch.object(runner,'publish'):result=runner.run(self.req())
+        self.assertEqual(cycle.call_count,1)
+        self.assertNotIn('internal_dialogue',result['actors']['GEMINI'])
     def test_unknown_tool_is_not_executed(self):
         with self.assertRaisesRegex(runner.GateError,'Unregistered'):runner.lens_request(json.dumps({'lens_tool':{'name':'shell','arguments':{'cmd':'rm'}}}))
     def test_foreign_repository(self):

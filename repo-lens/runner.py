@@ -49,6 +49,7 @@ def validate(x):
     if not isinstance(x.get("max_model_calls",16), int) or not 1 <= x.get("max_model_calls",16) <= 256: raise GateError("Model call limit must be 1..256")
     if not isinstance(x.get("include_mythos",False),bool):raise GateError("include_mythos must be boolean")
     if x.get("reference_mode","full") not in {"full","indexed"}:raise GateError("Reference mode must be full or indexed")
+    if not isinstance(x.get('internal_dialogue',True),bool):raise GateError('internal_dialogue must be boolean')
     queries=x.get('metadata_queries',[])
     limits=x.get('actor_cycles',{})
     if not isinstance(limits,dict) or any(a not in x['actors'] or not isinstance(n,int) or not 1<=n<=6 for a,n in limits.items()):raise GateError('Invalid actor cycle limits')
@@ -368,7 +369,12 @@ def cycle(req, actor, history):
             summary=ask('Read this actual completed peer response. Preserve its strongest point, disagreement, evidence paths and next question in at most 500 characters.\n'+packet,'peer-response')['answer']
             visible_history.append({'actor':peer['actor'],'cycle':peer['cycle'],'answer':summary})
     provenance=[{k:v for k,v in source.items() if k!='source_record'} for source in sources]
+    work_note=''
+    if req.get('internal_dialogue',True) and any(peer.get('actor')!=actor and peer.get('status')=='COMPLETE' for peer in visible_history) and 'PRIVATE WORK NOTE:' not in req['question']:
+        work_note=ask('Write a concise private work note (at most 600 characters): observed peer claims, inspected evidence paths, unresolved questions and next useful action. No hidden reasoning. Signal reference_issue for repository drift, assumption or confusion. Do not request tools here.\nREFERENCE FINDINGS:\n'+json.dumps(findings)+'\nACTUAL PEERS:\n'+json.dumps(visible_history),'private-work-note')['answer']
+        if len(work_note)>2000 or lens_request(work_note):raise GateError('Invalid bounded private work note')
     synthesis_prompt="Question: "+req["question"]+"\nAll %d supplied reference-context segments have been delivered and received answers. Use the stated coverage mode; an indexed context is not exhaustive model reading. Fetch exact source with get_repository_file before making file-content claims. Give a concise answer, evidence paths, unresolved dependencies, and your next useful action. Distinguish supplied full-reference coverage from any independent command you actually executed. Address the latest peer's strongest point when available; peer agreement is not proof.\n"%len(chunks)+"REFERENCE MODE: "+mode+"\nFULL REPOSITORY COMMITS:\n"+json.dumps(evidence["repository_commits"])+"\nFULL SCAN FINDINGS:\n"+json.dumps(findings)+"\nSOURCE METADATA PROVENANCE:\n"+json.dumps(provenance)+"\nLATEST VISIBLE CYCLES:\n"+json.dumps(visible_history)+"\nCOMMIT: "+evidence["commit"]
+    if work_note:synthesis_prompt+='\nPRIVATE WORK NOTE (working observations, not proof):\n'+work_note
     def record_tool(record):
         tool_calls.append(record)
         progress(actor,{'tool_calls':list(tool_calls)})
@@ -402,6 +408,8 @@ def run(req):
     result={"schema":"repo-lens/v2","id":req["id"],"question":req["question"],"repository":req["repository"],"status":"RUNNING","actors":{a:{"status":"QUEUED","cycles":0} for a in req["actors"]},"turns":[],"run_url":"https://github.com/"+os.environ.get("GITHUB_REPOSITORY","One-Wave-Universe/Builds")+"/actions/runs/"+os.environ.get("GITHUB_RUN_ID","")}
     publish(result)
     lock=threading.RLock()
+    changed=threading.Condition(lock)
+    producing=set(req['actors']); private_notes={}
     def latest():
         with lock:
             newest={t['actor']:t for t in seed+result['turns']}
@@ -411,7 +419,20 @@ def run(req):
             result['actors'][actor].update(data)
             publish(result)
     latest.progress=progress
+    def referenced_attempt(attempt_req,actor,events):
+        original_question=attempt_req['question']
+        for attempt in range(2):
+            try:return cycle(attempt_req,actor,latest)
+            except ReReferenceRequired as e:
+                events.append({'reason':e.reason,'detail':str(e),'restart':attempt==0})
+                progress(actor,{'status':'REREFERENCING' if attempt==0 else 'HOLD','rereference_events':list(events),'rereferences':min(attempt+1,1)})
+                if attempt==1:raise
+                attempt_req['question']=original_question+'\nREREFERENCE TRIGGER: '+json.dumps(events[-1])+'. Resolve from fresh source. Do not assume the previous attempt succeeded.'
+    def pause(actor,e):
+        limited=usage_limited(e)
+        with lock:result['actors'][actor].update({'status':'HOLD','display_status':'Out to lunch' if limited else 'HOLD','pause_reason':'usage_limit' if limited else 'rereference_required' if isinstance(e,ReReferenceRequired) else 'error','error':str(e) if isinstance(e,GateError) else type(e).__name__})
     def worker(actor):
+        seen=set()
         for n in range(req.get('actor_cycles',{}).get(actor,req.get("cycles",1))):
             attempt_req={**req,'_call_budget':{'used':0}}
             events=[]
@@ -419,25 +440,39 @@ def run(req):
                 result["actors"][actor]["status"]="REFERENCING"
                 publish(result)
             try:
-                for attempt in range(2):
-                    try:
-                        turn=cycle(attempt_req,actor,latest)
-                        break
-                    except ReReferenceRequired as e:
-                        events.append({'reason':e.reason,'detail':str(e),'restart':attempt==0})
-                        progress(actor,{'status':'REREFERENCING' if attempt==0 else 'HOLD','rereference_events':list(events),'rereferences':min(attempt+1,1)})
-                        if attempt==1:raise
-                        attempt_req['question']=req['question']+'\nREREFERENCE TRIGGER: '+json.dumps(events[-1])+'. Resolve from fresh source. Do not assume the previous attempt succeeded.'
+                turn=referenced_attempt(attempt_req,actor,events)
                 turn["cycle"]=n+1;turn['rereference_events']=events
+                seen.update((p['actor'],p['cycle']) for p in turn.get('peer_cycles_seen',[]))
                 with lock:
                     result["turns"].append(turn)
                     result["actors"][actor].update({"status":"COMPLETE","display_status":"COMPLETE","cycles":n+1,'rereference_events':events})
+                    changed.notify_all()
             except Exception as e:
-                limited=usage_limited(e)
-                with lock: result["actors"][actor].update({"status":"HOLD","display_status":"Out to lunch" if limited else "HOLD","pause_reason":"usage_limit" if limited else "rereference_required" if isinstance(e,ReReferenceRequired) else "error","cycles":n,"error":str(e) if isinstance(e,GateError) else type(e).__name__})
+                pause(actor,e)
                 break
             finally:
                 with lock: publish(result)
+        with changed:
+            producing.discard(actor);changed.notify_all()
+            if result['actors'][actor]['status']=='HOLD' or not req.get('internal_dialogue',True):return
+            def fresh_peers():return [t for t in latest() if t['actor']!=actor and t.get('status')=='COMPLETE' and (t['actor'],t['cycle']) not in seen]
+            result['actors'][actor]['activity']='Listening for a new peer response'
+            publish(result)
+            # Event wakeup only. At most one private observation pass per seat/run.
+            changed.wait_for(lambda:bool(fresh_peers()) or not producing)
+            peers=fresh_peers()
+            if not peers:
+                result['actors'][actor]['activity']='Finished';publish(result);return
+        observation={**req,'_call_budget':attempt_req['_call_budget'],'question':req['question']+'\nPRIVATE WORK NOTE: Observe these actual newly completed peer replies. Write at most 600 characters of observations, evidence paths, unresolved questions and your next useful action. Do not produce hidden reasoning or pretend to have proof. Use rereference for drift, assumption or confusion. This note stays in runner memory and is not a public council answer.\n'+json.dumps(peers)}
+        try:
+            progress(actor,{'activity':'Taking private work notes'})
+            note=referenced_attempt(observation,actor,[])
+            if len(note['answer'])>2000:raise GateError('Private work note exceeds bounded size')
+            private_notes[actor]=note['answer']
+            progress(actor,{'status':'COMPLETE','display_status':'COMPLETE','activity':'Finished','internal_dialogue':{'observation_passes':1,'peer_responses':[{'actor':p['actor'],'cycle':p['cycle'],'response_id':p.get('response_id')} for p in peers],'repository_commits':note.get('reference',{}).get('repository_commits',{}),'storage':'private runner memory; note text not published'}})
+        except Exception as e:
+            pause(actor,e)
+            with lock:publish(result)
     with concurrent.futures.ThreadPoolExecutor(max_workers=len(req["actors"])) as pool:
         list(pool.map(worker,req["actors"]))
     result["status"]=overall_status(result["actors"])
