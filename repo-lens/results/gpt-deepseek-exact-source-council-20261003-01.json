@@ -14,7 +14,7 @@
       "activity": "Lead answer",
       "reference_mode": "indexed",
       "reference_segments_without_index": 207,
-      "segments_read": 4,
+      "segments_read": 5,
       "segments_total": 10,
       "file_count": 1950,
       "repository_file_counts": {
