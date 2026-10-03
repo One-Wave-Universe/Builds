@@ -5,8 +5,8 @@
   "repository": "One-Wave-Universe/Builds",
   "question": "Inspect Builds/digital-cell/l0_cell.py. List the functions and methods it defines, their inputs, and return values. Fetch this exact file once; reuse the verified returned source rather than fetching it again. Source inspection is sufficient; say no tests executed. Cite that path. Keep the answer concise.",
   "lead_actor": "GPT",
-  "status": "RUNNING",
-  "phase": "ANSWERING",
+  "status": "HOLD",
+  "phase": "FINISHED",
   "actors": {
     "GPT": {
       "status": "HOLD",
@@ -51,5 +51,9 @@
       "activity": "Waiting for lead answer"
     }
   },
-  "turns": []
+  "turns": [],
+  "consensus": {
+    "status": "BLOCKED",
+    "reason": "Lead produced no complete referenced answer"
+  }
 }
