@@ -5,8 +5,8 @@
   "repository": "One-Wave-Universe/Builds",
   "question": "Inspect the exact current Builds/digital-cell/l0_cell.py source. Name the functions and methods it defines and explain their inputs and return values. Distinguish executed tests from source inspection. Keep the answer concise. Council reviewer: fetch the same exact source independently and explicitly agree, revise, or abstain about this code-level answer.",
   "lead_actor": "GEMINI",
-  "status": "RUNNING",
-  "phase": "ANSWERING",
+  "status": "HOLD",
+  "phase": "FINISHED",
   "actors": {
     "GEMINI": {
       "status": "HOLD",
@@ -39,5 +39,9 @@
       "activity": "Waiting for lead answer"
     }
   },
-  "turns": []
+  "turns": [],
+  "consensus": {
+    "status": "BLOCKED",
+    "reason": "Lead produced no complete referenced answer"
+  }
 }
