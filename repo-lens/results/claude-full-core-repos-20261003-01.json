@@ -3,7 +3,7 @@
   "id": "claude-full-core-repos-20261003-01",
   "question": "Read every supplied segment from Builds, One-Wave-Science, and Bridge-Comand before answering. Use the Science canon to check one implemented cell-build artifact and one unproven memory gap in Builds. Identify the actual documented Jetson terminal/program routes in Bridge-Comand. Read attached CERN/GWOSC metadata and actual peer answers. Correct unsupported or outdated claims. Cite repository-qualified file paths. Answer in at most 1800 characters. Do not claim physical validation, tool availability, or commands/tests you did not execute. Do not clone any repository.",
   "repository": "One-Wave-Universe/Builds",
-  "status": "RUNNING",
+  "status": "HOLD",
   "actors": {
     "CLAUDE": {
       "status": "HOLD",
@@ -12,5 +12,6 @@
     }
   },
   "turns": [],
-  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37135776976"
+  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37135776976",
+  "stop_reason": "Requested cycle limits reached for healthy slots. Blocked slots did not stop other workers."
 }
