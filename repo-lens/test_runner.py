@@ -14,6 +14,43 @@ class Gates(unittest.TestCase):
             with self.assertRaises(runner.GateError) as caught:runner.request_json(e.url)
         self.assertNotIn('private credential content',str(caught.exception))
     def req(self): return {"id":"test-1","repository":"One-Wave-Universe/Builds","question":"Check the build","actors":["GEMINI"]}
+    def source(self, repo):
+        name=repo.split('/')[-1]
+        text='SOURCE_'+name+(' TERMINAL_PROGRAM_ROUTE' if name=='Bridge-Comand' else '')
+        return ({'repository':repo,'commit':'sha-'+name},[{'path':'same.md','git_blob':'blob-'+name,'text':text}],{'open_issues':[{'title':'ISSUE_'+name}]})
+    def test_every_provider_reads_all_core_repos_and_terminal_routes(self):
+        for actor in runner.PROVIDERS:
+            with self.subTest(actor=actor),patch.object(runner,'scan',side_effect=self.source),patch.object(runner,'head',side_effect=lambda repo:'sha-'+repo.split('/')[-1]),patch.object(runner,'invoke',return_value={'answer':'Builds/same.md','response_id':'actual','model':'m'}) as model:
+                turn=runner.cycle(self.req(),actor,[])
+                supplied='\n'.join(call.args[2] for call in model.call_args_list)
+                for name in runner.CORE_REPOS:
+                    self.assertIn('SOURCE_'+name,supplied)
+                    self.assertIn('ISSUE_'+name,supplied)
+                self.assertIn('TERMINAL_PROGRAM_ROUTE',supplied)
+                self.assertEqual(set(turn['reference']['repository_commits']),{runner.OWNER+'/'+name for name in runner.CORE_REPOS})
+                self.assertEqual(turn['reference']['file_count'],3)
+    def test_mythos_is_optional_and_focus_can_include_it(self):
+        with patch.object(runner,'scan',side_effect=self.source):
+            normal=runner.scan_all(runner.OWNER+'/Builds')[0]
+            optional=runner.scan_all(runner.OWNER+'/Builds',True)[0]
+            focus=runner.scan_all(runner.OWNER+'/Mythos-and-Stories')[0]
+        self.assertNotIn(runner.OWNER+'/Mythos-and-Stories',normal['repository_commits'])
+        self.assertIn(runner.OWNER+'/Mythos-and-Stories',optional['repository_commits'])
+        self.assertEqual(optional['repository_commits'],focus['repository_commits'])
+    def test_unreadable_secondary_repo_stops_before_any_model_call(self):
+        def failing(repo):
+            if repo.endswith('/One-Wave-Science'):raise runner.GateError('Science unavailable')
+            return self.source(repo)
+        with patch.object(runner,'scan',side_effect=failing),patch.object(runner,'invoke') as model:
+            with self.assertRaisesRegex(runner.GateError,'Science unavailable'):runner.cycle(self.req(),'CLAUDE',[])
+            model.assert_not_called()
+    def test_drift_in_bridge_repo_rejects_completed_answer(self):
+        def current(repo):return 'changed' if repo.endswith('/Bridge-Comand') else 'sha-'+repo.split('/')[-1]
+        with patch.object(runner,'scan',side_effect=self.source),patch.object(runner,'head',side_effect=current),patch.object(runner,'invoke',return_value={'answer':'Builds/same.md','response_id':'actual'}):
+            with self.assertRaisesRegex(runner.GateError,'Bridge-Comand'):runner.cycle(self.req(),'CLAUDE',[])
+    def test_optional_flag_must_be_boolean(self):
+        x=self.req();x['include_mythos']='yes'
+        with self.assertRaises(runner.GateError):runner.validate(x)
     def test_foreign_repository(self):
         x=self.req(); x["repository"]="someone/other"
         with self.assertRaises(runner.GateError): runner.validate(x)

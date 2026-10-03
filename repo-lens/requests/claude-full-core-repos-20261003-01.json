@@ -1,0 +1,25 @@
+{
+  "id": "claude-full-core-repos-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "question": "Read every supplied segment from Builds, One-Wave-Science, and Bridge-Comand before answering. Use the Science canon to check one implemented cell-build artifact and one unproven memory gap in Builds. Identify the actual documented Jetson terminal/program routes in Bridge-Comand. Read attached CERN/GWOSC metadata and actual peer answers. Correct unsupported or outdated claims. Cite repository-qualified file paths. Answer in at most 1800 characters. Do not claim physical validation, tool availability, or commands/tests you did not execute. Do not clone any repository.",
+  "actors": [
+    "CLAUDE"
+  ],
+  "cycles": 1,
+  "max_model_calls": 256,
+  "peer_request_ids": [
+    "claude-signedin-full-builds-20261003-01",
+    "council-independent-jetson-pieces-20261003-01"
+  ],
+  "metadata_queries": [
+    {
+      "url": "https://opendata.cern.ch/api/records/?q=CMS&size=1",
+      "purpose": "Read provider-native CERN CMS metadata; preserve provenance and distinguish metadata from physical proof."
+    },
+    {
+      "url": "https://gwosc.org/api/v2/runs",
+      "purpose": "Read GWOSC observing-run metadata; preserve provenance."
+    }
+  ],
+  "include_mythos": false
+}
