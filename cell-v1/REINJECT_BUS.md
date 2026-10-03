@@ -6,6 +6,17 @@ Not just efficiency. Circulatory. Blood does not belong to one organ. Same here.
 
 CENTER / V0 stays quiet. The bus is other metal.
 
+## Lattice DC
+
+The brain reinjection loop is lattice DC. It is not the local committed lean, and it is not a second name for the rail alone.
+
+- **V_BUS + local cap** = energy reservoir / readiness / short echo of the loop.
+- **Shared hysteresis layer** = muscle memory of connected cells. The loop revisits it. Prior use biases the next crossing.
+- **Local nucleus** = local retained state. Gate-local hysteresis and body-layer hysteresis are separate scales.
+- **CENTER** stays the local differential reference. The loop does not land on it.
+
+See `cell-v1/DC_AC_RC.md`.
+
 ## Topology
 
 ```
@@ -23,6 +34,9 @@ CENTER / V0 stays quiet. The bus is other metal.
        DC-link cap
             |
      ──→ back to +1V rail
+            |
+     shared hysteresis layer
+     muscle memory of connected cells
 ```
 
 Per axis:
@@ -32,6 +46,7 @@ Per axis:
 - Steering — diode or synchronous switch on the collapse
 - DC-link cap — local reservoir
 - Return — cap feeds the main bus
+- Shared hysteresis layer — the return revisits it; that retained bias is the muscle memory
 
 ## Recovery
 
@@ -47,6 +62,7 @@ Drive off. Field collapses. Current wants to keep going. Steered to the cap:
 4. Current into DC-link cap
 5. Cap voltage rises
 6. Energy on the cap: E = ½ C V²
+7. The same return revisits the shared hysteresis layer
 
 Any cell may draw bus first, external supply second. Only losses get replaced by the source.
 
@@ -69,7 +85,7 @@ Current architecture:
 - **local nucleus / local hysteretic path** = local retained state;
 - **under-hex hysteresis lattice / shared edge magnetic traces** = group / muscle memory;
 - **V_BUS + local cap** = returned energy, readiness, and short echo;
-- **reinjection path** = carries consequence / recoverable energy back into the continuing loop, where the next event encounters the already-biased hysteretic path.
+- **reinjection path / lattice DC** = the brain loop. It carries consequence back through the shared hysteresis layer, where the next event encounters the already-biased path.
 
 So the process is unified, but the retained habit lives in the hysteretic path, not in bus voltage alone.
 
@@ -146,6 +162,7 @@ Nothing above 4 matters until 4 works.
 CELL0.md starts with the local differential / CENTER relation at the current normalized architecture scale.
 After the local event, recoverable inductive energy returns to V_BUS, not CENTER.
 Shared V_BUS may scale across cells; CENTER remains a local reference relation.
+The shared hysteresis layer is the muscle memory that lattice DC revisits. It is not built on the first pair.
 
 ## 2026-09-27 lock — reinjection writes through the muscle-memory path
 This supersedes any reading of this file in which reinjection is only a flyback-efficiency path.
@@ -156,3 +173,7 @@ This supersedes any reading of this file in which reinjection is only a flyback-
 - V_BUS remains the energy reservoir/accounting rail. **V_BUS voltage alone is not the long-term memory.**
 - Gate-local hysteresis and body-layer hysteresis are separate memory scales.
 - The architecture hypothesis is that repeated physical traversal plus retained hysteretic bias can settle toward a repeatable lower-loss route. This is not a measured optimization claim until energy and retained-state measurements demonstrate it.
+
+## 2026-10-02 — lattice DC name
+
+Lattice DC is the brain reinjection loop: energy returns on V_BUS, muscle memory lives in the shared hysteresis layer of connected cells, and the loop is what makes the next event meet that bias. Local DC remains the committed lean. Do not use one DC for both without saying which.
