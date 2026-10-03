@@ -43,7 +43,7 @@ class Gates(unittest.TestCase):
             r=runner.run(x)
         self.assertEqual(r["actors"]["GPT"]["status"],"HOLD")
         self.assertEqual(r["actors"]["GEMINI"]["cycles"],2)
-        self.assertEqual(r["status"],"HOLD")
+        self.assertEqual(r["status"],"PARTIAL")
     def test_fast_actor_does_not_wait(self):
         import threading
         finished=threading.Event()
@@ -57,5 +57,12 @@ class Gates(unittest.TestCase):
             r=runner.run(x)
         self.assertEqual(r["status"],"COMPLETE")
         self.assertEqual([t["actor"] for t in r["turns"]][:2],["GEMINI","GEMINI"])
+    def test_any_registered_provider_gets_a_slot(self):
+        x=self.req();x["actors"]=["TEST_PEER"]
+        with patch.dict(runner.PROVIDERS,{"TEST_PEER":lambda *a: {"answer":"actual adapter call"}}):
+            runner.validate(x)
+            self.assertEqual(runner.invoke("TEST_PEER","system","question")["answer"],"actual adapter call")
+    def test_all_blocked_is_hold(self):
+        self.assertEqual(runner.overall_status({"a":{"status":"HOLD"},"b":{"status":"HOLD"}}),"HOLD")
 
 if __name__=="__main__": unittest.main()
