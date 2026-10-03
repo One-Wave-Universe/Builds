@@ -1,8 +1,18 @@
 import unittest
+import io,json,urllib.error
 from unittest.mock import patch
 import runner
 
 class Gates(unittest.TestCase):
+    def test_allowlisted_route_failure_is_visible(self):
+        e=urllib.error.HTTPError('https://route.trycloudflare.com/chat',400,'Bad',{},io.BytesIO(json.dumps({'error':'DeepSeek output incomplete'}).encode()))
+        with patch.object(runner.urllib.request,'urlopen',side_effect=e):
+            with self.assertRaisesRegex(runner.GateError,'DeepSeek output incomplete'):runner.request_json(e.url)
+    def test_arbitrary_server_error_is_not_echoed(self):
+        e=urllib.error.HTTPError('https://route.trycloudflare.com/chat',400,'Bad',{},io.BytesIO(json.dumps({'error':'private credential content'}).encode()))
+        with patch.object(runner.urllib.request,'urlopen',side_effect=e):
+            with self.assertRaises(runner.GateError) as caught:runner.request_json(e.url)
+        self.assertNotIn('private credential content',str(caught.exception))
     def req(self): return {"id":"test-1","repository":"One-Wave-Universe/Builds","question":"Check the build","actors":["GEMINI"]}
     def test_foreign_repository(self):
         x=self.req(); x["repository"]="someone/other"
