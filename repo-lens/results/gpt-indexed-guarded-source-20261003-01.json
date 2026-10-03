@@ -24,7 +24,7 @@
         "One-Wave-Universe/One-Wave-Science": "9dc26998d6bc901299cae55748df7efd79a3c887"
       },
       "metadata_sources": [],
-      "model_calls": 12,
+      "model_calls": 13,
       "tool_calls": [
         {
           "path": "digital-cell/l0_cell.py",
