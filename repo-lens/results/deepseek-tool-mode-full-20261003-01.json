@@ -3,7 +3,7 @@
   "id": "deepseek-tool-mode-full-20261003-01",
   "question": "Read every repository piece. Verify one implemented cell-build artifact and one unproven physical-memory gap using actual file paths. Read the attached CERN and GWOSC metadata and the actual GPT/Gemini peer answers. Correct any unsupported claims and give the next useful software verification step. Answer in at most 1500 characters; do not claim physical validation or tests you did not execute.",
   "repository": "One-Wave-Universe/Builds",
-  "status": "RUNNING",
+  "status": "HOLD",
   "actors": {
     "DEEPSEEK": {
       "status": "HOLD",
@@ -12,5 +12,6 @@
     }
   },
   "turns": [],
-  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37133145857"
+  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37133145857",
+  "stop_reason": "Requested cycle limits reached for healthy slots. Blocked slots did not stop other workers."
 }
