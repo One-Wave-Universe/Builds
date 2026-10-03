@@ -9,7 +9,7 @@
   "phase": "ANSWERING",
   "actors": {
     "GPT": {
-      "status": "READING",
+      "status": "REREFERENCING",
       "cycles": 0,
       "activity": "Lead answer",
       "reference_mode": "indexed",
@@ -40,6 +40,13 @@
           "commit": "b0e8cb7e8779ac19e327b86d2b9ef9341cec57a9",
           "name": "get_repository_file",
           "segments_read": 1
+        }
+      ],
+      "rereference_events": [
+        {
+          "reason": "confusion",
+          "detail": "The completed get_repository_file receipt for One-Wave-Universe/Builds/digital-cell/l0_cell.py includes a behavioral summary but no exact source text. Function and method definitions, inputs, and return values cannot be inspected from that summary, and repeating the completed identical request is prohibited. The audited source body must be restored to continue.",
+          "restart": true
         }
       ]
     },
