@@ -1,0 +1,24 @@
+{
+  "schema": "repo-lens/v2",
+  "workflow": "answer_then_council",
+  "id": "gpt-deepseek-exact-source-council-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "question": "Inspect Builds/digital-cell/l0_cell.py. Name the functions and methods it defines, their inputs, and return values. Fetch the file once during synthesis and inspect the actual source_text in the retained exact tool result. Cite the path. Source inspection only; no tests executed. Keep the answer concise.",
+  "lead_actor": "GPT",
+  "status": "RUNNING",
+  "phase": "ANSWERING",
+  "actors": {
+    "GPT": {
+      "status": "QUEUED",
+      "cycles": 0,
+      "activity": "Answering"
+    },
+    "DEEPSEEK": {
+      "status": "QUEUED",
+      "cycles": 0,
+      "activity": "Waiting for lead answer"
+    }
+  },
+  "turns": [],
+  "run_url": "https://github.com/One-Wave-Universe/Builds/actions/runs/37143245208"
+}
