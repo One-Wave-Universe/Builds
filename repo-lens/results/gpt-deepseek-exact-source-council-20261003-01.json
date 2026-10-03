@@ -45,9 +45,9 @@
       "display_status": "COMPLETE"
     },
     "DEEPSEEK": {
-      "status": "READING",
+      "status": "HOLD",
       "cycles": 0,
-      "activity": "Council review",
+      "activity": "Parked",
       "reference_mode": "indexed",
       "reference_segments_without_index": 1377,
       "segments_read": 0,
@@ -70,8 +70,16 @@
           "reason": "confusion",
           "detail": "Segment 3/65 supplies only a file index for One-Wave-Universe/Builds (commit b0e8cb7e); it does not include Builds/digital-cell/l0_cell.py, and no path or blob for that file appears in the supplied listing. The lead answer claims a retained, hash-verified source_text and commit b0e8cb7e, but the current segment provides no body, hash, or path evidence for l0_cell.py. The target body must be fetched via get_repository_file during synthesis before functions, inputs, or return values can be verified.",
           "restart": true
+        },
+        {
+          "reason": "confusion",
+          "detail": "Segment 1/65 of One-Wave-Universe/Builds @ b0e8cb7e supplies a hash-verified index row for digital-cell/l0_cell.py (blob 6f49ddc6389403226bba3b95674d867c5e9aeef6, 1789 bytes), which is a different path than the lead answer's cited Builds/digital-cell/l0_cell.py only in repository prefix, and no source_text body is present in this segment. Functions, inputs, and return values cannot be verified from an index row alone; the lead answer's parse/resolve/step/main signatures, CellInput dataclass fields, and 'no methods' claim remain unverified against the blob body.",
+          "restart": false
         }
-      ]
+      ],
+      "display_status": "HOLD",
+      "pause_reason": "error",
+      "error": "Segment 1/65 of One-Wave-Universe/Builds @ b0e8cb7e supplies a hash-verified index row for digital-cell/l0_cell.py (blob 6f49ddc6389403226bba3b95674d867c5e9aeef6, 1789 bytes), which is a different path than the lead answer's cited Builds/digital-cell/l0_cell.py only in repository prefix, and no source_text body is present in this segment. Functions, inputs, and return values cannot be verified from an index row alone; the lead answer's parse/resolve/step/main signatures, CellInput dataclass fields, and 'no methods' claim remain unverified against the blob body."
     }
   },
   "turns": [
