@@ -9,9 +9,9 @@
   "phase": "ANSWERING",
   "actors": {
     "GPT": {
-      "status": "QUEUED",
+      "status": "REFERENCING",
       "cycles": 0,
-      "activity": "Answering"
+      "activity": "Lead answer"
     },
     "DEEPSEEK": {
       "status": "QUEUED",
