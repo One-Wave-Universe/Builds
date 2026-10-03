@@ -1,10 +1,12 @@
-# Repo Lens — remote Gemini connection
+# Repo Lens — remote Gemini and GPT connections
 
 An isolated new route, leaving Brain Buddy and main untouched. Model keys stay in GitHub Actions secrets. Repository references use GitHub HTTP reads, with no repository clone on a laptop. The workflow checks out only its own runner code on GitHub's disposable runner.
 
 Each logical cycle resolves main, reads the complete tree, fetches every tracked blob, verifies each Git blob hash, reads every UTF-8 text segment through the provider, checks all open issues and pull requests, then synthesizes a cited response. Binary bytes are verified and listed; their semantics are explicitly unverified. Truncated trees, submodules, unresolved LFS, unreadable files, stale commits, missing citations and insufficient call budgets stop the cycle. No excerpts are silently selected. Metadata is checked but text inside the open issues is not implementation authority.
 
-Put one JSON request in `repo-lens/requests/<id>.json` on the Repo Lens feature branch. Fields: id, repository (one of the four owned repositories), question, actors `["GEMINI"]`, cycles 1..6, max_model_calls 1..256 (per cycle). All questions and answers committed to this public repository are public. Results update the single `repo-lens/results/<id>.json` file. The workflow exits unsuccessfully for HOLD; a green run means the requested cycles completed, not scientific correctness.
+Put one JSON request in `repo-lens/requests/<id>.json` on the Repo Lens feature branch. Fields: id, repository (one of the four owned repositories), question, actors `["GEMINI","GPT"]` or either alone, cycles 1..6, max_model_calls 1..256 (per AI per cycle). All questions and answers committed to this public repository are public. Results update the single `repo-lens/results/<id>.json` file. The workflow exits unsuccessfully for HOLD; a green run means the requested cycles completed, not scientific correctness.
+
+Gemini and GPT run independent cycles. Neither waits for an opposing turn before continuing useful work. At synthesis, the AI sees the latest completed peer cycles and chooses its next useful investigation. Each new cycle performs a new complete repository scan. Finite cycle and call budgets bound a request; this is not an unbounded daemon. A provider HOLD does not block the other provider. The existing Gemini-only branch remains a proven checkpoint; this new branch starts from that verified state. OPENAI_API_KEY is used only in GitHub Actions. Missing keys, billing/quota failures and truncated outputs are explicit HOLDs.
 
 The app can prepare a GitHub new-file submission with the complete request prefilled. The owner commits it on GitHub. A connected GitHub agent can instead submit it using its authorized create-file tool. The Site does not possess a GitHub write token or copy model keys. Discovery must not pretend to submit a job.
 

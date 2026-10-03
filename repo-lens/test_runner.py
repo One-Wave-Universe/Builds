@@ -34,5 +34,28 @@ class Gates(unittest.TestCase):
         scan=({"commit":"s"},[{"path":"all.md","git_blob":"s","text":"hello"}],{})
         with patch.object(runner,"scan",return_value=scan),patch.object(runner,"invoke",return_value={"answer":"unsupported","model":"m"}),patch.object(runner,"head",return_value="s"):
             with self.assertRaises(runner.GateError): runner.cycle(self.req(),"GEMINI",[])
+    def test_peer_failure_does_not_stop_other_actor(self):
+        def fake(req,actor,history):
+            if actor=="GPT":raise runner.GateError("quota")
+            return {"actor":actor,"answer":"ok","reference":{}}
+        x=self.req();x["actors"]=["GPT","GEMINI"];x["cycles"]=2
+        with patch.object(runner,"cycle",side_effect=fake),patch.object(runner,"publish"):
+            r=runner.run(x)
+        self.assertEqual(r["actors"]["GPT"]["status"],"HOLD")
+        self.assertEqual(r["actors"]["GEMINI"]["cycles"],2)
+        self.assertEqual(r["status"],"HOLD")
+    def test_fast_actor_does_not_wait(self):
+        import threading
+        finished=threading.Event()
+        def fake(req,actor,history):
+            if actor=="GPT":
+                if not finished.wait(2):raise AssertionError("Fast peer could not progress")
+            elif len([t for t in history() if t["actor"]=="GEMINI"])==1: finished.set()
+            return {"actor":actor,"answer":"ok","reference":{}}
+        x=self.req();x["actors"]=["GPT","GEMINI"];x["cycles"]=2
+        with patch.object(runner,"cycle",side_effect=fake),patch.object(runner,"publish"):
+            r=runner.run(x)
+        self.assertEqual(r["status"],"COMPLETE")
+        self.assertEqual([t["actor"] for t in r["turns"]][:2],["GEMINI","GEMINI"])
 
 if __name__=="__main__": unittest.main()

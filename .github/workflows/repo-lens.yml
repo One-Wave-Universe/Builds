@@ -29,9 +29,10 @@ jobs:
           assert paths[0].endswith('.json')
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('path='+paths[0]+'\n')
           PY
-      - name: Run Gemini full repository cycle
+      - name: Run independent full repository AI cycles
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GH_TOKEN: ${{ github.token }}
           REQUEST_PATH: ${{ steps.request.outputs.path }}
         run: python3 repo-lens/runner.py "$REQUEST_PATH"
