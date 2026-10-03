@@ -6,7 +6,7 @@
   "question": "Inspect Builds/digital-cell/l0_cell.py. Name the functions and methods it defines, their inputs, and return values. Fetch the file once during synthesis and inspect the actual source_text in the retained exact tool result. Cite the path. Source inspection only; no tests executed. Keep the answer concise.",
   "lead_actor": "GPT",
   "status": "RUNNING",
-  "phase": "ANSWERING",
+  "phase": "COUNCIL_REVIEW",
   "actors": {
     "GPT": {
       "status": "COMPLETE",
