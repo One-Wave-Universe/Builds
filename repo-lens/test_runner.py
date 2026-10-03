@@ -64,5 +64,20 @@ class Gates(unittest.TestCase):
             self.assertEqual(runner.invoke("TEST_PEER","system","question")["answer"],"actual adapter call")
     def test_all_blocked_is_hold(self):
         self.assertEqual(runner.overall_status({"a":{"status":"HOLD"},"b":{"status":"HOLD"}}),"HOLD")
+    def test_metadata_is_read_by_every_requested_actor(self):
+        scan=({'commit':'s'},[{'path':'all.md','git_blob':'s','text':'hello'}],{})
+        x=self.req();x['metadata_queries']=[{'url':'https://gwosc.org/api/v2/runs','purpose':'test metadata'}]
+        source={'source_record':{'retained_field':123},'sha256':'hash','worker':'Jetson'}
+        for actor in ['GEMINI','GPT','DEEPSEEK']:
+            with patch.object(runner,'scan',return_value=scan),patch.object(runner,'jetson',return_value=source),patch.object(runner,'invoke',return_value={'answer':'all.md','model':'m'}) as model,patch.object(runner,'head',return_value='s'):
+                turn=runner.cycle(x,actor,[])
+                self.assertEqual(turn['metadata_sources'][0]['source_record']['retained_field'],123)
+                self.assertIn('retained_field',model.call_args_list[0].args[2])
+    def test_metadata_rejects_private_target(self):
+        x=self.req();x['metadata_queries']=[{'url':'https://127.0.0.1/api','purpose':'test'}]
+        with self.assertRaises(runner.GateError):runner.validate(x)
+    def test_incomplete_jetson_answer_rejected(self):
+        with patch.object(runner,'jetson',return_value={'answer':'no receipt'}):
+            with self.assertRaises(runner.GateError):runner.jetson_actor('DEEPSEEK','s','p')
 
 if __name__=="__main__": unittest.main()

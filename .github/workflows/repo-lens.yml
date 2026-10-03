@@ -5,6 +5,7 @@ on:
     paths: ['repo-lens/requests/**']
 permissions:
   contents: write
+  id-token: write
 jobs:
   reference:
     runs-on: ubuntu-latest
