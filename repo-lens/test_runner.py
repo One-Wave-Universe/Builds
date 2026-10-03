@@ -97,7 +97,50 @@ class Gates(unittest.TestCase):
         self.assertIn('REAL_PEER_ANSWER',prompts[1]);self.assertNotIn('not complete',prompts[1])
     def test_tool_requests_have_a_finite_stop(self):
         def ask(prompt,stage):return {'answer':'read' if stage=='tool-result' else json.dumps({'lens_tool':{'name':'get_peer_responses','arguments':{}}})}
-        with self.assertRaisesRegex(runner.GateError,'request limit'):runner.lens_exchange('GPT','q',ask,[],[])
+        with self.assertRaisesRegex(runner.ReReferenceRequired,'Repeated completed'):runner.lens_exchange('GPT','q',ask,[],[])
+    def test_quota_sign_does_not_stop_healthy_seat(self):
+        def fake(req,actor,history):
+            if actor=='GPT':raise runner.GateError('HTTP 429 from provider (provider_rate_limit)')
+            return {'actor':actor,'answer':'verified','reference':{}}
+        x=self.req();x['actors']=['GPT','GEMINI'];x['cycles']=2
+        with patch.object(runner,'cycle',side_effect=fake),patch.object(runner,'publish'):
+            result=runner.run(x)
+        self.assertEqual(result['actors']['GPT']['display_status'],'Out to lunch')
+        self.assertEqual(result['actors']['GPT']['pause_reason'],'usage_limit')
+        self.assertEqual(result['actors']['GEMINI']['cycles'],2)
+        self.assertEqual(result['status'],'PARTIAL')
+        self.assertFalse(runner.usage_limited(runner.GateError('CLAUDE client failed; check local sign-in and plan limits')))
+    def test_drift_restarts_once_with_shared_budget(self):
+        calls=[]
+        def fake(req,actor,history):
+            calls.append(req['_call_budget']);req['_call_budget']['used']+=1
+            if len(calls)==1:raise runner.ReReferenceRequired('drift','head changed')
+            self.assertIn('head changed',req['question'])
+            return {'actor':actor,'answer':'fresh','reference':{}}
+        with patch.object(runner,'cycle',side_effect=fake),patch.object(runner,'publish'):
+            result=runner.run(self.req())
+        self.assertEqual(result['status'],'COMPLETE')
+        self.assertIs(calls[0],calls[1]);self.assertEqual(calls[0]['used'],2)
+        self.assertEqual(result['turns'][0]['rereference_events'][0]['reason'],'drift')
+    def test_persistent_confusion_stops_after_one_restart(self):
+        with patch.object(runner,'cycle',side_effect=runner.ReReferenceRequired('confusion','unresolved')) as cycle,patch.object(runner,'publish'):
+            result=runner.run(self.req())
+        self.assertEqual(cycle.call_count,2)
+        self.assertEqual(result['actors']['GEMINI']['pause_reason'],'rereference_required')
+        self.assertEqual(result['turns'],[])
+    def test_model_reference_issue_interrupts_before_synthesis(self):
+        for reason in ['drift','assumption','confusion']:
+            with self.subTest(reason=reason),patch.object(runner,'scan',side_effect=self.source),patch.object(runner,'invoke',return_value={'answer':json.dumps({'reference_issue':{'reason':reason,'detail':'uncertain repo fact'}})}) as model:
+                with self.assertRaises(runner.ReReferenceRequired) as caught:runner.cycle(self.req(),'GPT',[])
+                self.assertEqual(caught.exception.reason,reason);self.assertEqual(model.call_count,1)
+    def test_explicit_rereference_tool_interrupts(self):
+        def ask(*args):return {'answer':json.dumps({'lens_tool':{'name':'rereference','arguments':{'reason':'assumption','detail':'need current source'}}})}
+        with self.assertRaises(runner.ReReferenceRequired) as caught:runner.lens_exchange('GPT','q',ask,[],[])
+        self.assertEqual(caught.exception.reason,'assumption')
+    def test_gemini_does_not_retry_another_model_after_quota(self):
+        with patch.dict(runner.os.environ,{'GEMINI_API_KEY':'test','GEMINI_MODEL':'test'}),patch.object(runner,'request_json',side_effect=runner.GateError('HTTP 429 from google')) as request:
+            with self.assertRaises(runner.UsageLimit):runner.gemini('s','p')
+        self.assertEqual(request.call_count,1)
     def test_unknown_tool_is_not_executed(self):
         with self.assertRaisesRegex(runner.GateError,'Unregistered'):runner.lens_request(json.dumps({'lens_tool':{'name':'shell','arguments':{'cmd':'rm'}}}))
     def test_foreign_repository(self):

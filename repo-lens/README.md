@@ -25,3 +25,11 @@ Set `reference_mode: "indexed"` to verify every tracked blob and hash in all req
 Indexed reference is a complete repository byte/hash check, not exhaustive model reading of every file. Receipts explicitly record mode, seeded and fetched model-source paths, the supplied segment count, and the comparable full-source segment count. File-content claims require a delivered source citation. Full mode remains the default and is available as `reference_mode: "full"`. Mythos remains optional.
 
 Partial progress is retained on HOLD so a provider quota failure does not erase the verified file counts and number of completed reference segments. No scheduled retries were added. Claude subscription sign-in and its Builds-only response succeeded; its subsequent three-core-repository full-text run hit the session usage limit, confirmed locally by the official client.
+
+## Seat pauses and fresh reference
+
+A confirmed provider usage limit or exhausted model-call budget pauses only that seat with `display_status: "Out to lunch"`. Authentication and transport failures remain separate errors. Gemini does not try another model after a quota response. No timed retries are scheduled.
+
+Repository head drift, an AI `reference_issue` (drift, assumption, confusion), or the `rereference` tool interrupts the answer. The worker makes one immediate fresh full required-repository scan and restarts with the trigger attached. The same model-call budget covers both attempts. Persistent uncertainty pauses that seat; stale answers are never approved. This is a signaling contract, not a claim that unexpressed model uncertainty can be detected. Scientific unknowns remain explicit gaps.
+
+Identical completed tool requests cannot repeat within an attempt: they trigger the confusion path. Completed tool receipts remain visible to the model. Tests cover quota isolation, drift recovery, persistent confusion, every-stage issue signaling and the duplicate-request stop.
