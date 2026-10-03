@@ -6,8 +6,24 @@
   "status": "RUNNING",
   "actors": {
     "GEMINI": {
-      "status": "REFERENCING",
-      "cycles": 0
+      "status": "READING",
+      "cycles": 0,
+      "reference_mode": "indexed",
+      "reference_segments_without_index": 207,
+      "segments_read": 0,
+      "segments_total": 10,
+      "file_count": 1950,
+      "repository_file_counts": {
+        "One-Wave-Universe/Bridge-Comand": 55,
+        "One-Wave-Universe/Builds": 197,
+        "One-Wave-Universe/One-Wave-Science": 1698
+      },
+      "repository_commits": {
+        "One-Wave-Universe/Bridge-Comand": "f46375f3dbedccc6f6097b93ca3ff21d5ef194c3",
+        "One-Wave-Universe/Builds": "b0e8cb7e8779ac19e327b86d2b9ef9341cec57a9",
+        "One-Wave-Universe/One-Wave-Science": "9dc26998d6bc901299cae55748df7efd79a3c887"
+      },
+      "metadata_sources": []
     }
   },
   "turns": [],
