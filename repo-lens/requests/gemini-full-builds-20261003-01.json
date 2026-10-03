@@ -1,0 +1,10 @@
+{
+  "id": "gemini-full-builds-20261003-01",
+  "repository": "One-Wave-Universe/Builds",
+  "question": "Check the complete Builds repository. Explain the current CELL_V1 build completeness, distinguish implemented or tested pieces from unproven memory and lattice claims, and cite actual repository paths for the next smallest verification. Do not propose physical breadboard changes.",
+  "actors": [
+    "GEMINI"
+  ],
+  "cycles": 1,
+  "max_model_calls": 16
+}
