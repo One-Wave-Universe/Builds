@@ -6,7 +6,7 @@
   "status": "RUNNING",
   "actors": {
     "CLAUDE": {
-      "status": "QUEUED",
+      "status": "REFERENCING",
       "cycles": 0
     }
   },
