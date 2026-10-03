@@ -74,6 +74,17 @@ class Gates(unittest.TestCase):
         runner.lens_exchange('GPT','question',ask,[],[],audits.append,[file],{'repository_commits':{repo:'pinned'}})
         self.assertIn('EXACT_FULL_SOURCE',asks[1][0])
         self.assertEqual(audits[0]['commit'],'pinned')
+    def test_exact_source_survives_into_final_synthesis_without_summary_call(self):
+        repo=runner.OWNER+'/Builds';file={'repository':repo,'path':'actual.py','git_blob':'sha','bytes':30,'kind':'text','text':'def real_name(value): return value'}
+        prompts=[]
+        def ask(prompt,stage):
+            prompts.append((prompt,stage))
+            if len(prompts)==1:return {'answer':json.dumps({'lens_tool':{'name':'get_repository_file','arguments':{'repository':repo,'path':'actual.py'}}})}
+            self.assertIn(file['text'],prompt)
+            return {'answer':'Builds/actual.py defines real_name(value) returning value'}
+        answer=runner.lens_exchange('GPT','q',ask,[],[],files=[file],evidence={'repository_commits':{repo:'pinned'}})
+        self.assertEqual([stage for _,stage in prompts],['synthesis','synthesis'])
+        self.assertIn('real_name(value)',answer['answer'])
     def test_source_tool_cannot_escape_verified_snapshot(self):
         def ask(*args):return {'answer':json.dumps({'lens_tool':{'name':'get_repository_file','arguments':{'repository':'other/repo','path':'../../secret'}}})}
         with self.assertRaisesRegex(runner.GateError,'outside current verified'):runner.lens_exchange('GPT','q',ask,[],[],files=[],evidence={})

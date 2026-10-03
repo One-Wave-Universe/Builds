@@ -37,6 +37,8 @@ def conduct(req,complete,emit,is_usage_limit):
     publish()
     answer=perform(lead,req['question']+'\nYou are the lead AI. Answer to the best of your ability from the repository. Use metadata tools when necessary. Then your answer will be handed to the council. Cite inspected paths.','Lead answer',1)
     if answer is None:
+        for actor in actors:
+            if actor!=lead:result['actors'][actor].update({'status':'SKIPPED','activity':'No completed lead answer to review'})
         result.update({'status':'HOLD','phase':'FINISHED','consensus':{'status':'BLOCKED','reason':'Lead produced no complete referenced answer'}});publish();return result
     reviewers=[a for a in actors if a!=lead]
     decisions={};review_turns={}
